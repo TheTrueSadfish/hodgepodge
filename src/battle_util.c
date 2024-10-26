@@ -12243,7 +12243,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     if (gDisableStructs[battlerDef].purpleHazeDefense)
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
     if (gDisableStructs[battlerDef].magmaArmored)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(0.66));
+        modifier = uq4_12_multiply(modifier, UQ_4_12(2 / 3));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_GRASSY_TERRAIN) && moveType == TYPE_GRASS)
@@ -13332,6 +13332,8 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveTy
 {
     if ((IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move != MOVE_STRUGGLE || move != MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
         return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.25) : UQ_4_12(1.0);
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_NORMAL))
+        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
     else if (((!IS_BATTLER_OF_TYPE(battlerAtk, moveType)) || move == MOVE_STRUGGLE || move == MOVE_NONE) && (gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
         return UQ_4_12(1.25);
     else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move == MOVE_STRUGGLE || move == MOVE_NONE)

@@ -3452,7 +3452,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #endif
         .effect = EFFECT_MULTI_HIT,
         .power = 25,
-        .type = TYPE_GHOST,
+        .type = TYPE_GROUND,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
