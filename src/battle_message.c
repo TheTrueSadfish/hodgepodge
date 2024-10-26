@@ -2390,6 +2390,10 @@ static const u8 sATypeMove_Table[NUMBER_OF_MON_TYPES][17] =
     [TYPE_DARK]     = _("a DARK move"),
     [TYPE_FAIRY]    = _("a FAIRY move"),
     [TYPE_RELIC]    = _("a RELIC move"),
+    [TYPE_BEAST]    = _("a BEAST move"),
+    [TYPE_COSMIC]    = _("a COSMIC move"),
+    [TYPE_GREASY]    = _("a GREASY move"),
+    [TYPE_RUBBER]    = _("a RUBBER move"),
 };
 
 const u8 gText_BattleTourney[] = _("BATTLE TOURNEY");

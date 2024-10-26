@@ -23,7 +23,11 @@
 #define TYPE_DARK             17
 #define TYPE_FAIRY            18
 #define TYPE_RELIC            19
-#define NUMBER_OF_MON_TYPES   20
+#define TYPE_BEAST            20
+#define TYPE_COSMIC           21
+#define TYPE_GREASY           22
+#define TYPE_RUBBER           23
+#define NUMBER_OF_MON_TYPES   24
 
 
 // Property labels for Get(Box)MonData / Set(Box)MonData

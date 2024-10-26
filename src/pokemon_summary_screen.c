@@ -912,6 +912,22 @@ static const union AnimCmd sSpriteAnim_TypeRelic[] = {
     ANIMCMD_FRAME(TYPE_RELIC * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
+static const union AnimCmd sSpriteAnim_TypeBeast[] = {
+    ANIMCMD_FRAME(TYPE_BEAST * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_TypeCosmic[] = {
+    ANIMCMD_FRAME(TYPE_COSMIC * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_TypeGreasy[] = {
+    ANIMCMD_FRAME(TYPE_GREASY * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_TypeRubber[] = {
+    ANIMCMD_FRAME(TYPE_RUBBER * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -953,6 +969,10 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeDark,
     sSpriteAnim_TypeFairy,
     sSpriteAnim_TypeRelic,
+    sSpriteAnim_TypeBeast,
+    sSpriteAnim_TypeCosmic,
+    sSpriteAnim_TypeGreasy,
+    sSpriteAnim_TypeRubber,
     sSpriteAnim_CategoryCool,
     sSpriteAnim_CategoryBeauty,
     sSpriteAnim_CategoryCute,
@@ -998,6 +1018,10 @@ const u8 gMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT
     [TYPE_DARK] = 15,
     [TYPE_FAIRY] = 13,
     [TYPE_RELIC] = 13,
+    [TYPE_BEAST] = 15,
+    [TYPE_COSMIC] = 15,
+    [TYPE_GREASY] = 14,
+    [TYPE_RUBBER] = 13,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_COOL] = 13,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_BEAUTY] = 14,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_CUTE] = 14,

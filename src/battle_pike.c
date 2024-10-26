@@ -866,6 +866,7 @@ static bool8 DoesTypePreventStatus(u16 species, u32 status)
         #if B_PARALYZE_ELECTRIC >= GEN_6
             || gSpeciesInfo[species].types[0] == TYPE_ELECTRIC || gSpeciesInfo[species].types[1] == TYPE_ELECTRIC
         #endif
+            || gSpeciesInfo[species].types[0] == TYPE_RUBBER || gSpeciesInfo[species].types[1] == TYPE_RUBBER
         )
             ret = TRUE;
         break;
