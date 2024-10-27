@@ -12325,10 +12325,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleMoves[move].pulseMove)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
-    case ABILITY_LIQUID_OOZE:
-        if (gBattleMoves[move].oozeMove)
-            gBattleMoveDamage = CalculateMoveDamage(move, gBattlerAttacker, gBattlerTarget, TYPE_POISON, 0, gIsCriticalHit, TRUE, TRUE)  + (gBattleMons[gBattlerTarget].maxHP / 5);
-        break;
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_WATER)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));

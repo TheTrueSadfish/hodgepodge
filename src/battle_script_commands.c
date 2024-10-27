@@ -2216,7 +2216,26 @@ static void Cmd_damagecalc(void)
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
-    if (atkHoldEffect == HOLD_EFFECT_TRADING_CARD)
+    if (GetBattlerAbility(gBattlerAttacker) == ABILITY_LIQUID_OOZE && gBattleMoves[gCurrentMove].oozeMove)
+    {
+        if (atkHoldEffect == HOLD_EFFECT_TRADING_CARD)
+        {
+            if (gBattleMoves[gCurrentMove].piercingMove)
+            {
+                gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerAttacker].attack - gBattleMons[gBattlerTarget].defense) + (gBattleMons[gBattlerTarget].maxHP / 5);
+            }
+            else
+            {
+                gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerAttacker].attack - gBattleMons[gBattlerTarget].attack) + (gBattleMons[gBattlerTarget].maxHP / 5);
+            }
+        }        
+        else
+        {
+            gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
+        }
+
+    }
+    else if (atkHoldEffect == HOLD_EFFECT_TRADING_CARD)
     {
         if (gCurrentMove == MOVE_NEEDLE_ARM || (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC))
         {
@@ -2237,7 +2256,7 @@ static void Cmd_damagecalc(void)
     }
     else if (atkHoldEffect == HOLD_EFFECT_POISON_BARB && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY && gBattleMoves[gCurrentMove].type == TYPE_POISON)
     {
-        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 115) / 100);
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 15) / 100);
     }
     else if (gCurrentMove == MOVE_NEEDLE_ARM || (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC))
     {
