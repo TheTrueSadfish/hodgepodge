@@ -17184,6 +17184,54 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .metronomeBanned = TRUE,
     },
 
+    [MOVE_WILD_ARMS] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 40,
+        .type = TYPE_BEAST,
+        .accuracy = 80,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .strikeCount = 2,
+    },
+
+    [MOVE_PINCER_HOOK] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 90,
+        .type = TYPE_BUG,
+        .accuracy = 95,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .highCritRatio = TRUE,
+        .punchingMove = TRUE,
+    },
+
+    [MOVE_PAIN_SPINES] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 20,
+        .type = TYPE_DARK,
+        .accuracy = 90,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .strikeCount = 3,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {

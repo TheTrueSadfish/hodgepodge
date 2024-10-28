@@ -1753,6 +1753,12 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
+    if (gBattleStruct->lastMoveFailed & gBitTable[gBattlerAttacker] && gCurrentMove == MOVE_WILD_ARMS)
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+
     return FALSE;
 }
 
@@ -2228,7 +2234,7 @@ static void Cmd_damagecalc(void)
             {
                 gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerAttacker].attack - gBattleMons[gBattlerTarget].attack) + (gBattleMons[gBattlerTarget].maxHP / 5);
             }
-        }        
+        }
         else
         {
             gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
@@ -2260,6 +2266,10 @@ static void Cmd_damagecalc(void)
     else if (gCurrentMove == MOVE_NEEDLE_ARM || (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC))
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
+    }
+    else if (gCurrentMove == MOVE_PAIN_SPINES && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
+    {
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 15) / 100);
     }
     else
     {

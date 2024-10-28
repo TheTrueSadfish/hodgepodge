@@ -1881,7 +1881,7 @@ static const u8 sPowerTrickDescription[] = _(
 static const u8 sGastroAcidDescription[] = _(
     "Hurls up its stomach acids on the\n"
     "foe. The fluid clears the foe's\n"
-    "ability and lowers its Sp. Def.");
+    "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
     "For 6 turns, prevents foes from\n"
@@ -2329,7 +2329,7 @@ static const u8 sPowerSplitDescription[] = _(
     "Can only use once per switch-in.");
 
 static const u8 sWonderRoomDescription[] = _(
-    "For 5 turns nerfs Pokémons'\n"
+    "For 5 turns nerfs Pokémon's\n"
     "moves of the same type as it\n"
     "and boosts moves that aren't.");
 
@@ -3165,7 +3165,7 @@ static const u8 sRevelationDanceDescription[] = _(
 static const u8 sCoreEnforcerDescription[] = _(
     "If the user goes first, this\n"
     "move eliminates the effect of\n"
-    "the foe's ability.");
+    "the foe's Ability.");
 
 static const u8 sTropKickDescription[] = _(
     "Lowers the foe's Atk, and Def if\n"
@@ -4061,7 +4061,7 @@ static const u8 sTemperFlareDescription[] = _(
 
 static const u8 sPsychicNoiseDescription[] = _(
     "The user attacks the foe with\n"
-    "unpleasant sound waves. For 2\n"
+    "unpleasant sound waves. For 5\n"
     "turns, the foe can't recover HP.");
 
 static const u8 sUpperHandDescription[] = _(
@@ -4103,6 +4103,11 @@ static const u8 sBurningSpiritDescription[] = _(
     "The user attacks the foe by\n"
     "emitting its pure passionate\n"
     "aura. This may burn the foe.");
+
+static const u8 sPurgingFlamesDescription[] = _(
+    "Spews flames that reset the\n"
+    "foe's stat changes. Goes first\n"
+    "if the foe has stat changes.");
 
 static const u8 sSnuffOutDescription[] = _(
     "The user blows real hard on the\n"
@@ -4222,7 +4227,7 @@ static const u8 sPartingCurryDescription[] = _(
 static const u8 sSerpentSurgeDescription[] = _(
     "Damage category is based on which\n"
     "would do more damage. Its effect\n"
-    "is based on the user's ability.");
+    "is based on the user's Ability.");
 
 static const u8 sFlareCrushDescription[] = _(
     "The user breaks down the foe with\n"
@@ -4749,9 +4754,9 @@ static const u8 sWilderDanceDescription[] = _(
     "Attack, Defense, and Speed.");
 
 static const u8 sFrostShredDescription[] = _(
-    "Slashes the foe 2 times, or more\n"
-    "for each Speed boost. May freeze\n"
-    "the foe or land critical hits.");
+    "Slashes twice; or more foe each\n"
+    "Speed boost. May freeze the foe.\n"
+    "Critical hits land more easily.");
 
 static const u8 sGlacialShiftDescription[] = _(
     "After rushing towards the foe,\n"
@@ -4932,6 +4937,141 @@ static const u8 gSyrupBombDescription[] = _(
     "The user covers the foe in sticky\n"
     "candy syrup. Drops the foe's\n"
     "Speed and evasion for 3 turns.");
+
+static const u8 gWildArmsDescription[] = _(
+    "Hits twice. This move hits 2\n"
+    "more times and never misses if\n"
+    "the user's previous move failed.");
+
+static const u8 gPincerHookDescription[] = _(
+    "The user swings a perfectly\n"
+    "timed hook into the target.\n"
+    "Critical hits land more easily.");
+
+static const u8 gPainSpinesDescription[] = _(
+    "The user shoots spines 3 times.\n"
+    "This move deals bonus damage if\n"
+    "the foe has a status condition.");
+
+static const u8 gDarkHungerDescription[] = _(
+    "The user licks the foe covered\n"
+    "in dark energy. Boosted if the\n"
+    "user has eaten a berry.");
+
+static const u8 gNightBeamDescription[] = _(
+    "The user shoots a bright light\n"
+    "that disables the foe's Ability\n"
+    "and raises the user's accuracy.");
+
+static const u8 gInversionDescription[] = _(
+    "A move that becomes stronger the\n"
+    "less HP the user has. This move\n"
+    "uses inverse type calculations.");
+
+static const u8 gWitchHymnDescription[] = _(
+    "This move is boosted for every\n"
+    "stat drop the foe has. Also\n"
+    "drops a random stat of the foe.");
+
+static const u8 gHealMelodyDescription[] = _(
+    "At the end of the next turn the\n"
+    "Pokémon currently in is fully\n"
+    "healed and has its poison cured.");
+
+static const u8 gTemperTailDescription[] = _(
+    "The foe is hit with a\n"
+    "superheated tail. Hitting a foe\n"
+    "boosts the user's Sp. Def stat.");
+
+static const u8 gFireworkCrashDescription[] = _(
+    "The user crashes into the foe\n"
+    "like fireworks. This boosts its\n"
+    "Speed and hurts it a little.");
+
+static const u8 gEmberSnowDescription[] = _(
+    "Burns the foe. If the user is in\n"
+    "a chariot it instead changes the\n"
+    "foe's move into Fire-type.");
+
+static const u8 gFeatherRazorDescription[] = _(
+    "Slashes twice; or more for each\n"
+    "Speed boost. Cuts the user's Spd.\n"
+    "Critical hits land more easily.");
+
+static const u8 gDragDownDescription[] = _(
+    "Switches the user out and resets\n"
+    "the foe's stat changes. If the\n"
+    "foe has stat changes, goes first.");
+
+static const u8 gHauntMelodyDescription[] = _(
+    "Cuts 3 PP from the foe and stops\n"
+    "healing for 5 turns. Cuts all PP\n"
+    "of poisoned foes, but removes it.");
+
+static const u8 gOddcastDescription[] = _(
+    "Lets out a signal that may\n"
+    "confuse. Doubles in power if the\n"
+    "foe has a status condition.");
+
+static const u8 gKelpSapDescription[] = _(
+    "Cuts 3 PP from the foe's last\n"
+    "used move. Absorbs 3/4 of the\n"
+    "the damage taken by the foe.");
+
+static const u8 gNanabGattlingDescription[] = _(
+    "Stockpiled power is released in\n"
+    "bursts for an attack. Hits extra\n"
+    "times for each Stockpile stack.");
+
+static const u8 gBriarWhipDescription[] = _(
+    "The user whips the foe twice.\n"
+    "Does bonus damage based on foe's\n"
+    "max HP. May lowers the foe's Atk.");
+
+static const u8 gGreaseLightningDescription[] = _(
+    "This attack always strikes first\n"
+    "and lands critical hits if the\n"
+    "foe is covered in Tar.");
+
+static const u8 gNonSequiturDescription[] = _(
+    "This move fails if the user is\n"
+    "hit before using the move, but\n"
+    "spreads statuses on contact.");
+
+static const u8 gBeldamBrewDescription[] = _(
+    "The user lobs a magical brew\n"
+    "that changes the foe's type to\n"
+    "Poison. This may trap the foe.");
+
+static const u8 gAstralSpikesDescription[] = _(
+    "The user shoots odd spikes 2 to\n"
+    "5 times. Splinters left behind\n"
+    "remain scattered around the foe.");
+
+static const u8 gWildShuffleDescription[] = _(
+    "The fewer PP this move has, the\n"
+    "greater its power. This move\n"
+    "switches the user out.");
+
+static const u8 gUprootEvilDescription[] = _(
+    "This move is super effective on\n"
+    "Poison and Dark-types. Its recoil\n"
+    "harshly drops the user's Sp. Atk.");
+
+static const u8 gPliaBallDescription[] = _(
+    "The foe is forced to switch. In\n"
+    "the wild, the battle ends. This\n"
+    "moves strikes twice in a row.");
+
+static const u8 gIronJawsDescription[] = _(
+    "The user bites with steel-hard\n"
+    "fangs. This move may flinch the\n"
+    "foe and always lowers its Def.");
+
+static const u8 gFreshWhipDescription[] = _(
+    "The user regains its energy and\n"
+    "whips the foe. This heals the\n"
+    "user by up to 1/4 its max HP.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -5791,7 +5931,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_STORM_FURY - 1] = sOutrageDescription,
     [MOVE_PIXIE_POW - 1] = sPixiePowDescription,
     [MOVE_BURNING_SPIRIT - 1] = sBurningSpiritDescription,
-    [MOVE_PURGING_FLAMES - 1] = sClearSmogDescription,
+    [MOVE_PURGING_FLAMES - 1] = sPurgingFlamesDescription,
     [MOVE_SNUFF_OUT - 1] = sSnuffOutDescription,
     [MOVE_SPIRIT_DANCE - 1] = sSpiritDanceDescription,
     [MOVE_MUDSLIDE - 1] = sMudslideDescription,
@@ -5972,4 +6112,32 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SUPERCELL_SLAM - 1] = sSupercellSlamDescription,
     [MOVE_SWEET_WHISPERS - 1] = gSweetWhispersDescription,
     [MOVE_SYRUP_BOMB - 1] = gSyrupBombDescription,
+    [MOVE_WILD_ARMS - 1] = gWildArmsDescription,
+    [MOVE_PINCER_HOOK - 1] = gPincerHookDescription,
+    [MOVE_PAIN_SPINES - 1] = gPainSpinesDescription,
+    [MOVE_DARK_HUNGER - 1] = gDarkHungerDescription,
+    [MOVE_NIGHT_BEAM - 1] = gNightBeamDescription,
+    [MOVE_INVERSION - 1] = gInversionDescription,
+    [MOVE_WITCH_HYMN - 1] = gWitchHymnDescription,
+    [MOVE_HEAL_MELODY - 1] = gHealMelodyDescription,
+    [MOVE_TEMPER_TAIL - 1] = gTemperTailDescription,
+    [MOVE_FIREWORK_CRASH - 1] = gFireworkCrashDescription,
+    [MOVE_EMBER_SNOW - 1] = gEmberSnowDescription,
+    [MOVE_FEATHER_RAZOR - 1] = gFeatherRazorDescription,
+    [MOVE_DRAG_DOWN - 1] = gDragDownDescription,
+    [MOVE_HAUNT_MELODY - 1] = gHauntMelodyDescription,
+    [MOVE_ODDCAST - 1] = gOddcastDescription,
+    [MOVE_KELP_SAP - 1] = gKelpSapDescription,
+    [MOVE_NANAB_GATTLING - 1] = gNanabGattlingDescription,
+    [MOVE_BRIAR_WHIP - 1] = gBriarWhipDescription,
+    [MOVE_GOOSE_CHASER - 1] = sSplashDescription,
+    [MOVE_GREASE_LIGHTNING - 1] = gGreaseLightningDescription,
+    [MOVE_NON_SEQUITUR - 1] = gNonSequiturDescription,
+    [MOVE_BELDAM_BREW - 1] = gBeldamBrewDescription,
+    [MOVE_ASTRAL_SPIKES - 1] = gAstralSpikesDescription,
+    [MOVE_WILD_SHUFFLE - 1] = gWildShuffleDescription,
+    [MOVE_UPROOT_EVIL - 1] = gUprootEvilDescription,
+    [MOVE_PLIA_BALL - 1] = gPliaBallDescription,
+    [MOVE_IRON_JAWS - 1] = gIronJawsDescription,
+    [MOVE_FRESH_WHIP - 1] = gFreshWhipDescription,
 };

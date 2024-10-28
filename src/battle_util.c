@@ -4429,6 +4429,11 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
+            else if (gBattleStruct->lastMoveFailed & gBitTable[gBattlerAttacker] && gCurrentMove == MOVE_WILD_ARMS)
+            {
+                gMultiHitCounter = 4;
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+            }
             else if (gBattleMoves[gCurrentMove].strikeCount > 1)
             {
                 if (gBattleMoves[gCurrentMove].effect == EFFECT_POPULATION_BOMB && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
