@@ -61,7 +61,8 @@
   "gMapGroup_HodgePodgePlatoon": [
     "SlateportCity_BattleTentLobby",
     "SlateportCity_BattleTentCorridor",
-    "SlateportCity_BattleTentBattleRoom"
+    "SlateportCity_BattleTentBattleRoom",
+    "PlatoonOutside"
   ],
   "gMapGroup_PiscesLeg1Major": [
     "SSTidalExterior",
