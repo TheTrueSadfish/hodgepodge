@@ -24,7 +24,7 @@ SkyPillarNew_EventScript_GrangerEncouragement::
 SkyPillarNew_EventScript_GrangerRoadblockOver::
 	msgbox SkyPillarNew_Text_GrangerAllDone, MSGBOX_AUTOCLOSE
 	setflag FLAG_PACIFIDLOG_ROADBLOCK
-	setflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	clearflag FLAG_HIDE_LAB_RANGERS
 	setvar VAR_BIRCH_LAB_STATE, 6
 	warp MAP_BIRCH_MARITIME_LAB, 3, 9
@@ -54,7 +54,7 @@ SkyPillarNew_EventScript_RickyEncouragement::
 SkyPillarNew_EventScript_RickyRoadblockOver::
 	msgbox SkyPillarNew_Text_RickyAllDone, MSGBOX_AUTOCLOSE
 	setflag FLAG_PACIFIDLOG_ROADBLOCK
-	setflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	clearflag FLAG_HIDE_LAB_RANGERS
 	setvar VAR_BIRCH_LAB_STATE, 6
 	warp MAP_BIRCH_MARITIME_LAB, 3, 9
@@ -84,7 +84,7 @@ SkyPillarNew_EventScript_JeannieEncouragement::
 SkyPillarNew_EventScript_JeannieRoadblockOver::
 	msgbox SkyPillarNew_Text_JeannieAllDone, MSGBOX_AUTOCLOSE
 	setflag FLAG_PACIFIDLOG_ROADBLOCK
-	setflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	clearflag FLAG_HIDE_LAB_RANGERS
 	setvar VAR_BIRCH_LAB_STATE, 6
 	warp MAP_BIRCH_MARITIME_LAB, 3, 9

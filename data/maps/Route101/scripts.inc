@@ -234,7 +234,7 @@ Route101_EventScript_BirchsBag::
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
 	special HealPlayerParty
-	setflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	clearflag FLAG_HIDE_BIRCH_BEFORE_STARTER
 	setflag FLAG_HIDE_SSTIDAL_SAILOR
 	setvar VAR_BIRCH_LAB_STATE, 2

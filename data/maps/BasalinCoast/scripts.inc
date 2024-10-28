@@ -117,7 +117,7 @@ BasalinCoast_EventScript_BluePKMNCenters1::
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
-    clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
+    clearflag FLAG_HIDE_INTRO_MAN_AFTER
     setflag FLAG_HIDE_LAB_RANGERS
     waitmovement 0
     release
@@ -174,7 +174,7 @@ BasalinCoast_EventScript_BluePKMNCenters2::
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
-    clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
+    clearflag FLAG_HIDE_INTRO_MAN_AFTER
     waitmovement 0
     setflag FLAG_HIDE_LAB_RANGERS
     release
@@ -215,7 +215,7 @@ BasalinCoast_EventScript_BluePKMNCenters3::
     msgbox BasalinCoast_Text_ExplainRouteCenters, MSGBOX_DEFAULT
     applymovement LOCALID_STUDENT, BasalinCoast_Movement_StudentLeaves
     setvar VAR_BALL_QUEST_STATE, 0
-    clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
+    clearflag FLAG_HIDE_INTRO_MAN_AFTER
     waitmovement 0
     setflag FLAG_HIDE_LAB_RANGERS
     release
