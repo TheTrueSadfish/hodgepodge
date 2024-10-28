@@ -2233,7 +2233,6 @@ static void Cmd_damagecalc(void)
         {
             gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + (gBattleMons[gBattlerTarget].maxHP / 5);
         }
-
     }
     else if (atkHoldEffect == HOLD_EFFECT_TRADING_CARD)
     {
