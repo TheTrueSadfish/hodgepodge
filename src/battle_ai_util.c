@@ -2990,6 +2990,7 @@ bool32 AI_CanSleep(u32 battler, u32 ability)
     if (ability == ABILITY_INSOMNIA
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
+      || (IS_BATTLER_OF_TYPE(battler, TYPE_RELIC))
       || gBattleMons[battler].status1 & STATUS1_ANY
       || IS_BATTLER_OF_TYPE(battler, TYPE_RELIC)
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
