@@ -23,7 +23,7 @@ PlatoonOutside_EventScript_PlatoonOpening::
 	setflag FLAG_SYS_B_DASH
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	msgbox PlatoonOutside_Text_WelcomeToThePlatoon, MSGBOX_DEFAULT
-	givemon SPECIES_MUSTYBANE, 50
+	givemon SPECIES_MUSTYBANE, 50, ITEM_FAVOR_SCARF
 	call PlatoonOutside_EventScript_ReceivedMustybaneFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, PlatoonOutside_EventScript_EnjoyThePlatoon
