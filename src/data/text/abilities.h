@@ -74,7 +74,8 @@ static const u8 sInsomniaDescription[] = _(
 
 static const u8 sColorChangeDescription[] = _(
     "The Pokémon's type becomes the\n"
-    "type of the move used on it.");
+    "type of the Pokémon that\n"
+    "attacked it.");
 
 static const u8 sImmunityDescription[] = _(
     "The Pokémon's immune system\n"
@@ -476,8 +477,9 @@ static const u8 sLeafGuardDescription[] = _(
     "harsh sunlight.");
 
 static const u8 sKlutzDescription[] = _(
-    "The Pokémon can't use any held\n"
-    "items.");
+    "The Pokémon's held item goes to\n"
+    "a foe at the turn's end. The\n"
+    "Pokémon ignores its held item.");
 
 static const u8 sMoldBreakerDescription[] = _(
     "The Pokémon's moves are\n"
@@ -945,8 +947,8 @@ static const u8 sSurgeSurferDescription[] = _(
     "on Electric Terrain.");
 
 static const u8 sHuddleUpDescription[] = _(
-    "At level 20 the Pokémon becomes\n"
-    "a powerful beast. At level 40\n"
+    "At level 20, the Pokémon becomes\n"
+    "a powerful beast. At level 40,\n"
     "steadily restores HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
@@ -1033,6 +1035,11 @@ static const u8 sGrassySurgeDescription[] = _(
     "Turns the ground into Grassy\n"
     "Terrain when the Pokémon enters\n"
     "a battle.");
+
+static const u8 sFullMetalBodyDescription[] = _(
+    "Prevents the Pokémon's from being\n"
+    "lowered. At half HP, reduces\n"
+    "the damage taken from moves.");
 
 static const u8 sNeuroforceDescription[] = _(
     "Powers up the Pokémon's super\n"
@@ -1332,9 +1339,9 @@ static const u8 sEarthEaterDescription[] = _(
     "instead of taking damage.");
 
 static const u8 sMyceliumMightDescription[] = _(
-    "The Pokémon acts last when using\n"
-    "status moves, but these moves\n"
-    "ignore the target's Ability.");
+    "Powder-based moves never miss,\n"
+    "ignore abilities and powder\n"
+    "blocking, but always go last.");
 
 static const u8 sMiasmaDescription[] = _(
     "Damages opposing Pokémon that\n"
@@ -1699,6 +1706,97 @@ static const u8 sStormBrewDescription[] = _(
     "a move that's boosted for every\n"
     "Electric move used that turn.");
 
+static const u8 sCovenLightsDescription[] = _(
+    "Once per turn, if an opponent's\n"
+    "stat is lowered, 2 more stats\n"
+    "are lowered also.");
+
+static const u8 sDaringDeedDescription[] = _(
+    "Triples the Pokémon's PP usage.\n"
+    "Attacks may earn money or taunt,\n"
+    "confuse, or infatuate the foe.");
+
+static const u8 sFilthmongerDescription[] = _(
+    "When hit by a Rock, Ground,\n"
+    "Poison, or Greasy-type move, the\n"
+    "next move it uses is boosted.");
+
+static const u8 sGooseChaserDescription[] = _(
+    "After attacking, the Pokémon\n"
+    "may use a move that covers the\n"
+    "foe in Tar and may hit twice.");
+
+static const u8 sHeatSeekerDescription[] = _(
+    "N/A");
+
+static const u8 sIceLensDescription[] = _(
+    "N/A");
+
+static const u8 sNegatePlateDescription[] = _(
+    "The Pokémon takes reduced damage\n"
+    "from attacks based on how many\n"
+    "stat drops it has.");
+
+static const u8 sPaintedHazardDescription[] = _(
+    "Drops spikes on the foe's field\n"
+    "when hit. Changes what's dropped\n"
+    "depending on the move's type.");
+
+static const u8 sPelagicLightsDescription[] = _(
+    "The Pokémon confuses and torments\n"
+    "opposing Pokémon with stat\n"
+    "changes when it enters a battle.");
+
+static const u8 sPrecisionDescription[] = _(
+    "Beam moves land critical hits\n"
+    "more easily and are boosted based\n"
+    "on acc. Beam moves raise acc.");
+
+static const u8 sSlipNWhipDescription[] = _(
+    "Prone to evade moves on contact.\n"
+    "When the Pokémon evades, it uses\n"
+    "a move that heals it.");
+
+static const u8 sTerraformerDescription[] = _(
+    "Turns the ground into a random\n"
+    "Terrain when the Pokémon enters\n"
+    "a battle.");
+
+static const u8 sToothNNailDescription[] = _(
+    "After using a biting move, uses\n"
+    "a unique slashing move and vice\n"
+    "versa.");
+
+static const u8 sSunkCostDescription[] = _(
+    "The Pokémon has a chance to do\n"
+    "insane damage! You just got to\n"
+    "keep rolling for it...");
+
+static const u8 sMarshlanderDescription[] = _(
+    "Boosts the Special Defense stat\n"
+    "when the Pokémon is hit by a\n"
+    "Grass or Water-type move.");
+
+static const u8 sMisfortuneDescription[] = _(
+    "Heals when hit by a Ghost or\n"
+    "Poison-type move. Also increases\n"
+    "the PP used for that move.");
+
+static const u8 sReboundDescription[] = _(
+    "Contact with the Pokémon forces\n"
+    "the attacker to switch out or\n"
+    "run away.");
+
+static const u8 sInstabilityDescription[] = _(
+    "The Pokémon loses HP every turn.\n"
+    "At half HP, its moves are\n"
+    "boosted, but it loses more HP.");
+
+static const u8 sViscerationDescription[] = _(
+    "Restores the Pokémon's HP by 1/5\n"
+    "of its maximum HP every time\n"
+    "another Pokémon faints.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -1910,8 +2008,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TRIAGE] = _("Triage"),
     [ABILITY_GALVANIZE] = _("Galvanize"),
     [ABILITY_SURGE_SURFER] = _("Surge Surfer"),
-    [ABILITY_HUDDLE_UP] = _("Huddle Up"),
-    [ABILITY_DISGUISE] = _("Disguise"),
+    [ABILITY_HUDDLE_UP] = _("Gloopomancy"),
+    [ABILITY_DISGUISE] = _("Trokan"),
     [ABILITY_BATTLE_BOND] = _("Battle Bond"),
     [ABILITY_DORMANT] = _("Dormant"),
     [ABILITY_CORROSION] = _("Corrosion"),
@@ -1932,7 +2030,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_PSYCHIC_SURGE] = _("Psychic Surge"),
     [ABILITY_MISTY_SURGE] = _("Misty Surge"),
     [ABILITY_GRASSY_SURGE] = _("Grassy Surge"),
-    [ABILITY_FULL_METAL_BODY] = _("Full Metal Body"),
+    [ABILITY_FULL_METAL_BODY] = _("Fullmetal"),
     [ABILITY_SHADOW_SHIELD] = _("Shadow Shield"),
     [ABILITY_PRISM_ARMOR] = _("Prism Armor"),
     [ABILITY_NEUROFORCE] = _("Neuroforce"),
@@ -2086,6 +2184,25 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_COVEN_LIGHTS] = _("Coven Lights"),
+    [ABILITY_DARING_DEED] = _("Daring Deed"),
+    [ABILITY_FILTHMONGER] = _("Filthmonger"),
+    [ABILITY_GOOSE_CHASER] = _("Goose Chaser"),
+    [ABILITY_HEAT_SEEKER] = _("Heat Seeker"),
+    [ABILITY_ICE_LENS] = _("Ice Lens"),
+    [ABILITY_NEGATE_PLATE] = _("Negate Plate"),
+    [ABILITY_PAINTED_HAZARD] = _("Painted Hazard"),
+    [ABILITY_PELAGIC_LIGHTS] = _("Pelagic Lights"),
+    [ABILITY_PRECISION] = _("Precision"),
+    [ABILITY_SLIP_N_WHIP] = _("Slip N' Whip"),
+    [ABILITY_TERRAFORMER] = _("Terraformer"),
+    [ABILITY_TOOTH_N_NAIL] = _("Tooth N' Nail"),
+    [ABILITY_SUNK_COST] = _("Sunk Cost"),
+    [ABILITY_MARSHLANDER] = _("Marshlander"),
+    [ABILITY_MISFORTUNE] = _("Misfortune"),
+    [ABILITY_REBOUND] = _("Rebound"),
+    [ABILITY_INSTABILITY] = _("Instability"),
+    [ABILITY_VISCERATION] = _("Visceration"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2298,8 +2415,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_TRIAGE] = _("Triage"),
     [ABILITY_GALVANIZE] = _("Galvanize"),
     [ABILITY_SURGE_SURFER] = _("Surge Surfer"),
-    [ABILITY_HUDDLE_UP] = _("Huddle Up"),
-    [ABILITY_DISGUISE] = _("Disguise"),
+    [ABILITY_HUDDLE_UP] = _("Gloopomancy"),
+    [ABILITY_DISGUISE] = _("Trokan"),
     [ABILITY_BATTLE_BOND] = _("Battle Bond"),
     [ABILITY_DORMANT] = _("Dormant"),
     [ABILITY_CORROSION] = _("Corrosion"),
@@ -2474,6 +2591,25 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_COVEN_LIGHTS] = _("Coven Lights"),
+    [ABILITY_DARING_DEED] = _("Daring Deed"),
+    [ABILITY_FILTHMONGER] = _("Filthmonger"),
+    [ABILITY_GOOSE_CHASER] = _("Goose Chaser"),
+    [ABILITY_HEAT_SEEKER] = _("Heat Seeker"),
+    [ABILITY_ICE_LENS] = _("Ice Lens"),
+    [ABILITY_NEGATE_PLATE] = _("Negate Plate"),
+    [ABILITY_PAINTED_HAZARD] = _("Painted Hazard"),
+    [ABILITY_PELAGIC_LIGHTS] = _("Pelagic Lights"),
+    [ABILITY_PRECISION] = _("Precision"),
+    [ABILITY_SLIP_N_WHIP] = _("Slip N' Whip"),
+    [ABILITY_TERRAFORMER] = _("Terraformer"),
+    [ABILITY_TOOTH_N_NAIL] = _("Tooth N' Nail"),
+    [ABILITY_SUNK_COST] = _("Sunk Cost"),
+    [ABILITY_MARSHLANDER] = _("Marshlander"),
+    [ABILITY_MISFORTUNE] = _("Misfortune"),
+    [ABILITY_REBOUND] = _("Rebound"),
+    [ABILITY_INSTABILITY] = _("Instability"),
+    [ABILITY_VISCERATION] = _("Visceration"),
 };
 #endif
 
@@ -2709,7 +2845,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_PSYCHIC_SURGE] = sPsychicSurgeDescription,
     [ABILITY_MISTY_SURGE] = sMistySurgeDescription,
     [ABILITY_GRASSY_SURGE] = sGrassySurgeDescription,
-    [ABILITY_FULL_METAL_BODY] = sClearBodyDescription,
+    [ABILITY_FULL_METAL_BODY] = sFullMetalBodyDescription,
     [ABILITY_SHADOW_SHIELD] = sMultiscaleDescription,
     [ABILITY_PRISM_ARMOR] = sFilterDescription,
     [ABILITY_NEUROFORCE] = sNeuroforceDescription,
@@ -2863,4 +2999,23 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_BAD_OMEN] = sNoneDescription,
     [ABILITY_BRAWLER] = sNoneDescription,
     [ABILITY_PROVOKED] = sNoneDescription,
+    [ABILITY_COVEN_LIGHTS] = sCovenLightsDescription,
+    [ABILITY_DARING_DEED] = sDaringDeedDescription,
+    [ABILITY_FILTHMONGER] = sFilthmongerDescription,
+    [ABILITY_GOOSE_CHASER] = sGooseChaserDescription,
+    [ABILITY_HEAT_SEEKER] = sHeatSeekerDescription,
+    [ABILITY_ICE_LENS] = sIceLensDescription,
+    [ABILITY_NEGATE_PLATE] = sNegatePlateDescription,
+    [ABILITY_PAINTED_HAZARD] = sPaintedHazardDescription,
+    [ABILITY_PELAGIC_LIGHTS] = sPelagicLightsDescription,
+    [ABILITY_PRECISION] = sPrecisionDescription,
+    [ABILITY_SLIP_N_WHIP] = sSlipNWhipDescription,
+    [ABILITY_TERRAFORMER] = sTerraformerDescription,
+    [ABILITY_TOOTH_N_NAIL] = sToothNNailDescription,
+    [ABILITY_SUNK_COST] = sSunkCostDescription,
+    [ABILITY_MARSHLANDER] = sMarshlanderDescription,
+    [ABILITY_MISFORTUNE] = sMisfortuneDescription,
+    [ABILITY_REBOUND] = sReboundDescription,
+    [ABILITY_INSTABILITY] = sInstabilityDescription,
+    [ABILITY_VISCERATION] = sViscerationDescription,
 };

@@ -604,7 +604,7 @@ static const u8 sSelfDestructDescription[] = _(
 static const u8 sEggBombDescription[] = _(
     "A large egg is hurled at the foe\n"
     "with maximum force to inflict\n"
-    "damage and remove their Ability.");
+    "damage and remove its Ability.");
 
 static const u8 sLickDescription[] = _(
     "The user licks the foe with a\n"
@@ -614,7 +614,7 @@ static const u8 sLickDescription[] = _(
 static const u8 sSmogDescription[] = _(
     "The foe is attacked with exhaust\n"
     "gases. It may also poison the\n"
-    "foe or lower their Speed stat.");
+    "foe or lower its Speed stat.");
 
 static const u8 sSludgeDescription[] = _(
     "The user hurls unsanitary sludge\n"
@@ -4959,9 +4959,9 @@ static const u8 gDarkHungerDescription[] = _(
     "user has eaten a berry.");
 
 static const u8 gNightBeamDescription[] = _(
-    "The user shoots a bright light\n"
-    "that disables the foe's Ability\n"
-    "and raises the user's accuracy.");
+    "A piercing light is shot at the\n"
+    "foe with to inflict and remove\n"
+    "its Ability.");
 
 static const u8 gInversionDescription[] = _(
     "A move that becomes stronger the\n"
