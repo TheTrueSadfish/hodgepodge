@@ -555,6 +555,24 @@ void HandleAction_UseMove(void)
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
+    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    {
+        int battler;
+        
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+        {
+            //search linked battler to set target
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
+            {
+                //set target
+                gBattlerTarget = battler;
+                if (!IsBattlerAlive(battler))
+                    gBattlerTarget ^= BIT_FLANK; //change target if opponent is dead
+                gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget;
+                battler = MAX_BATTLERS_COUNT; //exit loop early
+            }
+        }
+    }
     else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
     {
         side = GetBattlerSide(gBattlerAttacker);
@@ -10998,6 +11016,26 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         else
         {
             targetBattler = SetRandomTarget(gBattlerAttacker);
+
+            //this next if might be redundant, but should never negatively affect outcome
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+            {
+                int battler;
+                
+                for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+                {
+                    //search linked battler to set target
+                    if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
+                    {
+                        //set target
+                        targetBattler = battler;
+                        if (!IsBattlerAlive(battler))
+                            targetBattler ^= BIT_FLANK; //change target if opponent is dead
+                        battler = MAX_BATTLERS_COUNT; //exit loop early
+                    }
+                }
+            }
+
             if (gBattleMoves[move].type == TYPE_ELECTRIC && IsAbilityOnOpposingSide(gBattlerAttacker, ABILITY_LIGHTNING_ROD) && GetBattlerAbility(targetBattler) != ABILITY_LIGHTNING_ROD)
             {
                 targetBattler ^= BIT_FLANK;

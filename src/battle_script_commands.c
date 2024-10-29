@@ -1489,7 +1489,37 @@ static void Cmd_attackcanceler(void)
         }
     }
 
-    if (gSpecialStatuses[gBattlerTarget].lightningRodRedirected)
+    //trigger Overtake script if affected battler attacks
+    if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    {
+        int battler;
+        //check if linked Overtake user is still alive
+        for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+        {
+            if (gProtectStructs[gBattlerAttacker].overtakeRedirectedUser == battler)
+            {
+                if (!IsBattlerAlive(battler))
+                {
+                    //reset Overtake
+                    gProtectStructs[gBattlerAttacker].overtakeRedirectedUser = 0;
+                    gProtectStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+                }
+                battler = MAX_BATTLERS_COUNT; //exit loop early
+            }
+        }
+        
+        //if Overtake is still active, then activate script
+        if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+        {
+            //reset Overtake data
+            gProtectStructs[gBattlerAttacker].overtakeRedirectedUser = 0;
+            gProtectStructs[gBattlerAttacker].overtakeRedirectActive = FALSE;
+            //trigger BattleScript
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_OvertookAttack;
+        }
+    }
+    else if (gSpecialStatuses[gBattlerTarget].lightningRodRedirected)
     {
         gSpecialStatuses[gBattlerTarget].lightningRodRedirected = FALSE;
         gLastUsedAbility = ABILITY_LIGHTNING_ROD;
@@ -6252,8 +6282,8 @@ static void Cmd_moveend(void)
     choicedMoveAtk = &gBattleStruct->choicedMove[gBattlerAttacker];
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
-    DebugPrintf("original move = %d", originallyUsedMove);
-    DebugPrintf("called move = %d", gCurrentMove);
+    //DebugPrintf("original move = %d", originallyUsedMove);
+    //DebugPrintf("called move = %d", gCurrentMove);
 
     do
     {
@@ -6821,7 +6851,7 @@ static void Cmd_moveend(void)
             break;
         case MOVEEND_NEXT_TARGET: // For moves hitting two opposing Pokemon.
         {
-            DebugPrintf("MOVEEND_NEXT_TARGET");
+            //DebugPrintf("MOVEEND_NEXT_TARGET");
             if (gCurrentMove != MOVE_DANCE_MANIA && gCurrentMove != MOVE_TEETER_DANCE)
             {
                 u16 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove);
@@ -7091,8 +7121,8 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCER: // Special case because it's so annoying
-            DebugPrintf("MOVEEND_DANCER");
-            DebugPrintf("gCurrentMove = %d", gCurrentMove);
+            //DebugPrintf("MOVEEND_DANCER");
+            //DebugPrintf("gCurrentMove = %d", gCurrentMove);
             if (gBattleMoves[gCurrentMove].danceMove && gCurrentMove != MOVE_DANCE_MANIA)
             {
                 u8 battler, nextDancer = 0;
@@ -7112,7 +7142,7 @@ static void Cmd_moveend(void)
                     {
                         if (GetBattlerAbility(battler) == ABILITY_DANCER && !gSpecialStatuses[battler].dancerUsedMove)
                         {
-                            DebugPrintf("-- activate Dancer --");
+                            //DebugPrintf("-- activate Dancer --");
                             if (!nextDancer || (gBattleMons[battler].speed < gBattleMons[nextDancer & 0x3].speed))
                                 nextDancer = battler | 0x4;
                         }
@@ -7148,7 +7178,7 @@ static void Cmd_moveend(void)
             if (originallyUsedMove == MOVE_DANCE_MANIA)
             {
                 u8 k = 0;
-                DebugPrintf("MOVEEND_NEXT_DANCE_TARGET");
+                //DebugPrintf("MOVEEND_NEXT_DANCE_TARGET");
 
                 //reset dancerUsedMove, so Dancer can activate multiple times during a Dance Mania turn
                 for (k = 0; k < MAX_BATTLERS_COUNT; k++)
@@ -7254,7 +7284,7 @@ static void Cmd_moveend(void)
 
     } while (gBattleScripting.moveendState != MOVEEND_COUNT && effect == FALSE);
 
-    DebugPrintf("exited moveend loop");
+    //DebugPrintf("exited moveend loop");
     if (gBattleScripting.moveendState == MOVEEND_COUNT && effect == FALSE)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
@@ -13023,6 +13053,17 @@ static void Cmd_various(void)
         }
         break;
     }
+    case VARIOUS_SET_OVERTAKE_TARGET:
+    {
+        VARIOUS_ARGS();
+
+        //set Overtake data for the target
+        gProtectStructs[gBattlerTarget].overtakeRedirectActive = TRUE;
+        gProtectStructs[gBattlerTarget].overtakeRedirectedUser = gBattlerAttacker;
+        
+        gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     } // End of switch (cmd->id)
 
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -18570,6 +18611,10 @@ static void Cmd_tryswapitemsmagician(void)
         } else {
             monToStealFrom = GetBattlerAtPosition(targets[sideAttacker][0]);
         }
+
+        //set gBattlerTarget so remaining code and string buffers work
+        gBattlerTarget = monToStealFrom;
+
         // You can't swap items if they were knocked off in regular battles
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                              | BATTLE_TYPE_EREADER_TRAINER
@@ -18577,26 +18622,26 @@ static void Cmd_tryswapitemsmagician(void)
                              | BATTLE_TYPE_SECRET_BASE
                              | BATTLE_TYPE_RECORDED_LINK))
             && (gWishFutureKnock.knockedOffMons[sideAttacker] & gBitTable[gBattlerPartyIndexes[gBattlerAttacker]]
-                || gWishFutureKnock.knockedOffMons[sideTarget] & gBitTable[gBattlerPartyIndexes[monToStealFrom]]))
+                || gWishFutureKnock.knockedOffMons[sideTarget] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]]))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
         // can't swap if two pokemon don't have an item
         // or if either of them is an enigma berry or a mail
-        else if ((gBattleMons[gBattlerAttacker].item == ITEM_NONE && gBattleMons[monToStealFrom].item == ITEM_NONE)
+        else if ((gBattleMons[gBattlerAttacker].item == ITEM_NONE && gBattleMons[gBattlerTarget].item == ITEM_NONE)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerAttacker].item)
-                 || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[monToStealFrom].item)
-                 || !CanBattlerGetOrLoseItem(monToStealFrom, gBattleMons[monToStealFrom].item)
-                 || !CanBattlerGetOrLoseItem(monToStealFrom, gBattleMons[gBattlerAttacker].item))
+                 || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
+                 || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
         // check if ability prevents swapping
-        else if (GetBattlerAbility(monToStealFrom) == ABILITY_STICKY_HOLD)
+        else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
         {
             gBattlescriptCurrInstr = BattleScript_StickyHoldActivates;
-            gLastUsedAbility = gBattleMons[monToStealFrom].ability;
-            RecordAbilityBattle(monToStealFrom, gLastUsedAbility);
+            gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
+            RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
         }
         // took a while, but all checks passed and items can be safely swapped
         else
@@ -18605,21 +18650,21 @@ static void Cmd_tryswapitemsmagician(void)
 
             newItemAtk = &gBattleStruct->changedItems[gBattlerAttacker];
             oldItemAtk = gBattleMons[gBattlerAttacker].item;
-            *newItemAtk = gBattleMons[monToStealFrom].item;
+            *newItemAtk = gBattleMons[gBattlerTarget].item;
 
             gBattleMons[gBattlerAttacker].item = ITEM_NONE;
-            gBattleMons[monToStealFrom].item = oldItemAtk;
+            gBattleMons[gBattlerTarget].item = oldItemAtk;
 
             RecordItemEffectBattle(gBattlerAttacker, 0);
-            RecordItemEffectBattle(monToStealFrom, ItemId_GetHoldEffect(oldItemAtk));
+            RecordItemEffectBattle(gBattlerTarget, ItemId_GetHoldEffect(oldItemAtk));
 
             BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(*newItemAtk), newItemAtk);
             MarkBattlerForControllerExec(gBattlerAttacker);
 
-            BtlController_EmitSetMonData(monToStealFrom, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[monToStealFrom].item), &gBattleMons[monToStealFrom].item);
-            MarkBattlerForControllerExec(monToStealFrom);
+            BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[gBattlerTarget].item);
+            MarkBattlerForControllerExec(gBattlerTarget);
 
-            gBattleStruct->choicedMove[monToStealFrom] = MOVE_NONE;
+            gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
             gBattleStruct->choicedMove[gBattlerAttacker] = MOVE_NONE;
 
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -18632,8 +18677,8 @@ static void Cmd_tryswapitemsmagician(void)
                 // if targeting your own side and you aren't in a multi battle, don't save items as stolen
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     TrySaveExchangedItem(gBattlerAttacker, oldItemAtk);
-                if (GetBattlerSide(monToStealFrom) == B_SIDE_PLAYER)
-                    TrySaveExchangedItem(monToStealFrom, *newItemAtk);
+                if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
+                    TrySaveExchangedItem(gBattlerTarget, *newItemAtk);
             }
 
             if (oldItemAtk != ITEM_NONE && *newItemAtk != ITEM_NONE)
