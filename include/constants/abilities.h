@@ -431,15 +431,15 @@
 #define ABILITY_MISFORTUNE 402
 #define ABILITY_REBOUND 403
 #define ABILITY_INSTABILITY 404
+#define ABILITY_VISCERATION 405
 
-#define ABILITIES_COUNT_PISCES 405
+#define ABILITIES_COUNT_PISCES 406
 
-// fullmetal - fullmetal body
+// fullmetal - full metal body
 // gloopomancy - huddle up
 // klutz
 // trojan - disguise
 // color change
-// visceration - appetite
 // mycelium might
 
 #define ABILITIES_COUNT ABILITIES_COUNT_PISCES
