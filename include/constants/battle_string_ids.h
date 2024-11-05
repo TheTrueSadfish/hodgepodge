@@ -752,7 +752,7 @@
 #define STRINGID_PKMNTICKED                           750
 #define STRINGID_PKMNSHEDTICK                         751
 #define STRINGID_SPEEDSTATCHANGESGONE                 752
-#define STRINGID_USERSTATCHANGESGONE                  753
+#define STRINGID_USERNEGATIVESTATCHANGESGONE          753
 #define STRINGID_PKMNISPREPARINGFORDECIMATION         754
 #define STRINGID_PKMNISALREADYEXPOSED                 755
 #define STRINGID_HEARTHWARMHEAL                       756
@@ -806,8 +806,15 @@
 #define	STRINGID_PURPLEHAZE                           804
 #define	STRINGID_MAGMAARMORED                         805
 #define STRINGID_PKMNOVERTOOKATTACK                   806
+#define STRINGID_SUNGAHEALINGMELODY                   807
+#define STRINGID_HEALINGMELODYWASHEARD                808
+#define STRINGID_TARGETINFLAMES                       809
+#define STRINGID_TARGETNEGATIVESTATCHANGESGONE        810
+#define STRINGID_USERSTATCHANGESGONE                  811
+#define STRINGID_TARGETSTATCHANGESGONE                812
+#define STRINGID_TARGETPOSITIVESTATCHANGESGONE        813
 
-#define BATTLESTRINGS_COUNT                           807
+#define BATTLESTRINGS_COUNT                           814
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

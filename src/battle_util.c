@@ -2970,6 +2970,8 @@ enum
     ENDTURN_EMERGENCY_EXIT,
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
+    ENDTURN_DARK_HUNGER,
+    ENDTURN_IN_FLAMES,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3481,6 +3483,13 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
+        case ENDTURN_DARK_HUNGER:
+            if (gDisableStructs[battler].berryEatenTimer > 0)
+            {
+                gDisableStructs[battler].berryEatenTimer--;
+            }
+            gBattleStruct->turnCountersTracker++;
+            break;
         case ENDTURN_YAWN: // yawn
             if (gStatuses3[battler] & STATUS3_YAWN)
             {
@@ -3577,6 +3586,9 @@ u8 DoBattlerEndTurnEffects(void)
             break;
         case ENDTURN_ELECTRIFY:
             gStatuses4[battler] &= ~STATUS4_ELECTRIFIED;
+            gBattleStruct->turnEffectsTracker++;
+        case ENDTURN_IN_FLAMES:
+            gStatuses4[battler] &= ~STATUS4_IN_FLAMES;
             gBattleStruct->turnEffectsTracker++;
         case ENDTURN_POWDER:
             gBattleMons[battler].status2 &= ~STATUS2_POWDER;
@@ -4440,6 +4452,11 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             else if (gCurrentMove == MOVE_AQUASCADE && (gBattleWeather & B_WEATHER_RAIN))
             {
                 gMultiHitCounter = 2;
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+            }
+            else if (gCurrentMove == MOVE_FIREBALLS)
+            {
+                gMultiHitCounter = CountBattlerStatDecreases(gBattlerAttacker, TRUE);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
             else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[gBattlerAttacker].hp > (gBattleMons[gBattlerAttacker].maxHP / 4)))
@@ -5914,18 +5931,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
-                    BattleScriptExecute(BattleScript_ResetActivates3);
+                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates3);
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                     MarkBattlerForControllerExec(battler);
                     effect++;
                 }
                 else
                 {
-                    for (i = 0; i < gBattlersCount; i++)
-                    {
-                        BattleScriptPushCursorAndCallback(BattleScript_NormaliseBuffs);
-                        effect++;
-                    }
+                    BattleScriptPushCursorAndCallback(BattleScript_NormaliseBuffs);
+                    effect++;
                 }
                 break;
             case ABILITY_DRY_SKIN:
@@ -10838,10 +10852,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
                 }
                 break;
-            case HOLD_EFFECT_PINAP_BERRY: // consume and damage attacker if used physical move
-                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, ITEM_PINAP_BERRY), ITEM_PINAP_BERRY) && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+            case HOLD_EFFECT_PINAP_BERRY: // consume and damage target if used physical move
+                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && !DoesSubstituteBlockMove(gBattlerTarget, battler, gCurrentMove) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, ITEM_PINAP_BERRY), ITEM_PINAP_BERRY) && GetBattlerAbility(gBattlerTarget) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerTarget) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
                 {
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
@@ -10859,17 +10873,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MARANGA_BERRY: // consume and boost sp. defense if used special move
                 effect = DamagedStatBoostBerryEffect(battler, STAT_SPDEF, SPLIT_SPECIAL);
-                break;
-            case HOLD_EFFECT_STICKY_BARB:
-                if (TARGET_TURN_DAMAGED && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)) && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && IsBattlerAlive(gBattlerAttacker) && CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item) && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
-                {
-                    // No sticky hold checks.
-                    gEffectBattler = battler;                          // gEffectBattler = target
-                    StealTargetItem(gBattlerAttacker, gBattlerTarget); // Attacker takes target's barb
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_StickyBarbTransfer;
-                    effect = ITEM_EFFECT_OTHER;
-                }
                 break;
             }
         }
@@ -10949,7 +10952,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
 
     // Berry was successfully used on a Pokemon.
     if (effect && (gLastUsedItem >= FIRST_BERRY_INDEX && gLastUsedItem <= LAST_BERRY_INDEX))
+    {
         gBattleStruct->ateBerry[battler & BIT_SIDE] |= gBitTable[gBattlerPartyIndexes[battler]];
+        gDisableStructs[battler & BIT_SIDE].berryEatenTimer == 2;
+    }
 
     return effect;
 }
@@ -11598,6 +11604,15 @@ static const u8 sFlailHpScaleToPowerTable[] =
         32, 40,
         48, 20};
 
+static const u8 sInversionHpScaleToPowerTable[] =
+    {
+        1, 150,
+        4, 120,
+        9, 100,
+        16, 80,
+        32, 40,
+        48, 20};
+
 static const u8 sLoneSharkHpScaleToPowerTable[] =
     {
         4, 170,
@@ -11790,6 +11805,15 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
                 break;
         }
         basePower = sFlailHpScaleToPowerTable[i + 1];
+        break;
+    case EFFECT_INVERSION:
+        hpFraction = GetScaledHPFraction(gBattleMons[battlerAtk].hp, gBattleMons[battlerAtk].maxHP, 48);
+        for (i = 0; i < sizeof(sInversionHpScaleToPowerTable); i += 2)
+        {
+            if (hpFraction <= sInversionHpScaleToPowerTable[i])
+                break;
+        }
+        basePower = sInversionHpScaleToPowerTable[i + 1];
         break;
     case EFFECT_LONE_SHARK:
         hpFraction = GetScaledHPFraction(gBattleMons[battlerAtk].hp, gBattleMons[battlerAtk].maxHP, 100);
@@ -12000,11 +12024,17 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_STORED_POWER:
         basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);
         break;
+    case EFFECT_FIREBALLS:
+        basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 10);
+        break;
     case EFFECT_REDLINE:
         basePower = 50 + (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
         break;
     case EFFECT_ZAPPER:
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
+        break;
+    case EFFECT_WITCH_HYMN:
+        basePower = 50 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
         break;
     case EFFECT_HEAVY_CANNON:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] > DEFAULT_STAT_STAGE || gBattleMons[battlerAtk].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE)
@@ -12235,6 +12265,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_RETALIATE:
         if (gSideTimers[atkSide].retaliateTimer == 1)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_DARK_HUNGER:
+        if (gDisableStructs[battlerAtk].berryEatenTimer == 1)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case EFFECT_SOLAR_BEAM:
         if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW)))
@@ -14276,7 +14310,9 @@ uq4_12_t GetTypeModifier(u32 atkType, u32 defType)
     if (FlagGet(B_FLAG_INVERSE_BATTLE))
         return GetInverseTypeMultiplier(sTypeEffectivenessTable[atkType][defType]);
 #endif
-    if (gFieldStatuses & STATUS_FIELD_INVERSE_ROOM)
+    if (gBattleMoves[gCurrentMove].effect == EFFECT_INVERSION)
+        return GetInverseTypeMultiplier(sTypeEffectivenessTable[atkType][defType]);
+    if (gFieldStatuses & STATUS_FIELD_INVERSE_ROOM && gBattleMoves[gCurrentMove].effect != EFFECT_INVERSION)
         return GetInverseTypeMultiplier(sTypeEffectivenessTable[atkType][defType]);
     return sTypeEffectivenessTable[atkType][defType];
 }

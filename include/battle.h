@@ -118,6 +118,7 @@ struct DisableStruct
     u8 purpleHazeOffense:1;
     u8 purpleHazeDefense:1;
     u8 magmaArmored:1;
+    u8 berryEatenTimer:2;
 };
 
 struct ProtectStruct
@@ -710,6 +711,7 @@ struct BattleStruct
     u8 battleBondTransformed[NUM_BATTLE_SIDES]; // Bitfield for each party.
     u8 storedHealingWish:4; // Each battler as a bit.
     u8 storedLunarDance:4; // Each battler as a bit.
+    u8 storedHealingMelody:4; // Each battler as a bit.
     u8 itemPartyIndex[MAX_BATTLERS_COUNT];
     u8 itemMoveIndex[MAX_BATTLERS_COUNT];
     bool8 trainerSlideHalfHpMsgDone;
@@ -768,6 +770,7 @@ STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLER
                           || gBattleMoves[move].effect == EFFECT_CRASH_LAND         \
                           || gBattleMoves[move].effect == EFFECT_WILD_CHARGE        \
                           || gBattleMoves[move].effect == EFFECT_SUBMISSION         \
+                          || gBattleMoves[move].effect == EFFECT_FIREWORK_CRASH     \
                           || gBattleMoves[move].effect == EFFECT_WOOD_HAMMER        )
 
 #define BATTLER_MAX_HP(battlerId)(gBattleMons[battlerId].hp == gBattleMons[battlerId].maxHP)

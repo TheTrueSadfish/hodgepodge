@@ -1042,7 +1042,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_INVERSION] = _("Inversion"),
     [MOVE_WITCH_HYMN] = _("Witch Hymn"),
     [MOVE_HEAL_MELODY] = _("Heal Melody"),
-    [MOVE_TEMPER_TAIL] = _("Temper Tail"),
+    [MOVE_ROAST_ROUST] = _("Roast Roust"),
     [MOVE_FIREWORK_CRASH] = _("Firework Crash"),
     [MOVE_EMBER_SNOW] = _("Ember Snow"),
     [MOVE_FEATHER_RAZOR] = _("Feather Razor"),
@@ -1062,6 +1062,9 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_PLIA_BALL] = _("Pila-Ball"),
     [MOVE_IRON_JAWS] = _("Iron Jaws"),
     [MOVE_FRESH_WHIP] = _("Fresh Whip"),
+    [MOVE_LOVELY_POISON] = _("Lovely Poison"),
+    [MOVE_GAMMA_RAY] = _("Gamma Ray"),
+    [MOVE_FIREBALLS] = _("Fireballs"),
 };
 #else
 // 12 letters
@@ -2107,7 +2110,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_INVERSION] = _("Inversion"),
     [MOVE_WITCH_HYMN] = _("Witch Hymn"),
     [MOVE_HEAL_MELODY] = _("Heal Melody"),
-    [MOVE_TEMPER_TAIL] = _("Temper Tail"),
+    [MOVE_ROAST_ROUST] = _("Roast Roust"),
     [MOVE_FIREWORK_CRASH] = _("Firework Crash"),
     [MOVE_EMBER_SNOW] = _("Ember Snow"),
     [MOVE_FEATHER_RAZOR] = _("Feather Razor"),
@@ -2127,6 +2130,9 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_PLIA_BALL] = _("Pila-Ball"),
     [MOVE_IRON_JAWS] = _("Iron Jaws"),
     [MOVE_FRESH_WHIP] = _("Fresh Whip"),
+    [MOVE_LOVELY_POISON] = _("Lovely Poison"),
+    [MOVE_GAMMA_RAY] = _("Gamma Ray"),
+    [MOVE_FIREBALLS] = _("Fireballs"),
 };
 #endif
 
