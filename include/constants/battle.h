@@ -212,6 +212,7 @@
 #define STATUS4_ACID_ARMORED            (1 << 16)
 #define STATUS4_POWER_SHIFT             (1 << 17)
 #define STATUS4_SYRUP_BOMB              (1 << 18)
+#define STATUS4_IN_FLAMES               (1 << 19)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -444,8 +445,9 @@
 #define MOVE_EFFECT_CONSTRICT           110
 #define MOVE_EFFECT_SYRUP_BOMB          111
 #define MOVE_EFFECT_OCTAZOOKA           112
+#define MOVE_EFFECT_WITCH_HYMN          113
 
-#define NUM_MOVE_EFFECTS                113
+#define NUM_MOVE_EFFECTS                114
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

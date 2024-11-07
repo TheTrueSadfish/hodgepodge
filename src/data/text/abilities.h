@@ -1712,9 +1712,9 @@ static const u8 sCovenLightsDescription[] = _(
     "are lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
-    "Triples the Pokémon's PP usage.\n"
-    "Attacks may earn money or taunt,\n"
-    "confuse, or infatuate the foe.");
+    "Triples PP usage. Attacks may\n"
+    "earn money or taunt, critical\n"
+    "hit, or infatuate the foe.");
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"
@@ -1727,10 +1727,14 @@ static const u8 sGooseChaserDescription[] = _(
     "foe in Tar and may hit twice.");
 
 static const u8 sHeatSeekerDescription[] = _(
-    "N/A");
+    "Burns from burned foes, or hit\n"
+    "by Fire, and transforms. Absorbs\n"
+    "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "N/A");
+    "Changes form when hit by a\n"
+    "piercing move. Takes double\n"
+    "damage, and has less accuracy.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced damage\n"
@@ -1763,9 +1767,9 @@ static const u8 sTerraformerDescription[] = _(
     "a battle.");
 
 static const u8 sToothNNailDescription[] = _(
-    "After using a biting move, uses\n"
-    "a unique slashing move and vice\n"
-    "versa.");
+    "After using a biting/sound/claw/\n"
+    "slicing move uses Slash/Hone\n"
+    "Claws/Crunch/Growl respectively.");
 
 static const u8 sSunkCostDescription[] = _(
     "The Pokémon has a chance to do\n"

@@ -896,7 +896,7 @@ static const u8 sText_AThingHappenedFr[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is
 static const u8 sText_SappedByTicked[] = _("{B_ATK_NAME_WITH_PREFIX}'s health is\ndrained by its ticks!");
 static const u8 sText_PkmnTicked[] = _("{B_DEF_NAME_WITH_PREFIX} was infected\nby ticks!");
 static const u8 sText_SpeedStatChangesGone[] = _("All speed stat changes\nwere eliminated!");
-static const u8 sText_UserStatChangesGone[] = _("Negative stat changes\nwere eliminated!");
+static const u8 sText_UserNegativeStatChangesGone[] = _("{B_ATK_NAME_WITH_PREFIX}'s negative stat\nchanges were eliminated!");
 static const u8 sText_PkmnIsPreparingForDecimation[] = _("{B_ATK_NAME_WITH_PREFIX} is preparing\nfor {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnIsAlreadyExposed[] = _("{B_DEF_NAME_WITH_PREFIX} is already\nexposed.");
 static const u8 sText_HearthwarmHeal[] = _("Hearthwarm restored\n{B_ATK_NAME_WITH_PREFIX}'s HP!");
@@ -946,6 +946,13 @@ static const u8 sText_IceScalesGains[] = _("{B_ATK_NAME_WITH_PREFIX} gained a la
 static const u8 sText_IceScalesLoss[] = _("A layer of {B_DEF_NAME_WITH_PREFIX}'s scales\nshattered and stifled the blow!");
 static const u8 sText_PurpleHaze[] = _("The purple haze enflamed\n{B_ATK_NAME_WITH_PREFIX} with frenzy!");
 static const u8 sText_MagmaArmored[] = _("{B_ATK_NAME_WITH_PREFIX}'s magma armor\nhardened from {B_DEF_NAME_WITH_PREFIX}'s attack!");
+static const u8 sText_SungAHealingMelody[] = _("{B_ATK_NAME_WITH_PREFIX} sung\na healing melody!");
+static const u8 sText_HealingMelodyWasHeard[] = _("{B_ATK_NAME_WITH_PREFIX} heard\na healing melody!");
+static const u8 sText_TargetInFlames[] = _("The {B_DEF_NAME_WITH_PREFIX}'s moves\nhave been put ablaze!");
+static const u8 sText_TargetNegativeStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s negative stat\nchanges were eliminated!");
+static const u8 sText_UserStatChangesGone[] = _("{B_ATK_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
+static const u8 sText_TargetStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
+static const u8 sText_TargetPositiveStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s positive stat\nchanges were eliminated!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1691,7 +1698,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNTICKED - BATTLESTRINGS_TABLE_START] = sText_PkmnTicked,
     [STRINGID_PKMNSHEDTICK - BATTLESTRINGS_TABLE_START] = sText_PkmnShedTick,
     [STRINGID_SPEEDSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_SpeedStatChangesGone,
-    [STRINGID_USERSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_UserStatChangesGone,
+    [STRINGID_USERNEGATIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_UserNegativeStatChangesGone,
     [STRINGID_PKMNISPREPARINGFORDECIMATION - BATTLESTRINGS_TABLE_START] = sText_PkmnIsPreparingForDecimation,
     [STRINGID_PKMNISALREADYEXPOSED - BATTLESTRINGS_TABLE_START] = sText_PkmnIsAlreadyExposed,
     [STRINGID_HEARTHWARMHEAL - BATTLESTRINGS_TABLE_START] = sText_HearthwarmHeal,
@@ -1743,6 +1750,13 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PURPLEHAZE - BATTLESTRINGS_TABLE_START] = sText_PurpleHaze,
     [STRINGID_MAGMAARMORED - BATTLESTRINGS_TABLE_START] = sText_MagmaArmored,
     [STRINGID_PKMNOVERTOOKATTACK - BATTLESTRINGS_TABLE_START] = sText_PkmnOvertookAttack,
+    [STRINGID_SUNGAHEALINGMELODY - BATTLESTRINGS_TABLE_START] = sText_SungAHealingMelody,
+    [STRINGID_HEALINGMELODYWASHEARD - BATTLESTRINGS_TABLE_START] = sText_HealingMelodyWasHeard,
+    [STRINGID_TARGETINFLAMES - BATTLESTRINGS_TABLE_START] = sText_TargetInFlames,
+    [STRINGID_TARGETNEGATIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetNegativeStatChangesGone,
+    [STRINGID_USERSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_UserStatChangesGone,
+    [STRINGID_TARGETSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetStatChangesGone,
+    [STRINGID_TARGETPOSITIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetPositiveStatChangesGone,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1802,7 +1816,7 @@ const u16 gDemolisherStringIds[] =
 
 const u16 gHealingWishStringIds[] =
 {
-    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE
+    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE, STRINGID_HEALINGMELODYWASHEARD
 };
 
 const u16 gDmgHazardsStringIds[] =

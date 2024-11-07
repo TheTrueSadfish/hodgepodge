@@ -645,6 +645,80 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSyrupBomb               @ EFFECT_SYRUP_BOMB
 	.4byte BattleScript_EffectOctazooka               @ EFFECT_OCTAZOOKA
 	.4byte BattleScript_EffectOvertake                @ EFFECT_OVERTAKE
+	.4byte BattleScript_EffectBugBite                 @ EFFECT_DARK_HUNGER
+	.4byte BattleScript_EffectNightBeam               @ EFFECT_NIGHT_BEAM
+	.4byte BattleScript_EffectHit                     @ EFFECT_INVERSION
+	.4byte BattleScript_EffectWitchHymn               @ EFFECT_WITCH_HYMN
+	.4byte BattleScript_EffectHealingMelody           @ EFFECT_HEAL_MELODY
+	.4byte BattleScript_EffectSpeedUpHit              @ EFFECT_FIREWORK_CRASH
+	.4byte BattleScript_EffectHit                     @ EFFECT_FIREBALLS
+	.4byte BattleScript_EffectEmberSnow               @ EFFECT_EMBER_SNOW
+
+BattleScript_EffectEmberSnow:
+	jumpifspecies BS_ATTACKER, SPECIES_MORPEKO, BattleScript_EffectWillOWisp
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifsubstituteblocks BattleScript_TryEmberSnow
+	jumpifstatus BS_TARGET, STATUS1_BURN, BattleScript_TryEmberSnow
+	jumpiftype BS_TARGET, TYPE_FIRE, BattleScript_TryEmberSnow
+	jumpifability BS_TARGET, ABILITY_WATER_VEIL, BattleScript_TryEmberSnow
+	jumpifability BS_TARGET, ABILITY_WATER_BUBBLE, BattleScript_TryEmberSnow
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_TryEmberSnow
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_TryEmberSnow
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TryEmberSnow
+	jumpifflowerveil BattleScript_TryEmberSnow
+	jumpifleafguardprotected BS_TARGET, BattleScript_TryEmberSnow
+	jumpifeeriemaskprotected BS_TARGET, BattleScript_TryEmberSnow
+	jumpifshieldsdown BS_TARGET, BattleScript_TryEmberSnow
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_TryEmberSnow
+	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_TryEmberSnow
+	accuracycheck BattleScript_TryEmberSnow, ACC_CURR_MOVE
+	jumpifsafeguard BattleScript_TryEmberSnow
+	tryembersnow BattleScript_EmberSnowBurnOnly
+	attackanimation
+	waitanimation
+	setmoveeffect MOVE_EFFECT_BURN
+	seteffectprimary
+	printstring STRINGID_TARGETINFLAMES
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_TryEmberSnow:
+	tryembersnow BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETINFLAMES
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_EmberSnowBurnOnly:
+	attackanimation
+	waitanimation
+	setmoveeffect MOVE_EFFECT_BURN
+	seteffectprimary
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectHealingMelody:
+	attackcanceler
+	attackstring
+	ppreduce
+	storehealingwish BS_ATTACKER
+	attackanimation
+	waitanimation
+	printstring STRINGID_SUNGAHEALINGMELODY
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+
+BattleScript_EffectWitchHymn::
+	setmoveeffect MOVE_EFFECT_WITCH_HYMN
+	goto BattleScript_EffectHit
+
+BattleScript_EffectNightBeam:
+	setmoveeffect MOVE_EFFECT_CORE_ENFORCER
+	seteffectprimary
+	setmoveeffect MOVE_EFFECT_ACC_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
+	seteffectsecondary
+	goto BattleScript_EffectHit
 
 BattleScript_EffectOctazooka::
 	setmoveeffect MOVE_EFFECT_OCTAZOOKA
@@ -1151,7 +1225,7 @@ BattleScript_EffectShieldsUp::
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_TARGET
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_TryStatusAndStatRestore:
@@ -1162,14 +1236,14 @@ BattleScript_TryStatusAndStatRestore:
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_TARGET
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_JustRestoreNegativeStats:
 	tryresetnegativestatstages BS_TARGET
 	attackanimation
 	waitanimation
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_HealSuccessStatusCureFailed:
@@ -1181,7 +1255,7 @@ BattleScript_HealSuccessStatusCureFailed:
 	datahpupdate BS_ATTACKER
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -1535,7 +1609,7 @@ BattleScript_FleurCannonBlooming:
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
 	tryresetnegativestatstages BS_ATTACKER
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
 	printstring STRINGID_CUREDBLOOMING
@@ -1673,8 +1747,8 @@ BattleScript_EffectPurification:
 	trysoak BattleScript_ButItFailed
 	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
+	tryresetstatstages BS_TARGET
+	printstring STRINGID_TARGETSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -2991,7 +3065,7 @@ BattleScript_EffectRedline::
 	call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	tryresetnegativestatstages BS_ATTACKER
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -7108,6 +7182,28 @@ BattleScript_EffectHealingWishRestore:
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_HealingMelodyActivates::
+	setbyte cMULTISTRING_CHOOSER, 2
+	printfromtable gHealingWishStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_WISH_HEAL
+	waitanimation
+	dmgtomaxattackerhp
+	manipulatedamage DMG_CHANGE_SIGN
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	jumpifstatus BS_ATTACKER, STATUS1_PSN_ANY, BattleScript_HealingMelodyActivatesPoisonClear
+BattleScript_HealingMelodyContinue::
+	printstring STRINGID_HEALINGWISHHEALED
+	waitmessage B_WAIT_TIME_LONG
+	return
+BattleScript_HealingMelodyActivatesPoisonClear::
+	clearstatus BS_ATTACKER
+	waitstate
+	updatestatusicon BS_ATTACKER
+	waitstate
+	goto BattleScript_HealingMelodyContinue
+
 BattleScript_EffectWorrySeed:
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
@@ -7573,18 +7669,18 @@ BattleScript_MiracleEyeStatBoosted:
     jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_EffectMiracleEyeStatClear
     jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_EffectMiracleEyeStatClear
     jumpifsafeguard BattleScript_EffectMiracleEyeStatClear
-	normalisebuffs
+	tryresetstatstages BS_TARGET
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_CONFUSION
-	printstring STRINGID_STATCHANGESGONE
+	printstring STRINGID_TARGETPOSITIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_EffectMiracleEyeStatClear:
-	normalisebuffs
+	tryresetstatstages BS_TARGET
 	attackanimation
 	waitanimation
-	printstring STRINGID_STATCHANGESGONE
+	printstring STRINGID_TARGETPOSITIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -10024,14 +10120,14 @@ BattleScript_EffectSynthesisBlooming:
 	datahpupdate BS_TARGET
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_SynthesisFailedResetNegativeStats::
 	tryresetnegativestatstages BS_ATTACKER
 	attackanimation
 	waitanimation
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -11104,14 +11200,14 @@ BattleScript_EffectRefresh:
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_TARGET
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_RefreshLoop
 BattleScript_RefreshFailed:
 	tryresetnegativestatstages BS_TARGET
 	attackanimation
 	waitanimation
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RefreshLoop:
 	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, 0x0, BattleScript_MoveEnd
@@ -11124,12 +11220,12 @@ BattleScript_RefreshStatChangeAlly:
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_TARGET
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_RefreshLoop
 BattleScript_RefreshFailedAlly:
 	tryresetnegativestatstages BS_TARGET
-	printstring STRINGID_USERSTATCHANGESGONE
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, 0x0, BattleScript_MoveEnd
     addbyte gBattleCommunication, 1
@@ -15877,8 +15973,8 @@ BattleScript_AbilityHealHP_End2::
 
 BattleScript_ResetActivates::
 	call BattleScript_AbilityHealHP_Ret
-	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
+	tryresetstatstages BS_ATTACKER
+	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
@@ -15886,8 +15982,8 @@ BattleScript_ResetActivates2::
 	printstring STRINGID_PKMNSXCUREDYPROBLEM
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
-	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
+	tryresetstatstages BS_ATTACKER
+	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
@@ -15896,16 +15992,22 @@ BattleScript_ResetActivates3::
 	printstring STRINGID_PKMNSXCUREDYPROBLEM
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
-	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
+	tryresetstatstages BS_ATTACKER
+	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_NormaliseBuffs::
-	normalisebuffs
-	printstring STRINGID_STATCHANGESGONE
+	tryresetstatstages BS_ATTACKER
+	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	end3
+
+BattleScript_ResetUserStats::
+	tryresetstatstages BS_ATTACKER
+	printstring STRINGID_USERSTATCHANGESGONE
+	waitmessage B_WAIT_TIME_LONG
+	return
 
 BattleScript_Cheese_End2::
 	trycheesing BS_ATTACKER, BattleScript_Cheese_End2Part2
@@ -17505,7 +17607,7 @@ BattleScript_EffectMtSplendor_End:
 
 BattleScript_ResetNegativeStatStages::
     tryresetnegativestatstages BS_SCRIPTING
-    printstring STRINGID_USERSTATCHANGESGONE
+    printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	return
 

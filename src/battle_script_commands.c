@@ -2301,6 +2301,10 @@ static void Cmd_damagecalc(void)
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 15) / 100);
     }
+    else if (gCurrentMove == MOVE_GAMMA_RAY && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
+    {
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + 30;
+    }
     else
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE);
@@ -3837,6 +3841,24 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 {
                     static const u8 sSmogEffects[] = { MOVE_EFFECT_POISON, MOVE_EFFECT_SPD_MINUS_1 };
                     gBattleScripting.moveEffect = RandomElement(RNG_SMOG, sSmogEffects);
+                    SetMoveEffect(FALSE, 0);
+                }
+                break;
+            case MOVE_EFFECT_WITCH_HYMN:
+                if ((gBattleMons[gEffectBattler].statStages[STAT_ATK] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_DEF] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_SPATK] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_SPDEF] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_SPEED] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_ACC] == MIN_STAT_STAGE)
+                && (gBattleMons[gEffectBattler].statStages[STAT_EVASION] == MIN_STAT_STAGE))
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else
+                {
+                    static const u8 sWitchHymnEffects[] = { MOVE_EFFECT_ATK_MINUS_1, MOVE_EFFECT_DEF_MINUS_1, MOVE_EFFECT_SP_ATK_MINUS_1, MOVE_EFFECT_SP_DEF_MINUS_1, MOVE_EFFECT_SPD_MINUS_1, MOVE_EFFECT_ACC_MINUS_1, MOVE_EFFECT_EVS_MINUS_1 };
+                    gBattleScripting.moveEffect = RandomElement(RNG_WITCH_HYMN, sWitchHymnEffects);
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
@@ -6475,6 +6497,7 @@ static void Cmd_moveend(void)
                 case EFFECT_RECOIL_25: // Take Down, 25% recoil
                 case EFFECT_SUBMISSION: // differentiated for reasons
                 case EFFECT_FLYING_PRESS: // Flying Press, Fighting/Flying-type move
+                case EFFECT_FIREWORK_CRASH: // Firework Crash, boosts speed
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 4);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6926,6 +6949,12 @@ static void Cmd_moveend(void)
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DefDownSpeedUp;
+                    }
+
+                    if (gCurrentMove == MOVE_FIREBALLS && !NoAliveMonsForEitherParty())
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_ResetUserStats;
                     }
 
                     BattleScriptPushCursor();
@@ -8016,7 +8045,7 @@ static void Cmd_switchineffects(void)
     }
     // Healing Wish activates before hazards.
     // Starting from Gen8 - it heals only pokemon which can be healed. In gens 5,6,7 the effect activates anyways.
-    else if (((gBattleStruct->storedHealingWish & gBitTable[battler]) || (gBattleStruct->storedLunarDance & gBitTable[battler]))
+    else if (((gBattleStruct->storedHealingWish & gBitTable[battler]) || (gBattleStruct->storedHealingMelody & gBitTable[battler]) || (gBattleStruct->storedLunarDance & gBitTable[battler]))
         && (gBattleMons[battler].hp != gBattleMons[battler].maxHP || gBattleMons[battler].status1 != 0 || B_HEALING_WISH_SWITCH < GEN_8))
     {
         if (gBattleStruct->storedHealingWish & gBitTable[battler])
@@ -8025,11 +8054,17 @@ static void Cmd_switchineffects(void)
             gBattlescriptCurrInstr = BattleScript_HealingWishActivates;
             gBattleStruct->storedHealingWish  &= ~(gBitTable[battler]);
         }
-        else // Lunar Dance
+        else if (gBattleStruct->storedLunarDance & gBitTable[battler]) // Lunar Dance
         {
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_LunarDanceActivates;
             gBattleStruct->storedLunarDance  &= ~(gBitTable[battler]);
+        }
+        else // Healing Melody
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_HealingMelodyActivates;
+            gBattleStruct->storedHealingMelody  &= ~(gBitTable[battler]);
         }
     }
     else if (!(gDisableStructs[battler].spikesDone)
@@ -11045,6 +11080,20 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_EMBER_SNOW:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (GetBattlerTurnOrderNum(gBattlerAttacker) > GetBattlerTurnOrderNum(gBattlerTarget))
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gStatuses4[gBattlerTarget] |= STATUS4_IN_FLAMES;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_REFLECT_TYPE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -12723,11 +12772,34 @@ static void Cmd_various(void)
     case VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES:
     {
         VARIOUS_ARGS();
-        battler = gBattlerTarget;
+
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         for (i = 0; i < NUM_BATTLE_STATS; i++)
             if (gBattleMons[battler].statStages[i] < DEFAULT_STAT_STAGE)
                 gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
         gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_TRY_RESET_STAT_STAGES:
+    {
+        VARIOUS_ARGS();
+
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        if (gCurrentMove == MOVE_MIRACLE_EYE)
+        {
+            for (i = 0; i < NUM_BATTLE_STATS; i++)
+                if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE)
+                    gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            for (i = 0; i < NUM_BATTLE_STATS; i++)
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         return;
     }
     case VARIOUS_JUMP_IF_LAST_USED_ITEM_BERRY:
@@ -12872,6 +12944,8 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         if (gCurrentMove == MOVE_LUNAR_DANCE)
             gBattleStruct->storedLunarDance |= gBitTable[battler];
+        if (gCurrentMove == MOVE_HEAL_MELODY)
+            gBattleStruct->storedHealingMelody |= gBitTable[battler];
         else
             gBattleStruct->storedHealingWish |= gBitTable[battler];
         break;

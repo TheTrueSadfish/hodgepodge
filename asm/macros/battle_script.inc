@@ -1756,6 +1756,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro tryembersnow failInstr:req
+	various BS_ATTACKER, VARIOUS_TRY_EMBER_SNOW
+	.4byte \failInstr
+	.endm
+
 	.macro tryreflecttype failInstr:req
 	various BS_ATTACKER, VARIOUS_TRY_REFLECT_TYPE
 	.4byte \failInstr
@@ -2258,6 +2263,10 @@
 
 	.macro tryresetnegativestatstages battler:req
 	various \battler, VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro tryresetstatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_STAT_STAGES
 	.endm
 
 	.macro jumpiflastuseditemberry jumpInstr:req

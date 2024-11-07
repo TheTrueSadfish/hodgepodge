@@ -4923,155 +4923,175 @@ static const u8 sSupercellSlamDescription[] = _(
     "electrified dive. If this move\n"
     "misses, the user is hurt instead.");
 
-static const u8 gMindGapDescription[] = _(
+static const u8 sMindGapDescription[] = _(
     "Goes first and disables the move\n"
     "the foe is about to use. Fails\n"
     "if the foe isn't being targeted.");
 
-static const u8 gSweetWhispersDescription[] = _(
+static const u8 sSweetWhispersDescription[] = _(
     "The user promises great things\n"
     "and coerces infatuated targets\n"
     "to attack their allies.");
 
-static const u8 gSyrupBombDescription[] = _(
+static const u8 sSyrupBombDescription[] = _(
     "The user covers the foe in sticky\n"
     "candy syrup. Drops the foe's\n"
     "Speed and evasion for 3 turns.");
 
-static const u8 gWildArmsDescription[] = _(
+static const u8 sWildArmsDescription[] = _(
     "Hits twice. This move hits 2\n"
     "more times and never misses if\n"
     "the user's previous move failed.");
 
-static const u8 gPincerHookDescription[] = _(
+static const u8 sPincerHookDescription[] = _(
     "The user swings a perfectly\n"
     "timed hook into the target.\n"
     "Critical hits land more easily.");
 
-static const u8 gPainSpinesDescription[] = _(
+static const u8 sPainSpinesDescription[] = _(
     "The user shoots spines 3 times.\n"
     "This move deals bonus damage if\n"
     "the foe has a status condition.");
 
-static const u8 gDarkHungerDescription[] = _(
-    "The user licks the foe covered\n"
-    "in dark energy. Boosted if the\n"
-    "user has eaten a berry.");
+static const u8 sDarkHungerDescription[] = _(
+    "The move makes the user eat the\n"
+    "foe's Berry. Boosted if the user\n"
+    "ate a berry the previous turn.");
 
-static const u8 gNightBeamDescription[] = _(
+static const u8 sNightBeamDescription[] = _(
     "A piercing light is shot at the\n"
     "foe with to inflict and remove\n"
     "its Ability.");
 
-static const u8 gInversionDescription[] = _(
+static const u8 sInversionDescription[] = _(
     "A move that becomes stronger the\n"
     "less HP the user has. This move\n"
     "uses inverse type calculations.");
 
-static const u8 gWitchHymnDescription[] = _(
+static const u8 sWitchHymnDescription[] = _(
     "This move is boosted for every\n"
     "stat drop the foe has. Also\n"
     "drops a random stat of the foe.");
 
-static const u8 gHealMelodyDescription[] = _(
+static const u8 sHealMelodyDescription[] = _(
     "At the end of the next turn the\n"
     "Pokémon currently in is fully\n"
     "healed and has its poison cured.");
 
-static const u8 gTemperTailDescription[] = _(
+static const u8 sRoastRoustDescription[] = _(
     "The foe is hit with a\n"
     "superheated tail. Hitting a foe\n"
     "boosts the user's Sp. Def stat.");
 
-static const u8 gFireworkCrashDescription[] = _(
+static const u8 sFireworkCrashDescription[] = _(
     "The user crashes into the foe\n"
     "like fireworks. This boosts its\n"
     "Speed and hurts it a little.");
 
-static const u8 gEmberSnowDescription[] = _(
+static const u8 sEmberSnowDescription[] = _(
     "Burns the foe. If the user is in\n"
     "a chariot it instead changes the\n"
     "foe's move into Fire-type.");
 
-static const u8 gFeatherRazorDescription[] = _(
+static const u8 sFeatherRazorDescription[] = _(
     "Slashes twice; or more for each\n"
     "Speed boost. Cuts the user's Spd.\n"
     "Critical hits land more easily.");
 
-static const u8 gDragDownDescription[] = _(
+static const u8 sDragDownDescription[] = _(
     "Switches the user out and resets\n"
     "the foe's stat changes. If the\n"
     "foe has stat changes, goes first.");
 
-static const u8 gHauntMelodyDescription[] = _(
+static const u8 sHauntMelodyDescription[] = _(
     "Cuts 3 PP from the foe and stops\n"
     "healing for 5 turns. Cuts all PP\n"
     "of poisoned foes, but removes it.");
 
-static const u8 gOddcastDescription[] = _(
+static const u8 sOddcastDescription[] = _(
     "Lets out a signal that may\n"
     "confuse. Doubles in power if the\n"
     "foe has a status condition.");
 
-static const u8 gKelpSapDescription[] = _(
+static const u8 sKelpSapDescription[] = _(
     "Cuts 3 PP from the foe's last\n"
     "used move. Absorbs 3/4 of the\n"
     "the damage taken by the foe.");
 
-static const u8 gNanabGattlingDescription[] = _(
+static const u8 sNanabGattlingDescription[] = _(
     "Stockpiled power is released in\n"
     "bursts for an attack. Hits extra\n"
     "times for each Stockpile stack.");
 
-static const u8 gBriarWhipDescription[] = _(
+static const u8 sBriarWhipDescription[] = _(
     "The user whips the foe twice.\n"
     "Does bonus damage based on foe's\n"
     "max HP. May lowers the foe's Atk.");
 
-static const u8 gGreaseLightningDescription[] = _(
+static const u8 sGreaseLightningDescription[] = _(
     "This attack always strikes first\n"
     "and lands critical hits if the\n"
     "foe is covered in Tar.");
 
-static const u8 gNonSequiturDescription[] = _(
+static const u8 sNonSequiturDescription[] = _(
     "This move fails if the user is\n"
     "hit before using the move, but\n"
     "spreads statuses on contact.");
 
-static const u8 gBeldamBrewDescription[] = _(
+static const u8 sBeldamBrewDescription[] = _(
     "The user lobs a magical brew\n"
     "that changes the foe's type to\n"
     "Poison. This may trap the foe.");
 
-static const u8 gAstralSpikesDescription[] = _(
+static const u8 sAstralSpikesDescription[] = _(
     "The user shoots odd spikes 2 to\n"
     "5 times. Splinters left behind\n"
     "remain scattered around the foe.");
 
-static const u8 gWildShuffleDescription[] = _(
+static const u8 sWildShuffleDescription[] = _(
     "The fewer PP this move has, the\n"
     "greater its power. This move\n"
     "switches the user out.");
 
-static const u8 gUprootEvilDescription[] = _(
+static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"
     "Poison and Dark-types. Its recoil\n"
     "harshly drops the user's Sp. Atk.");
 
-static const u8 gPliaBallDescription[] = _(
+static const u8 sPliaBallDescription[] = _(
     "The foe is forced to switch. In\n"
     "the wild, the battle ends. This\n"
     "moves strikes twice in a row.");
 
-static const u8 gIronJawsDescription[] = _(
+static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"
     "fangs. This move may flinch the\n"
     "foe and always lowers its Def.");
 
-static const u8 gFreshWhipDescription[] = _(
+static const u8 sFreshWhipDescription[] = _(
     "The user regains its energy and\n"
     "whips the foe. This heals the\n"
     "user by up to 1/4 its max HP.");
+
+static const u8 sFertileFrolicDescription[] = _(
+    "Dances with stored energy. The\n"
+    "more the user's stats are\n"
+    "boosted, the greater the damage.");
+
+static const u8 sLovelyPoisonDescription[] = _(
+    "If the foe is infatuated or\n"
+    "poisoned inflicts it with the\n"
+    "other. Hits foes switching out.");
+
+static const u8 sGammaRayDescription[] = _(
+    "Burns, paralyzes, or frostbites\n"
+    "the foe. If the foe has a status\n"
+    "condition does extra damage.");
+
+static const u8 sFireballsDescription[] = _(
+    "Adds a hit for each stat drop on\n"
+    "the user. Boosted for each stat\n"
+    "raise on the user. Resets stats.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -6108,36 +6128,39 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CRIMSON_STORM - 1] = sSplashDescription,
     [MOVE_TRUE_LOVES_KISS - 1] = sSplashDescription,
     [MOVE_SABRE_BREAK - 1] = sSabreBreakDescription,
-    [MOVE_MIND_GAP - 1] = gMindGapDescription,
+    [MOVE_MIND_GAP - 1] = sMindGapDescription,
     [MOVE_SUPERCELL_SLAM - 1] = sSupercellSlamDescription,
-    [MOVE_SWEET_WHISPERS - 1] = gSweetWhispersDescription,
-    [MOVE_SYRUP_BOMB - 1] = gSyrupBombDescription,
-    [MOVE_WILD_ARMS - 1] = gWildArmsDescription,
-    [MOVE_PINCER_HOOK - 1] = gPincerHookDescription,
-    [MOVE_PAIN_SPINES - 1] = gPainSpinesDescription,
-    [MOVE_DARK_HUNGER - 1] = gDarkHungerDescription,
-    [MOVE_NIGHT_BEAM - 1] = gNightBeamDescription,
-    [MOVE_INVERSION - 1] = gInversionDescription,
-    [MOVE_WITCH_HYMN - 1] = gWitchHymnDescription,
-    [MOVE_HEAL_MELODY - 1] = gHealMelodyDescription,
-    [MOVE_TEMPER_TAIL - 1] = gTemperTailDescription,
-    [MOVE_FIREWORK_CRASH - 1] = gFireworkCrashDescription,
-    [MOVE_EMBER_SNOW - 1] = gEmberSnowDescription,
-    [MOVE_FEATHER_RAZOR - 1] = gFeatherRazorDescription,
-    [MOVE_DRAG_DOWN - 1] = gDragDownDescription,
-    [MOVE_HAUNT_MELODY - 1] = gHauntMelodyDescription,
-    [MOVE_ODDCAST - 1] = gOddcastDescription,
-    [MOVE_KELP_SAP - 1] = gKelpSapDescription,
-    [MOVE_NANAB_GATTLING - 1] = gNanabGattlingDescription,
-    [MOVE_BRIAR_WHIP - 1] = gBriarWhipDescription,
+    [MOVE_SWEET_WHISPERS - 1] = sSweetWhispersDescription,
+    [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
+    [MOVE_WILD_ARMS - 1] = sWildArmsDescription,
+    [MOVE_PINCER_HOOK - 1] = sPincerHookDescription,
+    [MOVE_PAIN_SPINES - 1] = sPainSpinesDescription,
+    [MOVE_DARK_HUNGER - 1] = sDarkHungerDescription,
+    [MOVE_NIGHT_BEAM - 1] = sNightBeamDescription,
+    [MOVE_INVERSION - 1] = sInversionDescription,
+    [MOVE_WITCH_HYMN - 1] = sWitchHymnDescription,
+    [MOVE_HEAL_MELODY - 1] = sHealMelodyDescription,
+    [MOVE_ROAST_ROUST - 1] = sRoastRoustDescription,
+    [MOVE_FIREWORK_CRASH - 1] = sFireworkCrashDescription,
+    [MOVE_EMBER_SNOW - 1] = sEmberSnowDescription,
+    [MOVE_FEATHER_RAZOR - 1] = sFeatherRazorDescription,
+    [MOVE_DRAG_DOWN - 1] = sDragDownDescription,
+    [MOVE_HAUNT_MELODY - 1] = sHauntMelodyDescription,
+    [MOVE_ODDCAST - 1] = sOddcastDescription,
+    [MOVE_KELP_SAP - 1] = sKelpSapDescription,
+    [MOVE_NANAB_GATTLING - 1] = sNanabGattlingDescription,
+    [MOVE_BRIAR_WHIP - 1] = sBriarWhipDescription,
     [MOVE_GOOSE_CHASER - 1] = sSplashDescription,
-    [MOVE_GREASE_LIGHTNING - 1] = gGreaseLightningDescription,
-    [MOVE_NON_SEQUITUR - 1] = gNonSequiturDescription,
-    [MOVE_BELDAM_BREW - 1] = gBeldamBrewDescription,
-    [MOVE_ASTRAL_SPIKES - 1] = gAstralSpikesDescription,
-    [MOVE_WILD_SHUFFLE - 1] = gWildShuffleDescription,
-    [MOVE_UPROOT_EVIL - 1] = gUprootEvilDescription,
-    [MOVE_PLIA_BALL - 1] = gPliaBallDescription,
-    [MOVE_IRON_JAWS - 1] = gIronJawsDescription,
-    [MOVE_FRESH_WHIP - 1] = gFreshWhipDescription,
+    [MOVE_GREASE_LIGHTNING - 1] = sGreaseLightningDescription,
+    [MOVE_NON_SEQUITUR - 1] = sNonSequiturDescription,
+    [MOVE_BELDAM_BREW - 1] = sBeldamBrewDescription,
+    [MOVE_ASTRAL_SPIKES - 1] = sAstralSpikesDescription,
+    [MOVE_WILD_SHUFFLE - 1] = sWildShuffleDescription,
+    [MOVE_UPROOT_EVIL - 1] = sUprootEvilDescription,
+    [MOVE_PLIA_BALL - 1] = sPliaBallDescription,
+    [MOVE_IRON_JAWS - 1] = sIronJawsDescription,
+    [MOVE_FRESH_WHIP - 1] = sFreshWhipDescription,
+    [MOVE_LOVELY_POISON - 1] = sLovelyPoisonDescription,
+    [MOVE_GAMMA_RAY - 1] = sGammaRayDescription,
+    [MOVE_FIREBALLS - 1] = sFireballsDescription,
 };
