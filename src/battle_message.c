@@ -302,6 +302,8 @@ static const u8 sText_PkmnCutsAttackWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'
 static const u8 sText_PkmnCutsSpAttackWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY} cuts\n{B_DEF_NAME_WITH_PREFIX}'s special attack!");
 static const u8 sText_PkmnCutsDefenceWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s defense!");
 static const u8 sText_PkmnCutsSpDefenceWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s special defense!");
+static const u8 sText_PkmnCutsAccuracyWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s accuracy!");
+static const u8 sText_PkmnCutsEvasionWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s evasion!");
 static const u8 sText_PkmnCutsSpeedWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s speed!");
 static const u8 sText_PkmnIncreasesAccWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nincreased everyone's accuracy!");
 static const u8 sText_PkmnPreventsStatLossWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents stat loss!");
@@ -1759,6 +1761,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetStatChangesGone,
     [STRINGID_TARGETPOSITIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetPositiveStatChangesGone,
     [STRINGID_PREPARINGODDNESS - BATTLESTRINGS_TABLE_START] = sText_PreparingOddness,
+    [STRINGID_PKMNCUTSACCURACYWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnCutsAccuracyWith,
+    [STRINGID_PKMNCUTSEVASIONWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnCutsEvasionWith,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

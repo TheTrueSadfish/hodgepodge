@@ -640,7 +640,16 @@
 #define EFFECT_TAR_HIT                      634
 #define EFFECT_ICEBREAKER                   635
 #define EFFECT_NON_SEQUITUR                 636
+#define EFFECT_LOVELY_POISON                637
+#define EFFECT_BELDAM_BREW                  638
+#define EFFECT_WILD_SHUFFLE                 639
+#define EFFECT_PORTENT_CAST                 640
+#define EFFECT_WARD_SPELL                   641
+#define EFFECT_UPROOT_EVIL                  642
+#define EFFECT_PLIA_BALL                    643
+#define EFFECT_IRON_JAWS                    644
+#define EFFECT_FRESH_WHIP                   645
 
-#define NUM_BATTLE_MOVE_EFFECTS             637
+#define NUM_BATTLE_MOVE_EFFECTS             646
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

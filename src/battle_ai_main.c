@@ -2219,6 +2219,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_TRICK:
         case EFFECT_KNOCK_OFF:
+        case EFFECT_PARTY_TRICK:
             if (aiData->abilities[battlerDef] == ABILITY_STICKY_HOLD)
                 score -= 10;
             break;
@@ -3062,7 +3063,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_EMBARGO:
-        case EFFECT_PARTY_TRICK:
             if (aiData->abilities[battlerDef] == ABILITY_KLUTZ
               || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM
               || gDisableStructs[battlerDef].embargoTimer != 0
@@ -6005,6 +6005,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         break;
     case EFFECT_KNOCK_OFF:
+    case EFFECT_PARTY_TRICK:
         if (CanKnockOffItem(battlerDef, aiData->items[battlerDef]))
         {
             switch (aiData->holdEffects[battlerDef])
@@ -6444,7 +6445,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score += 3;
         break;
     case EFFECT_EMBARGO:
-    case EFFECT_PARTY_TRICK:
         if (aiData->holdEffects[battlerDef] != HOLD_EFFECT_NONE)
             score++;
         break;
