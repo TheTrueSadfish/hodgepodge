@@ -3488,7 +3488,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
                 gDisableStructs[battler].berryEatenTimer--;
             }
-            gBattleStruct->turnCountersTracker++;
+            gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_YAWN: // yawn
             if (gStatuses3[battler] & STATUS3_YAWN)
