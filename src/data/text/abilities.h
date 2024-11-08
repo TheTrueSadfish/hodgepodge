@@ -458,14 +458,14 @@ static const u8 sMagicGuardDescription[] = _(
     "from attacks.");
 
 static const u8 sStallDescription[] = _(
-    "Ensures both Pokémon's and foe's\n"
-    "attacks land. Increases the\n"
-    "chance of wild encounters.");
-
-static const u8 sNoGuardDescription[] = _(
     "The Pokémon is always the last to\n"
     "use its moves, however it deals\n"
     "more and takes less damage.");
+
+static const u8 sNoGuardDescription[] = _(
+    "Ensures both Pokémon's and foe's\n"
+    "attacks land. Increases the\n"
+    "chance of wild encounters.");
 
 static const u8 sTechnicianDescription[] = _(
     "Powers up weak moves so the\n"
@@ -1801,6 +1801,26 @@ static const u8 sViscerationDescription[] = _(
     "of its maximum HP every time\n"
     "another Pokémon faints.");
 
+static const u8 sPanaceaDescription[] = _(
+    "The Pokémon's HP is slowly but\n"
+    "steadily restored throughout a\n"
+    "battle.");
+
+static const u8 sSurpriseDescription[] = _(
+    "Lowers the opposing Pokémon's\n"
+    "accuracy and evasion upon\n"
+    "entering battle.");
+
+static const u8 sSpaceCrookDescription[] = _(
+    "If opposing Pokémon have status\n"
+    "conditions they take random fixed\n"
+    "damage at the end of every turn.");
+
+static const u8 sCurlingStoneDescription[] = _(
+    "Boosts the Pokémon's Defense\n"
+    "stat and curls up when the\n"
+    "Pokémon enters a battle.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -2207,6 +2227,10 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_INSTABILITY] = _("Instability"),
     [ABILITY_VISCERATION] = _("Visceration"),
+    [ABILITY_PANACEA] = _("Panacea"),
+    [ABILITY_SURPRISE] = _("Surprise"),
+    [ABILITY_SPACE_CROOK] = _("Space Crook"),
+    [ABILITY_CURLING_STONE] = _("Curling Stone"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2614,6 +2638,10 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_INSTABILITY] = _("Instability"),
     [ABILITY_VISCERATION] = _("Visceration"),
+    [ABILITY_PANACEA] = _("Panacea"),
+    [ABILITY_SURPRISE] = _("Surprise"),
+    [ABILITY_SPACE_CROOK] = _("Space Crook"),
+    [ABILITY_CURLING_STONE] = _("Curling Stone"),
 };
 #endif
 
@@ -3022,4 +3050,8 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_REBOUND] = sReboundDescription,
     [ABILITY_INSTABILITY] = sInstabilityDescription,
     [ABILITY_VISCERATION] = sViscerationDescription,
+    [ABILITY_PANACEA] = sPanaceaDescription,
+    [ABILITY_SURPRISE] = sSurpriseDescription,
+    [ABILITY_SPACE_CROOK] = sSpaceCrookDescription,
+    [ABILITY_CURLING_STONE] = sCurlingStoneDescription,
 };

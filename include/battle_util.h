@@ -18,8 +18,9 @@
 #define MOVE_LIMITATION_GIGATON_HAMMER          (1 << 14)
 #define MOVE_LIMITATION_ION_DELUGE              (1 << 15)
 #define MOVE_LIMITATION_PSY_SWAP                (1 << 16)
+#define MOVE_LIMITATION_PLIA_BALL               (1 << 17)
 
-#define MOVE_LIMITATION_PLACEHOLDER             (1 << 17)
+#define MOVE_LIMITATION_PLACEHOLDER             (1 << 18)
 #define MOVE_LIMITATIONS_ALL                    0xFFFF
 
 #define ABILITYEFFECT_ON_SWITCHIN                0

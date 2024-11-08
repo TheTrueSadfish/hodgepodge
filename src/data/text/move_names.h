@@ -1067,6 +1067,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_FIREBALLS] = _("Fireballs"),
     [MOVE_FERTILE_FROLIC] = _("Fertile Frolic"),
     [MOVE_ICEBREAKER] = _("Icebreaker"),
+    [MOVE_PORTENT_CAST] = _("Portent Cast"),
+    [MOVE_WARD_SPELL] = _("Ward Spell"),
 };
 #else
 // 12 letters
@@ -2137,6 +2139,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_FIREBALLS] = _("Fireballs"),
     [MOVE_FERTILE_FROLIC] = _("Fertile Frolic"),
     [MOVE_ICEBREAKER] = _("Icebreaker"),
+    [MOVE_PORTENT_CAST] = _("Portent Cast"),
+    [MOVE_WARD_SPELL] = _("Ward Spell"),
 };
 #endif
 

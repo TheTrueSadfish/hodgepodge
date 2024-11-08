@@ -5059,9 +5059,9 @@ static const u8 sUprootEvilDescription[] = _(
     "harshly drops the user's Sp. Atk.");
 
 static const u8 sPliaBallDescription[] = _(
-    "The foe is forced to switch. In\n"
-    "the wild, the battle ends. This\n"
-    "moves strikes twice in a row.");
+    "The foe is forced to switch. This\n"
+    "move strikes thrice in a row,\n"
+    "but can't be used consecutively.");
 
 static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"
@@ -5097,6 +5097,16 @@ static const u8 sIcebreakerDescription[] = _(
     "An attack that hurts the user a\n"
     "little. If the foe is frostbitten\n"
     "or frozen, may OHKO the foe.");
+
+static const u8 sPortentCastDescription[] = _(
+    "Casts a magical spell that summons\n"
+    "lucky chant on the user's side\n"
+    "and may lower the foe's accuracy.");
+
+static const u8 sWardSpellDescription[] = _(
+    "Casts a magical spell that summons\n"
+    "safeguard on the user's side and\n"
+    "raises the user's Defense stat.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -6170,4 +6180,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FIREBALLS - 1] = sFireballsDescription,
     [MOVE_FERTILE_FROLIC - 1] = sFertileFrolicDescription,
     [MOVE_ICEBREAKER - 1] = sIcebreakerDescription,
+    [MOVE_PORTENT_CAST - 1] = sPortentCastDescription,
+    [MOVE_WARD_SPELL - 1] = sWardSpellDescription,
 };
