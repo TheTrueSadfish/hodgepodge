@@ -16,7 +16,7 @@ RivalRoom_EventScript_BrineyOpening::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 1
 	setflag FLAG_SYS_B_DASH
 	setflag FLAG_RECEIVED_RUNNING_SHOES
-	setflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	clearflag FLAG_HIDE_BIRCH_BEFORE_STARTER
 	speakername RivalRoom_Text_NameBriney
 	msgbox RivalRoom_Text_GoTalkToOthers, MSGBOX_DEFAULT

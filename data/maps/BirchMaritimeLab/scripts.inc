@@ -100,7 +100,7 @@ BirchMaritimeLab_EventScript_PickYourStarter::
 	fadescreen FADE_TO_BLACK
 	special ChooseStarter
 	waitstate
-	clearflag FLAG_HIDE_BIRCH_AFTER_STARTER
+	clearflag FLAG_HIDE_INTRO_MAN_AFTER
 	setflag FLAG_HIDE_BIRCH_BEFORE_STARTER
 	setflag FLAG_BRINEY_MIDGAME_VISIT
 	special HealPlayerParty

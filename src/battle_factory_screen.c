@@ -1800,6 +1800,8 @@ static void Select_CopyMonsToPlayerParty(void)
             if (sFactorySelectScreen->mons[j].selectedId == i + 1)
             {
                 gPlayerParty[i] = sFactorySelectScreen->mons[j].monData;
+                GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES)), FLAG_GET_SEEN);
+                GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES)), FLAG_GET_CAUGHT);
                 gSaveBlock2Ptr->frontier.rentalMons[i].monId = sFactorySelectScreen->mons[j].monId;
                 gSaveBlock2Ptr->frontier.rentalMons[i].personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, NULL);
                 gSaveBlock2Ptr->frontier.rentalMons[i].abilityNum = GetBoxMonData(&gPlayerParty[i].box, MON_DATA_ABILITY_NUM, NULL);
