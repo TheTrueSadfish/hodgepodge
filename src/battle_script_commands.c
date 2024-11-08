@@ -15115,7 +15115,7 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        if (((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE || gCurrentMove != MOVE_LOVELY_POISON)
         && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
@@ -16413,7 +16413,8 @@ static void Cmd_jumpifpursuit(void)
         && !(gBattleMons[gBattlerTarget].status1 & (STATUS1_SLEEP_ANY | STATUS1_FREEZE))
         && gBattleMons[gBattlerAttacker].hp
         && !gDisableStructs[gBattlerTarget].truantCounter
-        && gBattleMoves[gChosenMoveByBattler[gBattlerTarget]].effect == EFFECT_PURSUIT)
+        && (gBattleMoves[gChosenMoveByBattler[gBattlerTarget]].effect == EFFECT_PURSUIT
+        || gBattleMoves[gChosenMoveByBattler[gBattlerTarget]].effect == EFFECT_LOVELY_POISON))
     {
         s32 i;
 

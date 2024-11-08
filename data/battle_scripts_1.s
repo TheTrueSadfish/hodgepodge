@@ -663,6 +663,75 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectTarHit                  @ EFFECT_TAR_HIT
 	.4byte BattleScript_EffectIcebreaker              @ EFFECT_ICEBREAKER
 	.4byte BattleScript_EffectFocusPunch              @ EFFECT_NON_SEQUITUR
+	.4byte BattleScript_EffectLovelyPoison            @ EFFECT_LOVELY_POISON
+	.4byte BattleScript_EffectBeldamBrew              @ EFFECT_BELDAM_BREW
+
+BattleScript_EffectBeldamBrew::
+	attackcanceler
+	attackstring
+	ppreduce
+	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_BeldamBrewPoison
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_BeldamBrewPoison
+	sethealblock BattleScript_BeldamBrewPoison
+	printstring STRINGID_PKMNPREVENTEDFROMHEALING
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotHealBlockAttacker
+BattleScript_BeldamBrewPoison:
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	trysoak BattleScript_MoveEnd
+	printstring STRINGID_TARGETCHANGEDTYPE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectLovelyPoison::
+	jumpifstatus BS_TARGET, STATUS2_INFATUATION, BattleScript_EffectPoisonFang
+	jumpifstatus BS_TARGET, STATUS1_PSN_ANY, BattleScript_EffectInfatuateHit
+	goto BattleScript_EffectHit
+BattleScript_EffectInfatuateHit::
+	attackcanceler
+	attackstring
+	ppreduce
+	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	tryinfatuating BattleScript_MoveEnd
+	printstring STRINGID_PKMNFELLINLOVE
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateAttacker
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectIcebreaker::
 	jumpifability BS_TARGET, ABILITY_STURDY, BattleScript_EffectHit

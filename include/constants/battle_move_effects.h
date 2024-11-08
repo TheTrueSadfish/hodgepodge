@@ -640,7 +640,9 @@
 #define EFFECT_TAR_HIT                      634
 #define EFFECT_ICEBREAKER                   635
 #define EFFECT_NON_SEQUITUR                 636
+#define EFFECT_LOVELY_POISON                637
+#define EFFECT_BELDAM_BREW                  638
 
-#define NUM_BATTLE_MOVE_EFFECTS             637
+#define NUM_BATTLE_MOVE_EFFECTS             639
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

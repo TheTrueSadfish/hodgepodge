@@ -17576,6 +17576,52 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .instructBanned = TRUE,
     },
 
+    [MOVE_LOVELY_POISON] =
+    {
+        .effect = EFFECT_LOVELY_POISON,
+        .power = 70,
+        .type = TYPE_POISON,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .sheerForceBoost = TRUE,
+    },
+
+    [MOVE_BELDAM_BREW] =
+    {
+        .effect = EFFECT_BELDAM_BREW,
+        .power = 110,
+        .type = TYPE_POISON,
+        .accuracy = 90,
+        .pp = 5,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
+    [MOVE_ASTRAL_SPIKES] =
+    {
+        .effect = EFFECT_MULTI_HIT,
+        .power = 25,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 90,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .pulseMove = TRUE,
+        .piercingMove = TRUE,
+        .argument = MOVE_EFFECT_ASTRAL_SPIKES,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {
