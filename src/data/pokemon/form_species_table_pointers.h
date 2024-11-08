@@ -182,6 +182,10 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_KODOUGH] = sKodoughFormSpeciesIdTable,
     [SPECIES_LYORESA] = sLyoresaFormSpeciesIdTable,
     [SPECIES_POTTRICIA] = sPottriciaFormSpeciesIdTable,
+    [SPECIES_HAGOOSH] = sHagooshFormSpeciesIdTable,
+    [SPECIES_ASTIGMORAY] = sAstigmorayFormSpeciesIdTable,
+    [SPECIES_RICKSHAWTY] = sRickshawtyFormSpeciesIdTable,
+    [SPECIES_MALMARE] = sMalmareFormSpeciesIdTable,
 #endif
     // Megas
     [SPECIES_VENUSAUR_MEGA] = sVenusaurFormSpeciesIdTable,
@@ -621,5 +625,9 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaFormSpeciesIdTable,
     [SPECIES_FAKYSNAKY] = sFakysnakyFormSpeciesIdTable,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyFormSpeciesIdTable,
+    [SPECIES_HAGOOSH_VISCOUS] = sHagooshFormSpeciesIdTable,
+    [SPECIES_ASTIGMORAY_BLIND] = sAstigmorayFormSpeciesIdTable,
+    [SPECIES_RICKSHAWTY_CHARIOT] = sRickshawtyFormSpeciesIdTable,
+    [SPECIES_MALMARE_VIRUS] = sMalmareFormSpeciesIdTable,
 #endif
 };

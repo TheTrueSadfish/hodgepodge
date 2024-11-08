@@ -1226,4 +1226,28 @@ static const u16 sFakysnakyFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
+static const u16 sHagooshFormSpeciesIdTable[] = {
+    SPECIES_HAGOOSH,
+    SPECIES_HAGOOSH_VISCOUS,
+    FORM_SPECIES_END,
+};
+
+static const u16 sAstigmorayFormSpeciesIdTable[] = {
+    SPECIES_ASTIGMORAY,
+    SPECIES_ASTIGMORAY_BLIND,
+    FORM_SPECIES_END,
+};
+
+static const u16 sRickshawtyFormSpeciesIdTable[] = {
+    SPECIES_RICKSHAWTY,
+    SPECIES_RICKSHAWTY_CHARIOT,
+    FORM_SPECIES_END,
+};
+
+static const u16 sMalmareFormSpeciesIdTable[] = {
+    SPECIES_MALMARE,
+    SPECIES_MALMARE_VIRUS,
+    FORM_SPECIES_END,
+};
+
 #endif
