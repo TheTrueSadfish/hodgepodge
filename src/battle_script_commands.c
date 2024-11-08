@@ -13081,7 +13081,7 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         if (gCurrentMove == MOVE_LUNAR_DANCE)
             gBattleStruct->storedLunarDance |= gBitTable[battler];
-        if (gCurrentMove == MOVE_HEAL_MELODY)
+        else if (gCurrentMove == MOVE_HEAL_MELODY)
             gBattleStruct->storedHealingMelody |= gBitTable[battler];
         else
             gBattleStruct->storedHealingWish |= gBitTable[battler];
