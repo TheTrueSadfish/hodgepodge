@@ -446,8 +446,10 @@
 #define MOVE_EFFECT_SYRUP_BOMB          111
 #define MOVE_EFFECT_OCTAZOOKA           112
 #define MOVE_EFFECT_WITCH_HYMN          113
+#define MOVE_EFFECT_STOCKPILE_AWAY      114
+#define MOVE_EFFECT_TAR                 115
 
-#define NUM_MOVE_EFFECTS                114
+#define NUM_MOVE_EFFECTS                116
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

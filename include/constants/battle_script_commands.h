@@ -196,7 +196,6 @@
 #define VARIOUS_TERRAIN_SEED                         104
 #define VARIOUS_MAKE_INVISIBLE                       105
 #define VARIOUS_ROOM_SERVICE                         106
-
 #define VARIOUS_EERIE_SPELL_PP_REDUCE                107
 #define VARIOUS_JUMP_IF_TEAM_HEALTHY                 108
 #define VARIOUS_TRY_HEAL_QUARTER_HP                  109
@@ -295,6 +294,9 @@
 #define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
 #define VARIOUS_TRY_RESET_STAT_STAGES                204
 #define VARIOUS_TRY_EMBER_SNOW                       205
+#define VARIOUS_HAUNT_MELODY_PP_REDUCE               206
+#define VARIOUS_JUMP_IF_NO_STOCKPILE                 207
+#define VARIOUS_SET_NON_SEQUITUR                     208
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

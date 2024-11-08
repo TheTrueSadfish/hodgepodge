@@ -1586,6 +1586,11 @@ static void Cmd_attackcanceler(void)
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
+    else if (gProtectStructs[gBattlerTarget].nonSequiturCharge && IsMoveMakingContact(gCurrentMove, gBattlerAttacker))
+    {
+        gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
     else
     {
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -2145,6 +2150,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || gBattleMoves[move].effect == EFFECT_SEIZE_CHANCE
              || gBattleMoves[move].effect == EFFECT_VITAL_THROW
              || gCurrentMove == MOVE_SHARPSHOOT
+             || (gCurrentMove == MOVE_GREASE_LIGHTNING && gDisableStructs[battlerDef].tarShot)
              || (gBattleMoves[move].effect == EFFECT_SNOWFADE && gBattleWeather & B_WEATHER_HAIL)
              || (gBattleMoves[move].effect == EFFECT_LOW_KICK && gFieldStatuses & STATUS_FIELD_GRAVITY)
              || (gBattleMoves[move].effect == EFFECT_SMACK_DOWN && gFieldStatuses & STATUS_FIELD_GRAVITY)
@@ -2304,6 +2310,10 @@ static void Cmd_damagecalc(void)
     else if (gCurrentMove == MOVE_GAMMA_RAY && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
     {
         gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + 30;
+    }
+    else if (gCurrentMove == MOVE_BRIAR_WHIP)
+    {
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 10) / 100);
     }
     else
     {
@@ -3199,6 +3209,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
     case MOVE_EFFECT_SMACK_DOWN:
     case MOVE_EFFECT_REMOVE_STATUS:
     case MOVE_EFFECT_STOCKPILE_WORE_OFF:
+    case MOVE_EFFECT_STOCKPILE_AWAY:
         gBattleStruct->moveEffect2 = gBattleScripting.moveEffect;
         gBattlescriptCurrInstr++;
         return;
@@ -4414,6 +4425,13 @@ void SetMoveEffect(bool32 primary, u32 certain)
             case MOVE_EFFECT_THROAT_CHOP:
                 gDisableStructs[gEffectBattler].throatChopTimer = 2;
                 gBattlescriptCurrInstr++;
+                break;
+            case MOVE_EFFECT_TAR:
+                if (!NoAliveMonsForEitherParty())
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectTarShot;
+                }
                 break;
             case MOVE_EFFECT_INCINERATE:
                 if ((gBattleMons[gEffectBattler].item >= FIRST_BERRY_INDEX && gBattleMons[gEffectBattler].item <= LAST_BERRY_INDEX)
@@ -6417,6 +6435,55 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_BeakBlastBurn;
                     effect = 1;
                 }
+                else if (gProtectStructs[gBattlerTarget].nonSequiturCharge
+                         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+                {
+                    i = Random() % 4;
+
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+
+                    if (i == 0)
+                    {
+                        gBattleMons[gBattlerAttacker].status1 = STATUS1_BURN;
+                        BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+                        MarkBattlerForControllerExec(gBattlerAttacker);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_BeakBlastBurn;
+                        effect = 1;
+                    }
+                    else if (i == 1)
+                    {
+                        gBattleMons[gBattlerAttacker].status1 = STATUS1_FROSTBITE;
+                        BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+                        MarkBattlerForControllerExec(gBattlerAttacker);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_NonSequiturFrostbite;
+                        effect = 1;
+                    }
+                    else if (i == 2)
+                    {
+                        gBattleMons[gBattlerAttacker].status1 = STATUS1_TOXIC_POISON;
+                        BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+                        MarkBattlerForControllerExec(gBattlerAttacker);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_NonSequiturToxic;
+                        effect = 1;
+                    }
+                    else if (i == 3)
+                    {
+                        gBattleMons[gBattlerAttacker].status1 = STATUS1_PARALYSIS;
+                        BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+                        MarkBattlerForControllerExec(gBattlerAttacker);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_NonSequiturParalyze;
+                        effect = 1;
+                    }
+                    else
+                    {
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_NonSequiturRet;
+                    }
+                }
             }
             else //other PROTECT_LIKE_EFFECTs
             {
@@ -6498,6 +6565,7 @@ static void Cmd_moveend(void)
                 case EFFECT_SUBMISSION: // differentiated for reasons
                 case EFFECT_FLYING_PRESS: // Flying Press, Fighting/Flying-type move
                 case EFFECT_FIREWORK_CRASH: // Firework Crash, boosts speed
+                case EFFECT_ICEBREAKER: // Icebreaker, may OHKO
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 4);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6616,6 +6684,15 @@ static void Cmd_moveend(void)
                     effect = TRUE;
                     BattleScriptPush(gBattlescriptCurrInstr);
                     gBattlescriptCurrInstr = BattleScript_MoveEffectStockpileWoreOff;
+                }
+                break;
+            case MOVE_EFFECT_STOCKPILE_AWAY:
+                if (gDisableStructs[gBattlerAttacker].stockpileCounter != 0)
+                {
+                    gDisableStructs[gBattlerAttacker].stockpileCounter = 0;
+                    effect = TRUE;
+                    BattleScriptPush(gBattlescriptCurrInstr);
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectStockpileAway;
                 }
                 break;
             case MOVE_EFFECT_SMACK_DOWN:
@@ -6949,12 +7026,6 @@ static void Cmd_moveend(void)
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DefDownSpeedUp;
-                    }
-
-                    if (gCurrentMove == MOVE_FIREBALLS && !NoAliveMonsForEitherParty())
-                    {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_ResetUserStats;
                     }
 
                     BattleScriptPushCursor();
@@ -11824,6 +11895,54 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_HAUNT_MELODY_PP_REDUCE:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+
+        if (gLastMoves[battler] != MOVE_NONE && gLastMoves[battler] != 0xFFFF)
+        {
+            s32 i;
+
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                if (gLastMoves[battler] == gBattleMons[battler].moves[i])
+                    break;
+            }
+
+            if (i != MAX_MON_MOVES && gBattleMons[battler].pp[i] != 0)
+            {
+                s32 ppToDeduct = 3;
+
+                if (gBattleMons[battler].status1 & STATUS1_PSN_ANY || gBattleMons[battler].pp[i] < ppToDeduct)
+                    ppToDeduct = gBattleMons[battler].pp[i];
+
+                PREPARE_MOVE_BUFFER(gBattleTextBuff1, gLastMoves[battler])
+                ConvertIntToDecimalStringN(gBattleTextBuff2, ppToDeduct, STR_CONV_MODE_LEFT_ALIGN, 1);
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 2, ppToDeduct)
+                gBattleMons[battler].pp[i] -= ppToDeduct;
+                if (!(gDisableStructs[battler].mimickedMoves & gBitTable[i])
+                    && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED))
+                {
+                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[battler].pp[i]), &gBattleMons[battler].pp[i]);
+                    MarkBattlerForControllerExec(battler);
+                }
+
+                if (gBattleMons[battler].pp[i] == 0 && gBattleStruct->skyDropTargets[battler] == 0xFF)
+                    CancelMultiTurnMoves(battler);
+
+                gBattlescriptCurrInstr = cmd->nextInstr;    // continue
+            }
+            else
+            {
+                gBattlescriptCurrInstr = cmd->failInstr;   // cant reduce pp
+            }
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;   // cant reduce pp
+        }
+        return;
+    }
     case VARIOUS_JUMP_IF_TEAM_HEALTHY:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
@@ -12532,6 +12651,19 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_JUMP_IF_NO_STOCKPILE:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if (gDisableStructs[battler].stockpileCounter == 0)
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_SET_ATTACKER_STICKY_WEB_USER:
     {
         VARIOUS_ARGS();
@@ -12842,6 +12974,12 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gProtectStructs[battler].beakBlastCharge = TRUE;
+        break;
+    }
+    case VARIOUS_SET_NON_SEQUITUR:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].nonSequiturCharge = TRUE;
         break;
     }
     case VARIOUS_SWAP_SIDE_STATUSES:
@@ -14750,7 +14888,11 @@ static void Cmd_tryKO(void)
     }
     else
     {
-        if ((((gStatuses3[gBattlerTarget] & STATUS3_ALWAYS_HITS)
+        if (gCurrentMove == MOVE_ICEBREAKER && (gBattleMons[gBattlerTarget].status1 & STATUS1_FROSTBITE || gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+        {
+            lands = TRUE;
+        }
+        else if ((((gStatuses3[gBattlerTarget] & STATUS3_ALWAYS_HITS)
                 && gDisableStructs[gBattlerTarget].battlerWithSureHit == gBattlerAttacker)
             || GetBattlerAbility(gBattlerAttacker) == ABILITY_NO_GUARD
             || targetAbility == ABILITY_NO_GUARD)
@@ -14974,10 +15116,9 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE 
-            && (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
-                || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-            )
+        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
+        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -19721,16 +19862,6 @@ void BS_TryHaze(void)
         else
             gBattlescriptCurrInstr = cmd->nextInstr;
     }
-}
-
-void BS_JumpIfNotHit(void)
-{
-    NATIVE_ARGS(const u8 *jumpInstr);
-
-    if ((gProtectStructs[gBattlerAttacker].physicalDmg && gProtectStructs[gBattlerAttacker].physicalBattlerId == gBattlerTarget) || (gProtectStructs[gBattlerAttacker].specialDmg && gProtectStructs[gBattlerAttacker].specialBattlerId == gBattlerTarget))
-        gBattlescriptCurrInstr = cmd->nextInstr;
-    else
-        gBattlescriptCurrInstr = cmd->jumpInstr;
 }
 
 void BS_CopyFoesStatIncrease(void)

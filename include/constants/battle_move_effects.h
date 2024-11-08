@@ -630,7 +630,17 @@
 #define EFFECT_FIREWORK_CRASH               624
 #define EFFECT_FIREBALLS                    625
 #define EFFECT_EMBER_SNOW                   626
+#define EFFECT_FEATHER_RAZOR                627
+#define EFFECT_DRAG_DOWN                    628
+#define EFFECT_HAUNT_MELODY                 629
+#define EFFECT_ODDCAST                      630
+#define EFFECT_KELP_SAP                     631
+#define EFFECT_NANAB_GATTLING               632
+#define EFFECT_FERTILE_FROLIC               633
+#define EFFECT_TAR_HIT                      634
+#define EFFECT_ICEBREAKER                   635
+#define EFFECT_NON_SEQUITUR                 636
 
-#define NUM_BATTLE_MOVE_EFFECTS             627
+#define NUM_BATTLE_MOVE_EFFECTS             637
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

@@ -1496,11 +1496,6 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro jumpifnothit jumpInstr:req
-	callnative BS_JumpIfNotHit
-	.4byte \jumpInstr
-	.endm
-
 	.macro copyfoesstatincrease battler:req, failInstr:req
 	callnative BS_CopyFoesStatIncrease
 	.byte \battler
@@ -2094,6 +2089,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro hauntmelodyppreduce failInstr:req
+	various BS_TARGET, VARIOUS_HAUNT_MELODY_PP_REDUCE
+	.4byte \failInstr
+	.endm
+
 	.macro blukberryppreduce failInstr:req
 	various BS_TARGET, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
@@ -2296,6 +2296,10 @@
 	various \battler, VARIOUS_SET_BEAK_BLAST
 	.endm
 
+	.macro setnonsequitur battler:req
+	various \battler, VARIOUS_SET_NON_SEQUITUR
+	.endm
+
 	.macro swapsidestatuses
 	various BS_ATTACKER, VARIOUS_SWAP_SIDE_STATUSES
 	.endm
@@ -2480,6 +2484,11 @@
 
 	.macro jumpifterucharmprotected battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED
+	.4byte \jumpInstr
+	.endm
+
+	.macro jumpifnostockpile battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_NO_STOCKPILE
 	.4byte \jumpInstr
 	.endm
 
