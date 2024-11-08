@@ -213,6 +213,7 @@
 #define STATUS4_POWER_SHIFT             (1 << 17)
 #define STATUS4_SYRUP_BOMB              (1 << 18)
 #define STATUS4_IN_FLAMES               (1 << 19)
+#define STATUS4_BERRY_EATEN             (1 << 20)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)

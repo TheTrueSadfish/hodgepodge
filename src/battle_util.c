@@ -3484,10 +3484,8 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_DARK_HUNGER:
-            if (gDisableStructs[battler].berryEatenTimer > 0)
-            {
-                gDisableStructs[battler].berryEatenTimer--;
-            }
+            if (gDisableStructs[battler].berryEatenTimer > 0 && --gDisableStructs[battler].berryEatenTimer == 0)
+                gStatuses4[battler] &= ~STATUS4_BERRY_EATEN;
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_YAWN: // yawn
@@ -10964,6 +10962,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
     if (effect && (gLastUsedItem >= FIRST_BERRY_INDEX && gLastUsedItem <= LAST_BERRY_INDEX))
     {
         gBattleStruct->ateBerry[battler & BIT_SIDE] |= gBitTable[gBattlerPartyIndexes[battler]];
+        gStatuses4[battler & BIT_SIDE] |= STATUS4_BERRY_EATEN;
         gDisableStructs[battler & BIT_SIDE].berryEatenTimer == 2;
     }
 
@@ -12280,7 +12279,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_DARK_HUNGER:
-        if (gDisableStructs[battlerAtk].berryEatenTimer == 1)
+        if (gStatuses4[battlerAtk] & STATUS4_BERRY_EATEN)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case EFFECT_SOLAR_BEAM:
