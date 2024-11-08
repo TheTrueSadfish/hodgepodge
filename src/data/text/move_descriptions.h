@@ -5093,6 +5093,11 @@ static const u8 sFireballsDescription[] = _(
     "the user. Boosted for each stat\n"
     "raise on the user. Resets stats.");
 
+static const u8 sIcebreakerDescription[] = _(
+    "An attack that hurts the user a\n"
+    "little. If the foe is frostbitten\n"
+    "or frozen, may OHKO the foe.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -6163,4 +6168,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_LOVELY_POISON - 1] = sLovelyPoisonDescription,
     [MOVE_GAMMA_RAY - 1] = sGammaRayDescription,
     [MOVE_FIREBALLS - 1] = sFireballsDescription,
+    [MOVE_FERTILE_FROLIC - 1] = sFertileFrolicDescription,
+    [MOVE_ICEBREAKER - 1] = sIcebreakerDescription,
 };

@@ -1172,6 +1172,7 @@ gBattleAnims_General::
 	.4byte Move_HEARTHWARM                  @ B_ANIM_HEARTHWARM_HEAL
 	.4byte Move_GRAVITY                     @ B_ANIM_GRAVITY
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
+	.4byte General_BeakBlastSetUp           @ B_ANIM_NON_SEQUITUR_SETUP
 
 	.align 2
 gBattleAnims_Special::

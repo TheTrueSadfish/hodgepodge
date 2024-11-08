@@ -114,6 +114,7 @@ enum RandomTag
     RNG_HOLD_EFFECT_SILVER_POWDER,
     RNG_HOLD_EFFECT_SOFT_SAND,
     RNG_WITCH_HYMN,
+    RNG_GREASY,
 };
 
 #define RandomWeighted(tag, ...) \

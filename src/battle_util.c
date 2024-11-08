@@ -3488,7 +3488,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
                 gDisableStructs[battler].berryEatenTimer--;
             }
-            gBattleStruct->turnCountersTracker++;
+            gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_YAWN: // yawn
             if (gStatuses3[battler] & STATUS3_YAWN)
@@ -4454,6 +4454,16 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
+            else if (gCurrentMove == MOVE_GOOSE_CHASER && (RandomPercentage(RNG_GREASY, 25)))
+            {
+                gMultiHitCounter = 2;
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+            }
+            else if (gCurrentMove == MOVE_NANAB_GATTLING && (gDisableStructs[gBattlerAttacker].stockpileCounter > 0))
+            {
+                gMultiHitCounter = gDisableStructs[gBattlerAttacker].stockpileCounter + 1;
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+            }
             else if (gCurrentMove == MOVE_FIREBALLS)
             {
                 gMultiHitCounter = CountBattlerStatDecreases(gBattlerAttacker, TRUE);
@@ -4479,7 +4489,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 {
                     gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
                 }
-                else if ((gBattleMoves[gCurrentMove].effect == EFFECT_FROST_SHRED) && (gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE))
+                else if ((gBattleMoves[gCurrentMove].effect == EFFECT_FROST_SHRED || gBattleMoves[gCurrentMove].effect == EFFECT_FEATHER_RAZOR) && (gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE))
                 {
                     count += gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] - DEFAULT_STAT_STAGE;
                     gMultiHitCounter = count + gBattleMoves[gCurrentMove].strikeCount;
@@ -11948,9 +11958,9 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 120 * gBattleMons[battlerDef].hp / gBattleMons[battlerDef].maxHP;
         break;
     case EFFECT_HEX:
+    case EFFECT_ODDCAST:
     case EFFECT_INFERNAL_PARADE:
     case EFFECT_BITTER_MALICE:
-    case EFFECT_BARB_BARRAGE:
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY_NEGATIVE || abilityDef == ABILITY_COMATOSE)
             basePower *= 2;
         break;
@@ -12020,6 +12030,9 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_PUNISHMENT:
         basePower = 50 + (CountBattlerStatIncreases(battlerDef, FALSE) * 50);
+        break;
+    case EFFECT_FERTILE_FROLIC:
+        basePower = 30 + (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);
         break;
     case EFFECT_STORED_POWER:
         basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);

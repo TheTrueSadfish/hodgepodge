@@ -4941,7 +4941,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     if (gProtectStructs[battler].quash)
         priority = -8;
 
-    if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG)
+    if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG || gBattleMoves[move].effect == EFFECT_DRAG_DOWN)
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
@@ -5311,6 +5311,9 @@ static bool32 TryDoMoveEffectsBeforeMoves(void)
                 case MOVE_BEAK_BLAST:
                     BattleScriptExecute(BattleScript_BeakBlastSetUp);
                     return TRUE;
+                case MOVE_NON_SEQUITUR:
+                    BattleScriptExecute(BattleScript_NonSequiturSetUp);
+                    return TRUE;
                 case MOVE_SHELL_TRAP:
                     BattleScriptExecute(BattleScript_ShellTrapSetUp);
                     return TRUE;
@@ -5355,6 +5358,7 @@ static void CheckQuickClaw_CustapBerryActivation(void)
             gBattleStruct->quickClawBattlerId++;
             if (gChosenActionByBattler[battler] == B_ACTION_USE_MOVE
              && gChosenMoveByBattler[battler] != MOVE_FOCUS_PUNCH   // quick claw message doesn't need to activate here
+             && gChosenMoveByBattler[battler] != MOVE_NON_SEQUITUR   // quick claw message doesn't need to activate here
              && (gProtectStructs[battler].usedCustapBerry || gProtectStructs[battler].quickDraw)
              && !(gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
              && !(gDisableStructs[gBattlerAttacker].truantCounter)

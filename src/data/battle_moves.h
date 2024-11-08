@@ -17361,7 +17361,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 15,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -17383,6 +17383,197 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPATK_UP_1,
         .magicCoatAffected = TRUE,
+    },
+
+    [MOVE_FEATHER_RAZOR] =
+    {
+        .effect = EFFECT_FEATHER_RAZOR,
+        .power = 20,
+        .type = TYPE_FLYING,
+        .accuracy = 90,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .highCritRatio = TRUE,
+        .slicingMove = TRUE,
+        .strikeCount = 2,
+    },
+
+    [MOVE_DRAG_DOWN] =
+    {
+        .effect = EFFECT_DRAG_DOWN,
+        .power = 90,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .switchingMove = TRUE,
+    },
+
+    [MOVE_HAUNT_MELODY] =
+    {
+        .effect = EFFECT_HAUNT_MELODY,
+        .power = 70,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .argument = STATUS1_PSN_ANY,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .sheerForceBoost = TRUE,
+        .soundMove = TRUE,
+    },
+
+    [MOVE_ODDCAST] =
+    {
+        .effect = EFFECT_ODDCAST,
+        .power = 75,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .sheerForceBoost = TRUE,
+        .soundMove = TRUE,
+    },
+
+    [MOVE_BRIAR_WHIP] =
+    {
+        .effect = EFFECT_ATTACK_DOWN_HIT,
+        .power = 30,
+        .type = TYPE_GRASS,
+        .accuracy = 90,
+        .pp = 15,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .sheerForceBoost = TRUE,
+        .strikeCount = 2,
+    },
+
+    [MOVE_KELP_SAP] =
+    {
+        .effect = EFFECT_KELP_SAP,
+        .power = 65,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .argument = 75, // restores 75% HP instead of 50% HP
+        .zMoveEffect = Z_EFFECT_NONE, // && B_UPDATED_MOVE_FLAGS > GEN_2
+        .makesContact = TRUE,
+    },
+
+    [MOVE_NANAB_GATTLING] =
+    {
+        .effect = EFFECT_NANAB_GATTLING,
+        .power = 100,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .mirrorMoveBanned = TRUE,
+    },
+
+    [MOVE_FERTILE_FROLIC] =
+    {
+        .effect = EFFECT_FERTILE_FROLIC,
+        .power = 30,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .danceMove = TRUE,
+    },
+
+    [MOVE_GOOSE_CHASER] =
+    {
+        .effect = EFFECT_TAR_HIT,
+        .power = 20,
+        .type = TYPE_GREASY,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
+    [MOVE_GREASE_LIGHTNING] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_GREASY,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 1,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
+    [MOVE_ICEBREAKER] =
+    {
+        .effect = EFFECT_ICEBREAKER,
+        .power = 100,
+        .type = TYPE_ICE,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 1,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+    },
+
+    [MOVE_NON_SEQUITUR] =
+    {
+        .effect = EFFECT_NON_SEQUITUR,
+        .power = 150,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = -3,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .mirrorMoveBanned = TRUE,
+        .meFirstBanned = TRUE,
+        .metronomeBanned = TRUE,
+        .copycatBanned = TRUE,
+        .instructBanned = TRUE,
     },
 
     // Z-Moves

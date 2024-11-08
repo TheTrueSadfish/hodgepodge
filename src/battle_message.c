@@ -953,6 +953,7 @@ static const u8 sText_TargetNegativeStatChangesGone[] = _("{B_DEF_NAME_WITH_PREF
 static const u8 sText_UserStatChangesGone[] = _("{B_ATK_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
 static const u8 sText_TargetStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat\nchanges were eliminated!");
 static const u8 sText_TargetPositiveStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s positive stat\nchanges were eliminated!");
+static const u8 sText_PreparingOddness[] = _("{B_ATK_NAME_WITH_PREFIX} is\npreparing oddness!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1757,6 +1758,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_UserStatChangesGone,
     [STRINGID_TARGETSTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetStatChangesGone,
     [STRINGID_TARGETPOSITIVESTATCHANGESGONE - BATTLESTRINGS_TABLE_START] = sText_TargetPositiveStatChangesGone,
+    [STRINGID_PREPARINGODDNESS - BATTLESTRINGS_TABLE_START] = sText_PreparingOddness,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
