@@ -240,5 +240,13 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_POTTRICIA_SHATTERED] = sPottriciaFormChangeTable,
     [SPECIES_FAKYSNAKY] = sFakysnakyFormChangeTable,
     [SPECIES_FAKYSNAKY_BUSTED] = sFakysnakyFormChangeTable,
+    [SPECIES_HAGOOSH] = sHagooshFormChangeTable,
+    [SPECIES_HAGOOSH_VISCOUS] = sHagooshFormChangeTable,
+    [SPECIES_ASTIGMORAY] = sAstigmorayFormChangeTable,
+    [SPECIES_ASTIGMORAY_BLIND] = sAstigmorayFormChangeTable,
+    [SPECIES_RICKSHAWTY] = sRickshawtyFormChangeTable,
+    [SPECIES_RICKSHAWTY_CHARIOT] = sRickshawtyFormChangeTable,
+    [SPECIES_MALMARE] = sMalmareFormChangeTable,
+    [SPECIES_MALMARE_VIRUS] = sMalmareFormChangeTable,
 #endif
 };
