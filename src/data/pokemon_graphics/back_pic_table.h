@@ -1661,7 +1661,7 @@ const struct CompressedSpriteSheet gMonBackPicTable[NUM_SPECIES + 1] =
 
     SPECIES_SPRITE(BASCULEGION_FEMALE, gMonBackPic_BasculegionFemale),
 #endif
-    SPECIES_SPRITE(EGG, gMonBackPic_Egg),
+    SPECIES_SPRITE(EGG, gMonBackPic_Eggneggma),
 };
 
 const struct CompressedSpriteSheet gMonBackPicTableFemale[NUM_SPECIES + 1] =

@@ -1,0 +1,2 @@
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/data.o src/data.c
+tools/agbcc/bin/agbcc <flags> -o build/emerald/src/pokemon.o src/pokemon.c
