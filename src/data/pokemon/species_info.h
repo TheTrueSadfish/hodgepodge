@@ -26344,7 +26344,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
-    [SPECIES_FBI_PENGUIN_1] =
+    [SPECIES_FBI_PENGUIN_2] =
     {
         .baseHP        = 1,
         .baseAttack    = 1,
@@ -26843,7 +26843,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_FULLMETAL, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
@@ -26864,7 +26864,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_FULLMETAL, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
@@ -26885,7 +26885,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_FULLMETAL, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
     },
