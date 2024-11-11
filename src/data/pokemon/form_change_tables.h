@@ -638,6 +638,30 @@ static const struct FormChange sFakysnakyFormChangeTable[] = {
     {FORM_CHANGE_END_BATTLE,    SPECIES_FAKYSNAKY},
     {FORM_CHANGE_TERMINATOR},
 };
+
+static const struct FormChange sHagooshFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_HAGOOSH},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_HAGOOSH},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sAstigmorayFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_ASTIGMORAY},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_ASTIGMORAY},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sRickshawtyFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_RICKSHAWTY},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_RICKSHAWTY},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sMalmareFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_MALMARE},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_MALMARE},
+    {FORM_CHANGE_TERMINATOR},
+};
 #endif
 
 #undef WHEN_LEARNED

@@ -10661,6 +10661,570 @@ static const union AnimCmd sAnim_Pottricia_1[] =
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
 };
+
+static const union AnimCmd sAnim_Gooper_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Swisquire_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Mog_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Profur_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Celshrioom_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Dadalemma_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Crawtendr_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Okkamirizo_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Plantatori_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Sappod_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Shelbert_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Shelebrate_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_SnortAlpaca_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Plaintain_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Musalord_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Brevato_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Kelppy_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Lurkelp_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Shroomoink_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Sporke_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Chernoboar_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Burstad_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Blastoad_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Expload_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_FBIPenguin1_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_FBIPenguin2_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Icandesfen_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Magidash_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Seraphure_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Hagoosh_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Wakasuka_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Dullsod_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Bevolpin_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Wattl_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Xolhm_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Oddiowave_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Wherml_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Crusterror_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Mantacore_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Skuldugery_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Gravendor_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_OgwonRock_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Grubble_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Gracklin_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Shamburger_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Frozhorn_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Frozforce_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Staalnary_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Baromite_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Napalmite_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Stovlare_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Orbacle_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Ninown_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Cardict_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Pokerlord_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Degourge_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Tuetuerror_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Baghost_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Baghoul_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Wuvme_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Veeblen_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Malachrey_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Malmare_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Sweetan_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Melceralba_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Buggory_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Zappug_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Pupulze_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Rubimizer_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Rickshawty_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Tremite_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Trohive_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Castermite_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Eyeslight_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Beholzer_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Eyerish_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Retineel_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Astigmoray_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Gelectual_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Rebrr_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Ferrofros_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Fortifros_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Arctikack_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Prismapup_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Vividawg_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Kittepup_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Peckachew_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Skooky_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Vizaaviso_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Setatonkre_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Panzeehee_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Babobo_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Groose_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_Greese_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
 #endif
 
 static const union AnimCmd sAnim_VenusaurMega_1[] =
@@ -12928,6 +13492,100 @@ SINGLE_ANIMATION(ShishimaPunisherAlt);
 SINGLE_ANIMATION(Lyolica);
 SINGLE_ANIMATION(Pottricia);
 SINGLE_ANIMATION(PottriciaShattered);
+SINGLE_ANIMATION(Gooper);
+SINGLE_ANIMATION(Swisquire);
+SINGLE_ANIMATION(Mog);
+SINGLE_ANIMATION(Profur);
+SINGLE_ANIMATION(Celshrioom);
+SINGLE_ANIMATION(Dadalemma);
+SINGLE_ANIMATION(Crawtendr);
+SINGLE_ANIMATION(Okkamirizo);
+SINGLE_ANIMATION(Plantatori);
+SINGLE_ANIMATION(Sappod);
+SINGLE_ANIMATION(Shelbert);
+SINGLE_ANIMATION(Shelebrate);
+SINGLE_ANIMATION(SnortAlpaca);
+SINGLE_ANIMATION(Plaintain);
+SINGLE_ANIMATION(Musalord);
+SINGLE_ANIMATION(Brevato);
+SINGLE_ANIMATION(Kelppy);
+SINGLE_ANIMATION(Lurkelp);
+SINGLE_ANIMATION(Shroomoink);
+SINGLE_ANIMATION(Sporke);
+SINGLE_ANIMATION(Chernoboar);
+SINGLE_ANIMATION(Burstad);
+SINGLE_ANIMATION(Blastoad);
+SINGLE_ANIMATION(Expload);
+SINGLE_ANIMATION(FBIPenguin1);
+SINGLE_ANIMATION(FBIPenguin2);
+SINGLE_ANIMATION(Icandesfen);
+SINGLE_ANIMATION(Magidash);
+SINGLE_ANIMATION(Seraphure);
+SINGLE_ANIMATION(Hagoosh);
+SINGLE_ANIMATION(Wakasuka);
+SINGLE_ANIMATION(Dullsod);
+SINGLE_ANIMATION(Bevolpin);
+SINGLE_ANIMATION(Wattl);
+SINGLE_ANIMATION(Xolhm);
+SINGLE_ANIMATION(Oddiowave);
+SINGLE_ANIMATION(Wherml);
+SINGLE_ANIMATION(Crusterror);
+SINGLE_ANIMATION(Mantacore);
+SINGLE_ANIMATION(Skuldugery);
+SINGLE_ANIMATION(Gravendor);
+SINGLE_ANIMATION(OgwonRock);
+SINGLE_ANIMATION(Grubble);
+SINGLE_ANIMATION(Gracklin);
+SINGLE_ANIMATION(Shamburger);
+SINGLE_ANIMATION(Frozhorn);
+SINGLE_ANIMATION(Frozforce);
+SINGLE_ANIMATION(Staalnary);
+SINGLE_ANIMATION(Baromite);
+SINGLE_ANIMATION(Napalmite);
+SINGLE_ANIMATION(Stovlare);
+SINGLE_ANIMATION(Orbacle);
+SINGLE_ANIMATION(Ninown);
+SINGLE_ANIMATION(Cardict);
+SINGLE_ANIMATION(Pokerlord);
+SINGLE_ANIMATION(Degourge);
+SINGLE_ANIMATION(Tuetuerror);
+SINGLE_ANIMATION(Baghost);
+SINGLE_ANIMATION(Baghoul);
+SINGLE_ANIMATION(Wuvme);
+SINGLE_ANIMATION(Veeblen);
+SINGLE_ANIMATION(Malachrey);
+SINGLE_ANIMATION(Malmare);
+SINGLE_ANIMATION(Sweetan);
+SINGLE_ANIMATION(Melceralba);
+SINGLE_ANIMATION(Buggory);
+SINGLE_ANIMATION(Zappug);
+SINGLE_ANIMATION(Pupulze);
+SINGLE_ANIMATION(Rubimizer);
+SINGLE_ANIMATION(Rickshawty);
+SINGLE_ANIMATION(Tremite);
+SINGLE_ANIMATION(Trohive);
+SINGLE_ANIMATION(Castermite);
+SINGLE_ANIMATION(Eyeslight);
+SINGLE_ANIMATION(Beholzer);
+SINGLE_ANIMATION(Eyerish);
+SINGLE_ANIMATION(Retineel);
+SINGLE_ANIMATION(Astigmoray);
+SINGLE_ANIMATION(Gelectual);
+SINGLE_ANIMATION(Rebrr);
+SINGLE_ANIMATION(Ferrofros);
+SINGLE_ANIMATION(Fortifros);
+SINGLE_ANIMATION(Arctikack);
+SINGLE_ANIMATION(Prismapup);
+SINGLE_ANIMATION(Vividawg);
+SINGLE_ANIMATION(Kittepup);
+SINGLE_ANIMATION(Peckachew);
+SINGLE_ANIMATION(Skooky);
+SINGLE_ANIMATION(Vizaaviso);
+SINGLE_ANIMATION(Setatonkre);
+SINGLE_ANIMATION(Panzeehee);
+SINGLE_ANIMATION(Babobo);
+SINGLE_ANIMATION(Groose);
+SINGLE_ANIMATION(Greese);
 #endif
 SINGLE_ANIMATION(VenusaurMega);
 SINGLE_ANIMATION(CHARIZARD_MEGA_X);
@@ -14246,6 +14904,104 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[NUM_SPECIES + 1] =
     [SPECIES_POTTRICIA] = sAnims_Pottricia,
     [SPECIES_POTTRICIA_SHATTERED] = sAnims_PottriciaShattered,
     [SPECIES_FAKYSNAKY_BUSTED] = sAnims_Fakysnaky,
+    [SPECIES_GOOPER] = sAnims_Gooper,
+    [SPECIES_SWISQUIRE] = sAnims_Swisquire,
+    [SPECIES_MOG] = sAnims_Mog,
+    [SPECIES_PROFUR] = sAnims_Profur,
+    [SPECIES_CELSHRIOOM] = sAnims_Celshrioom,
+    [SPECIES_DADALEMMA] = sAnims_Dadalemma,
+    [SPECIES_CRAWTENDR] = sAnims_Crawtendr,
+    [SPECIES_OKKAMIRIZO] = sAnims_Okkamirizo,
+    [SPECIES_PLANTATORI] = sAnims_Plantatori,
+    [SPECIES_SAPPOD] = sAnims_Sappod,
+    [SPECIES_SHELBERT] = sAnims_Shelbert,
+    [SPECIES_SHELEBRATE] = sAnims_Shelebrate,
+    [SPECIES_SNORT_ALPACA] = sAnims_SnortAlpaca,
+    [SPECIES_PLAINTAIN] = sAnims_Plaintain,
+    [SPECIES_MUSALORD] = sAnims_Musalord,
+    [SPECIES_BREVATO] = sAnims_Brevato,
+    [SPECIES_KELPPY] = sAnims_Kelppy,
+    [SPECIES_LURKELP] = sAnims_Lurkelp,
+    [SPECIES_SHROOMOINK] = sAnims_Shroomoink,
+    [SPECIES_SPORKE] = sAnims_Sporke,
+    [SPECIES_CHERNOBOAR] = sAnims_Chernoboar,
+    [SPECIES_BURSTAD] = sAnims_Burstad,
+    [SPECIES_BLASTOAD] = sAnims_Blastoad,
+    [SPECIES_EXPLOAD] = sAnims_Expload,
+    [SPECIES_FBI_PENGUIN_1] = sAnims_FBIPenguin1,
+    [SPECIES_FBI_PENGUIN_2] = sAnims_FBIPenguin2,
+    [SPECIES_ICANDESFEN] = sAnims_Icandesfen,
+    [SPECIES_MAGIDASH] = sAnims_Magidash,
+    [SPECIES_SERAPHURE] = sAnims_Seraphure,
+    [SPECIES_HAGOOSH] = sAnims_Hagoosh,
+    [SPECIES_HAGOOSH_VISCOUS] = sAnims_Hagoosh,
+    [SPECIES_WAKASUKA] = sAnims_Wakasuka,
+    [SPECIES_DULLSOD] = sAnims_Dullsod,
+    [SPECIES_BEVOLPIN] = sAnims_Bevolpin,
+    [SPECIES_WATTL] = sAnims_Wattl,
+    [SPECIES_XOLHM] = sAnims_Xolhm,
+    [SPECIES_ODDIOWAVE] = sAnims_Oddiowave,
+    [SPECIES_WHERML] = sAnims_Wherml,
+    [SPECIES_CRUSTERROR] = sAnims_Crusterror,
+    [SPECIES_MANTACORE] = sAnims_Mantacore,
+    [SPECIES_SKULDUGERY] = sAnims_Skuldugery,
+    [SPECIES_GRAVENDOR] = sAnims_Gravendor,
+    [SPECIES_OGWON_ROCK] = sAnims_OgwonRock,
+    [SPECIES_GRUBBLE] = sAnims_Grubble,
+    [SPECIES_GRACKLIN] = sAnims_Gracklin,
+    [SPECIES_SHAMBURGER] = sAnims_Shamburger,
+    [SPECIES_FROZHORN] = sAnims_Frozhorn,
+    [SPECIES_FROZFORCE] = sAnims_Frozforce,
+    [SPECIES_STAALNARY] = sAnims_Staalnary,
+    [SPECIES_BAROMITE] = sAnims_Baromite,
+    [SPECIES_NAPALMITE] = sAnims_Napalmite,
+    [SPECIES_STOVLARE] = sAnims_Stovlare,
+    [SPECIES_ORBACLE] = sAnims_Orbacle,
+    [SPECIES_NINOWN] = sAnims_Ninown,
+    [SPECIES_CARDICT] = sAnims_Cardict,
+    [SPECIES_POKERLORD] = sAnims_Pokerlord,
+    [SPECIES_DEGOURGE] = sAnims_Degourge,
+    [SPECIES_TUETUERROR] = sAnims_Tuetuerror,
+    [SPECIES_BAGHOST] = sAnims_Baghost,
+    [SPECIES_BAGHOUL] = sAnims_Baghoul,
+    [SPECIES_WUVME] = sAnims_Wuvme,
+    [SPECIES_VEEBLEN] = sAnims_Veeblen,
+    [SPECIES_MALACHREY] = sAnims_Malachrey,
+    [SPECIES_MALMARE] = sAnims_Malmare,
+    [SPECIES_MALMARE_VIRUS] = sAnims_Malmare,
+    [SPECIES_SWEETAN] = sAnims_Sweetan,
+    [SPECIES_MELCERALBA] = sAnims_Melceralba,
+    [SPECIES_BUGGORY] = sAnims_Buggory,
+    [SPECIES_ZAPPUG] = sAnims_Zappug,
+    [SPECIES_PUPULZE] = sAnims_Pupulze,
+    [SPECIES_RUBIMIZER] = sAnims_Rubimizer,
+    [SPECIES_RICKSHAWTY] = sAnims_Rickshawty,
+    [SPECIES_RICKSHAWTY_CHARIOT] = sAnims_Rickshawty,
+    [SPECIES_TREMITE] = sAnims_Tremite,
+    [SPECIES_TROHIVE] = sAnims_Trohive,
+    [SPECIES_CASTERMITE] = sAnims_Castermite,
+    [SPECIES_EYESLIGHT] = sAnims_Eyeslight,
+    [SPECIES_BEHOLZER] = sAnims_Beholzer,
+    [SPECIES_EYERISH] = sAnims_Eyerish,
+    [SPECIES_RETINEEL] = sAnims_Retineel,
+    [SPECIES_ASTIGMORAY] = sAnims_Astigmoray,
+    [SPECIES_ASTIGMORAY_BLIND] = sAnims_Astigmoray,
+    [SPECIES_GELECTUAL] = sAnims_Gelectual,
+    [SPECIES_REBRR] = sAnims_Rebrr,
+    [SPECIES_FERROFROS] = sAnims_Ferrofros,
+    [SPECIES_FORTIFROS] = sAnims_Fortifros,
+    [SPECIES_ARCTIKACK] = sAnims_Arctikack,
+    [SPECIES_PRISMAPUP] = sAnims_Prismapup,
+    [SPECIES_VIVIDAWG] = sAnims_Vividawg,
+    [SPECIES_KITTEPUP] = sAnims_Kittepup,
+    [SPECIES_PECKACHEW] = sAnims_Peckachew,
+    [SPECIES_SKOOKY] = sAnims_Skooky,
+    [SPECIES_VIZAAVISO] = sAnims_Vizaaviso,
+    [SPECIES_SETATONKRE] = sAnims_Setatonkre,
+    [SPECIES_PANZEEHEE] = sAnims_Panzeehee,
+    [SPECIES_BABOBO] = sAnims_Babobo,
+    [SPECIES_GROOSE] = sAnims_Groose,
+    [SPECIES_GREESE] = sAnims_Greese,
 #endif
     [SPECIES_VENUSAUR_MEGA] = sAnims_VenusaurMega,
     [SPECIES_CHARIZARD_MEGA_X] = sAnims_CHARIZARD_MEGA_X,
