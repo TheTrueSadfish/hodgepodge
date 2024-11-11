@@ -723,6 +723,175 @@ const struct BattleFrontierTrainer gBattleTentTrainers_MajorLeague[NUM_BATTLE_TE
 
 const struct BattleFrontierTrainer gBattleTentTrainers_MinorLeague[NUM_BATTLE_TENT_MINOR_TRAINERS] =
 {
+    [BATTLE_TENT_MINOR_TRAINER_BEPIS] = {
+        .facilityClass = FACILITY_CLASS_CLOWN,
+        .trainerName = _("Bepis"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Bepis
+    },
+    [BATTLE_TENT_MINOR_TRAINER_BRIAR] = {
+        .facilityClass = FACILITY_CLASS_DAME,
+        .trainerName = _("Briar"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Briar
+    },
+    [BATTLE_TENT_MINOR_TRAINER_TOADSWORTH] = {
+        .facilityClass = FACILITY_CLASS_GENTLEMAN,
+        .trainerName = _("Toadsworth"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Toadsworth
+    },
+    [BATTLE_TENT_MINOR_TRAINER_HAYLEY] = {
+        .facilityClass = FACILITY_CLASS_PKMN_BREEDER_F,
+        .trainerName = _("Hayley"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Hayley
+    },
+    [BATTLE_TENT_MINOR_TRAINER_DOMINO] = {
+        .facilityClass = FACILITY_CLASS_AGENT,
+        .trainerName = _("Domino"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Domino
+    },
+    [BATTLE_TENT_MINOR_TRAINER_BARRY] = {
+        .facilityClass = FACILITY_CLASS_BARRY,
+        .trainerName = _("63"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Barry
+    },
+    [BATTLE_TENT_MINOR_TRAINER_ELLA_RATIO] = {
+        .facilityClass = FACILITY_CLASS_DELINQUENT,
+        .trainerName = _("Ella Ratio"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_EllaRatio
+    },
+    [BATTLE_TENT_MINOR_TRAINER_EVAN_ROCK] = {
+        .facilityClass = FACILITY_CLASS_EXPERT_M,
+        .trainerName = _("Evan Rock"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_EvanRock
+    },
+    [BATTLE_TENT_MINOR_TRAINER_KURT] = {
+        .facilityClass = FACILITY_CLASS_SMITHY,
+        .trainerName = _("Kurt"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Kurt
+    },
+    [BATTLE_TENT_MINOR_TRAINER_SKEETN] = {
+        .facilityClass = FACILITY_CLASS_GUITARIST,
+        .trainerName = _("Skeetn'"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Skeetn
+    },
+    [BATTLE_TENT_MINOR_TRAINER_TRACE] = {
+        .facilityClass = FACILITY_CLASS_COOLTRAINER_M,
+        .trainerName = _("Trace"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Trace
+    },
+    [BATTLE_TENT_MINOR_TRAINER_COLA] = {
+        .facilityClass = FACILITY_CLASS_SANE,
+        .trainerName = _("Cola"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Cola
+    },
+    [BATTLE_TENT_MINOR_TRAINER_JENNY] = {
+        .facilityClass = FACILITY_CLASS_OFFICER,
+        .trainerName = _("Jenny"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Jenny
+    },
+    [BATTLE_TENT_MINOR_TRAINER_TODD_SNAP] = {
+        .facilityClass = FACILITY_CLASS_PHOTOGRAPHER,
+        .trainerName = _("Todd Snap"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_ToddSnap
+    },
+    [BATTLE_TENT_MINOR_TRAINER_YELLOW] = {
+        .facilityClass = FACILITY_CLASS_THE_HEALER,
+        .trainerName = _("Yellow"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Yellow
+    },
+    [BATTLE_TENT_MINOR_TRAINER_LI] = {
+        .facilityClass = FACILITY_CLASS_ELDER,
+        .trainerName = _("Li"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Li
+    },
+    [BATTLE_TENT_MINOR_TRAINER_PAUL] = {
+        .facilityClass = FACILITY_CLASS_HOODLUM,
+        .trainerName = _("Paul"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Paul
+    },
+    [BATTLE_TENT_MINOR_TRAINER_GAME] = {
+        .facilityClass = FACILITY_CLASS_POKEFAN_M,
+        .trainerName = _("Game"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Game
+    },
+    [BATTLE_TENT_MINOR_TRAINER_YUU] = {
+        .facilityClass = FACILITY_CLASS_SOLDIER,
+        .trainerName = _("Yuu"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Yuu
+    },
+    [BATTLE_TENT_MINOR_TRAINER_SURGE] = {
+        .facilityClass = FACILITY_CLASS_GRILLMEISTER,
+        .trainerName = _("Surge"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Surge
+    },
+    [BATTLE_TENT_MINOR_TRAINER_ANGELA] = {
+        .facilityClass = FACILITY_CLASS_ASSISTANT,
+        .trainerName = _("Angela"),
+        .speechBefore = {EC_WORD_LISTEN, EC_WORD_ELLIPSIS, EC_WORD_YOU, EC_WORD_AREN_T, EC_WORD_VERY, EC_WORD_GOOD},
+        .speechWin = {EC_WORD_YOU, EC_WORD_SEE, EC_WORD_QUES, EC_WORD_I, EC_WORD_WAS, EC_WORD_RIGHT},
+        .speechLose = {EC_WORD_YES, EC_WORD_YES, EC_WORD_ELLIPSIS, EC_WORD_YOU_RE, EC_WORD_QUITE, EC_WORD_SOMETHING},
+        .monSet = gBattleTentTrainerMons_MinorLeague_Angela
+    },
+
     [BATTLE_TENT_MINOR_TRAINER_JOLIE] = {
         .facilityClass = FACILITY_CLASS_YOUNGSTER,
         .trainerName = _("JOLIE"),
