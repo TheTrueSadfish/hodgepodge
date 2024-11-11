@@ -1664,6 +1664,10 @@
 	various BS_ATTACKER, VARIOUS_TRY_ACTIVATE_SOULHEART
 	.endm
 
+	.macro tryactivatevisceration
+	various BS_ATTACKER, VARIOUS_TRY_ACTIVATE_VISCERATION
+	.endm
+
 	.macro tryactivatefellstinger battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
@@ -2435,6 +2439,10 @@
 	manipulatedamage DMG_1_8_TARGET_HP
 	.endm
 
+	.macro dmg_space_crook
+	manipulatedamage DMG_SPACE_CROOK
+	.endm
+
 	.macro dmgtomaxattackerhp
 	manipulatedamage DMG_FULL_ATTACKER_HP
 	.endm
@@ -2589,6 +2597,10 @@
 
 	.macro setpump battler:req
 	various \battler, VARIOUS_SET_PUMP
+	.endm
+
+	.macro setfilthmonger battler:req
+	various \battler, VARIOUS_SET_FILTHMONGER
 	.endm
 
 	.macro setpurplehaze battler:req

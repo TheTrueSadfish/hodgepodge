@@ -923,7 +923,6 @@ BattleScript_EffectDragDown:
 	setmoveeffect MOVE_EFFECT_CLEAR_SMOG
 	call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MoveEnd
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendto MOVEEND_ATTACKER_VISIBLE
@@ -4251,7 +4250,6 @@ BattleScript_EffectUTurn:
 	setmoveeffect MOVE_EFFECT_FLINCH
 	call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MoveEnd
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendto MOVEEND_ATTACKER_VISIBLE
@@ -4265,7 +4263,6 @@ BattleScript_EffectFlipTurn:
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
 	call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MoveEnd
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendto MOVEEND_ATTACKER_VISIBLE
@@ -8121,7 +8118,6 @@ BattleScript_EffectThroatChop:
 BattleScript_EffectHitEscape:
 	call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MoveEnd
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendto MOVEEND_ATTACKER_VISIBLE
@@ -11851,6 +11847,7 @@ BattleScript_FaintAttacker::
 	printstring STRINGID_ATTACKERFAINTED
 	cleareffectsonfaint BS_ATTACKER
 	tryactivatesoulheart
+	tryactivatevisceration
 	tryactivatereceiver BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_ATTACKER
 	return
@@ -11864,6 +11861,7 @@ BattleScript_FaintTarget::
 	cleareffectsonfaint BS_TARGET
 	tryactivatefellstinger BS_ATTACKER
 	tryactivatesoulheart
+	tryactivatevisceration
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER        @ and chilling neigh, as one ice rider
 	tryactivateappetite BS_ATTACKER
@@ -12954,6 +12952,14 @@ BattleScript_WindPowerActivates::
 BattleScript_WindPowerActivates_Ret:
 	return
 
+BattleScript_FilthmongerActivates::
+	call BattleScript_AbilityPopUp
+	setfilthmonger BS_TARGET
+	printstring STRINGID_BECOMINGDIRTYANGEREDIT
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FilthmongerActivates_Ret:
+	return
+
 BattleScript_KamenScarfActivates::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
@@ -12970,6 +12976,30 @@ BattleScript_ToxicDebrisActivates::
 	printstring STRINGID_POISONSPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_ToxicDebrisRet:
+	copybyte sBATTLER, gBattlerTarget
+	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte gBattlerAttacker, sBATTLER
+	return
+
+BattleScript_PaintedHazardStealthRock::
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_SHORT
+	setstealthrock BattleScript_PaintedHazardStealthRockRet
+	printstring STRINGID_POINTEDSTONESFLOAT
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PaintedHazardStealthRockRet:
+	copybyte sBATTLER, gBattlerTarget
+	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte gBattlerAttacker, sBATTLER
+	return
+
+BattleScript_PaintedHazardSpikes::
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_SHORT
+	trysetspikes BattleScript_PaintedHazardSpikesRet
+	printstring STRINGID_SPIKESSCATTERED
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PaintedHazardSpikesRet:
 	copybyte sBATTLER, gBattlerTarget
 	copybyte gBattlerTarget, gBattlerAttacker
 	copybyte gBattlerAttacker, sBATTLER
@@ -14552,6 +14582,15 @@ BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
 
+BattleScript_InstabilityActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXDAMAGEDITALITTLE
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end3
+
 BattleScript_AppetiteActivates::
 	copybyte gBattlerAbility, gBattlerAttacker
 	call BattleScript_AbilityPopUp
@@ -15134,7 +15173,7 @@ BattleScript_BadDreamsLoop:
 	jumpiftargetally BattleScript_BadDreamsIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_BadDreamsIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_BadDreamsIncrement
-	jumpifterucharmprotected BS_ATTACKER, BattleScript_BadDreamsIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_BadDreamsIncrement
 	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_BadDreams_Dmg
 	jumpifstatus BS_TARGET, STATUS1_SLEEP_ANY, BattleScript_BadDreams_Dmg
 	goto BattleScript_BadDreamsIncrement
@@ -15166,13 +15205,51 @@ BattleScript_BadDreams_HidePopUp:
 	tryfaintmon BS_TARGET
 	goto BattleScript_BadDreamsIncrement
 
+BattleScript_SpaceCrookActivates::
+	setbyte gBattlerTarget, 0
+BattleScript_SpaceCrookLoop:
+	jumpiftargetally BattleScript_SpaceCrookIncrement
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SpaceCrookIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_SpaceCrookIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_SpaceCrookIncrement
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_SpaceCrook_Dmg
+	jumpifstatus BS_TARGET, STATUS1_ANY_NEGATIVE, BattleScript_SpaceCrook_Dmg
+	goto BattleScript_SpaceCrookIncrement
+BattleScript_SpaceCrook_Dmg:
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SpaceCrook_ShowPopUp
+BattleScript_SpaceCrook_DmgAfterPopUp:
+	printstring STRINGID_SPACECROOKDMG
+	waitmessage B_WAIT_TIME_LONG
+	dmg_1_8_targethp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	jumpifhasnohp BS_TARGET, BattleScript_SpaceCrook_HidePopUp
+BattleScript_SpaceCrookIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SpaceCrookLoop
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SpaceCrookEnd
+	destroyabilitypopup
+	pause 15
+BattleScript_SpaceCrookEnd:
+	end3
+BattleScript_SpaceCrook_ShowPopUp:
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	setbyte sFIXED_ABILITY_POPUP, TRUE
+	goto BattleScript_SpaceCrook_DmgAfterPopUp
+BattleScript_SpaceCrook_HidePopUp:
+	destroyabilitypopup
+	tryfaintmon BS_TARGET
+	goto BattleScript_SpaceCrookIncrement
+
 BattleScript_MiasmaActivates::
 	setbyte gBattlerTarget, 0
 BattleScript_MiasmaLoop:
 	jumpiftargetally BattleScript_MiasmaIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_MiasmaIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_MiasmaIncrement
-	jumpifterucharmprotected BS_ATTACKER, BattleScript_MiasmaIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_MiasmaIncrement
 	jumpifstatus BS_TARGET, STATUS1_PSN_ANY, BattleScript_Miasma_Dmg
 	goto BattleScript_MiasmaIncrement
 BattleScript_Miasma_Dmg:
@@ -15545,6 +15622,34 @@ BattleScript_ProteanActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_DaringDeedPlayedASpade::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNPLAYEDASPADE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_DaringDeedPlayedAHeart::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNPLAYEDAHEART
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_DaringDeedPlayedAClub::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNPLAYEDACLUB
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_DaringDeedPlayedADiamond::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNPLAYEDADIAMOND
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_TeraShellDistortingTypeMatchups::
 	pause B_WAIT_TIME_SHORTEST
 	call BattleScript_AbilityPopUp
@@ -15630,6 +15735,19 @@ BattleScript_ScriptingAbilityStatRaise::
 	waitanimation
 	printstring STRINGID_ATTACKERABILITYSTATRAISE
 	waitmessage B_WAIT_TIME_LONG
+	copybyte gBattlerAttacker, sSAVED_DMG
+	return
+
+BattleScript_ScriptingAbilityHeal::
+	copybyte gBattlerAbility, sBATTLER
+	call BattleScript_AbilityPopUp
+	copybyte sSAVED_DMG, gBattlerAttacker
+	copybyte gBattlerAttacker, sBATTLER
+	printstring STRINGID_PKMNRESTOREDHPUSINGABILITY
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
 	copybyte gBattlerAttacker, sSAVED_DMG
 	return
 
@@ -15854,6 +15972,16 @@ BattleScript_CuteCharmActivates2::
 	call BattleScript_TryDestinyKnotInfatuateAttacker
 	return
 
+BattleScript_DaringDeedActivatesTaunt::
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_SpikyShieldRet
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_SpikyShieldRet
+	settaunt BattleScript_SpikyShieldRet
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXTAUNTEDY
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTauntAttacker
+	return
+
 BattleScript_GooeyActivates::
 	waitstate
 	call BattleScript_AbilityPopUp
@@ -15871,6 +15999,12 @@ BattleScript_AbilityStatusEffect::
 	waitstate
 	call BattleScript_AbilityPopUp
 	seteffectsecondary
+	return
+
+BattleScript_SunkCostMessage::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SUNK_COST
 	return
 
 BattleScript_AbilitySetGlaiveRush::

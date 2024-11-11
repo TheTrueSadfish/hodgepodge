@@ -607,7 +607,6 @@ static const struct FormChange sCindrillonFormChangeTable[] = {
 };
 
 static const struct FormChange sShishimaFormChangeTable[] = {
-    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SHISHIMA_PUNISHER, ABILITY_PUNISHER},
     {FORM_CHANGE_FAINT,             SPECIES_SHISHIMA},
     {FORM_CHANGE_END_BATTLE,        SPECIES_SHISHIMA},
     {FORM_CHANGE_TERMINATOR},
@@ -622,9 +621,7 @@ static const struct FormChange sShunyongFormChangeTable[] = {
     {FORM_CHANGE_TERMINATOR},
 };
 
-
 static const struct FormChange sShishimaAltFormChangeTable[] = {
-    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SHISHIMA_PUNISHER_ALT, ABILITY_PUNISHER},
     {FORM_CHANGE_FAINT,             SPECIES_SHISHIMA_ALT},
     {FORM_CHANGE_END_BATTLE,        SPECIES_SHISHIMA_ALT},
     {FORM_CHANGE_TERMINATOR},
