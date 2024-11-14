@@ -55,6 +55,7 @@ struct ResourceFlags
 #define RESOURCE_FLAG_TRACED            0x10
 #define RESOURCE_FLAG_EMERGENCY_EXIT    0x20
 #define RESOURCE_FLAG_NEUTRALIZING_GAS  0x40
+#define RESOURCE_FLAG_REBOUND           0x80
 
 struct DisableStruct
 {
@@ -113,6 +114,7 @@ struct DisableStruct
     u8 speedSwap:1;
     u8 chargeTimer:4;
     u8 pumpTimer:4;
+    u8 filthmongerTimer:4;
     u8 berryEatenTimer:4;
     u8 syrupBombTimer;
     u8 iceScalesCounter;
@@ -660,6 +662,11 @@ struct BattleStruct
     u8 magnitudeBasePower;
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
+    u8 sunkCostBoosted:1;
+    u8 daringDeedSpade:1;
+    u8 daringDeedHeart:1;
+    u8 daringDeedClub:1;
+    u8 daringDeedDiamond:1;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
@@ -687,6 +694,7 @@ struct BattleStruct
     u8 aiMoveOrAction[MAX_BATTLERS_COUNT];
     u8 aiChosenTarget[MAX_BATTLERS_COUNT];
     u8 soulheartBattlerId;
+    u8 viscerationBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
     bool8 friskedAbility; // If identifies two mons, show the ability pop-up only once.
     u8 sameMoveTurns[MAX_BATTLERS_COUNT]; // For Metronome, number of times the same moves has been SUCCESFULLY used.

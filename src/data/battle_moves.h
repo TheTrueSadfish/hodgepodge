@@ -12154,6 +12154,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
         .instructBanned = TRUE,
+        .beamMove = TRUE,
     },
 
     [MOVE_STEEL_BEAM] =
@@ -13651,6 +13652,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .strikeCount = 2,
         .metronomeBanned = TRUE,
+        .beamMove = TRUE,
     },
 
     [MOVE_RAGE_FIST] =
@@ -13919,6 +13921,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .beamMove = TRUE,
     },
 
     [MOVE_BURNING_BULWARK] =
@@ -17259,6 +17262,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .beamMove = TRUE,
     },
 
     [MOVE_INVERSION] =

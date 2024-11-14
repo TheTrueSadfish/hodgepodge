@@ -816,8 +816,20 @@
 #define STRINGID_PREPARINGODDNESS                     814
 #define STRINGID_PKMNCUTSACCURACYWITH                 815
 #define STRINGID_PKMNCUTSEVASIONWITH                  816
+#define STRINGID_SPACECROOKDMG                        817
+#define STRINGID_PKMNSXDAMAGEDITALITTLE               818
+#define STRINGID_SUNK_COST                            819
+#define STRINGID_BECOMINGDIRTYANGEREDIT               820
+#define STRINGID_PKMNPLAYEDASPADE                     821
+#define STRINGID_PKMNPLAYEDAHEART                     822
+#define STRINGID_PKMNPLAYEDACLUB                      823
+#define STRINGID_PKMNPLAYEDADIAMOND                   824
+#define STRINGID_PKMNSXTAUNTEDY                       825
+#define STRINGID_BATTLERCURLEDUP                      826
+#define STRINGID_TARGETISBEINGINFECTED                827
+#define STRINGID_ATTACKERISBEINGINFECTED              828
 
-#define BATTLESTRINGS_COUNT                           817
+#define BATTLESTRINGS_COUNT                           829
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

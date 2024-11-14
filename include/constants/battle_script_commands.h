@@ -297,6 +297,8 @@
 #define VARIOUS_HAUNT_MELODY_PP_REDUCE               206
 #define VARIOUS_JUMP_IF_NO_STOCKPILE                 207
 #define VARIOUS_SET_NON_SEQUITUR                     208
+#define VARIOUS_TRY_ACTIVATE_VISCERATION             209
+#define VARIOUS_SET_FILTHMONGER                      210
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -309,6 +311,7 @@
 #define DMG_1_2_ATTACKER_HP        7
 #define DMG_RECOIL_FROM_IMMUNE     8 // Used to calculate recoil for the Gen 4 version of Jump Kick
 #define DMG_1_3_ATTACKER_HP        9
+#define DMG_SPACE_CROOK            10
 
 // Cmd_jumpifcantswitch
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   (1 << 7)
@@ -373,8 +376,9 @@
 #define MOVEEND_DANCER                            32
 #define MOVEEND_SYMBIOSIS                         33
 #define MOVEEND_NEXT_DANCE_TARGET                 34
-#define MOVEEND_CLEAR_BITS                        35
-#define MOVEEND_COUNT                             36
+#define MOVEEND_REBOUND                           35
+#define MOVEEND_CLEAR_BITS                        36
+#define MOVEEND_COUNT                             37
 
 // switch cases
 #define B_SWITCH_NORMAL     0

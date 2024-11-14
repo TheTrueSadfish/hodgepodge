@@ -338,8 +338,8 @@ static const u8 sArenaTrapDescription[] = _(
 
 static const u8 sVitalSpiritDescription[] = _(
     "Stops the Pokémon from falling\n"
-    "asleep. Gradually regains health\n"
-    "during battle if at half health.");
+    "asleep. Restores HP every turn\n"
+    "if at half or less HP.");
 
 static const u8 sWhiteSmokeDescription[] = _(
     "The Pokémon summons a white mist\n"
@@ -947,9 +947,9 @@ static const u8 sSurgeSurferDescription[] = _(
     "on Electric Terrain.");
 
 static const u8 sHuddleUpDescription[] = _(
-    "At level 20, the Pokémon becomes\n"
-    "a powerful beast. At level 40,\n"
-    "steadily restores HP every turn.");
+    "At LVL 25, the Pokémon becomes a\n"
+    "a powerful beast until at low HP.\n"
+    "At LVL 40, restores HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
     "Once per battle, the silk that\n"
@@ -1038,7 +1038,7 @@ static const u8 sGrassySurgeDescription[] = _(
 
 static const u8 sFullMetalBodyDescription[] = _(
     "Prevents the Pokémon's from being\n"
-    "lowered. At half HP, reduces\n"
+    "lowered. Below half HP, reduces\n"
     "the damage taken from moves.");
 
 static const u8 sNeuroforceDescription[] = _(
@@ -1589,12 +1589,12 @@ static const u8 sFreeLoveDescription[] = _(
 static const u8 sGhoulishDescription[] = _(
     "When the Pokémon takes damage\n"
     "from attacks restores some of\n"
-    "the damage as health.");
+    "the damage as HP.");
 
 static const u8 sGlaringStaggerDescription[] = _(
     "The Pokémon glares at the\n"
     "opposing Pokémon upon entering\n"
-    "battle, cutting their health.");
+    "battle, cutting their HP.");
 
 static const u8 sGustyDescription[] = _(
     "The Pokémon whips up a turbulent\n"
@@ -1619,14 +1619,14 @@ static const u8 sPotencyDescription[] = _(
     "Powers up Poison-type moves.");
 
 static const u8 sPowerSpikeDescription[] = _(
-    "Powers up piercing moves and\n"
-    "boosts odds of Horn Drill when\n"
-    "the Pokémon's below half health.");
+    "Boostes the power of piercing\n"
+    "moves when the Pokémon's HP is\n"
+    "at half or less.");
 
 static const u8 sArbiterDescription[] = _(
-    "Cuts the health of all other\n"
-    "Pokémon by a fifth, increasing\n"
-    "for each stat boost on the foe.");
+    "Cuts the HP of all other Pokémon\n"
+    "by 1/5, increasing for each\n"
+    "stat boost on each Pokémon.");
 
 static const u8 sSeafarerDescription[] = _(
     "Powers up Water-type moves.");
@@ -1676,7 +1676,7 @@ static const u8 sWatcherDescription[] = _(
 static const u8 sAppetiteDescription[] = _(
     "When the Pokémon knocks out a\n"
     "target, it reveals its appetite,\n"
-    "which restores some health.");
+    "which restores some HP.");
 
 static const u8 sAllGameDescription[] = _(
     "Soaks the field with water and\n"
@@ -1732,9 +1732,9 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Changes form when hit by a\n"
-    "piercing move. Takes double\n"
-    "damage, and has less accuracy.");
+    "Mean Look becomes better.\n"
+    "Transforms if pierced. Takes more\n"
+    "damage, and is less accurate.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced damage\n"
@@ -1793,7 +1793,7 @@ static const u8 sReboundDescription[] = _(
 
 static const u8 sInstabilityDescription[] = _(
     "The Pokémon loses HP every turn.\n"
-    "At half HP, its moves are\n"
+    "At half or less HP, its moves are\n"
     "boosted, but it loses more HP.");
 
 static const u8 sViscerationDescription[] = _(
@@ -2033,7 +2033,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GALVANIZE] = _("Galvanize"),
     [ABILITY_SURGE_SURFER] = _("Surge Surfer"),
     [ABILITY_HUDDLE_UP] = _("Gloopomancy"),
-    [ABILITY_DISGUISE] = _("Trokan"),
+    [ABILITY_DISGUISE] = _("Trojan"),
     [ABILITY_BATTLE_BOND] = _("Battle Bond"),
     [ABILITY_DORMANT] = _("Dormant"),
     [ABILITY_CORROSION] = _("Corrosion"),
@@ -2444,7 +2444,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GALVANIZE] = _("Galvanize"),
     [ABILITY_SURGE_SURFER] = _("Surge Surfer"),
     [ABILITY_HUDDLE_UP] = _("Gloopomancy"),
-    [ABILITY_DISGUISE] = _("Trokan"),
+    [ABILITY_DISGUISE] = _("Trojan"),
     [ABILITY_BATTLE_BOND] = _("Battle Bond"),
     [ABILITY_DORMANT] = _("Dormant"),
     [ABILITY_CORROSION] = _("Corrosion"),
