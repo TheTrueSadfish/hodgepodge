@@ -4694,6 +4694,14 @@ BattleScript_SaltCureExtraDamage::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+BattleScript_InfectionExtraDamage::
+	playanimation BS_TARGET, B_ANIM_STATUS_PRZ, NULL
+	waitanimation
+	call BattleScript_HurtTarget_NoString
+	printstring STRINGID_TARGETISBEINGINFECTED
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_HurtTarget_NoString:
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
@@ -15724,6 +15732,25 @@ BattleScript_BattlerAbilityStatRaiseOnSwitchIn::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_DefenseCurlOnSwitchIn::
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	setdefensecurlbit
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN, NULL
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	waitanimation
+	printstring STRINGID_BATTLERABILITYRAISEDSTAT
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+BattleScript_JustCurlOnSwitchIn::
+	setdefensecurlbit
+	playanimation BS_ATTACKER, B_ANIM_DEFENSE_CURL, sB_ANIM_ARG1
+	printstring STRINGID_BATTLERCURLEDUP
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_ScriptingAbilityStatRaise::
 	copybyte gBattlerAbility, sBATTLER
 	call BattleScript_AbilityPopUp
@@ -16010,6 +16037,12 @@ BattleScript_SunkCostMessage::
 BattleScript_AbilitySetGlaiveRush::
 	waitstate
 	setglaiverush2
+	return
+
+BattleScript_AbilitySetInfection::
+	waitstate
+	applyinfection BS_ATTACKER
+	printstring STRINGID_ATTACKERISBEINGINFECTED
 	return
 
 BattleScript_AbilitySetPurpleHaze::

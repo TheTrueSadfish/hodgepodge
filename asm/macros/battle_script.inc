@@ -1381,6 +1381,11 @@
 	.byte \battler
 	.endm
 
+	.macro applyinfection battler:req
+	callnative BS_ApplyInfection
+	.byte \battler
+	.endm
+
 	.macro setglaiverush
 	callnative BS_SetGlaiveRush
 	.endm

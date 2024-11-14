@@ -3033,6 +3033,7 @@ enum
     ENDTURN_DARK_HUNGER,
     ENDTURN_IN_FLAMES,
     ENDTURN_FILTHMONGER,
+    ENDTURN_INFECTION,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3705,6 +3706,21 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleMoveDamage = 1;
                 PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SALT_CURE);
                 BattleScriptExecute(BattleScript_SaltCureExtraDamage);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_INFECTION:
+            if (gStatuses4[battler] & STATUS4_INFECTION && gBattleMons[battler].hp != 0)
+            {
+                gBattlerTarget = battler;
+                if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_STEEL) || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ELECTRIC))
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;
+                else
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 8;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                BattleScriptExecute(BattleScript_InfectionExtraDamage);
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;
@@ -5711,13 +5727,45 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_DAUNTLESS_SHIELD:
-            if (!gSpecialStatuses[battler].switchInAbilityDone && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
+            if (!gSpecialStatuses[battler].switchInAbilityDone
+            && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 SET_STATCHANGER(STAT_DEF, 1, FALSE);
                 BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
                 effect++;
+            }
+            break;
+        case ABILITY_CURLING_STONE:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                if (CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN)
+                && (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_DEFENSE_CURL)))
+                {
+                    gBattlerAttacker = battler;
+                    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                    SET_STATCHANGER(STAT_DEF, 1, FALSE);
+                    BattleScriptPushCursorAndCallback(BattleScript_DefenseCurlOnSwitchIn);
+                    effect++;
+                }
+                else if (CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN)
+                && ((gBattleMons[gBattlerAttacker].status2 & STATUS2_DEFENSE_CURL)))
+                {
+                    gBattlerAttacker = battler;
+                    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                    SET_STATCHANGER(STAT_DEF, 1, FALSE);
+                    BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
+                    effect++;
+                }
+                else if ((!(gBattleMons[gBattlerAttacker].status2 & STATUS2_DEFENSE_CURL))
+                && (CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_EQUAL)))
+                {
+                    gBattlerAttacker = battler;
+                    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                    BattleScriptPushCursorAndCallback(BattleScript_JustCurlOnSwitchIn);
+                    effect++;
+                }
             }
             break;
         case ABILITY_DESOLATE_LAND:
@@ -7289,6 +7337,19 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_DISGUISE:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerAttacker].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && !(IS_MOVE_STATUS(move))
+            && TARGET_TURN_DAMAGED
+            && gBattleMons[gBattlerTarget].species == SPECIES_MALMARE_VIRUS)
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilitySetInfection;
                 effect++;
             }
             break;
@@ -14039,6 +14100,8 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         break;
     case ABILITY_NEGATE_PLATE:
         if (CountBattlerStatDecreases(battlerDef, TRUE) > 0)
+            if (CountBattlerStatDecreases(battlerDef, TRUE) > 5)
+                CountBattlerStatDecreases(battlerDef, TRUE) == 5;
             return UQ_4_12(1.0 - (CountBattlerStatDecreases(battlerDef, TRUE) * 0.15));
         break;
     case ABILITY_ICE_SCALES:

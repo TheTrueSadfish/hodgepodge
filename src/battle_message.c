@@ -755,6 +755,7 @@ static const u8 sText_ComatoseActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} i
 static const u8 sText_ScreenCleanerActivates[] = _("All screens on the field were\ncleansed!");
 static const u8 sText_FetchedPokeBall[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} found\na {B_LAST_ITEM}!");
 static const u8 sText_BattlerAbilityRaisedStat[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its {B_BUFF1}!");
+static const u8 sText_BattlerCurledUp[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nmade it curl up!");
 static const u8 sText_ASandstormKickedUp[] = _("A sandstorm kicked up!");
 static const u8 sText_PkmnsWillPerishIn3Turns[] = _("Both Pokémon will perish\nin three turns!");
 static const u8 sText_AbilityRaisedStatDrastically[] = _("{B_DEF_ABILITY} raised {B_DEF_NAME_WITH_PREFIX}'s\n{B_BUFF1} drastically!");
@@ -850,8 +851,10 @@ static const u8 sText_UltraBurstCompleted[] = _("{B_ATK_NAME_WITH_PREFIX} regain
 static const u8 sText_TeamGainedEXP[] = _("The rest of your team gained EXP.\nPoints thanks to the {B_LAST_ITEM}!\p");
 static const u8 sText_CurrentMoveCantSelect[] = _("{B_BUFF1} cannot be used!\p");
 static const u8 sText_TargetIsBeingSaltCured[] = _("{B_DEF_NAME_WITH_PREFIX} is being salt cured!");
+static const u8 sText_TargetIsBeingInfected[] = _("{B_DEF_NAME_WITH_PREFIX} is being infected!");
 static const u8 sText_TargetIsHurtBySaltCure[] = _("{B_DEF_NAME_WITH_PREFIX} is hurt by {B_BUFF1}!");
 static const u8 sText_TargetIsBeingSaltCorned[] = _("{B_ATK_NAME_WITH_PREFIX} is being salt corned!");
+static const u8 sText_AttackerIsBeingInfected[] = _("{B_ATK_NAME_WITH_PREFIX} is being infected!");
 static const u8 sText_AbilityWeakenedSurroundingMonsStats[] = _("A falling valley is present...");
 static const u8 sText_AbilitySummonedMist[] = _("A strange mist appears...");
 static const u8 sText_AbilityEntranced[] = _("All opponents were entranced by\n{B_ATK_NAME_WITH_PREFIX}!");
@@ -968,6 +971,8 @@ static const u8 sText_BecomingDirtyAngeredIt[] = _("Becoming dirty by\n{B_CURREN
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_TARGETISBEINGINFECTED - BATTLESTRINGS_TABLE_START] = sText_TargetIsBeingInfected,
+    [STRINGID_ATTACKERISBEINGINFECTED - BATTLESTRINGS_TABLE_START] = sText_AttackerIsBeingInfected,
     [STRINGID_GOLDPLAINS - BATTLESTRINGS_TABLE_START] = sText_GoldPlains,
     [STRINGID_TARGETISHURTBYSALTCURE - BATTLESTRINGS_TABLE_START] = sText_TargetIsHurtBySaltCure,
     [STRINGID_TARGETISBEINGSALTCURED - BATTLESTRINGS_TABLE_START] = sText_TargetIsBeingSaltCured,
@@ -1781,6 +1786,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNPLAYEDACLUB - BATTLESTRINGS_TABLE_START] = sText_PkmnPlayedAClub,
     [STRINGID_PKMNPLAYEDADIAMOND - BATTLESTRINGS_TABLE_START] = sText_PkmnPlayedADiamond,
     [STRINGID_PKMNSXTAUNTEDY - BATTLESTRINGS_TABLE_START] = sText_PkmnsXTauntedY,
+    [STRINGID_BATTLERCURLEDUP - BATTLESTRINGS_TABLE_START] = sText_BattlerCurledUp,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

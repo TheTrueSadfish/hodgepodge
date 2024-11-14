@@ -2805,7 +2805,7 @@ static void Cmd_datahpupdate(void)
             gBattleScripting.battler = battler;
             if (gBattleStruct->changedSpecies[side][gBattlerPartyIndexes[battler]] == SPECIES_NONE)
                 gBattleStruct->changedSpecies[side][gBattlerPartyIndexes[battler]] = gBattleMons[battler].species;
-            gBattleMons[battler].species = SPECIES_FAKYSNAKY_BUSTED;
+            gBattleMons[battler].species = SPECIES_MALMARE_VIRUS;
             gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_TargetFormChangeDisguise;
@@ -18031,7 +18031,7 @@ bool32 DoesSubstituteBlockMove(u32 battlerAtk, u32 battlerDef, u32 move)
 
 bool32 DoesDisguiseBlockMove(u32 battler, u32 move)
 {
-    if (!(gBattleMons[battler].species == SPECIES_MIMIKYU)
+    if (!(gBattleMons[battler].species == SPECIES_MALMARE)
         || gBattleMons[battler].status2 & STATUS2_TRANSFORMED
         || (!gProtectStructs[battler].confusionSelfDmg && (IS_MOVE_STATUS(move) || gHitMarker & HITMARKER_PASSIVE_DAMAGE))
         || gHitMarker & HITMARKER_IGNORE_DISGUISE
@@ -19882,6 +19882,15 @@ void BS_ApplySaltCure(void)
 
     u8 battler = GetBattlerForBattleScript(cmd->battler);
     gStatuses4[battler] |= STATUS4_SALT_CURE;
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_ApplyInfection(void)
+{
+    NATIVE_ARGS(u8 battler);
+
+    u8 battler = GetBattlerForBattleScript(cmd->battler);
+    gStatuses4[battler] |= STATUS4_INFECTION;
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 

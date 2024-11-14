@@ -607,6 +607,7 @@ static const struct FormChange sCindrillonFormChangeTable[] = {
 };
 
 static const struct FormChange sShishimaFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SHISHIMA_PUNISHER, ABILITY_PUNISHER},
     {FORM_CHANGE_FAINT,             SPECIES_SHISHIMA},
     {FORM_CHANGE_END_BATTLE,        SPECIES_SHISHIMA},
     {FORM_CHANGE_TERMINATOR},
@@ -622,6 +623,7 @@ static const struct FormChange sShunyongFormChangeTable[] = {
 };
 
 static const struct FormChange sShishimaAltFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SHISHIMA_PUNISHER_ALT, ABILITY_PUNISHER},
     {FORM_CHANGE_FAINT,             SPECIES_SHISHIMA_ALT},
     {FORM_CHANGE_END_BATTLE,        SPECIES_SHISHIMA_ALT},
     {FORM_CHANGE_TERMINATOR},
@@ -639,27 +641,32 @@ static const struct FormChange sFakysnakyFormChangeTable[] = {
     {FORM_CHANGE_TERMINATOR},
 };
 
+static const struct FormChange sMalmareFormChangeTable[] = {
+    {FORM_CHANGE_FAINT,         SPECIES_MALMARE},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_MALMARE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
 static const struct FormChange sHagooshFormChangeTable[] = {
-    {FORM_CHANGE_FAINT,         SPECIES_HAGOOSH},
-    {FORM_CHANGE_END_BATTLE,    SPECIES_HAGOOSH},
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_HAGOOSH_VISCOUS, ABILITY_HUDDLE_UP, HP_HIGHER_THAN,   25},
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_HAGOOSH,         ABILITY_HUDDLE_UP, HP_LOWER_EQ_THAN, 25},
+    {FORM_CHANGE_BATTLE_SWITCH,     SPECIES_HAGOOSH},
+    {FORM_CHANGE_FAINT,             SPECIES_HAGOOSH},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_HAGOOSH},
     {FORM_CHANGE_TERMINATOR},
 };
 
 static const struct FormChange sAstigmorayFormChangeTable[] = {
-    {FORM_CHANGE_FAINT,         SPECIES_ASTIGMORAY},
-    {FORM_CHANGE_END_BATTLE,    SPECIES_ASTIGMORAY},
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_ASTIGMORAY_BLIND, ABILITY_ICE_LENS},
+    {FORM_CHANGE_FAINT,             SPECIES_ASTIGMORAY},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_ASTIGMORAY},
     {FORM_CHANGE_TERMINATOR},
 };
 
 static const struct FormChange sRickshawtyFormChangeTable[] = {
-    {FORM_CHANGE_FAINT,         SPECIES_RICKSHAWTY},
-    {FORM_CHANGE_END_BATTLE,    SPECIES_RICKSHAWTY},
-    {FORM_CHANGE_TERMINATOR},
-};
-
-static const struct FormChange sMalmareFormChangeTable[] = {
-    {FORM_CHANGE_FAINT,         SPECIES_MALMARE},
-    {FORM_CHANGE_END_BATTLE,    SPECIES_MALMARE},
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_RICKSHAWTY_CHARIOT, ABILITY_HEAT_SEEKER},
+    {FORM_CHANGE_FAINT,             SPECIES_RICKSHAWTY},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_RICKSHAWTY},
     {FORM_CHANGE_TERMINATOR},
 };
 #endif

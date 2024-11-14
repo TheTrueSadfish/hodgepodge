@@ -1732,9 +1732,9 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Changes form when hit by a\n"
-    "piercing move. Takes double\n"
-    "damage, and has less accuracy.");
+    "Mean Look becomes better.\n"
+    "Transforms if pierced. Takes more\n"
+    "damage, and is less accurate.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced damage\n"
