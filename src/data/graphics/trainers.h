@@ -466,6 +466,32 @@ const u32 gTrainerPalette_Angela[] = INCBIN_U32("graphics/trainers/front_pics/an
 const u32 gTrainerFrontPic_BreadwinnerUpsideDown[] = INCBIN_U32("graphics/trainers/front_pics/breadupsidedown.4bpp.lz");
 const u32 gTrainerPalette_BreadwinnerUpsideDown[] = INCBIN_U32("graphics/trainers/front_pics/breadupsidedown.gbapal.lz");
 
+const u32 gTrainerFrontPic_Dame[] = INCBIN_U32("graphics/trainers/front_pics/dame.4bpp.lz");
+const u32 gTrainerFrontPic_Agent[] = INCBIN_U32("graphics/trainers/front_pics/agent.4bpp.lz");
+const u32 gTrainerFrontPic_Barry[] = INCBIN_U32("graphics/trainers/front_pics/barry.4bpp.lz");
+const u32 gTrainerFrontPic_Smithy[] = INCBIN_U32("graphics/trainers/front_pics/smithy.4bpp.lz");
+const u32 gTrainerFrontPic_Sane[] = INCBIN_U32("graphics/trainers/front_pics/sane.4bpp.lz");
+const u32 gTrainerFrontPic_Officer[] = INCBIN_U32("graphics/trainers/front_pics/officer.4bpp.lz");
+const u32 gTrainerFrontPic_Photographer[] = INCBIN_U32("graphics/trainers/front_pics/photographer.4bpp.lz");
+const u32 gTrainerFrontPic_TheHealer[] = INCBIN_U32("graphics/trainers/front_pics/thehealer.4bpp.lz");
+const u32 gTrainerFrontPic_Elder[] = INCBIN_U32("graphics/trainers/front_pics/elder.4bpp.lz");
+const u32 gTrainerFrontPic_Hoodlum[] = INCBIN_U32("graphics/trainers/front_pics/hoodlum.4bpp.lz");
+const u32 gTrainerFrontPic_Soldier[] = INCBIN_U32("graphics/trainers/front_pics/soldier.4bpp.lz");
+const u32 gTrainerFrontPic_Grillmeister[] = INCBIN_U32("graphics/trainers/front_pics/grillmeister.4bpp.lz");
+
+const u32 gTrainerPalette_Dame[] = INCBIN_U32("graphics/trainers/front_pics/dame.gbapal.lz");
+const u32 gTrainerPalette_Agent[] = INCBIN_U32("graphics/trainers/front_pics/agent.gbapal.lz");
+const u32 gTrainerPalette_Barry[] = INCBIN_U32("graphics/trainers/front_pics/barry.gbapal.lz");
+const u32 gTrainerPalette_Smithy[] = INCBIN_U32("graphics/trainers/front_pics/smithy.gbapal.lz");
+const u32 gTrainerPalette_Sane[] = INCBIN_U32("graphics/trainers/front_pics/sane.gbapal.lz");
+const u32 gTrainerPalette_Officer[] = INCBIN_U32("graphics/trainers/front_pics/officer.gbapal.lz");
+const u32 gTrainerPalette_Photographer[] = INCBIN_U32("graphics/trainers/front_pics/photographer.gbapal.lz");
+const u32 gTrainerPalette_TheHealer[] = INCBIN_U32("graphics/trainers/front_pics/thehealer.gbapal.lz");
+const u32 gTrainerPalette_Elder[] = INCBIN_U32("graphics/trainers/front_pics/elder.gbapal.lz");
+const u32 gTrainerPalette_Hoodlum[] = INCBIN_U32("graphics/trainers/front_pics/hoodlum.gbapal.lz");
+const u32 gTrainerPalette_Soldier[] = INCBIN_U32("graphics/trainers/front_pics/soldier.gbapal.lz");
+const u32 gTrainerPalette_Grillmeister[] = INCBIN_U32("graphics/trainers/front_pics/grillmeister.gbapal.lz");
+
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/table.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp");
 const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red.4bpp");

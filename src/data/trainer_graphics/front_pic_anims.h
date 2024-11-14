@@ -622,6 +622,54 @@ static const union AnimCmd *const sAnims_BreadwinnerUpsideDown[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_Dame[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Agent[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Barry[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Smithy[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Sane[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Officer[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Photographer[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_TheHealer[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Elder[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Hoodlum[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Soldier[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Grillmeister[] ={
+    sAnim_GeneralFrame0,
+};
+
 const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
 {
     [TRAINER_PIC_HIKER] = sAnims_Hiker,
@@ -780,4 +828,16 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_BREADWINNER_FINAL] = sAnims_BreadwinnerFinal,
     [TRAINER_PIC_ANGELA] = sAnims_Angela,
     [TRAINER_PIC_BREADWINNER_UPSIDE_DOWN] = sAnims_BreadwinnerUpsideDown,
+    [TRAINER_PIC_DAME] = sAnims_Dame,
+    [TRAINER_PIC_AGENT] = sAnims_Agent,
+    [TRAINER_PIC_BARRY] = sAnims_Barry,
+    [TRAINER_PIC_SMITHY] = sAnims_Smithy,
+    [TRAINER_PIC_SANE] = sAnims_Sane,
+    [TRAINER_PIC_OFFICER] = sAnims_Officer,
+    [TRAINER_PIC_PHOTOGRAPHER] = sAnims_Photographer,
+    [TRAINER_PIC_THE_HEALER] = sAnims_TheHealer,
+    [TRAINER_PIC_ELDER] = sAnims_Elder,
+    [TRAINER_PIC_HOODLUM] = sAnims_Hoodlum,
+    [TRAINER_PIC_SOLDIER] = sAnims_Soldier,
+    [TRAINER_PIC_GRILLMEISTER] = sAnims_Grillmeister,
 };

@@ -172,7 +172,19 @@
 #define TRAINER_PIC_MARCHONESS           152
 #define TRAINER_PIC_BREADWINNER_FINAL    153
 #define TRAINER_PIC_ANGELA               154
-#define TRAINER_PIC_BREADWINNER_UPSIDE_DOWN  155
+#define TRAINER_PIC_DAME                 155
+#define TRAINER_PIC_AGENT                156
+#define TRAINER_PIC_BARRY                157
+#define TRAINER_PIC_SMITHY               158
+#define TRAINER_PIC_SANE                 159
+#define TRAINER_PIC_OFFICER              160
+#define TRAINER_PIC_PHOTOGRAPHER         161
+#define TRAINER_PIC_THE_HEALER           162
+#define TRAINER_PIC_ELDER                163
+#define TRAINER_PIC_HOODLUM              164
+#define TRAINER_PIC_SOLDIER              165
+#define TRAINER_PIC_GRILLMEISTER         166
+#define TRAINER_PIC_BREADWINNER_UPSIDE_DOWN  167
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -280,8 +292,22 @@
 #define FACILITY_CLASS_STREET_THUG           0x5d
 #define FACILITY_CLASS_DELINQUENT            0x5e
 #define FACILITY_CLASS_CLIMBER               0x5f
+#define FACILITY_CLASS_CLOWN                 0x60
+#define FACILITY_CLASS_DAME                  0x61
+#define FACILITY_CLASS_AGENT                 0x62
+#define FACILITY_CLASS_BARRY                 0x63
+#define FACILITY_CLASS_MASTER                0x64
+#define FACILITY_CLASS_SMITHY                0x65
+#define FACILITY_CLASS_SANE                  0x66
+#define FACILITY_CLASS_OFFICER               0x67
+#define FACILITY_CLASS_PHOTOGRAPHER          0x68
+#define FACILITY_CLASS_THE_HEALER            0x69
+#define FACILITY_CLASS_ELDER                 0x6a
+#define FACILITY_CLASS_SOLDIER               0x6b
+#define FACILITY_CLASS_GRILLMEISTER          0x6c
+#define FACILITY_CLASS_ASSISTANT             0x6d
 
-#define FACILITY_CLASSES_COUNT               0x60
+#define FACILITY_CLASSES_COUNT               0x6e
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -492,7 +518,20 @@
 #define TRAINER_CLASS_BREADWINNER    0x7e
 #define TRAINER_CLASS_TOPAZ_ACOLYTE  0x7F
 #define TRAINER_CLASS_MARCHONESS     0x80
-#define TRAINER_CLASS_COUNT          0x81 // UPDATE THIS WHENEVER YOU PUT IN THE OTHER CLASSES !!
+#define TRAINER_CLASS_DAME           0x81
+#define TRAINER_CLASS_AGENT          0x82
+#define TRAINER_CLASS_BARRY          0x83
+#define TRAINER_CLASS_SMITHY         0x84
+#define TRAINER_CLASS_SANE           0x85
+#define TRAINER_CLASS_OFFICER        0x86
+#define TRAINER_CLASS_PHOTOGRAPHER   0x87
+#define TRAINER_CLASS_THE_HEALER     0x88
+#define TRAINER_CLASS_ELDER          0x89
+#define TRAINER_CLASS_HOODLUM        0x8a
+#define TRAINER_CLASS_SOLDIER        0x8b
+#define TRAINER_CLASS_GRILLMEISTER   0x8c
+#define TRAINER_CLASS_ASSISTANT      0x8d
+#define TRAINER_CLASS_COUNT          0x8e // UPDATE THIS WHENEVER YOU PUT IN THE OTHER CLASSES !!
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
