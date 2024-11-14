@@ -1722,9 +1722,9 @@ static const u16 sTypeIconTileOffset[] = {
     [TYPE_FAIRY] = 0xA4,
     [TYPE_RELIC] = 0xA8,
     [TYPE_BEAST] = 0xAC,
-    [TYPE_COSMIC] = 0xB0,
-    [TYPE_GREASY] = 0xB4,
-    [TYPE_RUBBER] = 0xB8,
+    [TYPE_COSMIC] = 0xC0,
+    [TYPE_GREASY] = 0xC4,
+    [TYPE_RUBBER] = 0xC8,
 };
 
 static const u8 sTypeIconGfx[] =  INCBIN_U8("graphics/interface/type_icons.4bpp");
