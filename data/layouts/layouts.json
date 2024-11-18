@@ -5830,6 +5830,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/PlatoonOutside/border.bin",
       "blockdata_filepath": "data/layouts/PlatoonOutside/map.bin"
+    },
+    {
+      "id": "LAYOUT_PLATOON_INSIDE_FOYER",
+      "name": "PlatoonInsideFoyer_Layout",
+      "width": 52,
+      "height": 34,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_TrainerHill",
+      "border_filepath": "data/layouts/PlatoonInsideFoyer/border.bin",
+      "blockdata_filepath": "data/layouts/PlatoonInsideFoyer/map.bin"
     }
   ]
 }

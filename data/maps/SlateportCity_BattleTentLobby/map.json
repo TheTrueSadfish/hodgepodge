@@ -98,15 +98,15 @@
       "x": 6,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PLATOON_OUTSIDE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PLATOON_INSIDE_FOYER",
+      "dest_warp_id": "2"
     },
     {
       "x": 7,
       "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_PLATOON_OUTSIDE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PLATOON_INSIDE_FOYER",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [

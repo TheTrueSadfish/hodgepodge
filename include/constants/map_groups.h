@@ -10,6 +10,7 @@
 #define MAP_SLATEPORT_CITY_BATTLE_TENT_CORRIDOR    (1 | (0 << 8))
 #define MAP_SLATEPORT_CITY_BATTLE_TENT_BATTLE_ROOM (2 | (0 << 8))
 #define MAP_PLATOON_OUTSIDE                        (3 | (0 << 8))
+#define MAP_PLATOON_INSIDE_FOYER                   (4 | (0 << 8))
 
 // gMapGroup_PiscesLeg1Major
 #define MAP_SS_TIDAL_EXTERIOR       (0 | (1 << 8))
