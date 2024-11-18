@@ -62,7 +62,8 @@
     "SlateportCity_BattleTentLobby",
     "SlateportCity_BattleTentCorridor",
     "SlateportCity_BattleTentBattleRoom",
-    "PlatoonOutside"
+    "PlatoonOutside",
+    "PlatoonInsideFoyer"
   ],
   "gMapGroup_PiscesLeg1Major": [
     "SSTidalExterior",

@@ -3717,3 +3717,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OzoneTransitionBuildings/scripts.inc"
 
 	.include "data/maps/PlatoonOutside/scripts.inc"
+
+	.include "data/maps/PlatoonInsideFoyer/scripts.inc"
