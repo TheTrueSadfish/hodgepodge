@@ -154,6 +154,8 @@ bool32 IsNeutralizingGasOnField(void);
 u32 GetBattlerAbility(u32 battler);
 u32 IsAbilityOnSide(u32 battler, u32 ability);
 u32 IsAbilityOnOpposingSide(u32 battler, u32 ability);
+u32 IsSpeciesOnSide(u32 battler, u32 species);
+u32 IsSpeciesOnOpposingSide(u32 battler, u32 species);
 u32 IsAbilityOnField(u32 ability);
 u32 IsAbilityOnFieldExcept(u32 battler, u32 ability);
 u32 IsAbilityPreventingEscape(u32 battler);

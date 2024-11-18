@@ -1366,8 +1366,8 @@ static const u8 sAssistDescription[] = _(
 
 static const u8 sIngrainDescription[] = _(
     "The user lays roots that restore\n"
-    "HP on every turn and give\n"
-    "blooming. It can't switch out.");
+    "its HP on every turn. Because\n"
+    "it's rooted, it can't switch out.");
 
 static const u8 sSuperpowerDescription[] = _(
     "The user attacks the target with\n"

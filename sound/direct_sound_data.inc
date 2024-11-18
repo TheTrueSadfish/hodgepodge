@@ -2663,15 +2663,15 @@ Cry_Klinklang::
 
 	.align 2
 Cry_Tynamo::
-	.incbin "sound/direct_sound_samples/cries/tynamo.bin"
+	.incbin "sound/direct_sound_samples/cries/shinx.bin"
 
 	.align 2
 Cry_Eelektrik::
-	.incbin "sound/direct_sound_samples/cries/eelektrik.bin"
+	.incbin "sound/direct_sound_samples/cries/luxio.bin"
 
 	.align 2
 Cry_Eelektross::
-	.incbin "sound/direct_sound_samples/cries/eelektross.bin"
+	.incbin "sound/direct_sound_samples/cries/luxray.bin"
 
 	.align 2
 Cry_Elgyem::

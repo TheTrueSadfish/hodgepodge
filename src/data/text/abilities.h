@@ -1732,7 +1732,7 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Mean Look becomes better.\n"
+    "Boosts the Pokemon's accuracy.\n"
     "Transforms if pierced. Takes more\n"
     "damage, and is less accurate.");
 

@@ -1177,6 +1177,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
         [ABILITY_VITAL_SPIRIT] = 1,
         [ABILITY_VOLT_ABSORB] = 1,
         [ABILITY_WATER_ABSORB] = 1,
+        [ABILITY_HEAT_SEEKER] = 1,
         [ABILITY_WATER_VEIL] = 1,
         [ABILITY_WHITE_SMOKE] = 1,
         [ABILITY_WONDER_GUARD] = 1,
@@ -3242,6 +3243,12 @@ u8 DoBattlerEndTurnEffects(void)
                     if (gBattleMoveDamage > (gBattleMoveDamage / 2) + 1) // Record ability if the burn takes less damage than it normally would.
                         RecordAbilityBattle(battler, ABILITY_HEATPROOF);
                     gBattleMoveDamage /= 2;
+                }
+                if (IsAbilityOnOpposingSide(battler, ABILITY_HEAT_SEEKER) && IsSpeciesOnOpposingSide(battler, SPECIES_RICKSHAWTY_CHARIOT))
+                {
+                    if (gBattleMoveDamage < (gBattleMoveDamage * 2) + 1) // Record ability if the burn takes less damage than it normally would.
+                        RecordAbilityBattle(battler, ABILITY_HEAT_SEEKER);
+                    gBattleMoveDamage *= 2;
                 }
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
@@ -6018,6 +6025,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_HEAT_SEEKER:
+                if (gBattleMons[battler].status1 & STATUS1_BURN
+                && IsBattlerAlive(battler)
+                && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
+                {
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
+                    effect++;
+                }
+                break;
             case ABILITY_RESET:
                 if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK && !(gBattleMons[battler].status1 & STATUS1_ANY)))
                 {
@@ -6490,6 +6507,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (moveType == TYPE_WATER)
                     effect = 1;
                 break;
+            case ABILITY_HEAT_SEEKER:
+                if (moveType == TYPE_FIRE && gBattleMons[gBattlerTarget].species == SPECIES_RICKSHAWTY_CHARIOT)
+                    effect = 1;
+                break;
             case ABILITY_DRY_SKIN:
                 if (moveType == TYPE_WATER)
                     effect = 2, statId = STAT_SPEED;
@@ -6946,6 +6967,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_ICE_LENS:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && TARGET_TURN_DAMAGED
+            && IsBattlerAlive(battler)
+            && gBattleMoves[gCurrentMove].piercingMove
+            && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_DefenderFormChange;
+                effect++;
+            }
+            break;
         case ABILITY_COLOR_CHANGE:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && move != MOVE_STRUGGLE && gBattleMoves[move].power != 0 && TARGET_TURN_DAMAGED && !IS_BATTLER_OF_TYPE(battler, gBattleMons[gBattlerAttacker].type1) && gBattleMons[battler].hp != 0)
             {
@@ -7267,6 +7300,22 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && RandomWeighted(RNG_POISON_POINT, 2, 1))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_HEAT_SEEKER:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && TARGET_TURN_DAMAGED
+            && ((CanBeBurned(gBattlerTarget) && (gBattleMons[gBattlerAttacker].status1 & STATUS1_BURN))
+            || (moveType == TYPE_FIRE)))
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
@@ -7624,6 +7673,22 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 && (Random() % 3) == 0)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_POISON;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_HEAT_SEEKER:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp != 0 
+            && !gProtectStructs[gBattlerTarget].confusionSelfDmg
+            && TARGET_TURN_DAMAGED
+            && CanBeBurned(gBattlerAttacker)
+            && (gBattleMons[gBattlerTarget].status1 & STATUS1_BURN))
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
@@ -8478,6 +8543,21 @@ u32 IsAbilityOnSide(u32 battler, u32 ability)
 u32 IsAbilityOnOpposingSide(u32 battler, u32 ability)
 {
     return IsAbilityOnSide(BATTLE_OPPOSITE(battler), ability);
+}
+
+u32 IsSpeciesOnSide(u32 battler, u32 species)
+{
+    if (IsBattlerAlive(battler) && gBattleMons[battler].species == species)
+        return battler + 1;
+    else if (IsBattlerAlive(BATTLE_PARTNER(battler)) && gBattleMons[BATTLE_PARTNER(battler)].species == species)
+        return BATTLE_PARTNER(battler) + 1;
+    else
+        return 0;
+}
+
+u32 IsSpeciesOnOpposingSide(u32 battler, u32 species)
+{
+    return IsSpeciesOnSide(BATTLE_OPPOSITE(battler), species);
 }
 
 u32 IsAbilityOnField(u32 ability)
@@ -13420,6 +13500,14 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
                 RecordAbilityBattle(battlerDef, ABILITY_THICK_FAT);
         }
         break;
+    case ABILITY_ICE_LENS:
+        if (gBattleMons[battlerDef].species == SPECIES_ASTIGMORAY_BLIND)
+        {
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_ICE_LENS);
+        }
+        break;
     }
 
     // ally's abilities
@@ -13495,7 +13583,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_LIGHT_BALL:
-        if (atkBaseSpeciesId == SPECIES_PIKACHU)
+        if (atkBaseSpeciesId == SPECIES_PIKACHU || atkBaseSpeciesId == SPECIES_PECKACHEW)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_CLEANSE_TAG:
