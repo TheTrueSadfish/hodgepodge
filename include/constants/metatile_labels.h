@@ -838,6 +838,7 @@
 #define METATILE_TrainerHill_Door_Elevator_Lobby  0x32C
 #define METATILE_TrainerHill_Door_Elevator_Roof   0x383
 #define METATILE_TrainerHill_GreenFloorTile       0x307
+#define METATILE_TrainerHill_WithoutDoor          0x337
 
 // gTileset_TrickHouseNew
 #define METATILE_TrickHouseNew_Explosion1x6y2            0x298
