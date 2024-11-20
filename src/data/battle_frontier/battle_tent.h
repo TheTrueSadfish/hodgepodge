@@ -5584,7 +5584,7 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 0),
         .lvl = 50,
-        .moves = {MOVE_IGNITION, MOVE_BLAST_BURN, MOVE_METEOR_MASH, MOVE_ROAST_ROUST},
+        .moves = {MOVE_IGNITION, MOVE_BLAST_BURN, MOVE_HEAVY_SLAM, MOVE_ROAST_ROUST},
         .heldItem = ITEM_SHELL_BELL,
         .nature = NATURE_QUIRKY,
     },
