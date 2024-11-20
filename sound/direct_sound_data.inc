@@ -5061,7 +5061,7 @@ Cry_Frozforce::
 
 	.align 2
 Cry_Staalnary::
-	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
+	.incbin "sound/direct_sound_samples/cries/skarmory.bin"
 
 	.align 2
 Cry_Baromite::
@@ -5081,7 +5081,7 @@ Cry_Orbacle::
 
 	.align 2
 Cry_Ninown::
-	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
+	.incbin "sound/direct_sound_samples/cries/unown.bin"
 
 	.align 2
 Cry_Cardict::
@@ -5125,11 +5125,11 @@ Cry_Malmare::
 
 	.align 2
 Cry_Sweetan::
-	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
+	.incbin "sound/direct_sound_samples/cries/meltan.bin"
 
 	.align 2
 Cry_Melceralba::
-	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
+	.incbin "sound/direct_sound_samples/cries/melmetal.bin"
 
 	.align 2
 Cry_Buggory::
@@ -5213,7 +5213,7 @@ Cry_Vividawg::
 
 	.align 2
 Cry_Kittepup::
-	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
+	.incbin "sound/direct_sound_samples/cries/indeedee.bin"
 
 	.align 2
 Cry_Peckachew::
