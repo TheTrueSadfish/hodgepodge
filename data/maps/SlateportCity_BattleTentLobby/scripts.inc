@@ -38,6 +38,7 @@ SlateportCity_BattleTentLobby_EventScript_QuitWithoutSaving::
 
 SlateportCity_BattleTentLobby_EventScript_WonChallenge::
 	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
     frontier_get FRONTIER_DATA_BATTLE_NUM
     addvar VAR_RESULT, 1    @ 1-index it
     buffernumberstring STR_VAR_1, VAR_RESULT
@@ -66,6 +67,7 @@ SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
 
 SlateportCity_BattleTentLobby_EventScript_LostChallenge::
 	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 1
 	message SlateportCity_BattleTentLobby_Text_ReturnRentalMonsSaveResults
 	waitmessage
 	frontier_set FRONTIER_DATA_LVL_MODE, FRONTIER_LVL_50

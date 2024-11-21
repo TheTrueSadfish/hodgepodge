@@ -1,22 +1,335 @@
+.set LOCALID_LANETTE, 8
+.set LOCALID_GUARD, 9
+
 PlatoonInsideFoyer_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, PlatoonInsideFoyer_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlatoonInsideFoyer_OnFrame
 	.byte 0
 
+PlatoonInsideFoyer_OnFrame:
+	map_script_2 VAR_HP_POST_CHALLENGE_TEMP, 2, PlatoonInsideFoyer_EventScript_CheckHPProgressWon
+	map_script_2 VAR_HP_POST_CHALLENGE_TEMP, 1, PlatoonInsideFoyer_EventScript_CheckHPProgressLost
+	.2byte 0
+
 PlatoonInsideFoyer_OnLoad:
-	call_if_set FLAG_HP_UNLOCKED_MUSEUM, PlatoonInsideFoyer_EventScript_OpenMountainHole
+	call_if_gt VAR_HP_PROGRESS, 3, PlatoonInsideFoyer_EventScript_RemoveFanClubGuard
+	call_if_set FLAG_HP_UNLOCKED_MUSEUM, PlatoonInsideFoyer_EventScript_OpenMuseumGate
 	end
 
-PlatoonInsideFoyer_EventScript_OpenMountainHole::
+PlatoonInsideFoyer_EventScript_RemoveFanClubGuard::
+	removeobject LOCALID_GUARD
+	setflag FLAG_TEMP_12
+	return
+
+PlatoonInsideFoyer_EventScript_OpenMuseumGate::
 	setmetatile 24, 5, METATILE_TrainerHill_WithoutDoor, FALSE
 	special DrawWholeMapView
 	return
 
+PlatoonInsideFoyer_EventScript_CheckHPProgressWon::
+	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 0
+	switch VAR_HP_PROGRESS
+	case 0, PlatoonInsideFoyer_EventScript_UnlockItemMenu
+	case 1, PlatoonInsideFoyer_EventScript_UnlockPrevoChecker
+	case 2, PlatoonInsideFoyer_EventScript_Check50SeenMons
+	case 3, PlatoonInsideFoyer_EventScript_Check100SeenMons
+	case 4, PlatoonInsideFoyer_EventScript_Check80CaughtMons
+	case 5, PlatoonInsideFoyer_EventScript_Check140CaughtMons
+	case 6, PlatoonInsideFoyer_EventScript_CancelOut
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_CheckHPProgressLost::
+	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 0
+	switch VAR_HP_PROGRESS
+	case 0, PlatoonInsideFoyer_EventScript_UnlockItemMenu
+	case 1, PlatoonInsideFoyer_EventScript_CancelOut
+	case 2, PlatoonInsideFoyer_EventScript_Check50SeenMons
+	case 3, PlatoonInsideFoyer_EventScript_Check100SeenMons
+	case 4, PlatoonInsideFoyer_EventScript_Check80CaughtMons
+	case 5, PlatoonInsideFoyer_EventScript_Check140CaughtMons
+	case 6, PlatoonInsideFoyer_EventScript_CancelOut
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_UnlockItemMenu::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_IWasWatchingYourMatches, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 1
+	releaseall
+	end
+
+PlatoonInsideFoyer_Movement_LanetteFaceDoor:
+	face_left
+	step_end
+
+PlatoonInsideFoyer_Movement_LanetteFaceDown:
+	face_down
+	step_end
+
+PlatoonInsideFoyer_Movement_PlayerWalkToLanette:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+PlatoonInsideFoyer_EventScript_UnlockPrevoChecker::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_ExcitingWin, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 2
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Check50SeenMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8008, 49, PlatoonInsideFoyer_EventScript_Seen50Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Seen50Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_50DexSeen, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 3
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Check100SeenMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8008, 99, PlatoonInsideFoyer_EventScript_Seen100Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Seen100Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_100DexSeen, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheFanClub, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 4
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Check80CaughtMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8009, 79, PlatoonInsideFoyer_EventScript_Caught80Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Caught80Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_80DexCaught, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 5
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_Check140CaughtMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8009, 139, PlatoonInsideFoyer_EventScript_CaughtAllMons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_CaughtAllMons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_140DexCaught, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockMuseum, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 6
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_CancelOut::
+	releaseall
+	end	
+
+PlatoonInsideFoyer_EventScript_ItemMenu::
+	lock
+	faceplayer
+	goto_if_set FLAG_HP_UNLOCKED_ITEM_MENU, PlatoonInsideFoyer_EventScript_HaveAllItems
+	goto_if_lt VAR_HP_PROGRESS, 1, PlatoonInsideFoyer_EventScript_ItemMenuLocked
+	msgbox PlatoonInsideFoyer_Text_WantAllTheItems, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PlatoonInsideFoyer_EventScript_GiveAllItems
+	msgbox PlatoonInsideFoyer_Text_NoItemsForU, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_HaveAllItems::
+	msgbox PlatoonInsideFoyer_Text_EnjoyingYourItems, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_ItemMenuLocked::
+	msgbox PlatoonInsideFoyer_Text_NoItemsForNewbies, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_GiveAllItems::
+	msgbox PlatoonInsideFoyer_Text_OkayBuckleUp, MSGBOX_DEFAULT
+	giveitem ITEM_BURNT_BRANCH
+	giveitem ITEM_HONDEW_BERRY
+	giveitem ITEM_RED_CARD
+	giveitem ITEM_SILK_SCARF
+	giveitem ITEM_FOCUS_SASH
+	giveitem ITEM_CHARCOAL
+	giveitem ITEM_ROCKY_HELMET
+	giveitem ITEM_FOCUS_BAND
+	giveitem ITEM_PUNCHING_GLOVE
+	giveitem ITEM_SHARP_BEAK
+	giveitem ITEM_STICKY_BARB
+	giveitem ITEM_MIRROR_HERB
+	giveitem ITEM_UTILITY_UMBRELLA
+	giveitem ITEM_NANAB_BERRY
+	giveitem ITEM_GRASSY_SEED
+	giveitem ITEM_SITRUS_BERRY
+	giveitem ITEM_BIG_ROOT
+	giveitem ITEM_LEFTOVERS
+	giveitem ITEM_COBA_BERRY
+	giveitem ITEM_BELUE_BERRY
+	giveitem ITEM_SCOPE_LENS
+	giveitem ITEM_LUMINOUS_MOSS
+	giveitem ITEM_RING_TARGET
+	giveitem ITEM_MENTAL_HERB
+	giveitem ITEM_CLEANSE_TAG
+	giveitem ITEM_CURSED_AMULET
+	giveitem ITEM_COVERT_CLOAK
+	giveitem ITEM_DESTINY_KNOT
+	giveitem ITEM_BLUK_BERRY
+	giveitem ITEM_WISE_GLASSES
+	giveitem ITEM_AIR_BALLOON
+	giveitem ITEM_ZOOM_LENS
+	giveitem ITEM_SOFT_SAND
+	giveitem ITEM_LIFE_ORB
+	giveitem ITEM_ABSORB_BULB
+	giveitem ITEM_PROTECTIVE_PADS
+	giveitem ITEM_LOST_MANTLE
+	giveitem ITEM_WEAKNESS_POLICY
+	giveitem ITEM_HARD_STONE
+	giveitem ITEM_BATTLE_HELM
+	giveitem ITEM_QUICK_CLAW
+	giveitem ITEM_CHOICE_BAND
+	giveitem ITEM_SHELL_BELL
+	giveitem ITEM_ABILITY_SHIELD
+	giveitem ITEM_METRONOME
+	giveitem ITEM_KINGS_ROCK
+	giveitem ITEM_WIDE_LENS
+	giveitem ITEM_TANGA_BERRY
+	giveitem ITEM_FLIP_COIN
+	giveitem ITEM_CUSTAP_BERRY
+	giveitem ITEM_SALAC_BERRY
+	giveitem ITEM_FROST_ORB
+	giveitem ITEM_SPECTRAL_IDOL
+	giveitem ITEM_MUSCLE_BAND
+	giveitem ITEM_BLACK_SLUDGE
+	giveitem ITEM_FLOAT_STONE
+	giveitem ITEM_POISON_BARB
+	giveitem ITEM_SHUCA_BERRY
+	giveitem ITEM_PESKY_PLUSH
+	giveitem ITEM_SILVER_POWDER
+	giveitem ITEM_EJECT_BUTTON
+	giveitem ITEM_BRIGHT_POWDER
+	giveitem ITEM_CLEAR_AMULET
+	giveitem ITEM_BINDING_BAND
+	giveitem ITEM_TOXIC_ORB
+	giveitem ITEM_DRAGON_FANG
+	giveitem ITEM_ROSELI_BERRY
+	giveitem ITEM_GLUE_TUBE
+	giveitem ITEM_PINAP_BERRY
+	giveitem ITEM_ICY_ROCK
+	giveitem ITEM_SPELON_BERRY
+	giveitem ITEM_POMEG_BERRY
+	giveitem ITEM_FLAME_ORB
+	giveitem ITEM_NEVER_MELT_ICE
+	giveitem ITEM_LIGHT_CLAY
+	giveitem ITEM_LOADED_DICE
+	giveitem ITEM_LIGHT_BALL
+	giveitem ITEM_JABOCA_BERRY
+	giveitem ITEM_CORRODE_MOD
+	giveitem ITEM_BLUNDER_POLICY
+	giveitem ITEM_MAGOST_BERRY
+	giveitem ITEM_ASSAULT_VEST
+	giveitem ITEM_EJECT_PACK
+	delay 8
+	setflag FLAG_HP_UNLOCKED_ITEM_MENU
+	msgbox PlatoonInsideFoyer_Text_ThatsEverything, MSGBOX_AUTOCLOSE
+	release
+	end
+
 PlatoonInsideFoyer_EventScript_PrevoChecker::
 	lock
 	faceplayer
+	goto_if_lt VAR_HP_PROGRESS, 2, PlatoonInsideFoyer_EventScript_PrevoCheckerLocked
 	msgbox PlatoonInsideFoyer_Text_WantToFillOutYourDex, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, PlatoonInsideFoyer_EventScript_FullPrevoCheck
 	msgbox PlatoonInsideFoyer_Text_OkayThen, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCheckerLocked::
+	msgbox PlatoonInsideFoyer_Text_NoPrevoCheckerForNewbies, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -363,6 +676,93 @@ PlatoonInsideFoyer_EventScript_SetQueglett::
 	setseenmon SPECIES_DIGLETT
 	setcaughtmon SPECIES_DIGLETT
 	return
+
+PlatoonInsideFoyer_EventScript_Purplina::
+	lock
+	faceplayer
+	goto_if_lt VAR_HP_PROGRESS, 6, PlatoonInsideFoyer_EventScript_MuseumLocked
+	msgbox PlatoonInsideFoyer_Text_LetMeOpenTheGate, MSGBOX_DEFAULT
+	goto PlatoonInsideFoyer_EventScript_OpenMuseumGateFirstTime
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_MuseumLocked::
+	msgbox PlatoonInsideFoyer_Text_Scram, MSGBOX_AUTOCLOSE
+	release
+	end	
+
+PlatoonInsideFoyer_EventScript_OpenMuseumGateFirstTime::
+	closemessage
+	setmetatile 24, 5, METATILE_TrainerHill_WithoutDoor, FALSE
+	special DrawWholeMapView
+	setflag FLAG_HP_UNLOCKED_MUSEUM
+	playse SE_UNLOCK
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_Text_IWasWatchingYourMatches:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_ExcitingWin:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_50DexSeen:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_100DexSeen:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockTheFanClub:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_80DexCaught:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_140DexCaught:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_IllUnlockMuseum:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_NoItemsForNewbies:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_WantAllTheItems:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_NoItemsForU:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_OkayBuckleUp:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_ThatsEverything:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_EnjoyingYourItems:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_NoPrevoCheckerForNewbies:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_Scram:
+	.string "test$"
+
+PlatoonInsideFoyer_Text_LetMeOpenTheGate:
+	.string "test$"
 
 PlatoonInsideFoyer_Text_WantToFillOutYourDex:
 	.string "wanna fill out that mf dex$"
