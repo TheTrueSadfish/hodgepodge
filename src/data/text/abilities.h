@@ -1752,9 +1752,9 @@ static const u8 sPelagicLightsDescription[] = _(
     "changes when it enters a battle.");
 
 static const u8 sPrecisionDescription[] = _(
-    "Beam moves land critical hits\n"
-    "more easily and are boosted based\n"
-    "on acc. Beam moves raise acc.");
+    "Beam moves land more critical\n"
+    "hits and are boosted based on\n"
+    "acc. Beam moves raise acc.");
 
 static const u8 sSlipNWhipDescription[] = _(
     "Prone to evade moves on contact.\n"
