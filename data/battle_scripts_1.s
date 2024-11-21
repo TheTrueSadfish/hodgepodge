@@ -1344,6 +1344,34 @@ BattleScript_ExtraExtraMoveEnd::
 	moveendall
 	end
 
+BattleScript_AttackerUsedAnExtraMoveStatus::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ABILITYLETITUSEMOVE
+	waitmessage B_WAIT_TIME_SHORT
+BattleScript_EffectExtraHitStatus::
+	setstatchanger STAT_ATK, 1, TRUE
+	attackcanceler
+	jumpifsubstituteblocks BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+BattleScript_ExtraStatDownFromAttackString:
+	attackstring
+	ppreduce
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_ExtraStatDownEnd
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_ExtraStatDownDoAnim
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_ExtraStatDownEnd
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_ExtraStatDownPrintString
+BattleScript_ExtraStatDownDoAnim::
+	attackanimation
+	waitanimation
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_ExtraStatDownPrintString::
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_ExtraStatDownEnd::
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectOvertake::
 	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_EffectHit
 	attackcanceler
@@ -14712,8 +14740,8 @@ BattleScript_IntimidateLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_IntimidateLoopIncrement
 	jumpiftargetally BattleScript_IntimidateLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_IntimidateLoopIncrement
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePrevented
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IntimidateLoopIncrement
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_IntimidatePrevented
@@ -14754,8 +14782,10 @@ BattleScript_IntimidateContrary_WontIncrease:
 	goto BattleScript_IntimidateEffect_WaitString
 
 BattleScript_IntimidatePrevented:
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePreventedNotAbility
 	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_LONG
+BattleScript_IntimidatePreventedNotAbility:
 	setbyte gBattleCommunication STAT_ATK
 	stattextbuffer BS_TARGET
 	printstring STRINGID_STATWASNOTLOWERED
@@ -14770,6 +14800,65 @@ BattleScript_IntimidateInReverse:
 	modifybattlerstatstage BS_TARGET, STAT_ATK, INCREASE, 2, BattleScript_IntimidateLoopIncrement, ANIM_ON
 	call BattleScript_TryAdrenalineOrb
 	goto BattleScript_IntimidateLoopIncrement
+
+BattleScript_PelagicLightsActivates::
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_PelagicLightsLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_PelagicLightsLoopIncrement
+	jumpiftargetally BattleScript_PelagicLightsLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_PelagicLightsLoopIncrement
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_PelagicLightsLoopIncrement
+BattleScript_PelagicLightsConfusion:
+	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_PelagicLightsConfusionPrevented
+	jumpifsubstituteblocks BattleScript_PelagicLightsConfusionPreventedNotAbility
+	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_PelagicLightsConfusionPreventedNotAbility
+	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_PelagicLightsConfusionPreventedNotAbility
+	jumpifsafeguard BattleScript_PelagicLightsConfusionPreventedNotAbility
+	setmoveeffect MOVE_EFFECT_CONFUSION
+	seteffectprimary
+	printstring STRINGID_PKMNWASCONFUSED
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PelagicLightsTorment:
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_PelagicLightsTormentPrevented
+	settorment BattleScript_PelagicLightsTormentPreventedNotAbility
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+BattleScript_PelagicLightsLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_PelagicLightsLoop
+BattleScript_PelagicLightsEnd:
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	pause B_WAIT_TIME_MED
+	end3
+
+BattleScript_PelagicLightsConfusionPrevented:
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_WASNOTCONFUSED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_PelagicLightsTorment
+
+BattleScript_PelagicLightsConfusionPreventedNotAbility:
+	printstring STRINGID_WASNOTCONFUSED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_PelagicLightsTorment
+
+BattleScript_PelagicLightsTormentPrevented:
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_WASNOTTORMENTED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_PelagicLightsLoopIncrement
+
+BattleScript_PelagicLightsTormentPreventedNotAbility:
+	printstring STRINGID_WASNOTTORMENTED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_PelagicLightsLoopIncrement
 
 BattleScript_UnnerveActivates::
 	showabilitypopup BS_ATTACKER
@@ -17739,8 +17828,8 @@ BattleScript_DisturbLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_DisturbLoopIncrement
 	jumpiftargetally BattleScript_DisturbLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_DisturbLoopIncrement
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPrevented
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_DisturbLoopIncrement
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_DisturbPrevented // SCRAPPY
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_DisturbPrevented
@@ -17780,8 +17869,10 @@ BattleScript_DisturbContrary_WontIncrease:
 	goto BattleScript_DisturbEffect_WaitString
 
 BattleScript_DisturbPrevented:
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPreventedNotAbility
 	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_LONG
+BattleScript_DisturbPreventedNotAbility:
 	setbyte gBattleCommunication STAT_SPATK
 	stattextbuffer BS_TARGET
 	printstring STRINGID_STATWASNOTLOWERED

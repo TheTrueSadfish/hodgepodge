@@ -1767,9 +1767,9 @@ static const u8 sTerraformerDescription[] = _(
     "a battle.");
 
 static const u8 sToothNNailDescription[] = _(
-    "After using a biting/sound/claw/\n"
-    "slicing move uses Slash/Hone\n"
-    "Claws/Crunch/Growl respectively.");
+    "After using a biting, sound,\n"
+    "claw, or slicing move uses Slash,\n"
+    "Hone Claws, Crunch, or Growl.");
 
 static const u8 sSunkCostDescription[] = _(
     "The Pokémon has a chance to do\n"

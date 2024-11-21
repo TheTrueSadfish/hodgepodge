@@ -744,6 +744,8 @@ static const u8 sText_NoOneWillBeAbleToRun[] = _("No one will be able to run awa
 static const u8 sText_DestinyKnotActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} shares the pain\nbecause of {B_LAST_ITEM}!");
 static const u8 sText_CloakedInAFreezingLight[] = _("{B_ATK_NAME_WITH_PREFIX} became cloaked\nin a freezing light!");
 static const u8 sText_StatWasNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwas not lowered!");
+static const u8 sText_PkmnWasNotConfused[] = _("{B_DEF_NAME_WITH_PREFIX}'s was not\nconfused!");
+static const u8 sText_PkmnWasNotTormented[] = _("{B_DEF_NAME_WITH_PREFIX}'s was not\ntormented!");
 static const u8 sText_DefensesWereNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s defenses\nwere not lowered!");
 static const u8 sText_AuraFlaredToLife[] = _("{B_DEF_NAME_WITH_PREFIX}'s aura flared to life!");
 static const u8 sText_AirLockActivates[] = _("The effects of weather\ndisappeared.");
@@ -1787,6 +1789,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNPLAYEDADIAMOND - BATTLESTRINGS_TABLE_START] = sText_PkmnPlayedADiamond,
     [STRINGID_PKMNSXTAUNTEDY - BATTLESTRINGS_TABLE_START] = sText_PkmnsXTauntedY,
     [STRINGID_BATTLERCURLEDUP - BATTLESTRINGS_TABLE_START] = sText_BattlerCurledUp,
+    [STRINGID_WASNOTCONFUSED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotConfused,
+    [STRINGID_WASNOTTORMENTED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotTormented,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

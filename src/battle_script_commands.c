@@ -1371,7 +1371,11 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
-    if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED)
+    if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED
+    && (!(gBattleStruct->daringDeedSpade 
+    || gBattleStruct->daringDeedHeart
+    || gBattleStruct->daringDeedClub
+    || gBattleStruct->daringDeedDiamond)))
     {
         i = Random() % 4;
         gBattleStruct->daringDeedSpade = FALSE;
@@ -2262,6 +2266,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
         critChance  = 2 * ((gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY) != 0)
                     + 1 * ((gBattleMons[battlerAtk].status2 & STATUS2_DRAGON_CHEER) != 0)
                     + (gBattleMoves[gCurrentMove].highCritRatio)
+                    + (gCurrentMove == MOVE_SLASH)
                     + (holdEffectAtk == HOLD_EFFECT_SCOPE_LENS)
                     + 2 * (holdEffectAtk == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[battlerAtk].species == SPECIES_CHANSEY)
                     + 2 * BENEFITS_FROM_LEEK(battlerAtk, holdEffectAtk)
@@ -2270,7 +2275,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                 #endif
                     + (abilityAtk == ABILITY_SUPER_LUCK)
                     + 2 * (abilityAtk == ABILITY_RISKTAKER)
-                    + (abilityAtk == ABILITY_PRECISION + CountBattlerAccuracyIncreases(battlerAtk) - 1);
+                    + CountBattlerAccuracyIncreases(battlerAtk) * (abilityAtk == ABILITY_PRECISION);
 
         // Record ability only if move had at least +3 chance to get a crit
         if (critChance >= 3 && recordAbility && (abilityDef == ABILITY_SHELL_ARMOR))

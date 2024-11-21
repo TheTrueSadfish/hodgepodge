@@ -5616,6 +5616,19 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_PELAGIC_LIGHTS:
+            for (i = 0; i < NUM_BATTLE_STATS; i++)
+            {
+                if (!gSpecialStatuses[battler].switchInAbilityDone
+                && gBattleMons[BATTLE_OPPOSITE(battler)].statStages[i] != DEFAULT_STAT_STAGE)
+                {
+                    gBattlerAttacker = battler;
+                    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                    BattleScriptPushCursorAndCallback(BattleScript_PelagicLightsActivates);
+                    effect++;
+                }
+            }
+            break;
         case ABILITY_GLARING_STAGGER:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -7849,6 +7862,94 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_TOOTH_N_NAIL:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp != 0
+            && IsBattlerAlive(gBattlerTarget) 
+            && TARGET_TURN_DAMAGED
+            && gBattlerTarget != gBattlerAttacker
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && !gProtectStructs[gBattlerAttacker].extraMoveUsed
+            && !(IS_MOVE_STATUS(gCurrentMove))
+            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
+            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
+            && (gBattleMoves[move].bitingMove
+            || gBattleMoves[move].soundMove
+            || gBattleMoves[move].slicingMove
+            || gCurrentMove == MOVE_FURY_SWIPES))
+            {    
+                u16 extraMove;
+                u8 movePower;
+                u8 moveEffectPercentChance;
+                u8 extraMoveSecondaryEffect;
+                
+                if (gBattleMoves[move].bitingMove || gBattleMoves[move].soundMove)
+                {
+                    i = Random() % 2;
+
+                    if (i == 0)
+                    {
+                        extraMove = MOVE_SLASH;  //The Extra Move to be used
+                        movePower = 70;                  //The Move power, leave at 0 if you want it to be the same as the normal move
+                        moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
+                        extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
+                    }
+                    else 
+                    {
+                        extraMove = MOVE_FURY_SWIPES;  //The Extra Move to be used
+                        movePower = 25;                  //The Move power, leave at 0 if you want it to be the same as the normal move
+                        moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
+                        extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
+                    }
+                }
+                else if (gBattleMoves[move].slicingMove || gCurrentMove == MOVE_FURY_SWIPES)
+                {
+                    i = Random() % 2;
+
+                    if (i == 0)
+                    {
+                        extraMove = MOVE_CRUNCH;  //The Extra Move to be used
+                        movePower = 80;                  //The Move power, leave at 0 if you want it to be the same as the normal move
+                        moveEffectPercentChance  = 20;  //The percent chance of the move effect happening
+                        extraMoveSecondaryEffect = MOVE_EFFECT_DEF_MINUS_1;  //Leave at 0 to remove it's secondary effect
+                    }
+                    else 
+                    {
+                        extraMove = MOVE_GROWL;  //The Extra Move to be used
+                        movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
+                        moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
+                        extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
+                    }
+                }
+
+                gTempMove = gCurrentMove;
+                gCurrentMove = extraMove;
+                if (extraMove == MOVE_FURY_SWIPES)
+                {
+                    SetRandomMultiHitCounter();
+                }
+                else
+                {
+                    gMultiHitCounter = 0;
+                }
+                gProtectStructs[battler].extraMoveUsed = TRUE;
+
+                //Move Effect
+                VarSet(VAR_EXTRA_MOVE_DAMAGE,      movePower);
+                VarSet(VAR_TEMP_MOVEEFFECT_CHANCE, moveEffectPercentChance);
+                VarSet(VAR_TEMP_MOVEEFFECT,        extraMoveSecondaryEffect);
+
+                if (extraMove == MOVE_GROWL)
+                {
+                    gBattlescriptCurrInstr = BattleScript_AttackerUsedAnExtraMoveStatus;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_AttackerUsedAnExtraMove;
+                }
+                effect++;
+            }
+            break;
         case ABILITY_RISKTAKER:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && gBattleMons[gBattlerTarget].hp != 0 
@@ -8000,7 +8101,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_STENCH:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && RandomWeighted(RNG_STENCH, 9, 1) && !IS_MOVE_STATUS(move) && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_HIT && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_STATUS && gBattleMoves[gCurrentMove].effect != EFFECT_TRIPLE_ARROWS)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerTarget].hp != 0
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && RandomWeighted(RNG_STENCH, 9, 1)
+            && !IS_MOVE_STATUS(move)
+            && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_HIT
+            && gBattleMoves[gCurrentMove].effect != EFFECT_FLINCH_STATUS
+            && gBattleMoves[gCurrentMove].effect != EFFECT_TRIPLE_ARROWS)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
                 BattleScriptPushCursor();
@@ -8010,34 +8118,40 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_STRONG_JAW:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerTarget].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
             && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_DEF_MINUS_1
             && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-            && !(IS_MOVE_STATUS(gCurrentMove))
+            && !IS_MOVE_STATUS(move)
             && gBattleMoves[move].bitingMove)
             {
-                gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
+                SET_STATCHANGER(STAT_DEF, 1, TRUE);
+                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_DEF_MINUS_1;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
-                SetMoveEffect(FALSE, 0);
-                BattleScriptPop();
+                gBattlescriptCurrInstr = BattleScript_GooeyActivates;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
         case ABILITY_PRECISION:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
             && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_ACC_PLUS_1
             && CompareStat(gBattlerAttacker, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN)
-            && !(IS_MOVE_STATUS(gCurrentMove))
+            && !IS_MOVE_STATUS(gCurrentMove)
             && gBattleMoves[move].beamMove)
             {
-                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_ACC_PLUS_1;
+                SET_STATCHANGER(STAT_ACC, 1, FALSE);
+                gBattleScripting.moveEffect = MOVE_EFFECT_ACC_PLUS_1;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
-                SetMoveEffect(FALSE, 0);
-                BattleScriptPop();
+                gBattlescriptCurrInstr = BattleScript_GooeyActivates;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
