@@ -680,6 +680,7 @@ PlatoonInsideFoyer_EventScript_SetQueglett::
 PlatoonInsideFoyer_EventScript_Purplina::
 	lock
 	faceplayer
+	goto_if_set FLAG_HP_UNLOCKED_MUSEUM, PlatoonInsideFoyer_EventScript_GateAlreadyOpen
 	goto_if_lt VAR_HP_PROGRESS, 6, PlatoonInsideFoyer_EventScript_MuseumLocked
 	msgbox PlatoonInsideFoyer_Text_LetMeOpenTheGate, MSGBOX_DEFAULT
 	goto PlatoonInsideFoyer_EventScript_OpenMuseumGateFirstTime
@@ -688,6 +689,11 @@ PlatoonInsideFoyer_EventScript_Purplina::
 
 PlatoonInsideFoyer_EventScript_MuseumLocked::
 	msgbox PlatoonInsideFoyer_Text_Scram, MSGBOX_AUTOCLOSE
+	release
+	end	
+
+PlatoonInsideFoyer_EventScript_GateAlreadyOpen::
+	msgbox PlatoonInsideFoyer_Text_GateAlreadyOpen, MSGBOX_AUTOCLOSE
 	release
 	end	
 
@@ -702,73 +708,300 @@ PlatoonInsideFoyer_EventScript_OpenMuseumGateFirstTime::
 	end
 
 PlatoonInsideFoyer_Text_IWasWatchingYourMatches:
-	.string "test$"
+	.string "Hey, you.\p"
+	.string "I've been observing your matches.\n"
+	.string "You battle in a pretty interesting\l"
+	.string "way... can you come here\l"
+	.string "for a moment?$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou:
-	.string "test$"
+	.string "My name is Lanette.\n"
+	.string "I run this facility in my\l"
+	.string "sister's absence...\p"
+	.string "I really enjoy watching\n"
+	.string "unorthodox battling. Hence, my\l"
+	.string "interest in this randomized\l"
+	.string "battle format. I feel that is\l"
+	.string "a true measure of a good trainer;\l"
+	.string "one that can work under any\l"
+	.string "prerequisite.\p"
+	.string "You especially seem to know\n"
+	.string "what you're doing. I will be tuning\l"
+	.string "in whenever you go back to the\l"
+	.string "gauntlet. And, as a show of\l"
+	.string "good will...\p"
+	.string "Check in with Teala, to your left.\n"
+	.string "I told her that you have been\l"
+	.string "cleared to receive the Item Bag\l"
+	.string "if you so wish.\p"
+	.string "Have a good evening.$"
 
 PlatoonInsideFoyer_Text_ExcitingWin:
-	.string "test$"
+	.string "That was a stimulating streak,\n"
+	.string "Tawila. Remarkable resilience.\p"
+	.string "Come on over, indulge me...$"
 
 PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
-	.string "test$"
+	.string "Have you been checking your\n"
+	.string "Pokedex, Tawila? It records\l"
+	.string "data for every Pokemon you use\l"
+	.string "on your team. There's some\l"
+	.string "fascinating stuff to learn from it.\p"
+	.string "A profusion of the Pokemon you can\n"
+	.string "pick from in the facility have\l"
+	.string "pre-evolutions out in the wild.\l"
+	.string "If you're in for a pursuit of\l"
+	.string "knowledge, I would go talk to\l"
+	.string "Tanner at his counter. He can fill\l"
+	.string "in your Pokedex with data for\l"
+	.string "pre-evolutions of Pokemon you have\l"
+	.string "used in battle thus far.\p"
+	.string "I may have some further special\n"
+	.string "gifts for you if you humor me and\l"
+	.string "fill out that dex out yours.\p"
+	.string "Let's say... aim for 50 seen.\n"
+	.string "That'll show me that you've\l"
+	.string "witnessed your fair share of bouts.\p"
+	.string "Have a good evening.$"
 
 PlatoonInsideFoyer_Text_50DexSeen:
-	.string "test$"
+	.string "Tawila, Tawila, Tawila.\p"
+	.string "Always good to see you battle.\p"
+	.string "Mind coming over here so I can\n"
+	.string "peruse your Pokedex?$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons:
-	.string "test$"
+	.string "Hmm. Now, let's see...\p"
+	.string "Yep. That's 50. You've been\n"
+	.string "making the rounds. That's great.\p"
+	.string "Have the battles remained\n"
+	.string "interesting for you each time?\l"
+	.string "I sure hope so.\p"
+	.string "But... hmm. If you're looking\n"
+	.string "for even more of a mix-up to\l"
+	.string "regular battles in this facility,\l"
+	.string "I can set you up with the\l"
+	.string "experimental Pokemon.\p"
+	.string "Not everyone wants to have them in\n"
+	.string "the pool, as they are wildly\l"
+	.string "out of most peoples' wheelhouse.\l"
+	.string "Why so, you may ask? Well, most\l"
+	.string "of them have Types that have not\l"
+	.string "been seen on any other Pokemon.\p"
+	.string "Cosmic. Beast. Relic.\n"
+	.string "Rubber. Greasy.\l"
+	.string "I would wager that these Type\l"
+	.string "names don't ring a bell.\p"
+	.string "They have their own place on the\n"
+	.string "type chart, with unique strengths\l"
+	.string "and weaknesses. You're a tough\l"
+	.string "one, Tawila. I'll put these\l"
+	.string "experimental picks into the\l"
+	.string "general roster.\p"
+	.string "Oh, and, hmm...\n"
+	.string "The next milestone I want you\l"
+	.string "to strive for is seeing 100\l"
+	.string "Pokemon in total.\l"
+	.string "Go back to battling whenever\l"
+	.string "you would like and get those\l"
+	.string "numbers up.\p"
+	.string "Knowing you has been rather fun,\n"
+	.string "Tawila. Have a good evening.$"
 
 PlatoonInsideFoyer_Text_100DexSeen:
-	.string "test$"
+	.string "Well. If it isn't the one and\n"
+	.string "only Tawila.\p"
+	.string "You know the drill. It's\n"
+	.string "Pokedex time.$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheFanClub:
-	.string "test$"
+	.string "Yep. I can already tell.\n"
+	.string "100 Pokemon seen...\l"
+	.string "awesome possum.\p"
+	.string "I could always tell you had an\n"
+	.string "appreciation for the wildlife\l"
+	.string "of the area. Likewise.\p"
+	.string "I went ahead and let the guard\n"
+	.string "at the Fan Club door know that\l"
+	.string "you are fully cleared to enter.\l"
+	.string "The Club is filled with superfans\l"
+	.string "of the Hodgepodge Platoon.\l"
+	.string "Most of them have streaks numbering\l"
+	.string "in the double digits.\p"
+	.string "You might learn some obscure\n"
+	.string "knowledge or tricks or lore\l"
+	.string "from them. Why not go\l"
+	.string "socialize for a bit.\p"
+	.string "As for your next Pokdex goal,\n"
+	.string "hmm...\p"
+	.string "I want to see you try for\n"
+	.string "80 Caught. Make sure to check in\l"
+	.string "with Tanner for pre-evolution\l"
+	.string "entries now and then.\p"
+	.string "Have a good evening.$"
 
 PlatoonInsideFoyer_Text_80DexCaught:
-	.string "test$"
+	.string "Tawila, Tawila,\n"
+	.string "quite contrary.\p"
+	.string "That rhyme doesn't work.\n"
+	.string "Eh, you get the idea.\p"
+	.string "Come let me talk your ear off\n"
+	.string "for a spell.$"
 
 PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave:
-	.string "test$"
+	.string "Ha, ha, ha... you really are\n"
+	.string "tenacious, you know...\p"
+	.string "A whole 80 caught? I must say,\n"
+	.string "I was not quite expecting you\l"
+	.string "to indulge me so heavily.\l"
+	.string "That's quite kind.\p"
+	.string "I had one of my employees remove\n"
+	.string "the blockers from the cave\l"
+	.string "entrance outdoors. People have\l"
+	.string "been telling me that there are\l"
+	.string "ancient tablets in there telling\l"
+	.string "of some prophecy. I don't\l"
+	.string "quite believe in that kind of stuff,\l"
+	.string "but the archaeologic discovery\l"
+	.string "is definitely cool.\p"
+	.string "There is not much left for me\n"
+	.string "to tax you with, Tawila.\l"
+	.string "The last conceivable milestone\l"
+	.string "would be getting every single\l"
+	.string "Pokedex entry filled out.\l"
+	.string "All 142. Good luck if you\l"
+	.string "so choose to take that road.\p"
+	.string "And as always, good evening.\n$"
 
 PlatoonInsideFoyer_Text_140DexCaught:
-	.string "test$"
+	.string "Hey. Look at that ear to ear\n"
+	.string "grin I see. I'm assuming you\l"
+	.string "have a big achievement to\l"
+	.string "show off?$"
 
 PlatoonInsideFoyer_Text_IllUnlockMuseum:
-	.string "test$"
+	.string "Every. Single. Pokemon. Catalogued.\p"
+	.string "Kudos, Tawila. You've seen\n"
+	.string "everything there could be to see.\p"
+	.string "So, I suppose it's time to fill you\n"
+	.string "in on a few important matters.\p"
+	.string "Firstly, where the Hodgepodge\n"
+	.string "Platoon even is. The answer?\l"
+	.string "It's all virtual.\p"
+	.string "My close friend Bill had\n"
+	.string "been developing his own virtual\l"
+	.string "reality tech for a game he had\l"
+	.string "been working on. I believe it\l"
+	.string "was called...\l"
+	.string "AmalgaMagenta? Yes.\p"
+	.string "I was interested in taking that\n"
+	.string "base and spinning it into my\l"
+	.string "own game. A game where people\l"
+	.string "could use custom Pokemon unseen\l"
+	.string "and unheard of in our world.\p"
+	.string "Friends of mine gathered around\n"
+	.string "to help me out with various parts\l"
+	.string "of the design process. The\l"
+	.string "Pokemon you have been battling with\l"
+	.string "have been designed by many\l"
+	.string "different talented folks.\p"
+	.string "Every individual you see in this\n"
+	.string "building is an artificial\l"
+	.string "intelligence programmed by me.\l"
+	.string "Except, of course, the trainers\l"
+	.string "you have fought. They all are\l"
+	.string "able to access this realm through\l"
+	.string "Virtual Reality Headsets.\p"
+	.string "So, where does that leave you?\p"
+	.string "Tawila, you're my crowning\n"
+	.string "achievement. A self-learning\l"
+	.string "AI that I wanted to see out\l"
+	.string "match real humans. I saw your\l"
+	.string "skills develop, and your curiosity\l"
+	.string "blossom. Very remarkable, indeed.\p"
+	.string "I must admit, Tawila, I have\n"
+	.string "begun to truly see you as an\l"
+	.string "independent. A friend. But,\l"
+	.string "unfortunately, there is no\l"
+	.string "leaving this realm for you.\p"
+	.string "I have coded Purplina, by the\n"
+	.string "eastern gate, to unlock\l"
+	.string "your final prize. The Museum.\p"
+	.string "There, you can read up on all\n"
+	.string "of the creators that made this\l"
+	.string "game possible.\p"
+	.string "Soak up that last bit of curiosity,\n"
+	.string "Tawila. I will be shutting you\l"
+	.string "down by midnight. You've succeeded,\l"
+	.string "in my eyes.\p"
+	.string "...Good night.$"
 
 PlatoonInsideFoyer_Text_NoItemsForNewbies:
-	.string "test$"
+	.string "Hello! You're a fresh face.\n"
+	.string "Good luck at the challenge!$"
 
 PlatoonInsideFoyer_Text_WantAllTheItems:
-	.string "test$"
+	.string "Ah, it's you! That Tawila\n"
+	.string "person Lanette told me about.\p"
+	.string "I have a bag filled with\n"
+	.string "items to give you. Just be\l"
+	.string "prepared! There's a LOT.\p"
+	.string "Are you ready to receive\n"
+	.string "your items?$"
 
 PlatoonInsideFoyer_Text_NoItemsForU:
-	.string "test$"
+	.string "That's fine!\n"
+	.string "Happy battling!$"
 
 PlatoonInsideFoyer_Text_OkayBuckleUp:
-	.string "test$"
+	.string "Okay then! Let's fill\n"
+	.string "'er up!$"
 
 PlatoonInsideFoyer_Text_ThatsEverything:
-	.string "test$"
+	.string "That should be everything!\n"
+	.string "Take a look in your bag\l"
+	.string "for detailed descriptions\l"
+	.string "of every item.\p"
+	.string "It can really assist you\n"
+	.string "in battle to reference what they\l"
+	.string "all can do! Toodles!$"
 
 PlatoonInsideFoyer_Text_EnjoyingYourItems:
-	.string "test$"
+	.string "Hope you're enjoying that bag\n"
+	.string "of items, Tawila.\p"
+	.string "Remember to reference them\n"
+	.string "while in battle!$"
 
 PlatoonInsideFoyer_Text_NoPrevoCheckerForNewbies:
-	.string "test$"
+	.string "Ah, yeah, I'm still setting up\n"
+	.string "shop over here. Forgive me.$"
 
 PlatoonInsideFoyer_Text_Scram:
-	.string "test$"
+	.string "Ugh. Why are you bothering me?\n"
+	.string "I'm just the door guard.\p"
+	.string "No, I'm not opening it for you.\n"
+	.string "Kindly vacate.$"
 
 PlatoonInsideFoyer_Text_LetMeOpenTheGate:
-	.string "test$"
+	.string "Yes, I am very aware.\n"
+	.string "Gate should be opening momentarily.$"
+
+PlatoonInsideFoyer_Text_GateAlreadyOpen:
+	.string "What? It's open.\n"
+	.string "Go be merry, or whatever.$"
 
 PlatoonInsideFoyer_Text_WantToFillOutYourDex:
-	.string "wanna fill out that mf dex$"
+	.string "Would you like me to fill out\n"
+	.string "pre-evolution dex entries\l"
+	.string "in your Pokedex? This will only\l"
+	.string "be for Pokemon you have registered\l"
+	.string "as Caught.$"
 
 PlatoonInsideFoyer_Text_OkayThen:
-	.string "okie doke come back$"
+	.string "Okay. Come back later\n"
+	.string "if you'd like to.$"
 
 PlatoonInsideFoyer_Text_CheckYourDexNow:
-	.string "check that shit out$"
+	.string "All should be situated.\n"
+	.string "Take a look at any entries\l"
+	.string "you've just unlocked.$"
