@@ -622,33 +622,33 @@
 #define EFFECT_SYRUP_BOMB                   616 //AI Flags added, simply took from EFFECT_SPEED_DOWN and adjusted scores. Could maybe do more
 #define EFFECT_OCTAZOOKA                    617 //AI Flags complete
 #define EFFECT_OVERTAKE                     618
-#define EFFECT_DARK_HUNGER                  619
-#define EFFECT_NIGHT_BEAM                   620
-#define EFFECT_INVERSION                    621
-#define EFFECT_WITCH_HYMN                   622
-#define EFFECT_HEAL_MELODY                  623
-#define EFFECT_FIREWORK_CRASH               624
-#define EFFECT_FIREBALLS                    625
-#define EFFECT_EMBER_SNOW                   626
-#define EFFECT_FEATHER_RAZOR                627
-#define EFFECT_DRAG_DOWN                    628
-#define EFFECT_HAUNT_MELODY                 629
-#define EFFECT_ODDCAST                      630
-#define EFFECT_KELP_SAP                     631
-#define EFFECT_NANAB_GATTLING               632
-#define EFFECT_FERTILE_FROLIC               633
-#define EFFECT_TAR_HIT                      634
-#define EFFECT_ICEBREAKER                   635
-#define EFFECT_NON_SEQUITUR                 636
-#define EFFECT_LOVELY_POISON                637
-#define EFFECT_BELDAM_BREW                  638
-#define EFFECT_WILD_SHUFFLE                 639
-#define EFFECT_PORTENT_CAST                 640
-#define EFFECT_WARD_SPELL                   641
-#define EFFECT_UPROOT_EVIL                  642
-#define EFFECT_PLIA_BALL                    643
-#define EFFECT_IRON_JAWS                    644
-#define EFFECT_FRESH_WHIP                   645
+#define EFFECT_DARK_HUNGER                  619 //AI Flags added, berry eaten BP increase should apply automatically
+#define EFFECT_NIGHT_BEAM                   620 //AI Flags complete
+#define EFFECT_INVERSION                    621 //AI Flags added, inverted type calc should apply automatically
+#define EFFECT_WITCH_HYMN                   622 //Should not need special AI code
+#define EFFECT_HEAL_MELODY                  623 //AI Flags added, copied a lot of Wish's code could cause issues
+#define EFFECT_FIREWORK_CRASH               624 //AI Flags complete
+#define EFFECT_FIREBALLS                    625 //Multi hit moves should not need special AI code
+#define EFFECT_EMBER_SNOW                   626 //AI Flags complete
+#define EFFECT_FEATHER_RAZOR                627 //Multi hit moves should not need special AI code
+#define EFFECT_DRAG_DOWN                    628 //AI Flags added, copied stuff from EFFECT_CLEAR_SMOG and EFFECT_HIT_ESCAPE, may cause bug
+#define EFFECT_HAUNT_MELODY                 629 //AI Flags complete
+#define EFFECT_ODDCAST                      630 //Should not need special AI code
+#define EFFECT_KELP_SAP                     631 //AI Flags complete
+#define EFFECT_NANAB_GATTLING               632 //AI Flags added, copieed EFFECT_SPIT_UP code
+#define EFFECT_FERTILE_FROLIC               633 //According to EFFECT_STORED_POWER, does not need special AI code
+#define EFFECT_TAR_HIT                      634 //Should not need special AI code
+#define EFFECT_ICEBREAKER                   635 //AI Flags added, copied EFFECT_RECOIL_25 and added a check for Frostbite/Freeze
+#define EFFECT_NON_SEQUITUR                 636 //AI Flags complete
+#define EFFECT_LOVELY_POISON                637 //AI Flags complete
+#define EFFECT_BELDAM_BREW                  638 //AI Flags complete
+#define EFFECT_WILD_SHUFFLE                 639 //AI Flags complete
+#define EFFECT_PORTENT_CAST                 640 //AI Flags added, combines stuff from EFFECT_LUCKY_CHANT with differences in score values
+#define EFFECT_WARD_SPELL                   641 //AI Flags added, combines stuff from EFFECT_SAFEGUARD with differences in score values
+#define EFFECT_UPROOT_EVIL                  642 //AI Flags added, might need to be tweaked
+#define EFFECT_PLIA_BALL                    643 //Should not need special AI code
+#define EFFECT_IRON_JAWS                    644 //AI Flags complete
+#define EFFECT_FRESH_WHIP                   645 //AI Flags complete
 #define EFFECT_ATTACK_ORDER                 646
 #define EFFECT_DEFEND_ORDER                 647
 #define EFFECT_HEAL_ORDER                   648
