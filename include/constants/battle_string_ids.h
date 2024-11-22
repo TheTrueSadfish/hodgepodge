@@ -830,8 +830,10 @@
 #define STRINGID_ATTACKERISBEINGINFECTED              828
 #define STRINGID_WASNOTCONFUSED                       829
 #define STRINGID_WASNOTTORMENTED                      830
+#define STRINGID_ORDEREDANEXTRAHEAL                   831
+#define STRINGID_THEHEALORDERCAMEIN                   832
 
-#define BATTLESTRINGS_COUNT                           821
+#define BATTLESTRINGS_COUNT                           833
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1143,7 +1145,8 @@
 #define B_MSG_SEED_WRAP            11
 #define B_MSG_WRAPPED_VINE_WHIP    12
 #define B_MSG_WRAPPED_VERGLASTROM  13
-#define NUM_TRAPPING_MOVES         14
+#define B_MSG_WRAPPED_ATTACK_ORDER 14
+#define NUM_TRAPPING_MOVES         15
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0

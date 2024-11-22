@@ -3035,6 +3035,8 @@ enum
     ENDTURN_IN_FLAMES,
     ENDTURN_FILTHMONGER,
     ENDTURN_INFECTION,
+    ENDTURN_HEAL_MELODY,
+    ENDTURN_HEAL_ORDER,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3081,6 +3083,22 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
                 BattleScriptExecute(BattleScript_IngrainTurnHeal);
                 effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_HEAL_ORDER:
+            if (gBattleStruct->storedHealOrder & gBitTable[battler])
+            {
+                BattleScriptExecute(BattleScript_HealOrderActivates);
+                gBattleStruct->storedHealOrder &= ~(gBitTable[battler]);
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_HEAL_MELODY: // ingrain
+            if (gBattleStruct->storedHealingMelody & gBitTable[battler])
+            {
+                BattleScriptExecute(BattleScript_HealingMelodyActivates);
+                gBattleStruct->storedHealingMelody  &= ~(gBitTable[battler]);
             }
             gBattleStruct->turnEffectsTracker++;
             break;
@@ -8122,7 +8140,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMons[gBattlerTarget].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
-            && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_DEF_MINUS_1
+            && gBattleMoves[gCurrentMove].effect != EFFECT_DEFENSE_DOWN_HIT
             && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
             && !IS_MOVE_STATUS(move)
             && gBattleMoves[move].bitingMove)
@@ -8141,7 +8159,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
-            && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_ACC_PLUS_1
+            && gBattleMoves[gCurrentMove].effect != EFFECT_NIGHT_BEAM
             && CompareStat(gBattlerAttacker, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN)
             && !IS_MOVE_STATUS(gCurrentMove)
             && gBattleMoves[move].beamMove)

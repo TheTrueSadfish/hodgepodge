@@ -7737,14 +7737,14 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_ATTACK_ORDER] =
     {
-        .effect = EFFECT_HIT,
-        .power = 90,
+        .effect = EFFECT_ATTACK_ORDER,
+        .power = 30,
         .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 15,
+        .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .highCritRatio = TRUE,

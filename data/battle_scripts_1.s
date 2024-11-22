@@ -672,6 +672,65 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHitSwitchTarget         @ EFFECT_PLIA_BALL
 	.4byte BattleScript_EffectIronJaws                @ EFFECT_IRON_JAWS
 	.4byte BattleScript_EffectFreshWhip               @ EFFECT_FRESH_WHIP
+	.4byte BattleScript_EffectAttackOrder             @ EFFECT_ATTACK_ORDER
+	.4byte BattleScript_EffectDefendOrder             @ EFFECT_DEFEND_ORDER
+	.4byte BattleScript_EffectHealOrder               @ EFFECT_HEAL_ORDER
+
+BattleScript_EffectHealOrder::
+	attackcanceler
+	attackstring
+	ppreduce
+	tryhealquarterhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
+	storehealingwish BS_ATTACKER
+	attackanimation
+	waitanimation
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_ORDEREDANEXTRAHEAL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectDefendOrder::
+	setstatchanger STAT_DEF, 1, FALSE
+	attackcanceler
+	attackstring
+	ppreduce
+	trydefendorder BS_TARGET, BattleScript_DefendOrderJustContinue
+BattleScript_DefendOrderJustContinue::
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_StatUpEnd
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_StatUpAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_StatUpPrintString
+
+BattleScript_EffectAttackOrder::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	setmoveeffect MOVE_EFFECT_ATTACK_ORDER
+	seteffectprimary
+	setmoveeffect MOVE_EFFECT_WRAP
+	seteffectsecondary
+	tryfaintmon BS_TARGET
+	moveendall
+	end
 
 BattleScript_EffectIronJaws::
 	setmoveeffect MOVE_EFFECT_IRON_JAWS
@@ -986,17 +1045,36 @@ BattleScript_EffectHealingMelody:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-
 BattleScript_EffectWitchHymn::
 	setmoveeffect MOVE_EFFECT_WITCH_HYMN
 	goto BattleScript_EffectHit
 
 BattleScript_EffectNightBeam:
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	setmoveeffect MOVE_EFFECT_CORE_ENFORCER
 	seteffectprimary
 	setmoveeffect MOVE_EFFECT_ACC_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
 	seteffectsecondary
-	goto BattleScript_EffectHit
+	tryfaintmon BS_TARGET
+	moveendall
+	end
 
 BattleScript_EffectOctazooka::
 	setmoveeffect MOVE_EFFECT_OCTAZOOKA
@@ -1593,14 +1671,35 @@ BattleScript_EffectMagicPowder::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectGravApple::
-	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_GravAppleFlinch
-	goto BattleScript_EffectHit
+	goto BattleScript_GravAppleNormal
 BattleScript_GravAppleFlinch::
-	seteffectprimary
 	setmoveeffect MOVE_EFFECT_GRAV_APPLE
+BattleScript_GravAppleNormal::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
 	seteffectsecondary
-	goto BattleScript_EffectHit
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	moveendall
+	end
 
 BattleScript_EffectPowerShift:
 	attackcanceler
@@ -3593,21 +3692,29 @@ BattleScript_EffectVoid::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSandTomb::
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectHit
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectSandTombCheckSand
+	call BattleScript_EffectHit_Ret
 	setmoveeffect MOVE_EFFECT_WRAP
+	seteffectprimary
 	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SANDSTORM, BattleScript_EffectSandTombLowerDefense
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
+BattleScript_EffectSandTombCheckSand::
+	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SANDSTORM, BattleScript_EffectSandTombLowerDefense2
 	goto BattleScript_EffectHit
 BattleScript_EffectSandTombLowerDefense::
-	seteffectprimary
+	call BattleScript_EffectHit_Ret
+BattleScript_EffectSandTombLowerDefense2::
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
-	seteffectsecondary
-	goto BattleScript_EffectHit
+	seteffectprimary
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectScorpFang::
-	setmoveeffect MOVE_EFFECT_SMACK_DOWN | MOVE_EFFECT_CERTAIN
-	seteffectprimary
 	call BattleScript_EffectHit_Ret
-	setmoveeffect MOVE_EFFECT_POISON | MOVE_EFFECT_CERTAIN
+	setmoveeffect MOVE_EFFECT_SMACK_DOWN
+	seteffectprimary
+	setmoveeffect MOVE_EFFECT_POISON
 	seteffectsecondary
 	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
@@ -4109,11 +4216,13 @@ BattleScript_EffectHeartStamp:
 	setmoveeffect MOVE_EFFECT_FLINCH
 	goto BattleScript_EffectHit
 BattleScript_HeartStampAgainstInfatuated::
+	call BattleScript_EffectHit_Ret
 	setmoveeffect MOVE_EFFECT_FLINCH
-	seteffectprimary
-	setmoveeffect MOVE_EFFECT_DEF_MINUS_2 | MOVE_EFFECT_CERTAIN
+	seteffectwithchance
+	setmoveeffect MOVE_EFFECT_DEF_MINUS_2
 	seteffectsecondary
-	goto BattleScript_EffectHit
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectCharm:
 	jumpifstatus2 BS_TARGET, STATUS2_INFATUATION, BattleScript_EffectAttackDown3
@@ -6716,11 +6825,13 @@ BattleScript_EffectSmackDown:
 	setmoveeffect MOVE_EFFECT_SMACK_DOWN
 	goto BattleScript_EffectHit
 BattleScript_SmackDownPreventEscape:
+	call BattleScript_EffectHit_Ret
 	setmoveeffect MOVE_EFFECT_SMACK_DOWN
 	seteffectprimary
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
 	seteffectsecondary
-	goto BattleScript_EffectHit
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_MoveEffectSmackDown::
 	printstring STRINGID_FELLSTRAIGHTDOWN
@@ -7552,7 +7663,7 @@ BattleScript_HealingMelodyActivates::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_WISH_HEAL
 	waitanimation
-	dmgtomaxattackerhp
+	dmg_1_2_attackerhp
 	manipulatedamage DMG_CHANGE_SIGN
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
@@ -7568,6 +7679,20 @@ BattleScript_HealingMelodyActivatesPoisonClear::
 	waitstate
 	goto BattleScript_HealingMelodyContinue
 
+BattleScript_HealOrderActivates::
+	setbyte cMULTISTRING_CHOOSER, 3
+	printfromtable gHealingWishStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_WISH_HEAL
+	waitanimation
+	dmg_1_3_attackerhp
+	manipulatedamage DMG_CHANGE_SIGN
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_HEALINGWISHHEALED
+	waitmessage B_WAIT_TIME_LONG
+	return
+	
 BattleScript_EffectWorrySeed:
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE

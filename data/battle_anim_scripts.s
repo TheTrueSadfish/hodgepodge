@@ -1056,10 +1056,45 @@ gBattleAnims_Moves::
     .4byte Move_CRIMSON_STORM
     .4byte Move_TRUE_LOVES_KISS
     .4byte Move_SABRE_BREAK
-    .4byte MOVE_MIND_GAP
-    .4byte MOVE_SUPERCELL_SLAM
-    .4byte MOVE_SWEET_WHISPERS
-    .4byte MOVE_SYRUP_BOMB
+    .4byte Move_MIND_GAP
+    .4byte Move_SUPERCELL_SLAM
+    .4byte Move_SWEET_WHISPERS
+    .4byte Move_SYRUP_BOMB
+    .4byte Move_WILD_ARMS
+    .4byte Move_PINCER_HOOK
+    .4byte Move_PAIN_SPINES
+    .4byte Move_DARK_HUNGER
+    .4byte Move_NIGHT_BEAM
+    .4byte Move_INVERSION
+    .4byte Move_WITCH_HYMN
+    .4byte Move_HEAL_MELODY
+    .4byte Move_ROAST_ROUST
+    .4byte Move_FIREWORK_CRASH
+    .4byte Move_EMBER_SNOW
+    .4byte Move_FEATHER_RAZOR
+    .4byte Move_DRAG_DOWN
+    .4byte Move_HAUNT_MELODY
+    .4byte Move_ODDCAST
+    .4byte Move_KELP_SAP
+    .4byte Move_NANAB_GATTLING
+    .4byte Move_BRIAR_WHIP
+    .4byte Move_GOOSE_CHASER
+    .4byte Move_GREASE_LIGHTNING
+    .4byte Move_NON_SEQUITUR
+    .4byte Move_BELDAM_BREW
+    .4byte Move_ASTRAL_SPIKES
+    .4byte Move_WILD_SHUFFLE
+    .4byte Move_UPROOT_EVIL
+    .4byte Move_PLIA_BALL
+    .4byte Move_IRON_JAWS
+    .4byte Move_FRESH_WHIP
+    .4byte Move_LOVELY_POISON
+    .4byte Move_GAMMA_RAY
+    .4byte Move_FIREBALLS
+    .4byte Move_FERTILE_FROLIC
+    .4byte Move_ICEBREAKER
+    .4byte Move_PORTENT_CAST
+    .4byte Move_WARD_SPELL
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -26683,6 +26718,153 @@ SyrupBombProjectileRed:
 	createsprite gSyrupRedProjectileSpriteTemplate, ANIM_TARGET, 2, 20, 0, 40, 0
 	delay 3
 	return
+
+Move_WILD_ARMS::
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_HANDS_AND_FEET
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 0, 9, RGB_RED
+	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 4, 4
+	delay 6
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 3, 1, 10, 0
+	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_TARGET, 4, 0, 7, 1
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	delay 28
+	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 4, 4
+	delay 6
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 3, 1, 10, 1
+	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_TARGET, 4, 0, 7, 1
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 9, 0, RGB_RED
+	waitforvisualfinish
+	end
+
+Move_PINCER_HOOK::
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_RAZOR_LEAF
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	createsprite gLungeGreenImpactTemplate, ANIM_ATTACKER, 4, 0, 0, ANIM_TARGET, 0
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	delay 1
+	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 3, 1, RGB(15, 15, 6), 10, RGB_BLACK, 0
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 1, -24, 0, 0, 4
+	waitforvisualfinish
+	delay 8
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 4
+	waitforvisualfinish
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 8, 1
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+Move_PAIN_SPINES::
+	loadspritegfx ANIM_TAG_NEEDLE
+	loadspritegfx ANIM_TAG_PAIN_SPLIT
+	monbg ANIM_TARGET
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	playsewithpan SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER
+	createsprite gLinearStingerSpriteTemplate, ANIM_TARGET, 2, 20, 0, -8, 0, 20, 0
+	waitforvisualfinish
+	createsprite gPainSplitProjectileSpriteTemplate, ANIM_TARGET, 2, -30, -30, ANIM_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
+	playsewithpan SE_M_SWAGGER2, 0
+	delay 1
+	createsprite gPainSplitProjectileSpriteTemplate, ANIM_TARGET, 2, -10, -10, ANIM_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
+	playsewithpan SE_M_SWAGGER2, 0
+	delay 1
+	createsprite gPainSplitProjectileSpriteTemplate, ANIM_TARGET, 2, -20, -20, ANIM_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
+	playsewithpan SE_M_SWAGGER2, 0
+	delay 1
+	createsprite gPainSplitProjectileSpriteTemplate, ANIM_TARGET, 2, -5, -5, ANIM_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
+	playsewithpan SE_M_SWAGGER2, 0
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	end
+
+Move_DARK_HUNGER::
+	loadspritegfx ANIM_TAG_LICK
+	fadetobg BG_DARK
+	waitbgfadein
+	delay 15
+	playsewithpan SE_M_NIGHTMARE, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_DarkHungerEffect, 2, 0
+	playsewithpan SE_M_LICK, SOUND_PAN_TARGET
+	createsprite gLickSpriteTemplate, ANIM_TARGET, 2, 0, 0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 16, 1
+	waitforvisualfinish
+	restorebg
+	waitbgfadein
+	end
+
+Move_NIGHT_BEAM::
+	loadspritegfx ANIM_TAG_MOON
+	loadspritegfx ANIM_TAG_GOLD_RING
+	setalpha 0, 16
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 0, 16, 0
+	waitforvisualfinish
+	createsprite gMoonSpriteTemplate, ANIM_ATTACKER, 0, 0x20, 0x15
+	createvisualtask AnimTask_AlphaFadeIn, 3, 0, 16, 16, 0, 1
+	panse SE_M_BARRIER, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 0
+	delay 40
+	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_PSYBEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 4, 0, 15
+	call PsybeamRings
+	call PsybeamRings
+	createvisualtask AnimTask_SwayMon, 5, 0, 6, 2048, 4, ANIM_TARGET
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_TARGET, 2, 2, 0, 12, RGB(31, 18, 31)
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	call PsybeamRings
+	delay 4
+	createvisualtask AnimTask_MoonlightEndFade, 2
+	waitforvisualfinish
+	blendoff
+	end
+
+Move_INVERSION::
+Move_WITCH_HYMN::
+Move_HEAL_MELODY::
+Move_ROAST_ROUST::
+Move_FIREWORK_CRASH::
+Move_EMBER_SNOW::
+Move_FEATHER_RAZOR::
+Move_DRAG_DOWN::
+Move_HAUNT_MELODY::
+Move_ODDCAST::
+Move_KELP_SAP::
+Move_NANAB_GATTLING::
+Move_BRIAR_WHIP::
+Move_GOOSE_CHASER::
+Move_GREASE_LIGHTNING::
+Move_NON_SEQUITUR::
+Move_BELDAM_BREW::
+Move_ASTRAL_SPIKES::
+Move_WILD_SHUFFLE::
+Move_UPROOT_EVIL::
+Move_PLIA_BALL::
+Move_IRON_JAWS::
+Move_FRESH_WHIP::
+Move_LOVELY_POISON::
+Move_GAMMA_RAY::
+Move_FIREBALLS::
+Move_FERTILE_FROLIC::
+Move_ICEBREAKER::
+Move_PORTENT_CAST::
+Move_WARD_SPELL::
 
 Move_TERA_BLAST::
 Move_GLAIVE_RUSH::

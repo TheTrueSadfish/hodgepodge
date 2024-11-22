@@ -127,6 +127,7 @@ struct ProtectStruct
 {
     u32 protected:1;
     u32 spikyShielded:1;
+    u32 defendOrder:1;
     u32 kingsShielded:1;
     u32 shelltered:1;
     u32 detectShielded:1;
@@ -721,6 +722,7 @@ struct BattleStruct
     u8 storedHealingWish:4; // Each battler as a bit.
     u8 storedLunarDance:4; // Each battler as a bit.
     u8 storedHealingMelody:4; // Each battler as a bit.
+    u8 storedHealOrder:4; // Each battler as a bit.
     u8 itemPartyIndex[MAX_BATTLERS_COUNT];
     u8 itemMoveIndex[MAX_BATTLERS_COUNT];
     bool8 trainerSlideHalfHpMsgDone;

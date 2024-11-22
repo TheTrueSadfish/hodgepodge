@@ -1406,6 +1406,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
                 score -= 6;
             break;
+        case EFFECT_FEATHER_RAZOR:
+        case EFFECT_FROST_SHRED:
+            if (gBattleMons[battlerAtk].statStages[STAT_SPEED] <= DEFAULT_STAT_STAGE)
+                score -= 10;
+        case EFFECT_HAYWIRE:
+            for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
+            {
+                if (gBattleMons[battlerAtk].statStages[i] <= DEFAULT_STAT_STAGE)
+                    score -= 10;
+            }
         case EFFECT_SHIFT_GEAR:
             if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
                 score -= 10;

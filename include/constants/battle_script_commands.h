@@ -299,6 +299,7 @@
 #define VARIOUS_SET_NON_SEQUITUR                     208
 #define VARIOUS_TRY_ACTIVATE_VISCERATION             209
 #define VARIOUS_SET_FILTHMONGER                      210
+#define VARIOUS_TRY_DEFEND_ORDER                     211
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

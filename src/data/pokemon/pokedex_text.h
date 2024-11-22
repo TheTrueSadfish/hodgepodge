@@ -6905,6 +6905,12 @@ const u8 gShamburgerPokedexText[] = _(
 	"off of cave floors. They'll try eating anything\n"
 	"that gets close enough to them.");
 
+const u8 gFrozhornPokedexText[] = _(
+	"Playful but brutish, the young Frozhorn charges\n"
+	"innocently at their hapless owners.\n"
+	"Unfortunately this is accompanied by a sudden\n"
+	"visit to the hospital.");
+
 const u8 gFrozforcePokedexText[] = _(
 	"In the arctic tundras of the north, these sturdy\n"
 	"brutes travel in packs. Vents on their frills\n"
