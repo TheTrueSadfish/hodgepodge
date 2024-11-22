@@ -74,10 +74,28 @@ PlatoonOutside_Movement_IntromanAdjourn:
 	step_end
 
 PlatoonOutside_Text_WelcomeToThePlatoon:
-	.string "welcome here have a mustybane$"
+	.string "Welcome to the\n"
+	.string "Hodgepodge Platoon!\p"
+	.string "This is a battling facility\n"
+	.string "focused on a format similar\l"
+	.string "to Hoenn's Battle Factory.\p"
+	.string "You get a choice of 3 out of\n"
+	.string "6 starting Pokemon, then\l"
+	.string "go up against opponents with\l"
+	.string "randomized teams of 3.\l"
+	.string "After every match, you may\l"
+	.string "swap out one of your Pokemon\l"
+	.string "for an opponent's.\p"
+	.string "To accompany you throughout\n"
+	.string "the Platoon's grounds,\l"
+	.string "please accept this companion!$"
 
 PlatoonOutside_Text_EnjoyThePlatoon:
-	.string "kill urself$"
+	.string "When you're ready to face\n"
+	.string "the gauntlet of trainers,\l"
+	.string "come talk to me in the northern-\l"
+	.string "most room of the building.\p"
+	.string "Good luck and have fun!$"
 
 PlatoonOutside_Text_PlayerReceivedMustybane:
 	.string "{PLAYER} received a Mustybane!$"
