@@ -970,6 +970,8 @@ static const u8 sText_TargetPositiveStatChangesGone[] = _("{B_DEF_NAME_WITH_PREF
 static const u8 sText_PreparingOddness[] = _("{B_ATK_NAME_WITH_PREFIX} is\npreparing oddness!");
 static const u8 sText_SunkCost[] = _("!?");
 static const u8 sText_BecomingDirtyAngeredIt[] = _("Becoming dirty by\n{B_CURRENT_MOVE}\nangered {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered\nan extra heal!");
+static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1791,6 +1793,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BATTLERCURLEDUP - BATTLESTRINGS_TABLE_START] = sText_BattlerCurledUp,
     [STRINGID_WASNOTCONFUSED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotConfused,
     [STRINGID_WASNOTTORMENTED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotTormented,
+    [STRINGID_ORDEREDANEXTRAHEAL - BATTLESTRINGS_TABLE_START] = sText_OrderedAnExtraHeal,
+    [STRINGID_THEHEALORDERCAMEIN - BATTLESTRINGS_TABLE_START] = sText_TheHealOrderCameIn,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1850,7 +1854,7 @@ const u16 gDemolisherStringIds[] =
 
 const u16 gHealingWishStringIds[] =
 {
-    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE, STRINGID_HEALINGMELODYWASHEARD
+    STRINGID_HEALINGWISHCAMETRUE, STRINGID_LUNARDANCECAMETRUE, STRINGID_HEALINGMELODYWASHEARD, STRINGID_THEHEALORDERCAMEIN
 };
 
 const u16 gDmgHazardsStringIds[] =

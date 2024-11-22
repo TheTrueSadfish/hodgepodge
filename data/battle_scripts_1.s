@@ -676,8 +676,35 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDefendOrder             @ EFFECT_DEFEND_ORDER
 	.4byte BattleScript_EffectHealOrder               @ EFFECT_HEAL_ORDER
 
-BattleScript_EffectDefendOrder::
 BattleScript_EffectHealOrder::
+	attackcanceler
+	attackstring
+	ppreduce
+	tryhealquarterhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
+	storehealingwish BS_ATTACKER
+	attackanimation
+	waitanimation
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_ORDEREDANEXTRAHEAL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectDefendOrder::
+	setstatchanger STAT_DEF, 1, FALSE
+	attackcanceler
+	attackstring
+	ppreduce
+	trydefendorder BS_TARGET, BattleScript_DefendOrderJustContinue
+BattleScript_DefendOrderJustContinue::
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_StatUpEnd
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_StatUpAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_StatUpPrintString
+
 BattleScript_EffectAttackOrder::
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
@@ -1017,7 +1044,6 @@ BattleScript_EffectHealingMelody:
 	printstring STRINGID_SUNGAHEALINGMELODY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-
 
 BattleScript_EffectWitchHymn::
 	setmoveeffect MOVE_EFFECT_WITCH_HYMN
@@ -7637,7 +7663,7 @@ BattleScript_HealingMelodyActivates::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_WISH_HEAL
 	waitanimation
-	dmgtomaxattackerhp
+	dmg_1_2_attackerhp
 	manipulatedamage DMG_CHANGE_SIGN
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
@@ -7653,6 +7679,20 @@ BattleScript_HealingMelodyActivatesPoisonClear::
 	waitstate
 	goto BattleScript_HealingMelodyContinue
 
+BattleScript_HealOrderActivates::
+	setbyte cMULTISTRING_CHOOSER, 3
+	printfromtable gHealingWishStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_WISH_HEAL
+	waitanimation
+	dmg_1_3_attackerhp
+	manipulatedamage DMG_CHANGE_SIGN
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_HEALINGWISHHEALED
+	waitmessage B_WAIT_TIME_LONG
+	return
+	
 BattleScript_EffectWorrySeed:
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
