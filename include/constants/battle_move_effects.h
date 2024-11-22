@@ -649,7 +649,10 @@
 #define EFFECT_PLIA_BALL                    643
 #define EFFECT_IRON_JAWS                    644
 #define EFFECT_FRESH_WHIP                   645
+#define EFFECT_ATTACK_ORDER                 646
+#define EFFECT_DEFEND_ORDER                 647
+#define EFFECT_HEAL_ORDER                   648
 
-#define NUM_BATTLE_MOVE_EFFECTS             646
+#define NUM_BATTLE_MOVE_EFFECTS             649
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

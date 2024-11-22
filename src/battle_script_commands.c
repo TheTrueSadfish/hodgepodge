@@ -318,7 +318,7 @@ static const s32 sExperienceScalingFactors[] =
 
 static const u16 sTrappingMoves[NUM_TRAPPING_MOVES] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP, MOVE_THUNDER_CAGE, MOVE_CONSTRICT, MOVE_LEECH_SEED, MOVE_VINE_WHIP, MOVE_VERGLASTROM,
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP, MOVE_THUNDER_CAGE, MOVE_CONSTRICT, MOVE_LEECH_SEED, MOVE_VINE_WHIP, MOVE_VERGLASTROM, MOVE_ATTACK_ORDER,
 };
 
 static const u16 sBadgeFlags[8] = {
@@ -3882,6 +3882,18 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     static const u8 sTriAttackEffects[] = { MOVE_EFFECT_BURN, MOVE_EFFECT_FREEZE, MOVE_EFFECT_PARALYSIS };
                 #endif
                     gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
+                    SetMoveEffect(FALSE, 0);
+                }
+                break;
+            case MOVE_EFFECT_ATTACK_ORDER:
+                if (gBattleMons[gEffectBattler].status1)
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else
+                {
+                    static const u8 sAttackOrderEffects[] = { MOVE_EFFECT_BURN, MOVE_EFFECT_POISON, MOVE_EFFECT_PARALYSIS };
+                    gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sAttackOrderEffects);
                     SetMoveEffect(FALSE, 0);
                 }
                 break;

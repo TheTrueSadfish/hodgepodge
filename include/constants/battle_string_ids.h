@@ -1143,7 +1143,8 @@
 #define B_MSG_SEED_WRAP            11
 #define B_MSG_WRAPPED_VINE_WHIP    12
 #define B_MSG_WRAPPED_VERGLASTROM  13
-#define NUM_TRAPPING_MOVES         14
+#define B_MSG_WRAPPED_ATTACK_ORDER 14
+#define NUM_TRAPPING_MOVES         15
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0

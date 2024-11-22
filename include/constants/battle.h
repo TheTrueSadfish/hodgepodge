@@ -454,8 +454,9 @@
 #define MOVE_EFFECT_ASTRAL_SPIKES       116
 #define MOVE_EFFECT_IRON_JAWS           117
 #define MOVE_EFFECT_FRESH_WHIP          118
+#define MOVE_EFFECT_ATTACK_ORDER        119
 
-#define NUM_MOVE_EFFECTS                119
+#define NUM_MOVE_EFFECTS                120
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000
