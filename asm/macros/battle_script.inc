@@ -1517,6 +1517,16 @@
 	various \battler, VARIOUS_STORE_HEALING_WISH
 	.endm
 
+	.macro storehealmelody battler:req, failInstr:req
+	various \battler VARIOUS_STORE_HEAL_MELODY
+	.4byte \failInstr
+	.endm
+
+	.macro storehealorder battler:req, failInstr:req
+	various \battler VARIOUS_STORE_HEAL_ORDER
+	.4byte \failInstr
+	.endm
+
 	.macro setmagiccoattarget battler:req
 	various \battler, VARIOUS_SET_MAGIC_COAT_TARGET
 	.endm

@@ -17578,6 +17578,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .metronomeBanned = TRUE,
         .copycatBanned = TRUE,
         .instructBanned = TRUE,
+        .soundMove = TRUE,
     },
 
     [MOVE_LOVELY_POISON] =

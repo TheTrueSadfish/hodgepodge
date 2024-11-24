@@ -681,7 +681,7 @@ BattleScript_EffectHealOrder::
 	attackstring
 	ppreduce
 	tryhealquarterhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
-	storehealingwish BS_ATTACKER
+	storehealorder BS_ATTACKER, BattleScript_HealOrderJustHeal
 	attackanimation
 	waitanimation
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
@@ -690,6 +690,15 @@ BattleScript_EffectHealOrder::
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_ORDEREDANEXTRAHEAL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_HealOrderJustHeal::
+	attackanimation
+	waitanimation
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -741,7 +750,7 @@ BattleScript_EffectFreshWhip::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectUprootEvil::
-	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER
+	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	attackcanceler
 	attackstring
 	ppreduce
@@ -762,9 +771,9 @@ BattleScript_EffectUprootEvil::
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	seteffectwithchance
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_BeldamBrewPoison
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_BeldamBrewPoison
-	sethealblock BattleScript_BeldamBrewPoison
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	sethealblock BattleScript_MoveEnd
 	printstring STRINGID_PKMNPREVENTEDFROMHEALING
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotHealBlockAttacker
@@ -1038,7 +1047,7 @@ BattleScript_EffectHealingMelody:
 	attackcanceler
 	attackstring
 	ppreduce
-	storehealingwish BS_ATTACKER
+	storehealmelody BS_ATTACKER, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_SUNGAHEALINGMELODY
@@ -3482,7 +3491,6 @@ BattleScript_EffectBrutalize::
 	call BattleScript_EffectHit_Ret
 	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
-	seteffectwithchance
 	argumentstatuseffect
 	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
@@ -7671,7 +7679,7 @@ BattleScript_HealingMelodyActivates::
 BattleScript_HealingMelodyContinue::
 	printstring STRINGID_HEALINGWISHHEALED
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 BattleScript_HealingMelodyActivatesPoisonClear::
 	clearstatus BS_ATTACKER
 	waitstate
@@ -7691,7 +7699,7 @@ BattleScript_HealOrderActivates::
 	datahpupdate BS_ATTACKER
 	printstring STRINGID_HEALINGWISHHEALED
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 	
 BattleScript_EffectWorrySeed:
 	attackcanceler

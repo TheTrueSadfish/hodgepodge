@@ -2382,6 +2382,8 @@ enum
     ENDTURN_WEATHER_FORM,
     ENDTURN_STATUS_HEAL,
     ENDTURN_SILENCE,
+    ENDTURN_HEAL_MELODY,
+    ENDTURN_HEAL_ORDER,
     ENDTURN_INVERSE_ROOM,
     ENDTURN_FIELD_COUNT,
 };
@@ -2525,36 +2527,84 @@ u8 DoFieldEndTurnEffects(void)
             }
             break;
         case ENDTURN_SILENCE:
-        {
             {
-                side = gBattleStruct->turnSideTracker;
-                gBattlerAttacker = gSideTimers[side].silenceTimerBattlerId;
-                if (gSideStatuses[side] & SIDE_STATUS_SILENCE)
                 {
-                    if (--gSideTimers[side].silenceTimer == 0)
+                    side = gBattleStruct->turnSideTracker;
+                    gBattlerAttacker = gSideTimers[side].silenceTimerBattlerId;
+                    if (gSideStatuses[side] & SIDE_STATUS_SILENCE)
                     {
-                        gSideStatuses[side] &= ~SIDE_STATUS_SILENCE;
-                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
-                        gBattlescriptCurrInstr = BattleScript_SilenceActivatesNonArcane;
+                        if (--gSideTimers[side].silenceTimer == 0)
+                        {
+                            gSideStatuses[side] &= ~SIDE_STATUS_SILENCE;
+                            gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                            gBattlescriptCurrInstr = BattleScript_SilenceActivatesNonArcane;
+                        }
+                        else
+                        {
+                            gBattlescriptCurrInstr = BattleScript_SilenceContinues;
+                        }
+                        BattleScriptExecute(gBattlescriptCurrInstr);
+                        effect++;
                     }
-                    else
-                    {
-                        gBattlescriptCurrInstr = BattleScript_SilenceContinues;
-                    }
-                    BattleScriptExecute(gBattlescriptCurrInstr);
-                    effect++;
+                    gBattleStruct->turnSideTracker++;
+                    if (effect != 0)
+                        break;
                 }
-                gBattleStruct->turnSideTracker++;
-                if (effect != 0)
-                    break;
+                if (!effect)
+                {
+                    gBattleStruct->turnCountersTracker++;
+                    gBattleStruct->turnSideTracker = 0;
+                }
             }
-            if (!effect)
+            break;
+        case ENDTURN_HEAL_MELODY:
             {
-                gBattleStruct->turnCountersTracker++;
-                gBattleStruct->turnSideTracker = 0;
+                {
+                    side = gBattleStruct->turnSideTracker;
+                    gBattlerAttacker = gSideTimers[side].healMelodyTimerBattlerId;
+                    if (gSideStatuses[side] & SIDE_STATUS_HEAL_MELODY && --gSideTimers[side].healMelodyTimer == 0)
+                    {
+                        gSideStatuses[side] &= ~SIDE_STATUS_HEAL_MELODY;
+                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                        gBattlescriptCurrInstr = BattleScript_HealingMelodyActivates;
+                        BattleScriptExecute(gBattlescriptCurrInstr);
+                        effect++;
+                    }
+                    gBattleStruct->turnSideTracker++;
+                    if (effect != 0)
+                        break;
+                }
+                if (!effect)
+                {
+                    gBattleStruct->turnCountersTracker++;
+                    gBattleStruct->turnSideTracker = 0;
+                }
             }
-        }
-        break;
+            break;
+        case ENDTURN_HEAL_ORDER:
+            {
+                {
+                    side = gBattleStruct->turnSideTracker;
+                    gBattlerAttacker = gSideTimers[side].healOrderTimerBattlerId;
+                    if (gSideStatuses[side] & SIDE_STATUS_HEAL_ORDER && --gSideTimers[side].healOrderTimer == 0)
+                    {
+                        gSideStatuses[side] &= ~SIDE_STATUS_HEAL_ORDER;
+                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                        gBattlescriptCurrInstr = BattleScript_HealOrderActivates;
+                        BattleScriptExecute(gBattlescriptCurrInstr);
+                        effect++;
+                    }
+                    gBattleStruct->turnSideTracker++;
+                    if (effect != 0)
+                        break;
+                }
+                if (!effect)
+                {
+                    gBattleStruct->turnCountersTracker++;
+                    gBattleStruct->turnSideTracker = 0;
+                }
+            }
+            break;
         case ENDTURN_MIST:
             while (gBattleStruct->turnSideTracker < 2)
             {
@@ -3035,8 +3085,6 @@ enum
     ENDTURN_IN_FLAMES,
     ENDTURN_FILTHMONGER,
     ENDTURN_INFECTION,
-    ENDTURN_HEAL_MELODY,
-    ENDTURN_HEAL_ORDER,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3083,22 +3131,6 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
                 BattleScriptExecute(BattleScript_IngrainTurnHeal);
                 effect++;
-            }
-            gBattleStruct->turnEffectsTracker++;
-            break;
-        case ENDTURN_HEAL_ORDER:
-            if (gBattleStruct->storedHealOrder & gBitTable[battler])
-            {
-                BattleScriptExecute(BattleScript_HealOrderActivates);
-                gBattleStruct->storedHealOrder &= ~(gBitTable[battler]);
-            }
-            gBattleStruct->turnEffectsTracker++;
-            break;
-        case ENDTURN_HEAL_MELODY: // ingrain
-            if (gBattleStruct->storedHealingMelody & gBitTable[battler])
-            {
-                BattleScriptExecute(BattleScript_HealingMelodyActivates);
-                gBattleStruct->storedHealingMelody  &= ~(gBitTable[battler]);
             }
             gBattleStruct->turnEffectsTracker++;
             break;

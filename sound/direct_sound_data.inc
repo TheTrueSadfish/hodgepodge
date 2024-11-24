@@ -4920,7 +4920,7 @@ Cry_Shelebrate::
 	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
 
 	.align 2
-Cry_SnortAlpaca::
+Cry_Stuntisla::
 	.incbin "sound/direct_sound_samples/cries/unberrable.bin"
 
 	.align 2

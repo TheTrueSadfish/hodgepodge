@@ -26071,15 +26071,15 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
-    [SPECIES_SNORT_ALPACA] =
+    [SPECIES_STUNTISLA] =
     {
-        .baseHP        = 80,
-        .baseAttack    = 115,
-        .baseDefense   = 95,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 60,
-        .types = { TYPE_GRASS, TYPE_GRASS },
+        .baseHP        = 66,
+        .baseAttack    = 130,
+        .baseDefense   = 60,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 130,
+        .baseSpDefense = 70,
+        .types = { TYPE_ELECTRIC, TYPE_FIGHTING },
         .catchRate = 69,
         .expYield = 69,
         .genderRatio = PERCENT_FEMALE(50),
@@ -26087,8 +26087,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_NONE},
-        .bodyColor = BODY_COLOR_WHITE,
+        .abilities = {ABILITY_UNNERVE, ABILITY_NONE, ABILITY_NONE},
+        .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
     },
 

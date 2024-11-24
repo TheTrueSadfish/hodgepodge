@@ -1567,7 +1567,7 @@ gCryTable::
 	cry Cry_Sappod
 	cry Cry_Shelbert
 	cry Cry_Shelebrate
-	cry Cry_SnortAlpaca
+	cry Cry_Stuntisla
 	cry Cry_Plaintain
 	cry Cry_Musalord
 	cry Cry_Brevato
@@ -4043,7 +4043,7 @@ gCryTable_Reverse::
 	cry_reverse Cry_Sappod
 	cry_reverse Cry_Shelbert
 	cry_reverse Cry_Shelebrate
-	cry_reverse Cry_SnortAlpaca
+	cry_reverse Cry_Stuntisla
 	cry_reverse Cry_Plaintain
 	cry_reverse Cry_Musalord
 	cry_reverse Cry_Brevato

@@ -11893,6 +11893,38 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_STORE_HEAL_MELODY:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_HEAL_MELODY))
+        {
+            gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_HEAL_MELODY;
+            gSideTimers[GetBattlerSide(battler)].healMelodyTimerBattlerId = battler;
+            gSideTimers[GetBattlerSide(battler)].healMelodyTimer = 2;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
+    case VARIOUS_STORE_HEAL_ORDER:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_HEAL_ORDER))
+        {
+            gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_HEAL_ORDER;
+            gSideTimers[GetBattlerSide(battler)].healOrderTimerBattlerId = battler;
+            gSideTimers[GetBattlerSide(battler)].healOrderTimer = 2;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_THIRD_TYPE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -13312,10 +13344,6 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         if (gCurrentMove == MOVE_LUNAR_DANCE)
             gBattleStruct->storedLunarDance |= gBitTable[battler];
-        else if (gCurrentMove == MOVE_HEAL_MELODY)
-            gBattleStruct->storedHealingMelody |= gBitTable[battler];
-        else if (gCurrentMove == MOVE_HEAL_ORDER)
-            gBattleStruct->storedHealOrder |= gBitTable[battler];
         else
             gBattleStruct->storedHealingWish |= gBitTable[battler];
         break;

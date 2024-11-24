@@ -1155,7 +1155,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_SAPPOD] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_SHELBERT] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_SHELEBRATE] = { .size = MON_COORDS_SIZE(56, 40), .y_offset = 13 },
-    [SPECIES_SNORT_ALPACA] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
+    [SPECIES_STUNTISLA] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_PLAINTAIN] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_MUSALORD] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_BREVATO] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  5 },

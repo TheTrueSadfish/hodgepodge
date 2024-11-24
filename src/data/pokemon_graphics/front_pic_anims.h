@@ -10734,7 +10734,7 @@ static const union AnimCmd sAnim_Shelebrate_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_SnortAlpaca_1[] =
+static const union AnimCmd sAnim_Stuntisla_1[] =
 {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
@@ -13504,7 +13504,7 @@ SINGLE_ANIMATION(Plantatori);
 SINGLE_ANIMATION(Sappod);
 SINGLE_ANIMATION(Shelbert);
 SINGLE_ANIMATION(Shelebrate);
-SINGLE_ANIMATION(SnortAlpaca);
+SINGLE_ANIMATION(Stuntisla);
 SINGLE_ANIMATION(Plaintain);
 SINGLE_ANIMATION(Musalord);
 SINGLE_ANIMATION(Brevato);
@@ -14916,7 +14916,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[NUM_SPECIES + 1] =
     [SPECIES_SAPPOD] = sAnims_Sappod,
     [SPECIES_SHELBERT] = sAnims_Shelbert,
     [SPECIES_SHELEBRATE] = sAnims_Shelebrate,
-    [SPECIES_SNORT_ALPACA] = sAnims_SnortAlpaca,
+    [SPECIES_STUNTISLA] = sAnims_Stuntisla,
     [SPECIES_PLAINTAIN] = sAnims_Plaintain,
     [SPECIES_MUSALORD] = sAnims_Musalord,
     [SPECIES_BREVATO] = sAnims_Brevato,

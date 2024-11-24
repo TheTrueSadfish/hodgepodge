@@ -300,6 +300,8 @@
 #define VARIOUS_TRY_ACTIVATE_VISCERATION             209
 #define VARIOUS_SET_FILTHMONGER                      210
 #define VARIOUS_TRY_DEFEND_ORDER                     211
+#define VARIOUS_STORE_HEAL_MELODY                    212
+#define VARIOUS_STORE_HEAL_ORDER                     213
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
