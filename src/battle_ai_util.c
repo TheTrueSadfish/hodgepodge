@@ -446,6 +446,8 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_WHIRLWIND,
     EFFECT_POISON_POWDER,
     EFFECT_PSY_SWAP,
+    EFFECT_EMBER_SNOW,
+    EFFECT_NANAB_GATTLING,
 };
 
 // For the purposes of determining the most powerful move in a moveset, these
@@ -477,6 +479,9 @@ static const u16 sIgnoredPowerfulMoveEffects[] =
     EFFECT_FLEUR_CANNON,
     EFFECT_AXEL_HEEL,
     EFFECT_MIND_BREAK,
+    EFFECT_NANAB_GATTLING,
+    EFFECT_NON_SEQUITUR,
+    EFFECT_UPROOT_EVIL,
     IGNORED_MOVES_END
 };
 
@@ -1537,6 +1542,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     case EFFECT_POISON_POWDER:
     case EFFECT_MAGIC_POWDER:
     case EFFECT_WORRY_SEED:
+    case EFFECT_EMBER_SNOW:
         return TRUE;
     default:
         return FALSE;
@@ -2234,6 +2240,8 @@ bool32 IsHealingMoveEffect(u32 effect)
     case EFFECT_FLORAL_HEALING:
     case EFFECT_RESERVOIR:
     case EFFECT_SHIELDS_UP:
+    case EFFECT_HEAL_MELODY:
+    case EFFECT_FRESH_WHIP:
         return TRUE;
     default:
         return FALSE;
@@ -3701,6 +3709,7 @@ bool32 ShouldUseWishAromatherapy(u32 battlerAtk, u32 battlerDef, u32 move)
         switch (gBattleMoves[move].effect)
         {
         case EFFECT_WISH:
+        case EFFECT_HEAL_MELODY:
             if (needHealing)
                 return TRUE;
             break;
@@ -4121,6 +4130,7 @@ void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
           || HasMoveEffect(battlerAtk, EFFECT_HEX)
           || HasMoveEffect(battlerAtk, EFFECT_FLINCH_HIT)
           || HasMoveEffect(battlerAtk, EFFECT_HEART_STAMP)
+          || HasMoveEffect(battlerAtk, EFFECT_IRON_JAWS)
           || gBattleMons[battlerDef].status2 & STATUS2_INFATUATION
           || gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
             *score += 4;
