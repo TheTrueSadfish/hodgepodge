@@ -17154,6 +17154,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .minimizeDoubleDamage = TRUE,
     },
 
     [MOVE_SWEET_WHISPERS] =

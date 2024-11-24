@@ -948,6 +948,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 if (moveType == TYPE_ELECTRIC)
                     RETURN_SCORE_MINUS(20);
                 break;
+            case ABILITY_MISFORTUNE:
+                if (moveType == TYPE_GHOST || moveType == TYPE_POISON)
+                    RETURN_SCORE_MINUS(20);
+                break;
             case ABILITY_MAGNET_PULL:
                 if (moveType == TYPE_STEEL)
                     RETURN_SCORE_MINUS(20);
@@ -1808,6 +1812,13 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SILENCE:
             if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_SILENCE
               || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+                score -= 10;
+            break;
+        case EFFECT_HEAL_MELODY:
+            if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_HEAL_MELODY
+              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+                score -= 10;
+            else if (CountUsablePartyMons(battlerAtk) == 0 || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
                 score -= 10;
             break;
         case EFFECT_LIGHT_SCREEN:
@@ -2818,10 +2829,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (gWishFutureKnock.wishCounter[battlerAtk] != 0)
                 score -= 10;
             break;
-        case EFFECT_HEAL_MELODY:
-            if (gBattleStruct->storedHealingMelody)
-                score -= 10;
-            break;
         case EFFECT_ASSIST:
             if (CountUsablePartyMons(battlerAtk) == 0)
                 score -= 10;    // no teammates to assist from
@@ -3613,6 +3620,12 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         RETURN_SCORE_MINUS(10);
                     }
                     break;  // handled in AI_HPAware
+                case ABILITY_MISFORTUNE:
+                    if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
+                    {
+                        RETURN_SCORE_MINUS(10);
+                    }
+                    break;  // handled in AI_HPAware
                 case ABILITY_MOTOR_DRIVE:
                     if (moveType == TYPE_ELECTRIC && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED))
                     {
@@ -3684,6 +3697,13 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     break;
                 case ABILITY_WATER_COMPACTION:
                     if (moveType == TYPE_WATER && GetMoveDamageResult(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) == MOVE_POWER_WEAK)
+                    {
+                        RETURN_SCORE_PLUS(1);   // only mon with this ability is weak to water so only make it okay if we do very little damage
+                    }
+                    RETURN_SCORE_MINUS(10);
+                    break;
+                case ABILITY_MARSHLANDER:
+                    if ((moveType == TYPE_WATER || moveType == TYPE_GRASS) && GetMoveDamageResult(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) == MOVE_POWER_WEAK)
                     {
                         RETURN_SCORE_PLUS(1);   // only mon with this ability is weak to water so only make it okay if we do very little damage
                     }
@@ -4669,6 +4689,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 score += 2;
         }
         break;
+    case EFFECT_HEAL_MELODY:
+        if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_HEAL_MELODY))
+        {
+            score += 4;
+            if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_SCREENER)
+                score += 2;
+        }
+        break;
     case EFFECT_REST:
         if (!(AI_CanSleep(battlerAtk, aiData->abilities[battlerAtk])))
         {
@@ -5200,10 +5228,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_WISH:
     case EFFECT_HEAL_BELL:
     case EFFECT_AROMATHERAPY:
-    case EFFECT_HEAL_MELODY:
-        if (ShouldUseWishAromatherapy(battlerAtk, battlerDef, move))
-            score += 3;
-        break;
     case EFFECT_THIEF:
         {
             bool32 canSteal = FALSE;
@@ -7262,6 +7286,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     {
         if ((effect == EFFECT_HEAL_PULSE || effect == EFFECT_HIT_ENEMY_HEAL_ALLY || effect == EFFECT_FLORAL_HEALING)
          || (moveType == TYPE_ELECTRIC && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_VOLT_ABSORB)
+         || ((moveType == TYPE_GHOST || moveType == TYPE_POISON) && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_MISFORTUNE)
          || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB)))
         {
             if (gStatuses3[battlerDef] & STATUS3_HEAL_BLOCK)
@@ -7339,6 +7364,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_LONE_SHARK:
                 score -= 1;
                 break;
+            case EFFECT_HEAL_MELODY:
             case EFFECT_TICK_TACK:
                 score += 1;
                 break;
@@ -7381,7 +7407,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_RAIN_DANCE:
             case EFFECT_CHILLY_RECEPTION:
             case EFFECT_DRAGON_CHEER:
-            case EFFECT_SILENCE:
+            case EFFECT_HEAL_MELODY:
             case EFFECT_WARM_WELCOME:
             case EFFECT_LONE_SHARK:
             case EFFECT_RECOIL_50_HAZARD:
@@ -7398,6 +7424,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case EFFECT_TICK_TACK:
             case EFFECT_ODOR_SLEUTH:
+            case EFFECT_SILENCE:
                 score += 2;
                 break;
             case EFFECT_VIGOR_ROOT:
