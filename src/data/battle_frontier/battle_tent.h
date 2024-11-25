@@ -5142,7 +5142,7 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
         .moves = {MOVE_FAKE_OUT, MOVE_FIRST_IMPRESSION, MOVE_SUPERPOWER, MOVE_SHADOW_SNEAK},
         .heldItem = ITEM_EJECT_PACK,
         .nature = NATURE_QUIRKY,
-    }
+    },
 };
 
 // MINOR LEAGUE
@@ -5917,7 +5917,7 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
         .moves = {MOVE_NIGHT_SLASH, MOVE_FURY_SWIPES, MOVE_SNARL, MOVE_THUNDER_FANG},
         .heldItem = ITEM_LOADED_DICE,
         .nature = NATURE_QUIRKY,
-    }
+    },
 };
 
 // Verdanturf Battle Tent.

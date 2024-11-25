@@ -50,15 +50,7 @@ SlateportCity_BattleTentLobby_EventScript_WonChallenge::
 	playse SE_SAVE
 	waitse
 SlateportCity_BattleTentLobby_EventScript_GivePrize::
-	msgbox SlateportCity_BattleTentLobby_Text_AwardYouThisPrize, MSGBOX_DEFAULT
-	slateporttent_giveprize
-	switch VAR_RESULT
-	case FALSE, SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
-	message BattleFrontier_BattleTowerLobby_Text_ReceivedPrize  @ Odd that it uses Tower's instead of Factory's or its own
-	waitmessage
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
 	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
 
 SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
@@ -68,12 +60,26 @@ SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
 SlateportCity_BattleTentLobby_EventScript_LostChallenge::
 	lockall
 	setvar VAR_HP_POST_CHALLENGE_TEMP, 1
+	frontier_get FRONTIER_DATA_BATTLE_NUM
+    addvar VAR_RESULT, 1    @ 1-index it
+    buffernumberstring STR_VAR_1, VAR_RESULT
+	goto_if_gt VAR_RESULT, 2, SlateportCity_BattleTentLobby_EventScript_CheckHPProgress
+SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge::
 	message SlateportCity_BattleTentLobby_Text_ReturnRentalMonsSaveResults
 	waitmessage
 	frontier_set FRONTIER_DATA_LVL_MODE, FRONTIER_LVL_50
 	slateporttent_save 0
 	playse SE_SAVE
 	waitse
+	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
+
+SlateportCity_BattleTentLobby_EventScript_CheckHPProgress::
+	call_if_eq VAR_HP_PROGRESS, 1, SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette
+	goto SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge
+
+SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette::
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
+	return
 
 SlateportCity_BattleTentLobby_EventScript_EndGivePrize::
 	msgbox SlateportCity_BattleTentLobby_Text_LookForwardToNextVisit, MSGBOX_DEFAULT
@@ -115,8 +121,8 @@ SlateportCity_BattleTentLobby_EventScript_TryEnterChallenge::
     @ select league (if you can)
     slateporttent_getleagues
     switch VAR_RESULT
-    case 0, SlateportCity_BattleTentLobby_EventScript_SetMinorLeague
-    case 1, SlateportCity_BattleTentLobby_EventScript_MinorOrMajor
+	goto_if_gt VAR_HP_PROGRESS, 2, SlateportCity_BattleTentLobby_EventScript_SetMajorLeague
+    goto SlateportCity_BattleTentLobby_EventScript_SetMinorLeague
 SlateportCity_BattleTentLobby_EventScript_ChooseAnyLeague:
     multichoice 17, 4, MULTI_SLATEPORT_ANY_LEAGUE, FALSE
     switch VAR_RESULT

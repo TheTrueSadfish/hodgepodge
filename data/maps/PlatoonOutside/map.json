@@ -3,7 +3,7 @@
   "name": "PlatoonOutside",
   "layout": "LAYOUT_PLATOON_OUTSIDE",
   "music": "MUS_B_FRONTIER",
-  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",

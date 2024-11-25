@@ -61,7 +61,13 @@ PlatoonOutside_EventScript_EnjoyThePlatoon::
 	msgbox PlatoonOutside_Text_EnjoyThePlatoon, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanAdjourn
 	waitmovement 0
+	opendoor 9, 5
+	waitdooranim
+	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanEnterDoor
+	waitmovement 0
 	playse SE_EXIT
+	closedoor 9, 5
+	waitdooranim
 	removeobject LOCALID_INTROMAN
 	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	releaseall
@@ -70,7 +76,11 @@ PlatoonOutside_EventScript_EnjoyThePlatoon::
 PlatoonOutside_Movement_IntromanAdjourn:
 	walk_up
 	walk_up
+	step_end
+
+PlatoonOutside_Movement_IntromanEnterDoor:
 	walk_up
+	set_invisible
 	step_end
 
 PlatoonOutside_Text_WelcomeToThePlatoon:

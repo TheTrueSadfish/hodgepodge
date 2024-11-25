@@ -135,6 +135,29 @@
 #define MULTI_TRICK_HOUSE_FINAL_DOOR        123
 #define MULTI_BRINEY_BOAT_2                 124
 #define MULTI_BRINEY_BOAT_3                 125
+#define MULTI_MUSEUM_BEPIS_CLOVE            126
+#define MULTI_MUSEUM_BONZO                  127
+#define MULTI_MUSEUM_CELADONK               128
+#define MULTI_MUSEUM_CHAIR                  129
+#define MULTI_MUSEUM_DAHLIA                 130
+#define MULTI_MUSEUM_DAHVIPER               131
+#define MULTI_MUSEUM_EGG_DILL               132
+#define MULTI_MUSEUM_ALTERMON               133
+#define MULTI_MUSEUM_EEVEEEE                134
+#define MULTI_MUSEUM_ENWAITEA               135
+#define MULTI_MUSEUM_FBI                    136
+#define MULTI_MUSEUM_GABO_TY                137
+#define MULTI_MUSEUM_KYU_DOODLE             138
+#define MULTI_MUSEUM_LICHEN                 139
+#define MULTI_MUSEUM_HYDROBLUE              140
+#define MULTI_MUSEUM_LIVRA                  141
+#define MULTI_MUSEUM_MEMELORD_FRANKTURE     142
+#define MULTI_MUSEUM_OGWON                  143
+#define MULTI_MUSEUM_PABLO_PLASTO           144
+#define MULTI_MUSEUM_SAV                    145
+#define MULTI_MUSEUM_SHARK                  146
+#define MULTI_MUSEUM_TARDY_SWEETAN          147
+#define MULTI_MUSEUM_VAL                    148
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
