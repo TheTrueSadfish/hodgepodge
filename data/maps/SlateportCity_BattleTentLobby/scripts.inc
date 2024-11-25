@@ -50,15 +50,7 @@ SlateportCity_BattleTentLobby_EventScript_WonChallenge::
 	playse SE_SAVE
 	waitse
 SlateportCity_BattleTentLobby_EventScript_GivePrize::
-	msgbox SlateportCity_BattleTentLobby_Text_AwardYouThisPrize, MSGBOX_DEFAULT
-	slateporttent_giveprize
-	switch VAR_RESULT
-	case FALSE, SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
-	message BattleFrontier_BattleTowerLobby_Text_ReceivedPrize  @ Odd that it uses Tower's instead of Factory's or its own
-	waitmessage
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
 	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
 
 SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
