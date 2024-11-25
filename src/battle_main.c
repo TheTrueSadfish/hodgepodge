@@ -4989,29 +4989,29 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         // STALL - always last
 
         if (gProtectStructs[battler1].quickDraw && !gProtectStructs[battler2].quickDraw)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (!gProtectStructs[battler1].quickDraw && gProtectStructs[battler2].quickDraw)
             strikesFirst = 1;
         else if (gProtectStructs[battler1].usedCustapBerry && !gProtectStructs[battler2].usedCustapBerry)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (gProtectStructs[battler2].usedCustapBerry && !gProtectStructs[battler1].usedCustapBerry)
             strikesFirst = 1;
         else if (holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler2 != HOLD_EFFECT_LAGGING_TAIL)
             strikesFirst = 1;
         else if (holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL && holdEffectBattler1 != HOLD_EFFECT_LAGGING_TAIL)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (holdEffectBattler1 == HOLD_EFFECT_CHUPACABRA && holdEffectBattler2 != HOLD_EFFECT_CHUPACABRA)
             strikesFirst = 1;
         else if (holdEffectBattler2 == HOLD_EFFECT_CHUPACABRA && holdEffectBattler1 != HOLD_EFFECT_CHUPACABRA)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (ability1 == ABILITY_STALL && ability2 != ABILITY_STALL)
             strikesFirst = 1;
         else if (ability2 == ABILITY_STALL && ability1 != ABILITY_STALL)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (ability1 == ABILITY_MYCELIUM_MIGHT && ability2 != ABILITY_MYCELIUM_MIGHT && gBattleMoves[gCurrentMove].powderMove)
             strikesFirst = 1;
         else if (ability2 == ABILITY_MYCELIUM_MIGHT && ability1 != ABILITY_MYCELIUM_MIGHT && gBattleMoves[gCurrentMove].powderMove)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else
         {
             if (speedBattler1 == speedBattler2 && Random() & 1)

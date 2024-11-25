@@ -188,8 +188,8 @@ static const u8 sInnerFocusDescription[] = _(
     "Energy raises Atk and Sp. Atk.");
 
 static const u8 sMagmaArmorDescription[] = _(
-    "Weakens Water-type moves greatly\n"
-    "once. Weakens all slightly after.\n"
+    "Weakens Water-type moves once.\n"
+    "Weakens all moves after.\n"
     "Prevents Frostbite and Freeze.");
 
 static const u8 sWaterVeilDescription[] = _(
@@ -1037,9 +1037,9 @@ static const u8 sGrassySurgeDescription[] = _(
     "a battle.");
 
 static const u8 sFullMetalBodyDescription[] = _(
-    "Prevents the Pokémon's from being\n"
-    "lowered. Below half HP, reduces\n"
-    "the damage taken from moves.");
+    "Prevents the Pokémon's stats\n"
+    "from being lowered. Below half\n"
+    "HP, reduces damage taken.");
 
 static const u8 sNeuroforceDescription[] = _(
     "Powers up the Pokémon's super\n"
@@ -1712,7 +1712,7 @@ static const u8 sCovenLightsDescription[] = _(
     "are lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
-    "Triples PP usage. Attacks may\n"
+    "Doubles PP usage. Attacks may\n"
     "earn money or taunt, critical\n"
     "hit, or infatuate the foe.");
 

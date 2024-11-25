@@ -497,7 +497,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectVenomDrain              @ EFFECT_VENOM_DRAIN
 	.4byte BattleScript_EffectAllStatsDownHit         @ EFFECT_ALL_STATS_DOWN_HIT
 	.4byte BattleScript_EffectHit                     @ EFFECT_WILLPOWER
-	.4byte BattleScript_EffectHitSwitchTarget         @ EFFECT_MANEUVER
+	.4byte BattleScript_EffectHitEscape               @ EFFECT_MANEUVER
 	.4byte BattleScript_EffectScorpFang               @ EFFECT_SCORP_FANG
 	.4byte BattleScript_EffectHitSetEntryHazard       @ EFFECT_RECOIL_50_HAZARD
 	.4byte BattleScript_EffectWickedWinds             @ EFFECT_WICKED_WINDS
@@ -733,11 +733,12 @@ BattleScript_EffectAttackOrder::
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATTACK_ORDER
 	seteffectprimary
 	setmoveeffect MOVE_EFFECT_WRAP
 	seteffectsecondary
-	tryfaintmon BS_TARGET
 	moveendall
 	end
 
@@ -769,8 +770,9 @@ BattleScript_EffectUprootEvil::
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_TARGET
 	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	sethealblock BattleScript_MoveEnd
@@ -828,7 +830,9 @@ BattleScript_EffectPortentCast::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_PortentCastNoDrop
 	seteffectwithchance
+BattleScript_PortentCastNoDrop::
 	setluckychant BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_SHIELDEDFROMCRITICALHITS
 	waitmessage B_WAIT_TIME_LONG
@@ -854,6 +858,7 @@ BattleScript_EffectBeldamBrew::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_BeldamBrewPoison
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_BeldamBrewPoison
 	sethealblock BattleScript_BeldamBrewPoison
@@ -893,6 +898,7 @@ BattleScript_EffectInfatuateHit::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	tryinfatuating BattleScript_MoveEnd
@@ -1077,11 +1083,12 @@ BattleScript_EffectNightBeam:
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	setmoveeffect MOVE_EFFECT_CORE_ENFORCER
-	seteffectprimary
 	setmoveeffect MOVE_EFFECT_ACC_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
-	seteffectsecondary
+	seteffectprimary
 	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_CORE_ENFORCER
+	seteffectsecondary
 	moveendall
 	end
 
@@ -8058,7 +8065,7 @@ BattleScript_TimeTurnRoomServiceLoop_NextBattler:
 
 BattleScript_TimeTurnDeactivated::
 	call BattleScript_AbilityPopUp
-	playanimation 0, B_ANIM_RESTORE_BG
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printstring STRINGID_TRICKROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end3
@@ -12559,21 +12566,25 @@ BattleScript_TailwindEnds::
 	end2
 
 BattleScript_TrickRoomEnds::
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printstring STRINGID_TRICKROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
 BattleScript_WonderRoomEnds::
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printstring STRINGID_WONDERROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
 BattleScript_MagicRoomEnds::
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printstring STRINGID_MAGICROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
 BattleScript_InverseRoomEnds::
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printstring STRINGID_INVERSEROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end2

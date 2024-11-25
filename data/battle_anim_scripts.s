@@ -27119,6 +27119,7 @@ Move_DRAG_DOWN::
 	delay 48
 	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, -768, 21, 0, 112 @Last is duration
 	delay 64
+	invisible ANIM_ATTACKER
 	invisible ANIM_TARGET
 	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 3, 2, 1
 	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
@@ -27139,6 +27140,12 @@ Move_DRAG_DOWN::
 	delay 32
 	call UnsetPsychicBg
 	visible ANIM_TARGET
+	waitforvisualfinish
+	createvisualtask AnimTask_CanBattlerSwitch, 1, ANIM_ATTACKER
+	jumprettrue DragDownLast
+	visible ANIM_ATTACKER
+DragDownLast:
+	waitforvisualfinish
 	end
 
 Move_HAUNT_MELODY::

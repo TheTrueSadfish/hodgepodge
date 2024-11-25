@@ -1386,24 +1386,28 @@ static void Cmd_attackcanceler(void)
         if (i == 0)
         {
             gBattleStruct->daringDeedSpade = TRUE;
+            gBattlerAttacker = BS_ABILITY_BATTLER;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedASpade;
         }
         if (i == 1)
         {
             gBattleStruct->daringDeedHeart = TRUE;
+            gBattlerAttacker = BS_ABILITY_BATTLER;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedAHeart;
         }
         if (i == 2)
         {
             gBattleStruct->daringDeedClub = TRUE;
+            gBattlerAttacker = BS_ABILITY_BATTLER;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedAClub;
         }
         if (i == 3)
         {
             gBattleStruct->daringDeedDiamond = TRUE;
+            gBattlerAttacker = BS_ABILITY_BATTLER;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedADiamond;
         }
@@ -2174,9 +2178,6 @@ static void Cmd_ppreduce(void)
         }
     }
 
-    if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
-        ppToDeduct *= 2;
-
     DebugPrintf("gHitMarker = %d", gHitMarker);
     if ((!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING))
         && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
@@ -2192,21 +2193,31 @@ static void Cmd_ppreduce(void)
         else
             gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
 
-        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE)
-        {
-            ppToDeduct *= 2;
-        }
-
-        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED)
-        {
-            ppToDeduct *= 3;
-        }
-
         DebugPrintf("Deduct PP");
         if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] > ppToDeduct)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
         else
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] = 0;
+
+        if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
+        {
+            ppToDeduct *= 2;
+            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
+                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
+        }
+
+        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrMovePos))))
+        {
+            ppToDeduct *= 2;
+            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
+                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
+        }
+        else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED && (!(IS_MOVE_STATUS(gCurrMovePos))))
+        {
+            ppToDeduct *= 2;
+            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
+                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
+        }
 
         if (MOVE_IS_PERMANENT(gBattlerAttacker, gCurrMovePos))
         {
@@ -14180,7 +14191,7 @@ static void Cmd_stockpiletohpheal(void)
         }
         else
         {
-            gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / (20 + (20 * gDisableStructs[gBattlerAttacker].stockpileCounter));
+            gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP / 100) * (20 + (20 * gDisableStructs[gBattlerAttacker].stockpileCounter));
 
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
