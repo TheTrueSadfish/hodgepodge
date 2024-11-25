@@ -898,6 +898,265 @@ static const struct MenuAction MultichoiceList_BrineyBoat3[] =
     {sText_Desti6},
 };
 
+static const u8 sText_Musalord[] = _("Musalord");
+static const u8 sText_Expload[] = _("Expload");
+static const u8 sText_Porybot[] = _("Porybot");
+static const u8 sText_Verglazard[] = _("Verglazard");
+static const struct MenuAction MultichoiceList_MuseumBepisClove[] =
+{
+    {sText_Musalord},
+    {sText_Expload},
+    {sText_Porybot},
+    {sText_Verglazard},
+};
+
+static const u8 sText_Brevato[] = _("Brevato");
+static const u8 sText_Gravendor[] = _("Gravendor");
+static const u8 sText_Shamburger[] = _("Shamburger");
+static const struct MenuAction MultichoiceList_MuseumBonzo[] =
+{
+    {sText_Brevato},
+    {sText_Gravendor},
+    {sText_Shamburger},
+};
+
+static const u8 sText_Swisquire[] = _("Swisquire");
+static const u8 sText_Ninown[] = _("Nin'own");
+static const u8 sText_Peckachew[] = _("Peckachew");
+static const struct MenuAction MultichoiceList_MuseumCeladonk[] =
+{
+    {sText_Swisquire},
+    {sText_Ninown},
+    {sText_Peckachew},
+};
+
+static const u8 sText_Gracklin[] = _("Gracklin");
+static const u8 sText_Stovlare[] = _("Stovlare");
+static const u8 sText_Astigmoray[] = _("Astigmoray");
+static const u8 sText_Skooky[] = _("Skooky");
+static const struct MenuAction MultichoiceList_MuseumChair[] =
+{
+    {sText_Gracklin},
+    {sText_Stovlare},
+    {sText_Astigmoray},
+    {sText_Skooky},
+};
+
+static const u8 sText_Shelebrate[] = _("Shelebrate");
+static const u8 sText_Orbacle[] = _("Orbacle");
+static const u8 sText_Wuvme[] = _("Wuvme");
+static const struct MenuAction MultichoiceList_MuseumDahlia[] =
+{
+    {sText_Shelebrate},
+    {sText_Orbacle},
+    {sText_Wuvme},
+};
+
+static const u8 sText_Plantatori[] = _("Plantatori");
+static const u8 sText_Degourge[] = _("Degourge");
+static const u8 sText_Gelebrum[] = _("Gelebrum");
+static const struct MenuAction MultichoiceList_MuseumDahviper[] =
+{
+    {sText_Plantatori},
+    {sText_Degourge},
+    {sText_Gelebrum},
+};
+
+static const u8 sText_Stuntisla[] = _("Stuntisla");
+static const u8 sText_Wakasuka[] = _("Wakasuka");
+static const u8 sText_Mantacore[] = _("Mantacore");
+static const u8 sText_Regiwyrm[] = _("Regiwyrm");
+static const struct MenuAction MultichoiceList_MuseumEggDill[] =
+{
+    {sText_Stuntisla},
+    {sText_Wakasuka},
+    {sText_Mantacore},
+    {sText_Regiwyrm},
+};
+
+static const u8 sText_Capybarna[] = _("Capybarna");
+static const u8 sText_Parakuri[] = _("Parakuri");
+static const u8 sText_Ralsea[] = _("Ralsea");
+static const u8 sText_Chakraring[] = _("Chakraring");
+static const struct MenuAction MultichoiceList_MuseumAltermon[] =
+{
+    {sText_Capybarna},
+    {sText_Parakuri},
+    {sText_Ralsea},
+    {sText_Chakraring},
+};
+
+static const u8 sText_Hagoosh[] = _("Hagoosh");
+static const u8 sText_Googeist[] = _("Googeist");
+static const u8 sText_Dragong[] = _("Dragong");
+static const struct MenuAction MultichoiceList_MuseumEeveeee[] =
+{
+    {sText_Hagoosh},
+    {sText_Googeist},
+    {sText_Dragong},
+};
+
+static const u8 sText_WyrmWing[] = _("Wyrm Wing");
+static const u8 sText_Coorse[] = _("Coorse");
+static const u8 sText_Kittepup[] = _("Kittepup");
+static const struct MenuAction MultichoiceList_MuseumEnwaitea[] =
+{
+    {sText_WyrmWing},
+    {sText_Coorse},
+    {sText_Kittepup},
+};
+
+static const u8 sText_Chernoboar[] = _("Chernoboar");
+static const u8 sText_Icandesfen[] = _("Icandesfen");
+static const u8 sText_Castermite[] = _("Castermite");
+static const struct MenuAction MultichoiceList_MuseumFBI[] =
+{
+    {sText_Chernoboar},
+    {sText_Icandesfen},
+    {sText_Castermite},
+};
+
+static const u8 sText_Celshrioom[] = _("Celshrioom");
+static const u8 sText_Seraphure[] = _("Seraphure");
+static const u8 sText_Tuetuerror[] = _("Tuetuerror");
+static const u8 sText_Magidash[] = _("Magidash");
+static const struct MenuAction MultichoiceList_MuseumGaboTy[] =
+{
+    {sText_Celshrioom},
+    {sText_Seraphure},
+    {sText_Tuetuerror},
+    {sText_Magidash},
+};
+
+static const u8 sText_Luxstrobe[] = _("Luxstrobe");
+static const u8 sText_Starror[] = _("Starror");
+static const u8 sText_Miscladrus[] = _("Miscladrus");
+static const u8 sText_Skuldugery[] = _("Skuldugery");
+static const struct MenuAction MultichoiceList_MuseumKyuDoodle[] =
+{
+    {sText_Luxstrobe},
+    {sText_Starror},
+    {sText_Miscladrus},
+    {sText_Skuldugery},
+};
+
+static const u8 sText_Oddiowave[] = _("Oddiowave");
+static const u8 sText_Beholzer[] = _("Beholzer");
+static const u8 sText_Vividawg[] = _("Vividawg");
+static const struct MenuAction MultichoiceList_MuseumLichen[] =
+{
+    {sText_Oddiowave},
+    {sText_Beholzer},
+    {sText_Vividawg},
+};
+
+static const u8 sText_Swalheart[] = _("Swalheart");
+static const u8 sText_Caclequin[] = _("Caclequin");
+static const u8 sText_Gramkrow[] = _("Gramkrow");
+static const u8 sText_Intriobang[] = _("Intriobang");
+static const struct MenuAction MultichoiceList_MuseumHydroBlue[] =
+{
+    {sText_Swalheart},
+    {sText_Caclequin},
+    {sText_Gramkrow},
+    {sText_Intriobang},
+};
+
+static const u8 sText_Okkamirizo[] = _("Okkamirizo");
+static const u8 sText_Frozforce[] = _("Frozforce");
+static const u8 sText_Rickshawty[] = _("Rickshawty");
+static const u8 sText_Vizaaviso[] = _("Vizaaviso");
+static const struct MenuAction MultichoiceList_MuseumLivra[] =
+{
+    {sText_Okkamirizo},
+    {sText_Frozforce},
+    {sText_Rickshawty},
+    {sText_Vizaaviso},
+};
+
+static const u8 sText_Crusterror[] = _("Crusterror");
+static const u8 sText_Rubimizer[] = _("Rubimizer");
+static const u8 sText_Arctikack[] = _("Arctikack");
+static const u8 sText_Frankture[] = _("Frankture");
+static const struct MenuAction MultichoiceList_MuseumMemelordFrankture[] =
+{
+    {sText_Crusterror},
+    {sText_Rubimizer},
+    {sText_Arctikack},
+    {sText_Frankture},
+};
+
+static const u8 sText_Profur[] = _("Profur");
+static const u8 sText_Dadalemma[] = _("Dadalemma");
+static const u8 sText_Bevolpin[] = _("Bevolpin");
+static const u8 sText_Greese[] = _("Greese");
+static const struct MenuAction MultichoiceList_MuseumOgwon[] =
+{
+    {sText_Profur},
+    {sText_Dadalemma},
+    {sText_Bevolpin},
+    {sText_Greese},
+};
+
+static const u8 sText_Crawtendr[] = _("Crawtendr");
+static const u8 sText_Lurkelp[] = _("Lurkelp");
+static const u8 sText_Baghoul[] = _("Baghoul");
+static const u8 sText_Buggory[] = _("Buggory");
+static const struct MenuAction MultichoiceList_MuseumPabloPlasto[] =
+{
+    {sText_Crawtendr},
+    {sText_Lurkelp},
+    {sText_Baghoul},
+    {sText_Buggory},
+};
+
+static const u8 sText_Smaugron[] = _("Smaugron");
+static const u8 sText_Bloomwile[] = _("Bloomwile");
+static const u8 sText_Staalnary[] = _("Staalnary");
+static const struct MenuAction MultichoiceList_MuseumSav[] =
+{
+    {sText_Smaugron},
+    {sText_Bloomwile},
+    {sText_Staalnary},
+};
+
+static const u8 sText_Jaramari[] = _("Jaramari");
+static const u8 sText_Pokerlord[] = _("Pokerlord");
+static const u8 sText_Malmare[] = _("Malmare");
+static const u8 sText_Setatonkre[] = _("Setatonkre");
+static const struct MenuAction MultichoiceList_MuseumShark[] =
+{
+    {sText_Jaramari},
+    {sText_Pokerlord},
+    {sText_Malmare},
+    {sText_Setatonkre},
+};
+
+static const u8 sText_Melceralba[] = _("Melceralba");
+static const u8 sText_Nettecate[] = _("Nettecate");
+static const u8 sText_LaRoc[] = _("La Roc");
+static const u8 sText_Watchaugur[] = _("Watchaugur");
+static const struct MenuAction MultichoiceList_MuseumTardySweetan[] =
+{
+    {sText_Melceralba},
+    {sText_Nettecate},
+    {sText_LaRoc},
+    {sText_Watchaugur},
+};
+
+static const u8 sText_Xolhm[] = _("Xolhm");
+static const u8 sText_Malachrey[] = _("Malachrey");
+static const u8 sText_Fortifros[] = _("Fortifros");
+static const u8 sText_Babobo[] = _("Babobo");
+static const struct MenuAction MultichoiceList_MuseumVal[] =
+{
+    {sText_Xolhm},
+    {sText_Malachrey},
+    {sText_Fortifros},
+    {sText_Babobo},
+};
+
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1038,6 +1297,29 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TRICK_HOUSE_FINAL_DOOR]       = MULTICHOICE(MultichoiceList_TrickHouseFinalDoor),
     [MULTI_BRINEY_BOAT_2]                = MULTICHOICE(MultichoiceList_BrineyBoat2),
     [MULTI_BRINEY_BOAT_3]                = MULTICHOICE(MultichoiceList_BrineyBoat3),
+    [MULTI_MUSEUM_BEPIS_CLOVE]           = MULTICHOICE(MultichoiceList_MuseumBepisClove),
+    [MULTI_MUSEUM_BONZO]                 = MULTICHOICE(MultichoiceList_MuseumBonzo),
+    [MULTI_MUSEUM_CELADONK]              = MULTICHOICE(MultichoiceList_MuseumCeladonk),
+    [MULTI_MUSEUM_CHAIR]                 = MULTICHOICE(MultichoiceList_MuseumChair),
+    [MULTI_MUSEUM_DAHLIA]                = MULTICHOICE(MultichoiceList_MuseumDahlia),
+    [MULTI_MUSEUM_DAHVIPER]              = MULTICHOICE(MultichoiceList_MuseumDahviper),
+    [MULTI_MUSEUM_EGG_DILL]              = MULTICHOICE(MultichoiceList_MuseumEggDill),
+    [MULTI_MUSEUM_ALTERMON]              = MULTICHOICE(MultichoiceList_MuseumAltermon),
+    [MULTI_MUSEUM_EEVEEEE]               = MULTICHOICE(MultichoiceList_MuseumEeveeee),
+    [MULTI_MUSEUM_ENWAITEA]              = MULTICHOICE(MultichoiceList_MuseumEnwaitea),
+    [MULTI_MUSEUM_FBI]                   = MULTICHOICE(MultichoiceList_MuseumFBI),
+    [MULTI_MUSEUM_GABO_TY]               = MULTICHOICE(MultichoiceList_MuseumGaboTy),
+    [MULTI_MUSEUM_KYU_DOODLE]            = MULTICHOICE(MultichoiceList_MuseumKyuDoodle),
+    [MULTI_MUSEUM_LICHEN]                = MULTICHOICE(MultichoiceList_MuseumLichen),
+    [MULTI_MUSEUM_HYDROBLUE]             = MULTICHOICE(MultichoiceList_MuseumHydroBlue),
+    [MULTI_MUSEUM_LIVRA]                 = MULTICHOICE(MultichoiceList_MuseumLivra),
+    [MULTI_MUSEUM_MEMELORD_FRANKTURE]    = MULTICHOICE(MultichoiceList_MuseumMemelordFrankture),
+    [MULTI_MUSEUM_OGWON]                 = MULTICHOICE(MultichoiceList_MuseumOgwon),
+    [MULTI_MUSEUM_PABLO_PLASTO]          = MULTICHOICE(MultichoiceList_MuseumPabloPlasto),
+    [MULTI_MUSEUM_SAV]                   = MULTICHOICE(MultichoiceList_MuseumSav),
+    [MULTI_MUSEUM_SHARK]                 = MULTICHOICE(MultichoiceList_MuseumShark),
+    [MULTI_MUSEUM_TARDY_SWEETAN]         = MULTICHOICE(MultichoiceList_MuseumTardySweetan),
+    [MULTI_MUSEUM_VAL]                   = MULTICHOICE(MultichoiceList_MuseumVal),
 };
 
 const u8 *const gStdStrings[] =
