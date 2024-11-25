@@ -686,10 +686,10 @@ const u8 gChanseyPokedexText[] = _(
 
 const u8 gTangelaPokedexText[] = _(
 	"Tentangle float buoyantly and aimlessly out in\n"
-	"the ocean. When perturbed, it will spin\n"
-	"furiously, whipping the foe with its tentacles\n"
-	"until left alone, upon which it will go\n"
-	"back to calm aimless drifting.");
+	"the ocean. When perturbed, they will spin\n"
+	"furiously, whipping their foe with their\n"
+	"tentacles until left alone. After this, they\n"
+	"will go back to calm aimless drifting.");
 
 const u8 gKangaskhanPokedexText[] = _(
     "If you come across a young Kangaskhan\n"
@@ -1924,17 +1924,17 @@ const u8 gWalreinPokedexText[] = _(
     "off in battle.");
 
 const u8 gCacneaPokedexText[] = _(
-	"This Pokémon attacks normally via screaming\n"
-	"its lungs out, which generates a potent heat\n"
-	"from its vocal chords, releasing as flames.\n"
-	"It commonly scares those that find it.");
+	"These Pokémon attack normally by screaming their\n"
+	"lungs out, which generates a potent heat from\n"
+	"their vocal cords, releasing as flames. They\n"
+	"commonly scare those who find it.");
 
 const u8 gCacturnePokedexText[] = _(
-	"A scheming fool of fire and trickery.\n"
-	"The very sap it churns within its chambered\n"
-	"fibers ignites with malicious heat. Lobbing\n"
-	"and tossing balls of fire at the hapless\n"
-	"purely for its own jollies.");
+	"A scheming fool of fire and trickery. The very\n"
+	"sap it churns within its chambered fibers\n"
+	"ignites with malicious heat. Lobbing and tossing\n"
+	"balls of fire at the hapless purely for its\n"
+	"jollies.");
 
 const u8 gSnoruntPokedexText[] = _(
     "They travel in groups, wading through\n"
@@ -2064,18 +2064,18 @@ const u8 gSlakingPokedexText[] = _(
     "out of the trees.");
 
 const u8 gGulpinPokedexText[] = _(
-	"Gulgan breathe much like a heart beats, its\n"
-	"entire body convulsing each beat. It cannot\n"
-	"consume anything acidic, for it will get\n"
-	"painful heartburn. Oddly, it doesn't need\n"
-	"to eat to survive, only for pleasure.");
+	"Gulgan breathe much like a heartbeat, their\n"
+	"entire body convulsing each beat. They cannot\n"
+	"consume anything acidic, for it will cause\n"
+	"painful heartburn. Oddly, they don't need to eat\n"
+	"to survive, only for pleasure.");
 
 const u8 gSwalotPokedexText[] = _(
-	"The viscous substance produced by a Swalheart\n"
-	"is said to be able to heal any ailment if\n"
-	"swallowed. This is easier said than done,\n"
-	"as it tastes so indescribably awful that\n"
-	"it makes most throw it right back up.");
+	"The viscous substance produced by a Swalheart is\n"
+	"said to heal any ailment if swallowed. This is\n"
+	"easier said than done, as this substance tastes\n"
+	"so indescribably awful that it makes most throw\n"
+	"it right back up.");
 
 const u8 gTropiusPokedexText[] = _(
     "It flies by flapping its broad leaves.\n"
@@ -2168,11 +2168,11 @@ const u8 gLaironPokedexText[] = _(
     "of their collision carries for miles.");
 
 const u8 gAggronPokedexText[] = _(
-	"Smaugron living within volcanoes have adapted\n"
-	"from eating steel, and instead now feast upon\n"
-	"the plentiful reserves of magma in their\n"
-	"habitats. This has led them to shed their\n"
-	"steel armor, thus igniting their inner fire.");
+	"Smaugron living within volcanos have adapted\n"
+	"from eating steel, and instead, now feast on the\n"
+	"plentiful reserves of magma in their habitats.\n"
+	"This has led them to shed their steel armor,\n"
+	"thus igniting their inner fire.");
 
 const u8 gCastformPokedexText[] = _(
     "It alters its form depending on the\n"
@@ -2217,24 +2217,24 @@ const u8 gArmaldoPokedexText[] = _(
     "large wings.");
 
 const u8 gRaltsPokedexText[] = _(
-	"Deep in the ocean where daylight breaks not\n"
-	"even the dark, a curious flittering light bobs up\n"
-	"and down. Many are compelled to visit this\n"
-	"curious bit of light. The light however, is more\n"
+	"Deep in the ocean, where daylight breaks not\n"
+	"even the dark, a curious flittering light bobs\n"
+	"up and down. Many are compelled to visit this\n"
+	"curious bit of light. The light, however, is more\n"
 	"cruel and cunning than what hides in the dark.");
 
 const u8 gKirliaPokedexText[] = _(
 	"Night, the dreaded hours, the bane of sailors.\n"
-	"The long pause eats away at ones' sanity.\n"
-	"These pelagic pests are savages yet, they are\n"
-	"sly, so they wait. Soon dawn, a relief\n"
-	"most welcome, yet is it truly the light?");
+	"The long pause eats away at one's sanity. These\n"
+	"pelagic pests are savages yet, they are sly, so\n"
+	"they wait. Soon dawn, a relief most welcome, yet\n"
+	"is it truly the light?");
 
 const u8 gGardevoirPokedexText[] = _(
 	"The ocean brews many evils, but none so devious\n"
-	"as the betrayal of beauty. In storms of waves and\n"
-	"thunder, a voice, luring, elfin, tickle the pining\n"
-	"hearts of men. Soon, the black waters\n"
+	"as the betrayal of beauty. In storms of waves\n"
+	"and thunder, a voice, luring, elfin, tickles the\n"
+	"pining hearts of men. Soon, the black waters\n"
 	"embrace their madness and their tired life.");
 
 const u8 gBagonPokedexText[] = _(
@@ -2613,10 +2613,11 @@ const u8 gRhyperiorPokedexText[] = _(
     "Geodude are shot at rare times.");
 
 const u8 gTangrowthPokedexText[] = _(
-	"A typical Jaramari is extremely cunning, slipping\n"
-	"about the battlefield in odd and unorthadox ways\n"
-	"to perplex its opponent before whipping them into\n"
-	"paralysis and finishing them with strangulation.");
+	"A typical Jaramari is extremely cunning,\n"
+	"slipping about the battlefield in odd and\n"
+	"unorthodox ways to perplex their opponent\n"
+	"before whipping them into paralysis and\n"
+	"finishing them with strangulation.");
 
 const u8 gElectivirePokedexText[] = _(
     "When it gets excited, it thumps its chest.\n"
@@ -2673,11 +2674,11 @@ const u8 gPorygonZPokedexText[] = _(
     "defect that made it move oddly.");
 
 const u8 gGalladePokedexText[] = _(
-	"Through harsh waves and whipping winds,\n"
-	"weathered sailors brace for the coming glimmer\n"
-	"within the tempest. That light... it is no sign of\n"
-	"hope, no respite from the storm, but the darkness\n"
-	"that drags you to the aphotic depths.");
+	"Through harsh waves and winds, weathered sailors\n"
+	"brace for the coming glimmer within the tempest.\n"
+	"That light... it is no sign of hope, no respite\n"
+	"from the storm, but the darkness that drags you\n"
+	"to the aphotic depths.");
 
 const u8 gProbopassPokedexText[] = _(
     "It freely controls three units called\n"
@@ -6802,16 +6803,15 @@ const u8 gLurkelpPokedexText[] = _(
 
 const u8 gShroomoinkPokedexText[] = _(
 	"These Pokémon are friendly to humans, but huff\n"
-	"smelly gas that is hazardous to plantlife.\n"
-	"They are generally only kept as pets\n"
-	"in very urban areas.");
+	"smelly and hazardous gas to plant life. They\n"
+	"are only kept as pets in very urban areas.");
 
 const u8 gSporkePokedexText[] = _(
 	"Their noxious fumes are only dangerous to plants\n"
 	"and Grass-type Pokémon. With their meat being\n"
 	"revered as a delicacy, the bulk of the captive\n"
-	"Sporke population is carefully\n"
-	"quarantined and cultivated.");
+	"Sporke population is carefully quarantined and\n"
+	"cultivated.");
 
 const u8 gChernoboarPokedexText[] = _(
 	"Chernoboar are seldom seen in the wild, once in\n"
@@ -6820,17 +6820,18 @@ const u8 gChernoboarPokedexText[] = _(
 	"radiation in a sizable radius surrounding it.");
 
 const u8 gIcandesfenPokedexText[] = _(
-	"When in a scuffle, these Pokémon can heat up their\n"
-	"armor to 900+ degrees farenheit, until it becomes\n"
-	"colored a radiant red. Icandesfen live in island\n"
-	"volcanoes, swimming through water and lava alike.");
+	"When in a scuffle, these Pokémon can heat their\n"
+	"armor to 900+ degrees Fahrenheit, until they\n"
+	"become colored a radiant red. Icandesfen live in\n"
+	"island volcanoes, swimming through water and\n"
+	"lava alike.");
 
 const u8 gSeraphurePokedexText[] = _(
-	"One drop of Seraphure's body can purify\n"
-	"even the most toxic waters. Many devouts\n"
-	"venerate it as the healing hand of the divine.\n"
-	"Scientists, on the other hand, study it\n"
-	"for its incredible purifying properties.");
+	"One drop of a Seraphure's body can purify even\n"
+	"the most toxic waters. Many devout venerate them\n"
+	"as the healing hands of the divine. Scientists,\n"
+	"on the other hand, study them for their\n"
+	"incredible purifying properties.");
 
 const u8 gWakasukaPokedexText[] = _(
 	"Wakasuka have 5 brains, one in each branch of its\n"
@@ -7227,25 +7228,23 @@ const u8 gMusalordPokedexText[] = _(
 	"chops. They especially love to punt Plantatori.");
 
 const u8 gBurstadPokedexText[] = _(
-	"Burstad quite literally bursts out of its egg\n"
-	"when newly hatched, causing a ruckus to\n"
-	"nests unprepared for this outcome. It swims\n"
-	"through bodies of warm water,\n"
-	"boiling its immediate surroundings.");
+	"Burstad quite literally burst out of their egg\n"
+	"when newly hatched, causing a ruckus to nests\n"
+	"unprepared for this outcome. They swim in warm\n"
+	"bodies of water, boiling their surroundings.");
 
 const u8 gBlastoadPokedexText[] = _(
-	"They hunt for small bug Pokémon like Zappug,\n"
-	"and send out their long tongues to\n"
-	"capture them. Once their prey has been\n"
-	"swallowed, it will detonate its stomach\n"
-	"to dissolve the meal.");
+	"They hunt for small bug Pokémon like Zappug and\n"
+	"send out their long tongues to capture them.\n"
+	"Once they swallow their prey, the Pokemon\n"
+	"detonate their stomach to dissolve the meal.");
 
 const u8 gExploadPokedexText[] = _(
-	"It pounds on its belly like a timpani, the\n"
-	"tremors riling up its volatile insides, when\n"
-	"it is ready to finish a battle. Expload\n"
-	"specializes in, well, exploding.\n"
-	"Specifically, its regeneratable stomach.");
+	"They pound on their belly like a timpani; the\n"
+	"tremors riling up their volatile insides when\n"
+	"they are ready to finish a battle. Expload\n"
+	"specialize in, well, exploding. Specifically,\n"
+	"their regenerative stomach.");
 
 const u8 gHagooshPokedexText[] = _(
 	"Hagoosh are rarely seen above the\n"
@@ -7316,10 +7315,10 @@ const u8 gShelebratePokedexText[] = _(
 	"are exceptionally jovial beings.");
 
 const u8 gMagidashPokedexText[] = _(
-	"According to legend, this Pokémon descends\n"
-	"from its starry abode every summer solstice's\n"
-	"eve in revelry and hunger, igniting wildfires in\n"
-	"its wake. Ancient humans began to put out\n"
+	"According to legend, these Pokémon descend from\n"
+	"their starry abode every summer solstice's eve\n"
+	"in revelry and hunger, igniting wildfires in\n"
+	"their wake. Ancient humans began to put out\n"
 	"burnt offerings at sunrise to be spared.");
 
 const u8 gSkuldugeryPokedexText[] = _(
