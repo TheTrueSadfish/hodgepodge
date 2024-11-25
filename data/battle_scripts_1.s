@@ -17351,7 +17351,7 @@ BattleScript_PinapBerryActivate_Anim:
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
 BattleScript_PinapBerryActivate_Dmg:
-	call BattleScript_HurtAttacker
+	call BattleScript_HurtDefender
 	removeitem BS_TARGET
 BattleScript_PinapBerryEnd::
 	return
