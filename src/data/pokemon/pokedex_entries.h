@@ -13838,7 +13838,7 @@ const struct PokedexEntry gPokedexEntries[] =
     {
         .categoryName = _("Crawler"),
         .height = 42,
-        .weight = 166,
+        .weight = 3833,
         .description = gBevolpinPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 0, // 0,

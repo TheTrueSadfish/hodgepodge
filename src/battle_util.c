@@ -5507,11 +5507,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 i = Random() % 4;
                 if (i == 0)
                     goto RAIN;
-                if (i == 1)
+                else if (i == 1)
                     goto SAND;
-                if (i == 2)
+                else if (i == 2)
                     goto SUN;
-                if (i == 3)
+                else if (i == 3)
                     goto HAIL;
             }
         case ABILITY_DRIZZLE:
@@ -5616,11 +5616,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 i = Random() % 4;
                 if (i == 0)
                     goto ELECTRIC;
-                if (i == 1)
+                else if (i == 1)
                     goto GRASSY;
-                if (i == 2)
+                else if (i == 2)
                     goto MISTY;
-                if (i == 3)
+                else if (i == 3)
                     goto PSYCHIC;
             }
         case ABILITY_ELECTRIC_SURGE:
@@ -7136,7 +7136,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_BLOW_UP;  //The Extra Move to be used
                 u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7165,7 +7166,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_CINDER_WALTZ;     //The Extra Move to be used
                 u8 movePower = 70;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7195,7 +7197,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && (gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION)
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_STUMBLE;  //The Extra Move to be used
                 u8 movePower = 70;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7224,7 +7227,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_FRESH_WHIP;  //The Extra Move to be used
                 u8 movePower = 50;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7253,7 +7257,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
             && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_SWEET_SCENT;     //The Extra Move to be used
                 u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7842,7 +7847,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_STORM_BREW:
-            if ((!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && gBattleMoves[move].type == TYPE_ELECTRIC
             && gBattleMons[gBattlerAttacker].hp != 0
             && IsBattlerAlive(gBattlerTarget) 
@@ -7851,17 +7856,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && !gProtectStructs[gBattlerAttacker].extraMoveUsed
             && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE))
-            || (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && gBattleMoves[move].type == TYPE_ELECTRIC
-            && gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].hp != 0
-            && IsBattlerAlive(gBattlerTarget) 
-            && TARGET_TURN_DAMAGED
-            && gBattlerTarget != BATTLE_PARTNER(gBattlerAttacker)
-            && !gProtectStructs[BATTLE_PARTNER(gBattlerAttacker)].confusionSelfDmg
-            && !gProtectStructs[gBattlerAttacker].extraMoveUsed
-            && !(gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].status1 & STATUS1_FREEZE)))
+            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_THUNDER_SHOCK;  //The Extra Move to be used
                 u8 movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7892,7 +7888,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].extraMoveUsed
             && !(IS_MOVE_STATUS(gCurrentMove))
             && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE))
+            && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_GOOSE_CHASER;  //The Extra Move to be used
                 u8 movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
@@ -7926,7 +7923,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && (gBattleMoves[move].bitingMove
             || gBattleMoves[move].soundMove
             || gBattleMoves[move].slicingMove
-            || gCurrentMove == MOVE_FURY_SWIPES))
+            || gCurrentMove == MOVE_FURY_SWIPES)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {    
                 u16 extraMove;
                 u8 movePower;
@@ -11373,14 +11371,22 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             switch (battlerHoldEffect)
             {
             case HOLD_EFFECT_CURSED_AMULET:
-                if (TARGET_TURN_DAMAGED && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) && gDisableStructs[gBattlerAttacker].disabledMove == MOVE_NONE && IsBattlerAlive(gBattlerAttacker) && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL) && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 && (Random() % 3) == 0) // Hardcoding the chance here since cant get it working right through holdEffectParam
+                if (TARGET_TURN_DAMAGED
+                && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
+                && gDisableStructs[gBattlerAttacker].disabledMove == MOVE_NONE
+                && IsBattlerAlive(gBattlerAttacker)
+                && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL)
+                && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0
+                && (Random() % 3) == 0) // Hardcoding the chance here since cant get it working right through holdEffectParam
                 {
                     gDisableStructs[gBattlerAttacker].disabledMove = gChosenMove;
                     gDisableStructs[gBattlerAttacker].disableTimer = 4;
+                    effect = ITEM_EFFECT_OTHER;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMove);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_CursedAmuletActivates;
-                    effect++;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_CURSED_AMULET);
                 }
                 break;
             case HOLD_EFFECT_FLIP_COIN:
@@ -11404,7 +11410,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_ROCKY_HELMET:
-                if (TARGET_TURN_DAMAGED && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) && IsBattlerAlive(gBattlerAttacker) && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+                if (TARGET_TURN_DAMAGED
+                && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
+                && IsBattlerAlive(gBattlerAttacker)
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT
+                && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM)
+                && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
                 {
                     if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
                         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 12;

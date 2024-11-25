@@ -1227,7 +1227,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_FORTIFROS] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_ARCTIKACK] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  5 },
     [SPECIES_PRISMAPUP] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_VIVIDAWG] = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  7 },
+    [SPECIES_VIVIDAWG] = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  3 },
     [SPECIES_KITTEPUP] = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  7 },
     [SPECIES_PECKACHEW] = { .size = MON_COORDS_SIZE(48, 56), .y_offset =  8 },
     [SPECIES_SKOOKY] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },

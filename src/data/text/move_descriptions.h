@@ -4754,7 +4754,7 @@ static const u8 sWilderDanceDescription[] = _(
     "Attack, Defense, and Speed.");
 
 static const u8 sFrostShredDescription[] = _(
-    "Slashes twice; or more foe each\n"
+    "Slashes twice, or more foe each\n"
     "Speed boost. May freeze the foe.\n"
     "Critical hits land more easily.");
 
@@ -4994,7 +4994,7 @@ static const u8 sEmberSnowDescription[] = _(
     "foe's move into Fire-type.");
 
 static const u8 sFeatherRazorDescription[] = _(
-    "Slashes twice; or more for each\n"
+    "Slashes twice, or more for each\n"
     "Speed boost. Cuts the user's Spd.\n"
     "Critical hits land more easily.");
 
@@ -5041,7 +5041,7 @@ static const u8 sNonSequiturDescription[] = _(
 static const u8 sBeldamBrewDescription[] = _(
     "The user lobs a magical brew\n"
     "that changes the foe's type to\n"
-    "Poison. This may trap the foe.");
+    "Poison. This blocks healing.");
 
 static const u8 sAstralSpikesDescription[] = _(
     "The user shoots odd spikes 2 to\n"
@@ -5099,12 +5099,12 @@ static const u8 sIcebreakerDescription[] = _(
     "or frozen, may OHKO the foe.");
 
 static const u8 sPortentCastDescription[] = _(
-    "Casts a magical spell that summons\n"
+    "Casts a magical spell that makes\n"
     "lucky chant on the user's side\n"
     "and may lower the foe's accuracy.");
 
 static const u8 sWardSpellDescription[] = _(
-    "Casts a magical spell that summons\n"
+    "Casts a magical spell that makes\n"
     "safeguard on the user's side and\n"
     "raises the user's Defense stat.");
 

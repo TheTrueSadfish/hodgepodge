@@ -722,16 +722,16 @@ const u8 gSeakingPokedexText[] = _(
     "washed away by the current.");
 
 const u8 gStaryuPokedexText[] = _(
-	"It's said that if you see a pink mist in a dream,\n"
-	"a Staream has begun to consume it. Those\n"
-	"who are adept at dreaming vividly\n"
-	"are able to ward them off.");
+	"It's said that if you see a pink mist in a\n"
+	"dream, a Staream has begun to consume it. Those\n"
+	"who are adept at dreaming vividly can ward them\n"
+	"off.");
 
 const u8 gStarmiePokedexText[] = _(
-	"They use their ability to enter dreams to\n"
-	"turn them into nightmares based on the\n"
-	"host's fears and insecurities, feeding off\n"
-	"of the intense negativity they create.");
+	"They use their ability to enter dreams to turn\n"
+	"them into nightmares based on the host's fears\n"
+	"and insecurities, feeding off of the intense\n"
+	"negativity they create.");
 
 const u8 gMrMimePokedexText[] = _(
     "A Mr. Mime is a master of pantomime. It can\n"
@@ -826,9 +826,9 @@ const u8 gFlareonPokedexText[] = _(
 const u8 gPorygonPokedexText[] = _(
 	"A synthetic Pokémon created by trainers in\n"
 	"Galar's Spikemuth District to battle in\n"
-	"high-stakes betting events. The sawblade\n"
-	"on its tail can be swapped out\n"
-	"for other weaponry.");
+	"high-stakes betting events. The saw blade on\n"
+	"their tail can be swapped out for other\n"
+	"weaponry.");
 
 const u8 gOmanytePokedexText[] = _(
     "One of the ancient and long-since-extinct\n"
@@ -1190,11 +1190,11 @@ const u8 gUmbreonPokedexText[] = _(
     "on its body glow when it leaps to attack.");
 
 const u8 gMurkrowPokedexText[] = _(
-	"Magekrow have 114 different variations of\n"
-	"their caws that they can recite in specific\n"
-	"orders to cast arcane spells. Humans\n"
-	"attempting to replicate these incantations\n"
-	"will have their voice taken away.");
+	"Magekrow have 114 variations of their caws that\n"
+	"they can recite in specific orders to cast\n"
+	"arcane spells. Humans attempting to replicate\n"
+	"these incantations will have their voices taken\n"
+	"away.");
 
 const u8 gSlowkingPokedexText[] = _(
     "It undertakes research every day to\n"
@@ -1203,10 +1203,10 @@ const u8 gSlowkingPokedexText[] = _(
     "if the Shellder on its head comes off.");
 
 const u8 gMisdreavusPokedexText[] = _(
-	"This Pokémon is known for its beautiful singing,\n"
-	"which holds the power to heal wounds. Some say\n"
-	"it can use this same power to inflict harm as well,\n"
-	"but this isn't well documented.");
+	"These Pokémon are known for their beautiful\n"
+	"singing, which holds the power to heal wounds.\n"
+	"Some say they can use this same power to inflict\n"
+	"harm as well, but this isn't well documented.");
 
 const u8 gUnownPokedexText[] = _(
     "This Pokémon is shaped like ancient text\n"
@@ -1248,7 +1248,7 @@ const u8 gGligarPokedexText[] = _(
     "It produces toxins that can incapacitate\n"
     "large elephants. Gligar can be agitated\n"
     "into missing its swing and stinging itself.\n"
-    "Which, surprisingly, it isn’t immune to.");
+    "Which, surprisingly, it isn't immune to.");
 
 const u8 gSteelixPokedexText[] = _(
     "Steelix live even further underground\n"
@@ -1301,7 +1301,7 @@ const u8 gSneaselPokedexText[] = _(
 const u8 gTeddiursaPokedexText[] = _(
 	"Despite their small stature, they are confident\n"
 	"apex predators. Their chi is concentrated in the\n"
-	"marking on their forehead; though this is their\n"
+	"marking on their forehead, though this is their\n"
 	"weak point, so they guard it with precision.");
 
 const u8 gUrsaringPokedexText[] = _(
@@ -1402,10 +1402,11 @@ const u8 gDonphanPokedexText[] = _(
     "attack won't even leave a scratch.");
 
 const u8 gPorygon2PokedexText[] = _(
-	"PorybotV2 represents a significantly improved\n"
-	"attempt at a battling bot Pokémon compared\n"
-	"to its predecessor. Its form allows it to set and\n"
-	"maneuver through whatever terrain it sees fit.");
+	"PorybotV2 represent a significantly improved\n"
+	"attempt at a battling bot Pokémon compared to\n"
+	"their predecessor. Their form allows them to set\n"
+	"and maneuver through whatever terrain they see\n"
+	"fit.");
 
 const u8 gStantlerPokedexText[] = _(
     "Stantler's magnificent antlers were\n"
@@ -1644,7 +1645,7 @@ const u8 gLudicoloPokedexText[] = _(
 const u8 gSeedotPokedexText[] = _(
     "Seedot hang around the branches of majestic\n"
     "trees, sapping nutrients for themselves.\n"
-    "Loafoof ensure they don’t overcrowd a tree,\n"
+    "Loafoof ensure they don't overcrowd a tree,\n"
     "securing its survival. They sometimes fall from\n"
     "trees, causing concussions to those below.");
 
@@ -1674,7 +1675,7 @@ const u8 gNinjaskPokedexText[] = _(
     "known the move Teleport. Combining their speed\n"
     "and claws, they can take out the toughest of\n"
     "Pokémon in a single hit. When resting, Ninjask\n"
-    "ensure they’re covered in leaves for protection.");
+    "ensure they're covered in leaves for protection.");
 
 const u8 gShedinjaPokedexText[] = _(
     "Lost souls who find their way into the exuviae of\n"
@@ -1991,11 +1992,11 @@ const u8 gMinunPokedexText[] = _(
     "promote circulation and boost vitality.");
 
 const u8 gMawilePokedexText[] = _(
-	"According to legends, Bloomwile are the\n"
-	"spirits of ancient Mawile, wiped out long\n"
-	"ago by early man out of fear. To this day\n"
-	"they lie in wait, luring lost travelers\n"
-	"into the woods, never to return.");
+	"According to legends, Bloomwile are the spirits\n"
+	"of ancient Mawile, wiped out long ago by early\n"
+	"man out of fear. To this day they lie in wait,\n"
+	"luring lost travelers into the woods, never to\n"
+	"return.");
 
 const u8 gMedititePokedexText[] = _(
     "It continually meditates for hours every\n"
@@ -2395,18 +2396,18 @@ const u8 gLopunnyPokedexText[] = _(
     "It runs with sprightly jumps.");
 
 const u8 gMismagiusPokedexText[] = _(
-	"They roam the land in search of ill people\n"
-	"and Pokémon, absorbing their sickness and\n"
-	"releasing it where it can't hurt anyone.\n"
-	"Some say this treatment comes at a price,\n"
-	"but none know what that may be.");
+	"They roam the land in search of ill people and\n"
+	"Pokémon, absorbing their sickness and releasing\n"
+	"it where it can't hurt anyone. Some say this\n"
+	"treatment comes at a price, but none know what\n"
+	"that may be.");
 
 const u8 gHonchkrowPokedexText[] = _(
-	"Up in oak wooded mountains, lays a wizened\n"
-	"warlock of interminable knowledge. Do not mistake\n"
-	"it for a conjurer of cheap tricks, as it is a vicar\n"
-	"of great ancient arts. They have guided many\n"
-	"olden greats, so pay respects to this old avian.");
+	"Up in wooded mountains lays a wizened warlock of\n"
+	"interminable knowledge. Do not mistake it for a\n"
+	"conjurer of cheap tricks, as it is a vicar of\n"
+	"great ancient arts. It has guided many greats of\n"
+	"the past, so pay respects to this old avian.");
 
 const u8 gGlameowPokedexText[] = _(
     "It is a very fickle Pokémon, which is \n"
@@ -2851,18 +2852,18 @@ const u8 gSamurottPokedexText[] = _(
     "enough to intimidate most enemies.");
 
 const u8 gPatratPokedexText[] = _(
-	"In the Age of Maritime Trade, unwanted stow-\n"
-	"aways sailed toward the uncharted. Ample\n"
-	"fruit in strange lands allowed propagation and\n"
-	"prosperity. Not all are fortunate however. In an\n"
-	"isolated land, malice waits for a visit, a host.");
+	"In the Age of Maritime trade, unwanted stowaways\n"
+	"sailed to uncharted places. Ample fruit in odd\n"
+	"lands allowed propagation and prosperity. Not\n"
+	"all are fortunate, however. In an isolated land,\n"
+	"malice waits for a visit, a host.");
 
 const u8 gWatchogPokedexText[] = _(
-	"The unwanted stowaway sees more than what\n"
-	"lies in front. This supernatural foresight has\n"
-	"made it an uncanny foe, striking first with\n"
-	"psionic strength. It times its attacks to the\n"
-	"enemy's movements, ensuring a deadly blow.");
+	"The unwanted stowaway sees more than what lies\n"
+	"in front. This supernatural foresight has made\n"
+	"it an uncanny foe, striking first with psionic\n"
+	"strength. It times its attacks to the enemy's\n"
+	"movements, guaranteeing a deadly blow.");
 
 const u8 gLillipupPokedexText[] = _(
     "It faces strong opponents with great\n"
@@ -3442,24 +3443,23 @@ const u8 gKlinklangPokedexText[] = _(
     "through its spikes into an area.");
 
 const u8 gTynamoPokedexText[] = _(
-	"Its sparks aren't very bright yet, and it's much\n"
-	"more cautious than its evolved forms.\n"
-	"Despite this, Sparx still have a strong\n"
-	"sense of confidence in themselves.");
+	"Their sparks aren't very bright yet, and they're\n"
+	"much more cautious than their evolved forms.\n"
+	"Despite this, Sparx still have a strong sense of\n"
+	"confidence in themselves.");
 
 const u8 gEelektrikPokedexText[] = _(
-	"Strong sparks flare from the tip of its tail. They\n"
-	"show their power to their peers by crashing\n"
+	"Strong sparks flare from the tip of their tails.\n"
+	"They show their power to their peers by crashing\n"
 	"headfirst into large rocks in an attempt to\n"
-	"destroy them, the impacts\n"
-	"leaving behind colorful embers.");
+	"destroy them. The impact leaves behind colorful\n"
+	"embers.");
 
 const u8 gEelektrossPokedexText[] = _(
-	"Luxstrobe are careful and calculated.\n"
-	"They can destroy boulders with ease,\n"
-	"detonating them with a loud crash.\n"
-	"The brightness of their sparks\n"
-	"is equal to their strength.");
+	"Luxstrobe are careful and calculated. They can\n"
+	"destroy boulders with ease, detonating them with\n"
+	"a loud crash. The brightness of their sparks is\n"
+	"equal to their strength.");
 
 const u8 gElgyemPokedexText[] = _(
     "It psychically squeezes the brain of\n"
@@ -4464,10 +4464,10 @@ const u8 gPalossandPokedexText[] = _(
     "grew ever stronger.");
 
 const u8 gPyukumukuPokedexText[] = _(
-	"Its body is covered in its own fluids, allowing it\n"
-	"to stay slick and hydrated for long periods.\n"
-	"It is fond of spitting out its stomach\n"
-	"to smack foes in the face.");
+	"Fluids cover their bodies, which allows them to\n"
+	"stay slick and hydrated for long periods. They\n"
+	"are fond of spitting out their stomachs to smack\n"
+	"foes in the face.");
 
 const u8 gTypeNullPokedexText[] = _(
     "Due to the danger that this synthetic\n"
@@ -5280,7 +5280,7 @@ const u8 gProngyPokedexText[] = _(
     "unfortunate fry toward their mouth.");
 
 const u8 gTridalierPokedexText[] = _(
-    "A Tridalier’s head, tail, and fins are encrusted\n"
+    "A Tridalier's head, tail, and fins are encrusted\n"
     "in steel-like keratin, while their flesh inside\n"
     "is very tender and delicious. Because of the\n"
     "toughness of their armor, chefs have to use\n"
@@ -5301,11 +5301,11 @@ const u8 gSnelfrendPokedexText[] = _(
     "them very popular household pets.");
 
 const u8 gSycoplodPokedexText[] = _(
-    "A Sycoplod’s shell seems to emit psychic signals\n"
+    "A Sycoplod's shell seems to emit psychic signals\n"
     "to them. This causes them to eat more than what\n"
     "scientists believe to be their regular food\n"
     "intake. They have difficulty coordinating their\n"
-    "movements as if they can’t control themselves.");
+    "movements as if they can't control themselves.");
 
 const u8 gSycostromPokedexText[] = _(
     "The shells of Sycostrom have lived as distinct\n"
@@ -5350,7 +5350,7 @@ const u8 gBonfeuPokedexText[] = _(
     "protecting them from predators.");
 
 const u8 gInfrarecPokedexText[] = _(
-    "An Infrarec’s quills can generate so much\n"
+    "An Infrarec's quills can generate so much\n"
     "excessive heat that they suddenly erupt into a\n"
     "violent blast. Merely touching their quills can\n"
     "cause spontaneous combustion. Infrarec live\n"
@@ -5366,8 +5366,8 @@ const u8 gBermPokedexText[] = _(
 const u8 gMoodaPokedexText[] = _(
     "Mooda are known to be very docile and friendly,\n"
     "too friendly. This makes them easy targets for\n"
-    "predators since they don’t possess any sense of\n"
-    "danger. They don’t seem to mind this, however,\n"
+    "predators since they don't possess any sense of\n"
+    "danger. They don't seem to mind this, however,\n"
     "and their population remains stable.");
 
 const u8 gBermudonPokedexText[] = _(
@@ -5413,7 +5413,7 @@ const u8 gAnnihilapePokedexText[] = _(
 const u8 gEbibiPokedexText[] = _(
     "Their furry shells have a coating of hydrophobic\n"
     "oil, which enable them to skim through water with\n"
-    "minimal friction. They’re trawled on the shores\n"
+    "minimal friction. They're trawled on the shores\n"
     "of Pacifidlog due to their popularity in the\n"
     "market. They taste great dipped in Makibi oil.");
 
@@ -5427,7 +5427,7 @@ const u8 gMakibiPokedexText[] = _(
 const u8 gEbirosashiPokedexText[] = _(
     "Powerful yet elegant, fierce but dignified. They\n"
     "elude danger whilst performing a mesmerizing\n"
-    "dance. For all their beauty, however, they’re\n"
+    "dance. For all their beauty, however, they're\n"
     "unsafe from the hunger of man. Capturing one\n"
     "builds great refute from both hunters and chefs.");
 
@@ -5469,7 +5469,7 @@ const u8 gKombakyuPokedexText[] = _(
 const u8 gFluffsirPokedexText[] = _(
     "Their dense body hairs cause immense joy just by\n"
     "touching them. Although some people claim that a\n"
-    "Fluffsir’s eyes are unsettling, and won’t even\n"
+    "Fluffsir's eyes are unsettling, and won't even\n"
     "get near one. When struck with an attack, they\n"
     "make a high-pitched squeaking sound.");
 
@@ -5488,7 +5488,7 @@ const u8 gSaintisowPokedexText[] = _(
     "and their skin has the texture of marshmallows.");
 
 const u8 gSanctisowPokedexText[] = _(
-    "Their feathers are so soft that they’re used in\n"
+    "Their feathers are so soft that they're used in\n"
     "high-quality cushions. Saintisow spread and\n"
     "raise their many wings when they recognize\n"
     "danger. Saintisow then whip up strong winds to\n"
@@ -5523,7 +5523,7 @@ const u8 gMandimytePokedexText[] = _(
     "rest of the colony to attack the interloper.");
 
 const u8 gTerminytePokedexText[] = _(
-    "A Terminyte’s abdomen is filled with extremely\n"
+    "A Terminyte's abdomen is filled with extremely\n"
     "volatile chemicals. These compounds release\n"
     "when Terminyte explode, eating through any\n"
     "metal. The criminal underworld extracts this\n"
@@ -5769,7 +5769,7 @@ const u8 gCultipexPokedexText[] = _(
 
 const u8 gEerikoPokedexText[] = _(
     "A wooden doll said to be possessed by a\n"
-    "doll maker’s daughter that wants to be\n"
+    "doll maker's daughter that wants to be\n"
     "real again. Eeriko searches for girls to\n"
     "take care of it.");
 
@@ -5830,10 +5830,10 @@ const u8 gOohbaabaPokedexText[] = _(
     "hallucinations, others cause poisoning.");
 
 const u8 gGolderockPokedexText[] = _(
-    "The rocks on Golderock’s head never fall\n"
+    "The rocks on Golderock's head never fall\n"
     "off and each strike this Pokémon makes\n"
     "is perfectly calculated to assure it\n"
-    "doesn’t happen.");
+    "doesn't happen.");
 
 const u8 gMaynimoPokedexText[] = _(
     "Maynimo comes in groups, ganging up on\n"
@@ -5896,12 +5896,12 @@ const u8 gKaprikolaPokedexText[] = _(
     "follows.");
 
 const u8 gBlottaPokedexText[] = _(
-    "Blotta’s malice oozes out like black ink\n"
+    "Blotta's malice oozes out like black ink\n"
     "from its fur. Merely touching the ink\n"
     "triggers a cascade of negative emotions.");
 
 const u8 gSchachttaPokedexText[] = _(
-    "Schachtta’s own malice surrounds it at\n"
+    "Schachtta's own malice surrounds it at\n"
     "all times. Schachtta sends out its\n"
     "terrifying darkness to distort everyone\n"
     "around it.");
@@ -5913,14 +5913,14 @@ const u8 gSylvreignPokedexText[] = _(
     "perfect companion in combat.");
 
 const u8 gCattuclidPokedexText[] = _(
-    "Cattuclid’s metallic horns and tail\n"
+    "Cattuclid's metallic horns and tail\n"
     "appear to be endless, as no scientist\n"
     "has ever discovered an end to them when\n"
     "viewed on a microscope.");
 
 const u8 gFractoflyPokedexText[] = _(
-    "Fractofly’s wings have the same endless\n"
-    "properties as Cattuclid’s horns. Being\n"
+    "Fractofly's wings have the same endless\n"
+    "properties as Cattuclid's horns. Being\n"
     "near them can cause intense déjà vu and\n"
     "paranoia of recursive patterns.");
 
@@ -5937,7 +5937,7 @@ const u8 gMegalitoPokedexText[] = _(
     "song that clears the sky.");
 
 const u8 gCombunPokedexText[] = _(
-    "A popular children’s story tells of a\n"
+    "A popular children's story tells of a\n"
     "lone rabbit on the moon. Centuries of\n"
     "playing alone drove it mad and so it jumped\n"
     "to Earth to play with everyone else.");
@@ -5988,7 +5988,7 @@ const u8 gBolterockPokedexText[] = _(
     "Bolterock are often mistaken for big rock\n"
     "formations. Bolterock grow larger as they\n"
     "age, and can live a long time. According\n"
-    "to rumors, there’s a mountain-sized one.");
+    "to rumors, there's a mountain-sized one.");
 
 const u8 gVoreonPokedexText[] = _(
     "This venomous glutton likes to swallow\n"
@@ -6015,9 +6015,9 @@ const u8 gToxitidePokedexText[] = _(
     "which aid in identifying danger or prey.");
 
 const u8 gToxiturfPokedexText[] = _(
-    "A drop of this Pokémon’s toxin is enough\n"
+    "A drop of this Pokémon's toxin is enough\n"
     "to knock out 10 African elephants. If you\n"
-    "take one wrong step in the desert, you’ll\n"
+    "take one wrong step in the desert, you'll\n"
     "be stung and unable to move for years.");
 
 const u8 gPebblerPokedexText[] = _(
@@ -6047,13 +6047,13 @@ const u8 gCapybaraPokedexText[] = _(
 const u8 gAbarbinashPokedexText[] = _(
     "In its adult stage, its skin has\n"
     "calloused, resulting in a steel-hard\n"
-    "shell. This Pokémon doesn’t eat or sleep,\n"
+    "shell. This Pokémon doesn't eat or sleep,\n"
     "letting them wreak havoc with no end.");
 
 const u8 gJarameraPokedexText[] = _(
     "Scientists discovered its genes\n"
     "contained the DNA of multiple various\n"
-    "Poison-type Pokémon. It’s believed to be\n"
+    "Poison-type Pokémon. It's believed to be\n"
     "the most poisonous Pokémon.");
 
 const u8 gBlinguinPokedexText[] = _(
@@ -6130,7 +6130,7 @@ const u8 gWanneggPokedexText[] = _(
 const u8 gEggneggmaPokedexText[] = _(
     "Eggneggma charge into any nest with\n"
     "eggs, ignoring everyone there. The rigid\n"
-    "shell protects Eggneggma from an egg’s\n"
+    "shell protects Eggneggma from an egg's\n"
     "parents while it swallows it whole.");
 
 const u8 gLevladePokedexText[] = _(
@@ -6155,7 +6155,7 @@ const u8 gHaracePokedexText[] = _(
     "Harace is made purely of a magnetic\n"
     "quartz-like gem. Its electromagnetic\n"
     "properties let it propel itself against\n"
-    "the earth’s magnetic field to speed up.");
+    "the earth's magnetic field to speed up.");
 
 const u8 gTorstevicPokedexText[] = _(
     "Torstevic are slow due to their immense\n"
@@ -6201,20 +6201,20 @@ const u8 gRaitaicPokedexText[] = _(
 
 const u8 gNimbozoaPokedexText[] = _(
     "Groups of them are frequently mistaken\n"
-    "for a storm. It’s best to avert these\n"
-    "“storms” since they’re territorial and\n"
+    "for a storm. It's best to avert these\n"
+    "“storms” since they're territorial and\n"
     "will shock anyone who comes too close.");
 
 const u8 gMinotePokedexText[] = _(
     "Aquariums often hold concerts with many\n"
     "Minote, as their strange singing calms\n"
-    "the mind. They’re used in traditional\n"
+    "the mind. They're used in traditional\n"
     "medicine as a sore throat remedy.");
 
 const u8 gTunapPokedexText[] = _(
     "Tunap have trouble controlling their\n"
     "voices, which fools others into thinking\n"
-    "they’re no threat. Their voices, however,\n"
+    "they're no threat. Their voices, however,\n"
     "can create havoc for both friend and foe.");
 
 const u8 gBassharkPokedexText[] = _(
@@ -6273,23 +6273,23 @@ const u8 gMysticianPokedexText[] = _(
 const u8 gWalrustPokedexText[] = _(
     "After being exposed to the elements,\n"
     "these mysterious Pokémon produce\n"
-    "destructive rust. It doesn’t seem to\n"
+    "destructive rust. It doesn't seem to\n"
     "harm them as much as it does others.");
 
 const u8 gScallywargPokedexText[] = _(
-    "Scallywarg spend most o’ thar life in\n"
-    "the water only goin’ on land t’ sleep.\n"
+    "Scallywarg spend most o' thar life in\n"
+    "the water only goin' on land t' sleep.\n"
     "When they go too deep into the sea, thar\n"
     "body reacts strangely.");
 
 const u8 gWaarghPokedexText[] = _(
     "Waargh are master swimmers ‘n love the\n"
     "ocean. They be pack leaders ‘n command\n"
-    "thar crew t’ pillage already habituated\n"
-    "areas t’ survive.");
+    "thar crew t' pillage already habituated\n"
+    "areas t' survive.");
 
 const u8 gSkellywargPokedexText[] = _(
-    "Skellywarg’s body be primarily hair\n"
+    "Skellywarg's body be primarily hair\n"
     "besides thar face. In the water, they\n"
     "use thar hair-like tentacles, ‘n while\n"
     "on land arrange a werewolf-like body.");
@@ -6301,7 +6301,7 @@ const u8 gCasowaryPokedexText[] = _(
     "good, it passes out.");
 
 const u8 gPassawaryPokedexText[] = _(
-    "Casowary’s soul leaving its body is a\n"
+    "Casowary's soul leaving its body is a\n"
     "clear sign of it evolving into\n"
     "Passawary. It feeds on stray spirits as\n"
     "revenge on the ghosts who frightened it.");
@@ -6309,7 +6309,7 @@ const u8 gPassawaryPokedexText[] = _(
 const u8 gBoozardPokedexText[] = _(
     "Boozard are often found scuttling around\n"
     "in damp, abandoned environments. If they\n"
-    "infest your house, it’s said to be an\n"
+    "infest your house, it's said to be an\n"
     "omen of death.");
 
 const u8 gCockabooPokedexText[] = _(
@@ -6333,7 +6333,7 @@ const u8 gMoraganPokedexText[] = _(
 const u8 gShiversnapPokedexText[] = _(
     "Shiversnap are fierce predators. Only a\n"
     "single bite from a Shiversnap is needed\n"
-    "to cause someone’s blood to freeze and\n"
+    "to cause someone's blood to freeze and\n"
     "stop them cold.");
 
 const u8 gExcatatorPokedexText[] = _(
@@ -6392,7 +6392,7 @@ const u8 gTardritchPokedexText[] = _(
 const u8 gBlabbuPokedexText[] = _(
     "While small, a Blabu can absorb nearly\n"
     "any physical attack. They make baby-like\n"
-    "sounds even when they’re adults.");
+    "sounds even when they're adults.");
 
 const u8 gTurryturryPokedexText[] = _(
     "They are millions of years old according\n"
@@ -6461,7 +6461,7 @@ const u8 gAjokujokuPokedexText[] = _(
 
 const u8 gGarjiraPokedexText[] = _(
     "A Pokémon popular for its goofy\n"
-    "personality. In modern times, it’s often\n"
+    "personality. In modern times, it's often\n"
     "seen online as a pop culture icon.");
 
 const u8 gGarzillaPokedexText[] = _(
@@ -6478,7 +6478,7 @@ const u8 gYandemicPokedexText[] = _(
 
 const u8 gLunasterPokedexText[] = _(
     "All those who set their eyes on\n"
-    "Lunaster’s flame are said to become\n"
+    "Lunaster's flame are said to become\n"
     "irrational, paranoid, and sometimes\n"
     "outright insane.");
 
@@ -6490,7 +6490,7 @@ const u8 gJackaboxPokedexText[] = _(
 
 const u8 gFooltagePokedexText[] = _(
     "Fooltage are tricksters who electrocute\n"
-    "others for giggles even when it’s clearly\n"
+    "others for giggles even when it's clearly\n"
     "hurting them. A single shock from one\n"
     "can take down an Indian Elephant.");
 
@@ -6568,10 +6568,10 @@ const u8 gSolasuPokedexText[] = _(
     "Solasu is quite swift and potent during\n"
     "the day and can produce flames hot\n"
     "enough to melt mountains. When the sun\n"
-    "isn’t visible, however, it weakens.");
+    "isn't visible, however, it weakens.");
 
 const u8 gSummerasuPokedexText[] = _(
-    "Worshiped as the sun’s avatar, Summerasu\n"
+    "Worshiped as the sun's avatar, Summerasu\n"
     "gives good fortune to those under its\n"
     "care. If enraged, it emits heat hotter\n"
     "than the sun. It despises Orrowhelm.");
@@ -6592,7 +6592,7 @@ const u8 gOrrowhelmPokedexText[] = _(
     "The roar of the first head produces\n"
     "whirlpools; the second brings rising\n"
     "tides, and the third will call all the\n"
-    "ocean’s wrath. They despise Summerasu.");
+    "ocean's wrath. They despise Summerasu.");
 
 const u8 gShaYonPokedexText[] = _(
     "The ascension of the “God of Mountains”\n"
@@ -6620,7 +6620,7 @@ const u8 gCraveravePokedexText[] = _(
 
 const u8 gFuzkyPokedexText[] = _(
     "Packs of them can be seen foraging and\n"
-    "hunting for food. They can’t live without\n"
+    "hunting for food. They can't live without\n"
     "eating every hour since their metabolism\n"
     "is so fast.");
 
@@ -6668,7 +6668,7 @@ const u8 gBishouchaPokedexText[] = _(
 
 const u8 gPapypusPokedexText[] = _(
     "The male Papypus live to serve and\n"
-    "support their children once they’re\n"
+    "support their children once they're\n"
     "born, while the females promptly leave\n"
     "the pack to find other males.");
 
@@ -6709,7 +6709,7 @@ const u8 gPurgativalPokedexText[] = _(
     "stops, they swiftly dispatch their prey.");
 
 const u8 gDeteriotlPokedexText[] = _(
-    "Deteriotl’s unstable body has decayed\n"
+    "Deteriotl's unstable body has decayed\n"
     "into what is basically mud. Its DNA is\n"
     "now completely different from what it\n"
     "once was.");
@@ -6742,7 +6742,7 @@ const u8 gGooperPokedexText[] = _(
 	"While other rodent Pokémon are shooed away, wild\n"
 	"Gooper are instead doted upon and given food. As\n"
 	"a result, they are shunned by jealous Nettata\n"
-	"and Patracle... luckily, they do not seem to\n"
+	"and Patrat... luckily, they do not seem to\n"
 	"perceive any of the negativity.");
 
 const u8 gSwisquirePokedexText[] = _(
@@ -6834,159 +6834,158 @@ const u8 gSeraphurePokedexText[] = _(
 	"incredible purifying properties.");
 
 const u8 gWakasukaPokedexText[] = _(
-	"Wakasuka have 5 brains, one in each branch of its\n"
-	"internal organ system that it can freely control\n"
-	"like arms. They are clever beings that can be\n"
-	"taught sign language with enough love and care,\n"
-	"hough are very capable of mischief as well.");
+	"Wakasuka have five brains, one in each branch of\n"
+	"their internal organ system, that they freely\n"
+	"control like arms. Wakasuka are clever beings\n"
+	"who can learn sign language with enough love and\n"
+	"care, though they are also capable of mischief.");
 
 const u8 gWattlPokedexText[] = _(
-	"Thought to be a close relative of Wooper,\n"
-	"it lives in secluded underground caves.\n"
-	"It has no need for sight in this environment,\n"
-	"so it uses electrical pulses\n"
-	"to map out its surroundings.");
+	"Thought to be a close relative of Wooper, they\n"
+	"live in secluded underground caves. Wattl have\n"
+	"no need for sight in this environment, so they\n"
+	"use electrical pulses to map out their\n"
+	"surroundings.");
 
 const u8 gXolhmPokedexText[] = _(
-	"Completely blind, it is thought that its gills\n"
-	"can sense the souls of those around it.\n"
-	"Mythology considered it a beast from the\n"
-	"underworld, adopting its skeletal face as\n"
-	"a symbol for disaster and misfortune.");
+	"Completely blind, it is thought that their gills\n"
+	"can sense the souls of those around them.\n"
+	"Mythology considered them beasts from the\n"
+	"underworld, adopting their skeletal face as a\n"
+	"symbol of disaster and misfortune.");
 
 const u8 gOddiowavePokedexText[] = _(
 	"Wild Oddiowave live in seldom-populated rural\n"
-	"areas, and broadcast eerie sounds to local radio\n"
+	"areas and broadcast eerie sounds to local radio\n"
 	"frequencies. Those who tune in and listen report\n"
 	"seeing strange hallucinations and vivid dreams.");
 
 const u8 gWhermlPokedexText[] = _(
-	"Wherml is a small, mild mannered Pokémon.\n"
-	"They dig small burrows in the ground\n"
-	"to hide from predators. Particularly weak-willed\n"
-	"specimens will get homesick after\n"
-	"leaving a burrow for too long.");
+	"Wherml are small, mild-mannered Pokémon. They\n"
+	"dig small burrows into the ground to hide from\n"
+	"predators. Particularly weak-willed specimens\n"
+	"will get homesick after leaving a burrow for too\n"
+	"long.");
 
 const u8 gCrusterrorPokedexText[] = _(
-	"These long serpentine pokemon cleave through\n"
-	"layers of the earth with ease, and are very\n"
+	"These long serpentine Pokémon cleave through\n"
+	"layers of the earth with ease and are very\n"
 	"territorial. It is advised to steer clear of the\n"
-	"tell-tale cracked lines and burrow holes that\n"
+	"telltale cracked lines and burrow holes that\n"
 	"denote Crusterror territory. Crusterritory.");
 
 const u8 gMantacorePokedexText[] = _(
-	"A primordial being that has been alive for\n"
-	"millenia. Over those eons, these Pokémon\n"
-	"have eroded away slowly but surely,\n"
-	"leaving only a shrunken core clinging\n"
-	"to life. They yearn to be whole again.");
+	"Primordial beings that have been alive for\n"
+	"millennia. Over those eons, these Pokémon have\n"
+	"eroded slowly but surely, leaving only a\n"
+	"shrunken core clinging to life. They yearn to be\n"
+	"whole again.");
 
 const u8 gGravendorPokedexText[] = _(
 	"When a Pokémon challenges their might, they dig\n"
 	"a hole in the ground roughly the size of the foe\n"
-	"while staring them down. At this point, most\n"
-	"competitors flee, though those foolish enough to\n"
-	"engage often find themselves six feet under.");
+	"while staring them down. Most competitors flee,\n"
+	"though those foolish enough to engage often find\n"
+	"themselves six feet under.");
 
 const u8 gGrubblePokedexText[] = _(
-	"Little Pokémon that behave much like\n"
-	"human babies. It will evolve into\n"
-	"unpredictable and dangerous forms\n"
-	"depending on what is stabbed\n"
-	"into its cranium.");
+	"Grubble are little Pokémon that behave much like\n"
+	"human babies. They will evolve into\n"
+	"unpredictable and dangerous forms depending on\n"
+	"what is stabbed into their cranium.");
 
 const u8 gGracklinPokedexText[] = _(
 	"A Gracklin's stones are knifelike and pulsating\n"
-	"with an electric charge. As a finishing blow,\n"
-	"it will pierce its adversary with its claws and\n"
-	"send a current through their nervous system,\n"
-	"resulting in a quick, shocking demise.");
+	"with an electric charge. They will pierce their\n"
+	"adversary with their claws and send a current\n"
+	"through their nervous system, resulting in a\n"
+	"quick, shocking demise.");
 
 const u8 gShamburgerPokedexText[] = _(
-	"They mimic the appearance of burgers to\n"
-	"trick those foolish enough to pick up food\n"
-	"off of cave floors. They'll try eating anything\n"
-	"that gets close enough to them.");
+	"They mimic the appearance of burgers to trick\n"
+	"those foolish enough to pick up food off of cave\n"
+	"floors. They'll try eating anything that gets\n"
+	"close enough to them.");
 
 const u8 gFrozhornPokedexText[] = _(
-	"Playful but brutish, the young Frozhorn charges\n"
+	"Playful but brutish, the young Frozhorn charge\n"
 	"innocently at their hapless owners.\n"
-	"Unfortunately this is accompanied by a sudden\n"
+	"Unfortunately, this is accompanied by a sudden\n"
 	"visit to the hospital.");
 
 const u8 gFrozforcePokedexText[] = _(
 	"In the arctic tundras of the north, these sturdy\n"
-	"brutes travel in packs. Vents on their frills\n"
-	"blast cold wind, forming icy horns used in\n"
-	"combat. They charge thunderously, breaking\n"
-	"ice and earth, smashing through all threats.");
+	"brutes travel in packs. Vents on their frill\n"
+	"blast frosty wind, forming icy horns used in\n"
+	"combat. They charge thunderously, breaking ice\n"
+	"and earth, smashing through all threats.");
 
 const u8 gStaalnaryPokedexText[] = _(
 	"Though looking rather similar to Skarmory,\n"
 	"Staalnary are closer relatives to ancient\n"
-	"Dragapult. Their similar appearance is\n"
-	"merely a quirk of convergent evolution.\n"
-	"They are very hostile and hunt in packs of 3.");
+	"Dragapult. Their similar appearance is merely a\n"
+	"quirk of convergent evolution. They are very\n"
+	"hostile and hunt in packs of three.");
 
 const u8 gBaromitePokedexText[] = _(
 	"Their internal temperature is vital to their\n"
-	"survival, and must be kept around 350\n"
-	"degrees Farenheit. Instead of vets,\n"
-	"Baromite pet owners are urged to take\n"
-	"them to mechanics to have them fixed.");
+	"survival and must be kept around 350 degrees\n"
+	"Fahrenheit. Instead of vets, Baromite pet owners\n"
+	"are urged to take them to mechanics to have them\n"
+	"fixed.");
 
 const u8 gNapalmitePokedexText[] = _(
 	"Napalmite are natural managers and keep a tight\n"
-	"schedule. They are extremely popular in homes\n"
-	"in wintry regions, as by themselves they will keep\n"
-	"a house at a comfortable even temperature.");
+	"schedule. They are extremely popular in homes in\n"
+	"wintry regions, as by themselves they will keep\n"
+	"a house at a comfortable, even temperature.");
 
 const u8 gStovlarePokedexText[] = _(
-	"While often grumpy, Stovlare are known to\n"
-	"be helpful to both humans and other Pokémon.\n"
-	"Their large mouths bake whatever is kept\n"
-	"inside at 400 degrees, and they often cooperate\n"
+	"While often grumpy, Stovlare are known to be\n"
+	"helpful to both humans and other Pokémon. Their\n"
+	"large mouths bake whatever is kept inside at 400\n"
+	"degrees Fahrenheit, and they often cooperate\n"
 	"with Celshrioom to make extravagant meals.");
 
 const u8 gOrbaclePokedexText[] = _(
 	"Once a toy giving childish prognostications of\n"
-	"jovial pursuits, its long use gave it life.\n"
-	"The futures it foresaw became palpable and\n"
-	"concrete and slowly seeped with malign intent.\n"
-	"A doomsayer, now called, no longer a toy of joy.");
+	"jovial pursuits, its long use gave psychic life\n"
+	"to it. The futures it foresaw became palpable and\n"
+	"concrete and slowly seeped with malign intent. A\n"
+	"doomsayer, now called, no longer a toy of joy.");
 
 const u8 gNinownPokedexText[] = _(
-	"Archaeologists have found figurines\n"
-	"resembling Nin'own in ancient ruins.\n"
-	"Its erratic movements have been used\n"
-	"by physicists to model particle motion.");
+	"Archaeologists have found figurines resembling\n"
+	"Nin'own in ancient ruins. Their erratic\n"
+	"movements have been used by physicists to model\n"
+	"particle motion.");
 
 const u8 gDegourgePokedexText[] = _(
-	"That gravestone, it's following me. I saw\n"
-	"them move. I heard the creaking noise\n"
-	"it made. I've seen the bits it left behind...\n"
-	"the rotten smell it makes...");
+	"That gravestone, it's following me. I saw them\n"
+	"move. I heard the creaking noise it made. Not\n"
+	"only that, but I've seen the bits it left\n"
+	"behind... the rotten smell it makes...");
 
 const u8 gTuetuerrorPokedexText[] = _(
-	"Tueterror are true terrors of the night,\n"
-	"picking villages to reign over supremely\n"
-	"and feasting upon those who cross it.\n"
-	"Its intense gluttony feeds its stomach,\n"
-	"where it stores all of its ample power.");
+	"Tueterror are true terrors of the night, picking\n"
+	"villages to reign over supremely and feasting\n"
+	"upon those who cross them. Their intense\n"
+	"gluttony feeds their stomach, where they store\n"
+	"all of their ample power.");
 
 const u8 gBaghostPokedexText[] = _(
-	"Some say they are the spirits of humans from\n"
-	"the middle ages who died via the guillotine.\n"
+	"Some say Baghost are the spirits of humans from\n"
+	"the Middle Ages who died via the guillotine.\n"
 	"Others say they are ectoplasmic balls of energy\n"
-	"that made their home in inanimate bags. A\n"
-	"third, idiotic camp believes they are birds.");
+	"that made their home in inanimate bags. A third,\n"
+	"idiotic camp believes they are birds.");
 
 const u8 gBaghoulPokedexText[] = _(
-	"It lurks in abandoned buildings, hooking its\n"
-	"tendrills without warning into its prey and\n"
-	"dropping onto them with its sacklike skin,\n"
-	"consuming every bit of their body and spirit.\n"
-	"Its body is only weak to certain elements.");
+	"They lurk in abandoned buildings, hooking their\n"
+	"tendrils without warning into their prey and\n"
+	"dropping onto them with their sacklike skin,\n"
+	"consuming their body and spirit. Their bodies\n"
+	"are fragile but immune to most elements.");
 
 const u8 gWuvmePokedexText[] = _(
 	"Love, a deceptive affliction. As you soak in the\n"
@@ -7240,39 +7239,38 @@ const u8 gBlastoadPokedexText[] = _(
 	"detonate their stomach to dissolve the meal.");
 
 const u8 gExploadPokedexText[] = _(
-	"They pound on their belly like a timpani; the\n"
+	"They pound on their belly like a timpani, the\n"
 	"tremors riling up their volatile insides when\n"
 	"they are ready to finish a battle. Expload\n"
 	"specialize in, well, exploding. Specifically,\n"
 	"their regenerative stomach.");
 
 const u8 gHagooshPokedexText[] = _(
-	"Hagoosh are rarely seen above the\n"
-	"abyssal zone. When threatened, they\n"
-	"can manipulate the slime they secrete to\n"
-	"form an intimidating, powerful body\n"
-	"to fight back against its assailants.");
+	"Hagoosh are rarely seen above the abyssal zone.\n"
+	"When threatened, they can manipulate the slime\n"
+	"they secrete to form an intimidating, powerful\n"
+	"body to fight back against their assailants.");
 
 const u8 gDullsodPokedexText[] = _(
-	"As its name implies, it's a relative of the\n"
-	"Pokémon Sadsod. While it is a great deal\n"
-	"more resilient than its cousin, the family's\n"
-	"signature lethargy renders it\n"
-	"ineffective in battle.");
+	"As their name implies, they are a relative of\n"
+	"the Pokémon Sadsod. While they are much more\n"
+	"resilient than their cousins, the family's\n"
+	"signature lethargy renders them ineffective in\n"
+	"battle.");
 
 const u8 gBevolpinPokedexText[] = _(
-	"A cruel, malevalent entity that has emerged from\n"
-	"seafloor caverns. Once thought to have been a\n"
-	"non-threat if taken out of water, this has been\n"
-	"proven incorrect after foresight-lacking\n"
-	"humans introduced them to the surface.");
+	"They are cruel, malevolent entities that have\n"
+	"emerged from seafloor caverns. The belief that\n"
+	"these creatures were harmless out of water was\n"
+	"proven incorrect after ecologists, who lacked\n"
+	"foresight, introduced them to the surface.");
 
 const u8 gFrankturePokedexText[] = _(
-	"Frankture can hop both high and far, much\n"
-	"like an astronaut on the moon, despite their\n"
-	"high mass. In battle, it will crash down, causing\n"
-	"a quake to knock its opponent off balance,\n"
-	"before rolling into them.");
+	"Frankture can hop both high and far like an\n"
+	"astronaut on the moon, despite their giant mass.\n"
+	"In battle, they will crash down, causing a quake\n"
+	"to knock their opponent off balance before\n"
+	"rolling into them.");
 
 const u8 gGroosePokedexText[] = _(
 	"Said to be birthed from dirty oil left to rot,\n"
@@ -7322,25 +7320,24 @@ const u8 gMagidashPokedexText[] = _(
 	"burnt offerings at sunrise to be spared.");
 
 const u8 gSkuldugeryPokedexText[] = _(
-	"Born with the smell of mud, these perplexing\n"
-	"entities are conjured by wizards living\n"
-	"in the deepest marshlands. They have\n"
-	"betrayed their creators, slowly corrupting\n"
-	"them into more Skuldugery.");
+	"Born with the smell of mud, wizards living in\n"
+	"the deepest marshlands conjure these perplexing\n"
+	"entities. They have betrayed their creators,\n"
+	"slowly corrupting them into more Skuldugery.");
 
 const u8 gCardictPokedexText[] = _(
-	"It will allow predators to capture one of\n"
-	"its cards, before asking its assailant to\n"
-	"name it. If the card is named incorrectly,\n"
-	"the card capturer will soon find their\n"
-	"brain ablaze, its fate sealed.");
+	"They will allow predators to capture one of\n"
+	"their cards before asking their assailant to\n"
+	"name it. If the card is named incorrectly, the\n"
+	"cardholder will soon find their brain ablaze,\n"
+	"their fate sealed.");
 
 const u8 gPokerlordPokedexText[] = _(
 	"Arrogantly looking down upon other Pokémon,\n"
-	"these cardlike curs engage others in battles of\n"
+	"these card-like curs engage others in battles of\n"
 	"wit and luck. The odds seem fair at first,\n"
-	"before being revealed to be\n"
-	"largely in Pokerlord's favor.");
+	"before being revealed to be largely in the\n"
+	"Pokerlord's favor.");
 
 const u8 gEyerishPokedexText[] = _(
 	"Their singular eyeball gets awfully filthy,\n"
@@ -7356,5 +7353,9 @@ const u8 gRetineelPokedexText[] = _(
 	"surrounding waters to vacate the premises.");
 
 const u8 gStuntislaPokedexText[] = _(
-	"unfinished");
+	"An erratic presence. They are more mobile than\n"
+	"they may appear. Their legs can work as springs,\n"
+	"propelling them at high speeds, and their claws\n"
+	"course with potent electricity. When Stuntisla\n"
+	"punch a foe, shocks ripple through its body.");
 #endif
