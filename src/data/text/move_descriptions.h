@@ -5055,8 +5055,8 @@ static const u8 sWildShuffleDescription[] = _(
 
 static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"
-    "Poison and Dark-types. Its recoil\n"
-    "harshly drops the user's Sp. Atk.");
+    "Poison and Dark-types. Drops\n"
+    "Sp. Atk. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
     "The foe is forced to switch. This\n"

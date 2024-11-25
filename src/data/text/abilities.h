@@ -384,7 +384,7 @@ static const u8 sGluttonyDescription[] = _(
     "Berry earlier than usual.");
 
 static const u8 sAngerPointDescription[] = _(
-    "Boosts Attack sharply upon taking\n"
+    "Boosts Atk sharply upon taking\n"
     "a super effective hit. Maxes it\n"
     "upon taking a critical hit.");
 
@@ -949,7 +949,7 @@ static const u8 sSurgeSurferDescription[] = _(
 static const u8 sHuddleUpDescription[] = _(
     "At LVL 25, the Pokémon becomes a\n"
     "a powerful beast until at low HP.\n"
-    "At LVL 40, restores HP every turn.");
+    "At LVL 40, heals HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
     "Once per battle, the silk that\n"
@@ -1732,9 +1732,9 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Boosts the Pokemon's accuracy.\n"
-    "Transforms if pierced. Takes more\n"
-    "damage, and is less accurate.");
+    "Boosts accuracy. Transforms if\n"
+    "pierced. Takes more damage,\n"
+    "and reduces accuracy.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced damage\n"

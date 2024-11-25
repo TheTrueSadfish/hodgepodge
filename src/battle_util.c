@@ -5755,6 +5755,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 break;
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
+                gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                 effect++;
             }
@@ -5765,6 +5766,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
+                effect++;
+            }
+            break;
+        case ABILITY_HEAT_SEEKER:
+            if (gBattleMons[battler].status1 & STATUS1_BURN
+            && IsBattlerAlive(battler)
+            && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
                 effect++;
             }
             break;
@@ -6389,12 +6400,29 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_HUDDLE_UP:
                 if (gBattleMons[battler].level < 25)
                     break;
+                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
+                {
+                    gBattlerAttacker = battler;
+                    BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
+                    effect++;
+                }
+                if ((gBattleMons[battler].level >= 40) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HUDDLE_UP ? 16 : 8);
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
+                }
+                break;
             // Fallthrough
             case ABILITY_ZEN_MODE:
             case ABILITY_SHIELDS_DOWN:
             case ABILITY_DORMANT:
                 if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
+                    gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                     effect++;
                 }
@@ -7770,7 +7798,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
             && gBattleMons[gBattlerTarget].hp != 0
-            && (gBattleStruct->daringDeedHeart)
+            && (gProtectStructs[gBattlerAttacker].daringDeedHeart)
             && !(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
             && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
             && GetBattlerAbility(gBattlerTarget) != ABILITY_OBLIVIOUS
@@ -7788,7 +7816,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
             && !(IS_MOVE_STATUS(gCurrentMove))
-            && (gBattleStruct->daringDeedSpade))
+            && (gProtectStructs[gBattlerAttacker].daringDeedSpade))
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_DaringDeedActivatesTaunt;
@@ -7799,7 +7827,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
             && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_PAYDAY
-            && (gBattleStruct->daringDeedDiamond)
+            && (gProtectStructs[gBattlerAttacker].daringDeedDiamond)
             && !(IS_MOVE_STATUS(gCurrentMove)))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_PAYDAY;
@@ -9475,7 +9503,11 @@ static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
     gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && (gDisableStructs[opposingBattler].isFirstTurn))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && (gDisableStructs[opposingBattler].isFirstTurn)
+    && IsBattlerAlive(opposingBattler)
+    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+    && IsBattlerAlive(battler))
     {
         if (end2)
         {
@@ -9701,7 +9733,7 @@ static u8 TryConsumeMirrorHerb(u32 battler, bool32 execute)
 {
     u8 effect = 0;
 
-    if (gProtectStructs[battler].eatMirrorHerb)
+    if (gProtectStructs[battler].eatMirrorHerb && IsBattlerAlive(battler))
     {
         gLastUsedItem = gBattleMons[battler].item;
         gBattleScripting.battler = battler;
