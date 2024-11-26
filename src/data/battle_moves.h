@@ -17287,7 +17287,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -17405,6 +17405,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .highCritRatio = TRUE,
         .slicingMove = TRUE,
         .strikeCount = 2,
+        .argument = MOVE_EFFECT_FEATHER_RAZOR,
     },
 
     [MOVE_DRAG_DOWN] =

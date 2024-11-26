@@ -2141,6 +2141,22 @@ static void Cmd_ppreduce(void)
                     ppToDeduct += 0;
                 }
                     ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+
+                if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
+                {
+                    ppToDeduct *= 2;
+                    if (gBattleMons[gBattlerAttacker].pp[gCurrentMove] < ppToDeduct)
+                        ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrentMove];
+                }
+
+                if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE 
+                || GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED)
+                && (!(IS_MOVE_STATUS(gCurrentMove))))
+                {
+                    ppToDeduct *= 2;
+                    if (gBattleMons[gBattlerAttacker].pp[gCurrentMove] < ppToDeduct)
+                        ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrentMove];
+                }
             }
             break;
         case MOVE_TARGET_BOTH:
@@ -2159,10 +2175,27 @@ static void Cmd_ppreduce(void)
                 }
                     ppToDeduct += ((gBattleMoves[gCurrentMove].type == TYPE_POISON || gBattleMoves[gCurrentMove].type == TYPE_GHOST) && GetBattlerAbility(gBattlerTarget) == ABILITY_MISFORTUNE);
                     ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+
+                if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
+                {
+                    ppToDeduct *= 2;
+                    if (gBattleMons[gBattlerAttacker].pp[gCurrentMove] < ppToDeduct)
+                        ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrentMove];
+                }
+
+                if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE 
+                || GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED)
+                && (!(IS_MOVE_STATUS(gCurrentMove))))
+                {
+                    ppToDeduct *= 2;
+                    if (gBattleMons[gBattlerAttacker].pp[gCurrentMove] < ppToDeduct)
+                        ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrentMove];
+                }
             }
             break;
         default:
             if (gBattlerAttacker != gBattlerTarget)
+            {
                 ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
                 if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
                 {
@@ -2174,6 +2207,19 @@ static void Cmd_ppreduce(void)
                 }
                 ppToDeduct += ((gBattleMoves[gCurrentMove].type == TYPE_POISON || gBattleMoves[gCurrentMove].type == TYPE_GHOST) && GetBattlerAbility(gBattlerTarget) == ABILITY_MISFORTUNE);
                 ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
+
+                if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
+                {
+                    ppToDeduct *= 2;
+                }
+
+                if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE 
+                || GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED)
+                && (!(IS_MOVE_STATUS(gCurrentMove))))
+                {
+                    ppToDeduct *= 2;
+                }
+            }
             break;
         }
     }
@@ -2198,26 +2244,6 @@ static void Cmd_ppreduce(void)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
         else
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] = 0;
-
-        if (gBattleMons[gBattlerAttacker].status1 & STATUS1_PANIC)
-        {
-            ppToDeduct *= 2;
-            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
-                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
-        }
-
-        if (GetBattlerAbility(gBattlerAttacker) == ABILITY_RAPID_FIRE && (!(IS_MOVE_STATUS(gCurrMovePos))))
-        {
-            ppToDeduct *= 2;
-            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
-                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
-        }
-        else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED && (!(IS_MOVE_STATUS(gCurrMovePos))))
-        {
-            ppToDeduct *= 2;
-            if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] < ppToDeduct)
-                ppToDeduct = gBattleMons[gBattlerAttacker].pp[gCurrMovePos];
-        }
 
         if (MOVE_IS_PERMANENT(gBattlerAttacker, gCurrMovePos))
         {
@@ -4564,11 +4590,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_FRESH_WHIP:
-                if (!NoAliveMonsForEitherParty())
-                {
-                    BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_MoveEffectFreshWhip;
-                }
+                BattleScriptPush(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = BattleScript_MoveEffectFreshWhip;
                 break;
             case MOVE_EFFECT_INCINERATE:
                 if ((gBattleMons[gEffectBattler].item >= FIRST_BERRY_INDEX && gBattleMons[gEffectBattler].item <= LAST_BERRY_INDEX)
@@ -7194,6 +7217,12 @@ static void Cmd_moveend(void)
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DropSpikes;
+                    }
+
+                    if (gBattleMoves[gCurrentMove].argument == MOVE_EFFECT_FEATHER_RAZOR && !NoAliveMonsForEitherParty())
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_SelfSpeedDown;
                     }
 
                     if (gCurrentMove == MOVE_FIREBALLS && !NoAliveMonsForEitherParty())
