@@ -232,6 +232,7 @@ struct SpecialStatus
     u8 magnetPullRedirected:1;
     u8 witchcraftRedirected:1;
     u8 soulLockerRedirected:1;
+    u8 covenLightsTriggered:1;
 };
 
 struct SideTimer

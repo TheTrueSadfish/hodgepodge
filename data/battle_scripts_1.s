@@ -18410,3 +18410,22 @@ BattleScript_MoveEffectPPReduce::
 BattleScript_MoveEffectPPReduce_End:
 	return
 
+BattleScript_CovenLightsActivates::
+    pause B_WAIT_TIME_SHORT
+    call BattleScript_AbilityPopUp
+BattleScript_TryCovenLights::
+	getqueuedstatboost BS_SCRIPTING, BattleScript_ApplyCovenLightsStatChange
+BattleScript_TryCovenLights_Ret:
+	return
+BattleScript_ApplyCovenLightsStatChange:
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_TryCovenLights_Ret
+	setgraphicalstatchangevalues
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_TryCovenLights  @ loop until stats bitfield is empty
+    
+    
+    
+    
+    

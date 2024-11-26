@@ -66,6 +66,8 @@ static u32 GetBattlerItemHoldEffectParam(u32 battler, u32 item);
 static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier);
 static uq4_12_t GetSupremeOverlordModifier(u32 battler);
 static bool32 CanBeInfinitelyConfused(u32 battler);
+static void CovenLightsQueueStatDrops(u32 battler);
+static bool32 BattlerCanHaveStatLowered(u32 battler);
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForRunningByItem[];
@@ -1744,6 +1746,22 @@ void PrepareStringBattle(u16 stringId, u32 battler)
     else if (stringId == STRINGID_STATSWONTINCREASE2 && battlerAbility == ABILITY_CONTRARY)
         stringId = STRINGID_STATSWONTDECREASE2;
 
+    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
+              && battlerAbility == ABILITY_COVEN_LIGHTS && BattlerCanHaveStatLowered(gBattlerTarget)
+              && !gSpecialStatuses[gBattlerTarget].covenLightsTriggered
+              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget   // cannot trigger off of itself
+              && ((gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget) || gBattleScripting.stickyWebStatDrop == 1)
+              && !(gBattleScripting.stickyWebStatDrop == 1 && gSideTimers[targetSide].stickyWebBattlerSide == targetSide)) // Sticky Web must have been set by the foe
+    {
+        // Coven lights - when an opponent lowers our stat, 2 random stats drop further
+        gBattleScripting.stickyWebStatDrop = 0;
+        gBattleScripting.battler = gBattlerTarget;
+        gSpecialStatuses[gBattlerTarget].covenLightsTriggered = TRUE;
+        gBattlerAbility = gSpecialStatuses[gBattlerTarget].changedStatsBattlerId;
+        CovenLightsQueueStatDrops(gBattlerTarget);
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_CovenLightsActivates;
+    }      
     // Check Defiant and Competitive stat raise whenever a stat is lowered.
     else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH)
               && ((targetAbility == ABILITY_DEFIANT && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
@@ -16220,4 +16238,39 @@ u8 GetBattlerType(u32 battler, u8 typeIndex)
     }
 
     return types[typeIndex];
+}
+
+static bool32 BattlerCanHaveStatLowered(u32 battler)
+{
+    u32 i;
+    for (i = 0; i < NUM_BATTLE_STATS; i++) {
+        if (CompareStat(battler, i, MIN_STAT_STAGE, CMP_GREATER_THAN))
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static void CovenLightsQueueStatDrops(u32 battler)
+{
+    u32 statId, i, prevStat, attempts;
+    // reset queued stat boosts
+    memset(&gQueuedStatBoosts[battler], 0, sizeof(struct QueuedStatBoost));
+    
+    prevStat = NUM_BATTLE_STATS;
+    for (i = 0; i < 2; i++) {
+        attempts = 0;
+        while (1) {
+            if (++attempts >= 50)
+                return; // too many attempts, bail
+            statId = Random() % (NUM_BATTLE_STATS - 1); // 1-indexed
+            if (statId == prevStat)
+                continue;
+            if (!CompareStat(battler, statId, MIN_STAT_STAGE, CMP_GREATER_THAN))
+                continue;
+            gQueuedStatBoosts[battler].stats |= (1 << statId);
+            gQueuedStatBoosts[battler].statChanges[statId]--;
+            break;
+        }
+        prevStat = statId;
+    }
 }

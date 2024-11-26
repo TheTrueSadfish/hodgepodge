@@ -20217,3 +20217,35 @@ void BS_CopyFoesStatIncrease(void)
     }
     gBattlescriptCurrInstr = cmd->jumpInstr;
 }
+
+void BS_GetQueuedStatBoost(void)
+{
+    NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
+    u32 i;
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    if (gQueuedStatBoosts[battler].stats & 0x80)
+        gQueuedStatBoosts[battler].stats &= ~0x80;
+
+    if (gQueuedStatBoosts[battler].stats == 0)
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;    // stats done, exit
+    }
+    else
+    {
+        for (i = 0; i < (NUM_BATTLE_STATS - 1); i++)
+        {
+            if (gQueuedStatBoosts[battler].stats & (1 << i))
+            {
+                if (gQueuedStatBoosts[battler].statChanges[i] <= -1)
+                    SET_STATCHANGER(i + 1, abs(gQueuedStatBoosts[battler].statChanges[i]), TRUE);
+                else
+                    SET_STATCHANGER(i + 1, gQueuedStatBoosts[battler].statChanges[i], FALSE);
+
+                gQueuedStatBoosts[battler].stats &= ~(1 << i);
+                gBattlescriptCurrInstr = cmd->jumpInstr;   // do boost
+                return;
+            }
+        }
+        gBattlescriptCurrInstr = cmd->nextInstr;    // exit if loop failed (failsafe)
+    }
+}

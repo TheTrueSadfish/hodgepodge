@@ -1,6 +1,7 @@
 #ifndef GUARD_BATTLE_SCRIPTS_H
 #define GUARD_BATTLE_SCRIPTS_H
 
+extern const u8 BattleScript_CovenLightsActivates[];
 extern const u8 BattleScript_MoveEffectPPReduce[];
 extern const u8 BattleScript_AccDown[];
 extern const u8 BattleScript_MoveEffectPowder[];

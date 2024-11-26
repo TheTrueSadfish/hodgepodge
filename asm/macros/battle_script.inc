@@ -1309,6 +1309,11 @@
 	.endm
 
 @ callnative macros
+    .macro getqueuedstatboost battler:req, jumpInstr:req
+    callnative BS_GetQueuedStatBoost
+    .byte \battler
+    .4byte \jumpInstr
+    .endm
 
     .macro dogoldplains battler:req, hpfailptr:req
     callnative BS_DoGoldPlains
