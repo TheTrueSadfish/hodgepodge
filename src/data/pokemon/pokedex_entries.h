@@ -2799,11 +2799,11 @@ const struct PokedexEntry gPokedexEntries[] =
     [NATIONAL_DEX_PORYGON2] =
     {
         .categoryName = _("Battle-Tool"),
-        .height = 6,
-        .weight = 325,
+        .height = 10,
+        .weight = 405,
         .description = gPorygon2PokedexText,
-        .pokemonScale = 320,
-        .pokemonOffset = 0, // 17,
+        .pokemonScale = 356,
+        .pokemonOffset = 0, // 10,
         .trainerScale = 256,
         .trainerOffset = 0,
     },
@@ -6835,10 +6835,10 @@ const struct PokedexEntry gPokedexEntries[] =
     [NATIONAL_DEX_TYNAMO] =
     {
         .categoryName = _("Sparkler"),
-        .height = 9,
-        .weight = 315,
+        .height = 5,
+        .weight = 95,
         .description = gTynamoPokedexText,
-        .pokemonScale = 338,
+        .pokemonScale = 432,
         .pokemonOffset = 0, // 10,
         .trainerScale = 256,
         .trainerOffset = 0,
@@ -9986,7 +9986,7 @@ const struct PokedexEntry gPokedexEntries[] =
     {
         .categoryName = _("Reindeer"),
         .height = 10,
-        .weight = 4,
+        .weight = 170,
         .description = gCursolaPokedexText,
         .pokemonScale = 305,
         .pokemonOffset = 0, // 0,
@@ -14344,10 +14344,10 @@ const struct PokedexEntry gPokedexEntries[] =
         .height = 23,
         .weight = 1610,
         .description = gBeholzerPokedexText,
-        .pokemonScale = 451,
-        .pokemonOffset = 0, // 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
+        .pokemonScale = 256,
+        .pokemonOffset = 0, // 0,
+        .trainerScale = 342,
+        .trainerOffset = 7,
     },
 
     [NATIONAL_DEX_EYERISH] =
@@ -14428,10 +14428,10 @@ const struct PokedexEntry gPokedexEntries[] =
         .height = 23,
         .weight = 2400,
         .description = gFortifrosPokedexText,
-        .pokemonScale = 356,
+        .pokemonScale = 256,
         .pokemonOffset = 0, // 0,
-        .trainerScale = 256,
-        .trainerOffset = 0,
+        .trainerScale = 342,
+        .trainerOffset = 7,
     },
 
     [NATIONAL_DEX_ARCTIKACK] =
