@@ -18425,7 +18425,26 @@ BattleScript_ApplyCovenLightsStatChange:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_TryCovenLights  @ loop until stats bitfield is empty
     
-    
-    
+
+BattleScript_KlutzLoseItem::
+    printstring STRINGID_LOSTITEM
+    waitmessage B_WAIT_TIME_LONG
+    end3
+
+BattleScript_KlutzTransferItem::
+	call BattleScript_AbilityPopUp
+    savetarget
+    copybyte gBattlerTarget, sBATTLER   @ target = scriptingbattler
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+    swapattackerwithtarget
+    playanimation BS_TARGET, B_ANIM_ITEM_STEAL
+    waitanimation
+    copybyte gBattlerTarget, sBATTLER
+    copybyte gBattlerAttacker, sSAVED_BATTLER
+    printstring STRINGID_TRANSFERHELDITEM
+    waitmessage B_WAIT_TIME_LONG
+    swapattackerwithtarget
+    restoretarget
+	end3
     
     

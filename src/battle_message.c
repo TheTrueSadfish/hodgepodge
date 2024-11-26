@@ -972,9 +972,11 @@ static const u8 sText_SunkCost[] = _("!?");
 static const u8 sText_BecomingDirtyAngeredIt[] = _("Becoming dirty by\n{B_CURRENT_MOVE}\nangered {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered\nan extra heal!");
 static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
+static const u8 sText_AtkLostItem[] = _("{B_ATK_NAME_WITH_PREFIX} lost its {B_LAST_ITEM}!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_LOSTITEM - BATTLESTRINGS_TABLE_START] = sText_AtkLostItem,
     [STRINGID_TARGETISBEINGINFECTED - BATTLESTRINGS_TABLE_START] = sText_TargetIsBeingInfected,
     [STRINGID_ATTACKERISBEINGINFECTED - BATTLESTRINGS_TABLE_START] = sText_AttackerIsBeingInfected,
     [STRINGID_GOLDPLAINS - BATTLESTRINGS_TABLE_START] = sText_GoldPlains,
@@ -1795,6 +1797,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_WASNOTTORMENTED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotTormented,
     [STRINGID_ORDEREDANEXTRAHEAL - BATTLESTRINGS_TABLE_START] = sText_OrderedAnExtraHeal,
     [STRINGID_THEHEALORDERCAMEIN - BATTLESTRINGS_TABLE_START] = sText_TheHealOrderCameIn,
+   
 };
 
 const u16 gTrainerUsedItemStringIds[] =

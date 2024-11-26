@@ -6491,7 +6491,43 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
-                
+            case ABILITY_KLUTZ:
+                if (gBattleMons[battler].item != 0 && CanBattlerGetOrLoseItem(battler, gBattleMons[battler].item)) {
+                    u8 effBattler;
+                    if (IsDoubleBattle() && IS_WHOLE_SIDE_ALIVE(battler)) {
+                        effBattler = 1 + (Random() & 1);
+                    } else {
+                        effBattler = FOE(battler);
+                    }
+                    // if foe absent or cant lose its item, try partner
+                    if (!IsBattlerAlive(effBattler) || !CanBattlerGetOrLoseItem(effBattler, gBattleMons[effBattler].item))
+                        effBattler = BATTLE_PARTNER(effBattler);
+                    
+                    // klutz mon loses item
+                    gLastUsedItem = gBattleMons[battler].item;
+                    gBattleMons[battler].item = 0;
+                    //CheckSetUnburden(battler);
+                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[battler].item), &gBattleMons[battler].item);
+                    MarkBattlerForControllerExec(battler);
+                    
+                    // foe gets item replaced
+                    
+                    if (!CanBattlerGetOrLoseItem(effBattler, gBattleMons[effBattler].item)) {
+                        // neither opponent can lose item - player just loses theirs
+                        BattleScriptPushCursorAndCallback(BattleScript_KlutzLoseItem);
+                    } else {
+                        // foe gains item
+                        gBattleMons[effBattler].item = gLastUsedItem;
+                        //CheckSetUnburden(effBattler);
+                        BtlController_EmitSetMonData(effBattler, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[effBattler].item), &gBattleMons[effBattler].item);
+                        MarkBattlerForControllerExec(effBattler);
+                        BattleScriptPushCursorAndCallback(BattleScript_KlutzTransferItem);
+                    }
+                    gBattlerAbility = gBattlerAttacker = battler;
+                    gBattleScripting.battler = effBattler;
+                    effect++;
+                }
+                break;
             // shunyong effects
             case ABILITY_SHUNYONG:
                 if (gDisableStructs[battler].isFirstTurn != 2)
