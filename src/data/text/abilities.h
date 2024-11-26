@@ -259,8 +259,8 @@ static const u8 sTruantDescription[] = _(
     "only using lazy moves.");
 
 static const u8 sHustleDescription[] = _(
-    "Boosts the Pokémon's Attack stat\n"
-    "but lowers its accuracy.");
+    "Boosts the Pokémon's Attack\n"
+    "stat but lowers its accuracy.");
 
 static const u8 sCuteCharmDescription[] = _(
     "May infatuate when contact is\n"
@@ -303,8 +303,8 @@ static const u8 sMarvelScaleDescription[] = _(
     "a status condition.");
 
 static const u8 sLiquidOozeDescription[] = _(
-    "Damages attackers using draining\n"
-    "moves. Ooze-based moves do extra\n"
+    "Damages Pokémon using draining\n"
+    "moves. Ooze-based moves do more\n"
     "damage based on target's max HP.");
 
 static const u8 sOvergrowDescription[] = _(
@@ -384,7 +384,7 @@ static const u8 sGluttonyDescription[] = _(
     "Berry earlier than usual.");
 
 static const u8 sAngerPointDescription[] = _(
-    "Boosts Attack sharply upon taking\n"
+    "Boosts Atk sharply upon taking\n"
     "a super effective hit. Maxes it\n"
     "upon taking a critical hit.");
 
@@ -590,8 +590,8 @@ static const u8 sUnnerveDescription[] = _(
     "and use the same move in a row.");
 
 static const u8 sDefiantDescription[] = _(
-    "Boosts the Pokémon's Attack stat\n"
-    "sharply when its stats are\n"
+    "Boosts the Pokémon's Attack\n"
+    "stat sharply when its stats are\n"
     "lowered by an opposing Pokémon.");
 
 static const u8 sDefeatistDescription[] = _(
@@ -949,10 +949,10 @@ static const u8 sSurgeSurferDescription[] = _(
 static const u8 sHuddleUpDescription[] = _(
     "At LVL 25, the Pokémon becomes a\n"
     "a powerful beast until at low HP.\n"
-    "At LVL 40, restores HP every turn.");
+    "At LVL 40, heals HP every turn.");
 
 static const u8 sDisguiseDescription[] = _(
-    "Once per battle, the silk that\n"
+    "Once per battle, the armor that\n"
     "the Pokémon creates can protect\n"
     "it from an attack.");
 
@@ -1256,9 +1256,9 @@ static const u8 sCommanderDescription[] = _(
     "and sharply boosts every stat.");
 
 static const u8 sElectromorphosisDescription[] = _(
-    "The Pokémon becomes charged when\n"
-    "it takes damage, boosting the\n"
-    "next Electric-type move it uses.");
+    "The Pokémon becomes charged\n"
+    "when hit, boosting the next\n"
+    "Electric-type move it uses.");
 
 static const u8 sProtosynthesisDescription[] = _(
     "Boosts the Pokémon's highest\n"
@@ -1504,7 +1504,7 @@ static const u8 sOneWayTripDescription[] = _(
 static const u8 sPurpleHazeDescription[] = _(
     "After using a gas-based move,\n"
     "doubles damage done and halves\n"
-    "damage taken from the next moves.");
+    "damage taken for the next moves.");
 
 static const u8 sRapidFireDescription[] = _(
     "The Pokémon uses moves twice in\n"
@@ -1732,14 +1732,14 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Boosts the Pokemon's accuracy.\n"
-    "Transforms if pierced. Takes more\n"
-    "damage, and is less accurate.");
+    "Boosts accuracy. Transforms if\n"
+    "pierced. Takes more damage,\n"
+    "and reduces accuracy.");
 
 static const u8 sNegatePlateDescription[] = _(
-    "The Pokémon takes reduced damage\n"
-    "from attacks based on how many\n"
-    "stat drops it has.");
+    "The Pokémon takes reduced\n"
+    "damage from attacks based on how\n"
+    "many stat drops it has.");
 
 static const u8 sPaintedHazardDescription[] = _(
     "Drops spikes on the foe's field\n"
@@ -1769,7 +1769,7 @@ static const u8 sTerraformerDescription[] = _(
 static const u8 sToothNNailDescription[] = _(
     "After using a biting, sound,\n"
     "claw, or slicing move uses Slash,\n"
-    "Hone Claws, Crunch, or Growl.");
+    "Fury Swipes, Crunch, or Growl.");
 
 static const u8 sSunkCostDescription[] = _(
     "The Pokémon has a chance to do\n"
@@ -1784,7 +1784,7 @@ static const u8 sMarshlanderDescription[] = _(
 static const u8 sMisfortuneDescription[] = _(
     "Heals when hit by a Ghost or\n"
     "Poison-type move. Also increases\n"
-    "the PP used for that move.");
+    "the PP used for those moves.");
 
 static const u8 sReboundDescription[] = _(
     "Contact with the Pokémon forces\n"
@@ -1813,7 +1813,7 @@ static const u8 sSurpriseDescription[] = _(
 
 static const u8 sSpaceCrookDescription[] = _(
     "If opposing Pokémon have status\n"
-    "conditions they take random fixed\n"
+    "conditions they take random\n"
     "damage at the end of every turn.");
 
 static const u8 sCurlingStoneDescription[] = _(

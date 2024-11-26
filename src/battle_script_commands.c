@@ -1372,42 +1372,42 @@ static void Cmd_attackcanceler(void)
     }
 
     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_DARING_DEED
-    && (!(gBattleStruct->daringDeedSpade 
-    || gBattleStruct->daringDeedHeart
-    || gBattleStruct->daringDeedClub
-    || gBattleStruct->daringDeedDiamond)))
+    && (!(gProtectStructs[gBattlerAttacker].daringDeedSpade
+    || gProtectStructs[gBattlerAttacker].daringDeedHeart
+    || gProtectStructs[gBattlerAttacker].daringDeedClub
+    || gProtectStructs[gBattlerAttacker].daringDeedDiamond)))
     {
         i = Random() % 4;
-        gBattleStruct->daringDeedSpade = FALSE;
-        gBattleStruct->daringDeedHeart = FALSE;
-        gBattleStruct->daringDeedClub = FALSE;
-        gBattleStruct->daringDeedDiamond = FALSE;
+        gProtectStructs[gBattlerAttacker].daringDeedSpade = FALSE;
+        gProtectStructs[gBattlerAttacker].daringDeedHeart = FALSE;
+        gProtectStructs[gBattlerAttacker].daringDeedClub = FALSE;
+        gProtectStructs[gBattlerAttacker].daringDeedDiamond = FALSE;
         
         if (i == 0)
         {
-            gBattleStruct->daringDeedSpade = TRUE;
-            gBattlerAttacker = BS_ABILITY_BATTLER;
+            gProtectStructs[gBattlerAttacker].daringDeedSpade = TRUE;
+            gBattlerAbility = gBattlerAttacker;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedASpade;
         }
         if (i == 1)
         {
-            gBattleStruct->daringDeedHeart = TRUE;
-            gBattlerAttacker = BS_ABILITY_BATTLER;
+            gProtectStructs[gBattlerAttacker].daringDeedHeart = TRUE;
+            gBattlerAbility = gBattlerAttacker;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedAHeart;
         }
         if (i == 2)
         {
-            gBattleStruct->daringDeedClub = TRUE;
-            gBattlerAttacker = BS_ABILITY_BATTLER;
+            gProtectStructs[gBattlerAttacker].daringDeedClub = TRUE;
+            gBattlerAbility = gBattlerAttacker;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedAClub;
         }
         if (i == 3)
         {
-            gBattleStruct->daringDeedDiamond = TRUE;
-            gBattlerAttacker = BS_ABILITY_BATTLER;
+            gProtectStructs[gBattlerAttacker].daringDeedDiamond = TRUE;
+            gBattlerAbility = gBattlerAttacker;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_DaringDeedPlayedADiamond;
         }
@@ -2280,7 +2280,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (abilityAtk == ABILITY_DRIZZLE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
              || (gBattleMoves[move].effect == EFFECT_MANEUVER && gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
              || (abilityAtk == ABILITY_BRANDING_CLAWS && gBattleMons[battlerDef].status1 & STATUS1_BURN)
-             || (abilityAtk == ABILITY_DARING_DEED && (gBattleStruct->daringDeedClub))
+             || (abilityAtk == ABILITY_DARING_DEED && (gProtectStructs[gBattlerAttacker].daringDeedClub))
              || (abilityAtk == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battlerAtk].isFirstTurn || IsTwoTurnsMove(move)))
              || (abilityAtk == ABILITY_PRODIGY && IsMoveMakingContact(move, battlerAtk) )
              || gBattleMons[battlerDef].status1 & STATUS1_SLEEP
@@ -11436,27 +11436,6 @@ static void Cmd_various(void)
         }
         return;
     }
-    case VARIOUS_TRY_DAMPING:
-    {
-        VARIOUS_ARGS(const u8 *failInstr);
-
-        if (IsWorrySeedBannedAbility(gBattleMons[gBattlerTarget].ability))
-        {
-            RecordAbilityBattle(gBattlerTarget, gBattleMons[gBattlerTarget].ability);
-            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
-        {
-            RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else
-        {
-            gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_DAMP;
-            gBattlescriptCurrInstr = cmd->nextInstr;
-        }
-    }
     case VARIOUS_HANDLE_FORM_CHANGE:
     {
         VARIOUS_ARGS(u8 case_);
@@ -19276,7 +19255,14 @@ static void Cmd_tryworryseed(void)
     }
     else
     {
-        gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_INSOMNIA;
+        if (gCurrentMove == MOVE_SOAK)
+        {
+            gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_DAMP;
+        }
+        else
+        {
+            gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_INSOMNIA;
+        }
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }

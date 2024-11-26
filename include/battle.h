@@ -128,6 +128,10 @@ struct ProtectStruct
     u32 protected:1;
     u32 spikyShielded:1;
     u32 defendOrder:1;
+    u32 daringDeedSpade:1;
+    u32 daringDeedHeart:1;
+    u32 daringDeedClub:1;
+    u32 daringDeedDiamond:1;
     u32 kingsShielded:1;
     u32 shelltered:1;
     u32 detectShielded:1;
@@ -668,10 +672,6 @@ struct BattleStruct
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 sunkCostBoosted:1;
-    u8 daringDeedSpade:1;
-    u8 daringDeedHeart:1;
-    u8 daringDeedClub:1;
-    u8 daringDeedDiamond:1;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
