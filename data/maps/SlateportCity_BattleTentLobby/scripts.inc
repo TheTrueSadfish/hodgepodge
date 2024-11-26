@@ -73,14 +73,6 @@ SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge::
 	waitse
 	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
 
-SlateportCity_BattleTentLobby_EventScript_CheckHPProgress::
-	call_if_eq VAR_HP_PROGRESS, 1, SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette
-	goto SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge
-
-SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette::
-	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
-	return
-
 SlateportCity_BattleTentLobby_EventScript_EndGivePrize::
 	msgbox SlateportCity_BattleTentLobby_Text_LookForwardToNextVisit, MSGBOX_DEFAULT
 	closemessage
@@ -103,8 +95,6 @@ SlateportCity_BattleTentLobby_EventScript_ResumeChallenge::
 SlateportCity_BattleTentLobby_EventScript_Attendant::
 	lock
 	faceplayer
-	slateporttent_getprize
-	goto_if_ne VAR_RESULT, ITEM_NONE, SlateportCity_BattleTentLobby_EventScript_GivePrize
 	special SavePlayerParty
 	msgbox SlateportCity_BattleTentLobby_Text_WelcomeToBattleTent, MSGBOX_DEFAULT
 SlateportCity_BattleTentLobby_EventScript_AskEnterChallenge::
@@ -340,6 +330,14 @@ SlateportCity_BattleTentLobby_Mart_TMShop:
 	.2byte ITEM_NONE
 	release
 	end	
+
+SlateportCity_BattleTentLobby_EventScript_CheckHPProgress::
+	call_if_eq VAR_HP_PROGRESS, 1, SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette
+	goto SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge
+
+SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette::
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
+	return
 
 SlateportCity_BattleTentLobby_Text_YouNeedToHaveStreak:
 	.string "u needa git gud$"
