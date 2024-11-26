@@ -15024,7 +15024,6 @@ BattleScript_HeartstringsActivates::
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
 	destroyabilitypopup
-BattleScript_HeartstringsLoop:
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HeartStringsPrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicHeartstringsPrevented
 	tryinfatuating BattleScript_HeartstringEnds

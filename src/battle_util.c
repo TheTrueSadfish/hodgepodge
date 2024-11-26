@@ -5338,9 +5338,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_HEARTSTRINGS:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            if (!gSpecialStatuses[battler].switchInAbilityDone 
+            && !(gBattleMons[BATTLE_OPPOSITE(battler)].status2 & STATUS2_INFATUATION)
+            && AreBattlersOfOppositeGender(gBattlerAttacker, BATTLE_OPPOSITE(battler)))
             {
                 gBattlerAttacker = battler;
+                gBattlerTarget = BATTLE_OPPOSITE(battler);
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_HeartstringsActivates);
                 effect++;
