@@ -2459,9 +2459,10 @@ static const u8 sAmuletCoinDesc[] = _(
     "holder takes part.");
 
 static const u8 sCleanseTagDesc[] = _(
-    "A held item that\n"
-    "helps repel wild\n"
-    "Pokémon.");
+    "Boosts moves of the\n"
+    "holder for every stat\n"
+    "drop on the target.\n"
+    "Repels wild Pokémon.");
 
 static const u8 sSmokeBallDesc[] = _(
     "A held item that\n"
@@ -2501,14 +2502,16 @@ static const u8 sWideLensDesc[] = _(
     "accuracy of moves.");
 
 static const u8 sMuscleBandDesc[] = _(
-    "A headband that\n"
-    "boosts the power of\n"
-    "physical moves.");
+    "A held up that boosts\n"
+    "the power of physical\n"
+    "moves and prevents\n"
+    "Attack drops.");
 
 static const u8 sWiseGlassesDesc[] = _(
-    "A pair of glasses\n"
-    "that ups the power\n"
-    "of special moves.");
+    "A held up that boosts\n"
+    "the power of special\n"
+    "moves and prevents\n"
+    "Sp. Atk drops.");
 
 static const u8 sExpertBeltDesc[] = _(
     "A belt that boosts\n"
@@ -2557,9 +2560,10 @@ static const u8 sLaggingTailDesc[] = _(
     "move slower.");
 
 static const u8 sDestinyKnotDesc[] = _(
-    "If the holder's\n"
-    "moves get limited\n"
-    "so does the foe's.");
+    "If the holder's move\n"
+    "choices become\n"
+    "limited, the foe's\n"
+    "does too.");
 
 static const u8 sBlackSludgeDesc[] = _(
     "Gradually restores\n"
@@ -2789,9 +2793,10 @@ static const u8 sRazzBerryDesc[] = _(
     "of the opposite gender.");
 
 static const u8 sBlukBerryDesc[] = _(
-    "Eaten at 1/2 HP\n"
-    "to reduce PP of foe's\n"
-    "last used move.");
+    "The holder will be\n"
+    "able reduce the PP of\n"
+    "the foe's last chosen\n"
+    "move.");
 
 static const u8 sNanabBerryDesc[] = _(
     "The holder will be\n"
@@ -3874,9 +3879,10 @@ static const u8 sPunchingGloveDesc[] = _(
     "contact with targets.");
 
 static const u8 sCovertCloakDesc[] = _(
-    "Protects the holder\n"
-    "from secondary\n"
-    "move effects.");
+    "A held item that\n"
+    "protects the holder\n"
+    "from the additional\n"
+    "effects of moves.");
 
 static const u8 sLoadedDiceDesc[] = _(
     "Rolls high numbers.\n"
@@ -3977,9 +3983,10 @@ static const u8 sBurntBranch[] = _(
     "target may be burned.");
 
 static const u8 sCursedAmulet[] = _(
-    "A held item made of\n"
-    "magic. May disable\n"
-    "moves on contact.");
+    "A held item that may\n"
+    "disable a move that\n"
+    "has made contact to\n"
+    "the holder.");
 
 static const u8 sEerieMask[] = _(
     "A held item for the\n"

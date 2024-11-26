@@ -5653,6 +5653,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
                 i = Random() % 4;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 if (i == 0)
                     goto ELECTRIC;
                 else if (i == 1)
