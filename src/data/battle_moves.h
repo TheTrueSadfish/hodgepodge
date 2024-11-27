@@ -16205,7 +16205,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -17508,7 +17508,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FERTILE_FROLIC] =
     {
         .effect = EFFECT_FERTILE_FROLIC,
-        .power = 30,
+        .power = 35,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,

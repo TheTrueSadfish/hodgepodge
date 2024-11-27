@@ -26052,11 +26052,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SHELEBRATE] =
     {
-        .baseHP        = 76,
+        .baseHP        = 56,
         .baseAttack    = 60,
-        .baseDefense   = 91,
+        .baseDefense   = 81,
         .baseSpeed     = 118,
-        .baseSpAttack  = 95,
+        .baseSpAttack  = 85,
         .baseSpDefense = 65,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 69,
