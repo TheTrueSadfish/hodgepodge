@@ -2600,8 +2600,8 @@ static const u8 sGripClawDesc[] = _(
 static const u8 sStickyBarbDesc[] = _(
     "A held item that\n"
     "damages the holder and\n"
-    "drops its Speed\n"
-    "every turn.");
+    "drops its Speed and\n"
+    "Evasion every turn.");
 
 static const u8 sShedShellDesc[] = _(
     "Enables the holder\n"

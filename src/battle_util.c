@@ -9357,15 +9357,11 @@ static u8 DamagedRabutaBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
 
 static u8 DamagedSpelonBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[battler].spikesDone))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && IsBattlerAlive(gBattlerAttacker)
+    && !(gSideTimers[GetBattlerSide(gBattlerAttacker)].spikesAmount < 3))
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
+        gEffectBattler = gBattlerAttacker;
 
         if (end2)
         {
@@ -9504,14 +9500,11 @@ static u8 DamagedRizzBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
 
 static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
-    && IsBattlerAlive(opposingBattler)
-    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-    && IsBattlerAlive(battler))
+    && IsBattlerAlive(gBattlerAttacker))
     {
+        gEffectBattler = gBattlerAttacker;
+
         if (end2)
         {
             BattleScriptExecute(BattleScript_BlukBerryReturn);
@@ -13815,12 +13808,6 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     case HOLD_EFFECT_FRIEND_RIBBON:
         if (gBattleMons[battlerDef].species == SPECIES_COLFIN && usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        break;
-    case HOLD_EFFECT_FOCUS_BAND:
-        if (Random() % 5 == 0 && gSpecialStatuses[battlerDef].focusBanded != TRUE)
-            RecordItemEffectBattle(battlerDef, HOLD_EFFECT_FOCUS_BAND);
-            gSpecialStatuses[battlerDef].focusBanded = TRUE;
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
         break;
     case HOLD_EFFECT_FAVOR_SCARF:
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.1));

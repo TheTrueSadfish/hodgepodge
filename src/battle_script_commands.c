@@ -2549,10 +2549,18 @@ static void Cmd_adjustdamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && rand < param)
+    if (holdEffect == HOLD_EFFECT_FOCUS_BAND)
     {
-        RecordItemEffectBattle(gBattlerTarget, holdEffect);
-        gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
+        if (rand < param && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
+        {
+            RecordItemEffectBattle(gBattlerTarget, holdEffect);
+            gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
+        }
+        else if (rand < 20)
+        {
+            RecordItemEffectBattle(gBattlerTarget, holdEffect);
+            gSpecialStatuses[gBattlerTarget].focusBandEndured = TRUE;
+        }
     }
     #if B_STURDY >= GEN_5
     else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STURDY && BATTLER_MAX_HP(gBattlerTarget))
@@ -2590,11 +2598,18 @@ static void Cmd_adjustdamage(void)
     if (gBattleMoves[gCurrentMove].effect != EFFECT_FALSE_SWIPE
         && !gProtectStructs[gBattlerTarget].endured
         && !gSpecialStatuses[gBattlerTarget].focusBanded
+        && !gSpecialStatuses[gBattlerTarget].focusBandEndured
         && !gSpecialStatuses[gBattlerTarget].focusSashed
 #if B_AFFECTION_MECHANICS == TRUE
         && !gSpecialStatuses[gBattlerTarget].affectionEndured
 #endif
         && !gSpecialStatuses[gBattlerTarget].sturdied)
+        goto END;
+
+    if (gSpecialStatuses[gBattlerTarget].focusBandEndured)
+        gBattleMoveDamage = gBattleMoveDamage / 2;
+        gBattleStruct->enduredDamage |= 1u << gBattlerTarget;
+        gMoveResultFlags |= MOVE_RESULT_NOT_VERY_EFFECTIVE;
         goto END;
 
     // Handle reducing the dmg to 1 hp.
