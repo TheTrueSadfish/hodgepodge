@@ -669,12 +669,41 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectPortentCast             @ EFFECT_PORTENT_CAST
 	.4byte BattleScript_EffectWardSpell               @ EFFECT_WARD_SPELL
 	.4byte BattleScript_EffectUprootEvil              @ EFFECT_UPROOT_EVIL
-	.4byte BattleScript_EffectHitSwitchTarget         @ EFFECT_PLIA_BALL
+	.4byte BattleScript_EffectPliaBall                @ EFFECT_PLIA_BALL
 	.4byte BattleScript_EffectIronJaws                @ EFFECT_IRON_JAWS
 	.4byte BattleScript_EffectFreshWhip               @ EFFECT_FRESH_WHIP
 	.4byte BattleScript_EffectAttackOrder             @ EFFECT_ATTACK_ORDER
 	.4byte BattleScript_EffectDefendOrder             @ EFFECT_DEFEND_ORDER
 	.4byte BattleScript_EffectHealOrder               @ EFFECT_HEAL_ORDER
+
+BattleScript_EffectPliaBall::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	addbyte sTRIPLE_KICK_POWER, -30
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	moveendall
+	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut 
+	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut 
+	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
+	tryhitswitchtarget BattleScript_MoveEnd
+	forcerandomswitch BattleScript_HitSwitchTargetForceRandomSwitchFailed
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHealOrder::
 	attackcanceler
@@ -748,7 +777,7 @@ BattleScript_EffectIronJaws::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectFreshWhip::
-	setmoveeffect MOVE_EFFECT_FRESH_WHIP
+	setmoveeffect MOVE_EFFECT_FRESH_WHIP | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	goto BattleScript_EffectHit
 
 BattleScript_EffectUprootEvil::
@@ -932,13 +961,32 @@ BattleScript_EffectTarHit::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectNanabGattling::
-	setmoveeffect MOVE_EFFECT_STOCKPILE_AWAY
 	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	jumpifbyte CMP_EQUAL, cMISS_TYPE, B_MSG_PROTECTED, BattleScript_NanabGattlingFailProtect
 	attackstring
 	ppreduce
-	jumpifnostockpile BS_ATTACKER, BattleScript_ButItFailed
-	goto BattleScript_HitFromCritCalc
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	setbyte gIsCriticalHit, FALSE
+	damagecalc
+	adjustdamage
+	stockpiletobasedamage BattleScript_NanabGattlingFail
+	goto BattleScript_HitFromAtkAnimation
+BattleScript_NanabGattlingFail::
+	checkparentalbondcounter 2, BattleScript_NanabGattlingEnd
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_BUTITFAILED
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_NanabGattlingEnd:
+	goto BattleScript_MoveEnd
+
+BattleScript_NanabGattlingFailProtect::
+	attackstring
+	ppreduce
+	pause B_WAIT_TIME_LONG
+	stockpiletobasedamage BattleScript_SpitUpFail
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectKelpSap::
 	call BattleScript_EffectHit_Ret
@@ -963,6 +1011,7 @@ BattleScript_KelpSapUpdateHp::
 BattleScript_KelpSapTryFainting::
 	tryfaintmon BS_ATTACKER
 BattleScript_KelpSapHealBlock::
+	tryfaintmon BS_TARGET
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	eeriespellppreduce BattleScript_MoveEnd
@@ -6103,7 +6152,7 @@ BattleScript_MoveEffectFreshWhip::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	printstring STRINGID_PKMNREGAINEDHEALTH
+	printstring STRINGID_HEALINGWISHHEALED
 	waitmessage B_WAIT_TIME_LONG
 	return
 

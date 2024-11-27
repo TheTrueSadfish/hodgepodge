@@ -17693,7 +17693,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_PLIA_BALL] =
     {
         .effect = EFFECT_PLIA_BALL,
-        .power = 30,
+        .power = 60,
         .type = TYPE_RUBBER,
         .accuracy = 90,
         .pp = 10,
@@ -17704,7 +17704,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .copycatBanned = TRUE,
-        .strikeCount = 3,
+        .strikeCount = 2,
     },
 
     [MOVE_IRON_JAWS] =

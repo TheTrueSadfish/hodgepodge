@@ -23627,13 +23627,13 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_MUSTYBANE] =
     {
-        .baseHP        = 90,
-        .baseAttack    = 95,
-        .baseDefense   = 100,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 55,
-        .baseSpDefense = 85,
-        .types = { TYPE_POISON,TYPE_GROUND },
+        .baseHP        = 255,
+        .baseAttack    = 255,
+        .baseDefense   = 255,
+        .baseSpeed     = 255,
+        .baseSpAttack  = 255,
+        .baseSpDefense = 255,
+        .types = { TYPE_POISON, TYPE_GROUND },
         .catchRate = 75,
         .expYield = 125,
         .evYield_Attack = 1,

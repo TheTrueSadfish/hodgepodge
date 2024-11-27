@@ -7919,7 +7919,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
-            && (gBattleStruct->sunkCostBoosted))
+            && gBattleStruct->sunkCostBoosted
+            && !(IS_MOVE_STATUS(gCurrentMove)))
             {
                 gBattleStruct->sameMoveTurns[gBattlerAttacker] == 0;
                 gBattleStruct->sunkCostBoosted = FALSE;
@@ -13295,9 +13296,17 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case ABILITY_SUNK_COST:
         i = Random() % 100;
         gBattleStruct->sunkCostBoosted = FALSE;
-        if (i <= 0 + gBattleStruct->sameMoveTurns[battlerAtk])
+        if (gBattleStruct->sameMoveTurns[battlerAtk] != 0
+        && i <= (0 + gBattleStruct->sameMoveTurns[battlerAtk]))
+        {
             modifier = uq4_12_multiply(modifier, UQ_4_12(10.0));
             gBattleStruct->sunkCostBoosted = TRUE;
+        }
+        else if (i == 0)
+        {
+            modifier = uq4_12_multiply(modifier, UQ_4_12(10.0));
+            gBattleStruct->sunkCostBoosted = TRUE;
+        }
         break;
     case ABILITY_INSTABILITY:
         if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
@@ -14299,8 +14308,8 @@ static inline uq4_12_t GetLuckyChantModifier(u32 abilityAtk, u32 battlerAtk, u32
 {
     if ((gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_LUCKY_CHANT) 
     && (typeEffectivenessModifier >= UQ_4_12(1.5))
-    && (abilityAtk != ABILITY_INFILTRATOR)
-    && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))
+    && ((abilityAtk != ABILITY_INFILTRATOR)
+    ||!(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG))))
         return UQ_4_12(0.7);
     return UQ_4_12(1.0);
 }
