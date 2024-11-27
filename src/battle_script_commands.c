@@ -2280,8 +2280,9 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
 {
     s32 critChance = 0;
 
-    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT && abilityAtk != ABILITY_INFILTRATOR && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG))) || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
-       || abilityDef == ABILITY_SHELL_ARMOR || abilityDef == ABILITY_IGNORANT_BLISS)
+    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT && (abilityAtk != ABILITY_INFILTRATOR 
+    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))) || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
+    || abilityDef == ABILITY_SHELL_ARMOR || abilityDef == ABILITY_IGNORANT_BLISS)
     {
         critChance = -1;
     }
@@ -4592,8 +4593,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_FRESH_WHIP:
-                BattleScriptPush(gBattlescriptCurrInstr + 1);
-                gBattlescriptCurrInstr = BattleScript_MoveEffectFreshWhip;
+                if (!NoAliveMonsForEitherParty())
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectFreshWhip;
+                }
                 break;
             case MOVE_EFFECT_INCINERATE:
                 if ((gBattleMons[gEffectBattler].item >= FIRST_BERRY_INDEX && gBattleMons[gEffectBattler].item <= LAST_BERRY_INDEX)
@@ -14172,7 +14176,14 @@ static void Cmd_stockpiletobasedamage(void)
 
         if (!(gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT && gBattleMons[gBattlerTarget].hp != 0))
         {
-            gBattleStruct->moveEffect2 = MOVE_EFFECT_STOCKPILE_WORE_OFF;
+            if (gCurrentMove == MOVE_NANAB_GATTLING && (--gMultiHitCounter == 0))
+            {
+                gBattleStruct->moveEffect2 = MOVE_EFFECT_STOCKPILE_AWAY;
+            }
+            else
+            {
+                gBattleStruct->moveEffect2 = MOVE_EFFECT_STOCKPILE_WORE_OFF;
+            }
         }
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -14352,8 +14363,8 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
     {
         if (gSideTimers[GetBattlerSide(battler)].mistTimer
             && !certain && gCurrentMove != MOVE_CURSE
-            && !(battler == gBattlerTarget && GetBattlerAbility(gBattlerAttacker) == ABILITY_INFILTRATOR)
-            && !(battler == gBattlerTarget && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_BUG)))
+            && (!(battler == gBattlerTarget && GetBattlerAbility(gBattlerAttacker) == ABILITY_INFILTRATOR)
+            || !(battler == gBattlerTarget && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_BUG))))
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {

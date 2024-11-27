@@ -17200,8 +17200,6 @@ InfernalFlames:
 	delay 0x3
 	return
 
-
-
 @Credits to Skeli
 Move_CEASELESS_EDGE::
 	loadspritegfx ANIM_TAG_SLASH

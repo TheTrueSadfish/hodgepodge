@@ -5059,9 +5059,9 @@ static const u8 sUprootEvilDescription[] = _(
     "Attack. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
-    "The foe is forced to switch. This\n"
-    "move strikes thrice in a row,\n"
-    "but can't be used consecutively.");
+    "Hits twice. The 1st hit switches\n"
+    "the foe, but the 2nd is weaker.\n"
+    "Can't be used consecutively.");
 
 static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"
