@@ -4975,7 +4975,7 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
         .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 0),
         .lvl = 50,
         .moves = {MOVE_ICICLE_SPEAR, MOVE_ASTRAL_SPIKES, MOVE_SPIKE_CANNON, MOVE_RAPID_SPIN},
-        .heldItem = ITEM_SPELON_BERRY,
+        .heldItem = ITEM_OCCA_BERRY,
         .nature = NATURE_QUIRKY,
     },
     [TENT_MAJOR_MON_FORTIFROS] = {

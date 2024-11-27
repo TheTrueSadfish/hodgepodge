@@ -9427,15 +9427,12 @@ static u8 DamagedSpelonBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
 
 static u8 DamagedBelueBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gDisableStructs[gBattlerTarget].tarShot))
+    DebugPrintf("Belue Berry battler = %S", GetSpeciesName(gBattleMons[gBattlerAttacker].species));
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && !(gDisableStructs[gBattlerAttacker].tarShot)
+    && IsBattlerAlive(gBattlerAttacker))
     {
-        BufferStatChange(battler, statId, STRINGID_STATROSE);
-        gEffectBattler = battler;
-        gBattleScripting.animArg1 = 14 + statId;
-        gBattleScripting.animArg2 = 0;
+        gEffectBattler = gBattlerAttacker;
 
         if (end2)
         {
@@ -10030,7 +10027,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         }
         break;
     case HOLD_EFFECT_FAVOR_SCARF:
-        if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+        if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
         {
             if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
                 StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
@@ -10373,7 +10370,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_FAVOR_SCARF:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
                     i = 0;
                     if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)
@@ -10956,7 +10953,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_FAVOR_SCARF:
-                if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
+                if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
                     i = 0;
                     if (gBattleMons[battler].status1 & STATUS1_PSN_ANY)

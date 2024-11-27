@@ -7227,13 +7227,15 @@ static void Cmd_moveend(void)
 
                     if (gBattleMoves[gCurrentMove].argument == MOVE_EFFECT_FEATHER_RAZOR && !NoAliveMonsForEitherParty())
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlerTarget = gBattlerAttacker;
+                        BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_SelfSpeedDown;
                     }
 
                     if (gCurrentMove == MOVE_FIREBALLS && !NoAliveMonsForEitherParty())
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlerTarget = gBattlerAttacker;
+                        BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_ResetUserStats;
                     }
 

@@ -3756,16 +3756,20 @@ BattleScript_EffectVoid::
 BattleScript_EffectSandTomb::
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectSandTombCheckSand
 	call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SANDSTORM, BattleScript_EffectSandTombLowerDefense
 	setmoveeffect MOVE_EFFECT_WRAP
 	seteffectprimary
-	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SANDSTORM, BattleScript_EffectSandTombLowerDefense
-	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 BattleScript_EffectSandTombCheckSand::
 	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SANDSTORM, BattleScript_EffectSandTombLowerDefense2
 	goto BattleScript_EffectHit
 BattleScript_EffectSandTombLowerDefense::
-	call BattleScript_EffectHit_Ret
+	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 BattleScript_EffectSandTombLowerDefense2::
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1
 	seteffectprimary
@@ -13614,17 +13618,17 @@ BattleScript_PrintMonIsRooted::
 
 BattleScript_AtkDefDown::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_ATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
-	playstatchangeanimation BS_ATTACKER, BIT_ATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_ATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	playstatchangeanimation BS_TARGET, BIT_ATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_ATK, 1, TRUE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDefDownTryDef
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDefDownTryDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_AtkDefDownTryDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_AtkDefDownTryDef:
-	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	playstatchangeanimation BS_TARGET, BIT_DEF, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDefDownRet
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDefDownRet
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_AtkDefDownRet
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -13809,7 +13813,7 @@ BattleScript_DefDownSpeedUpRet::
 	return
 
 BattleScript_SelfSpeedDown::
-	modifybattlerstatstage BS_ATTACKER, STAT_SPEED, DECREASE, 1, BattleScript_SelfSpeedDownRet, ANIM_ON
+	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_SelfSpeedDownRet, ANIM_ON
 BattleScript_SelfSpeedDownRet:
 	return
 
@@ -16733,7 +16737,7 @@ BattleScript_NormaliseBuffs::
 	end3
 
 BattleScript_ResetUserStats::
-	tryresetstatstages BS_ATTACKER
+	tryresetstatstages BS_TARGET
 	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -16863,7 +16867,7 @@ BattleScript_StickyBarb::
 	playanimation BS_ATTACKER, B_ANIM_MON_HIT
 	waitanimation
 	call BattleScript_ItemHurtRet
-	setstatchanger STAT_EVASION, 1, TRUE
+	setstatchanger STAT_SPEED, 1, TRUE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_StickyBarbStatDownEnd
 	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StickyBarbStatDownDoAnim
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_StickyBarbStatDownEnd
@@ -17346,7 +17350,7 @@ BattleScript_BelueBerryActivatesRet::
 	cantarshotwork BS_ATTACKER, BattleScript_BelueBerryEnd
 	trytarshot BS_ATTACKER, BattleScript_BelueBerryEnd
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNBECAMEWEAKERTOFIRE
+	printstring STRINGID_ATTACKERBECAMEWEAKERTOFIRE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_BelueBerryEnd::
