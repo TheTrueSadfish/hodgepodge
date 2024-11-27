@@ -7289,9 +7289,9 @@ const u8 gGreesePokedexText[] = _(
 
 const u8 gDadalemmaPokedexText[] = _(
 	"The diary of a deranged lunatic describes these\n"
-	"Pokémon as otherworldly, able to slip around\n"
-	"corners and into our reality. However, no one\n"
-	"has ever observed this behavior.");
+	"Pokémon as otherworldly, able to enter our\n"
+	"reality through corners. However, no one has\n"
+	"ever observed this behavior.");
 
 const u8 gSappodPokedexText[] = _(
 	"These Pokémon will sometimes sit starkly atop\n"

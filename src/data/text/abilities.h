@@ -721,8 +721,8 @@ static const u8 sMagicBounceDescription[] = _(
 
 static const u8 sSapSipperDescription[] = _(
     "The Pokémon takes no damage when\n"
-    "hit by Grass-type moves. Instead,\n"
-    "its Attack stat is boosted.");
+    "hit by Grass-type moves.\n"
+    "Instead, its Attack is boosted.");
 
 static const u8 sPranksterDescription[] = _(
     "Gives priority to the Pokémon's\n"

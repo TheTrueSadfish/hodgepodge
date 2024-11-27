@@ -492,7 +492,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_PANPOUR]                      = { .size = MON_COORDS_SIZE(48, 48), .y_offset = 10 },
     [SPECIES_SIMIPOUR]                     = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  6 },
     [SPECIES_MUNNA]                        = { .size = MON_COORDS_SIZE(32, 32), .y_offset = 14 },
-    [SPECIES_MUSHARNA]                     = { .size = MON_COORDS_SIZE(56, 48), .y_offset = 13 },
+    [SPECIES_MUSHARNA]                     = { .size = MON_COORDS_SIZE(56, 48), .y_offset = 11 },
     [SPECIES_PIDOVE]                       = { .size = MON_COORDS_SIZE(40, 40), .y_offset = 12 },
     [SPECIES_TRANQUILL]                    = { .size = MON_COORDS_SIZE(40, 56), .y_offset =  7 },
     [SPECIES_UNFEZANT]                     = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  0 },

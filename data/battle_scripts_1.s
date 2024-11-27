@@ -1112,28 +1112,17 @@ BattleScript_SyrupBombActivates::
 	return
 
 BattleScript_SyrupBombEndTurn::
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_SPEED, MIN_STAT_STAGE, BattleScript_SyrupBombLowerSpeed
-	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_EVASION, MIN_STAT_STAGE, BattleScript_SyrupBombTryLowerEvasion
-	goto BattleScript_SyrupBombEnd2
-BattleScript_SyrupBombLowerSpeed:
 	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_EVASION, STAT_CHANGE_NEGATIVE
-	setbyte sSTAT_ANIM_PLAYED, TRUE
 	setstatchanger STAT_SPEED, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SyrupBombTryLowerEvasion
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_SyrupBombTryLowerEvasion
-	printfromtable gStatUpStringIds
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_SyrupBombTryLowerEvasion
+	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_SyrupBombTryLowerEvasion:
-	jumpifbyte CMP_EQUAL, sSTAT_ANIM_PLAYED, TRUE, BattleScript_SyrupBombSkipEvasionAnim
-	playstatchangeanimation BS_ATTACKER, BIT_EVASION, STAT_CHANGE_NEGATIVE
-BattleScript_SyrupBombSkipEvasionAnim:
 	setstatchanger STAT_EVASION, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SyrupBombEnd2
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_SyrupBombEnd2
-	printfromtable gStatUpStringIds
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_SyrupBombTurnDmgEnd
+	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SyrupBombEnd2::
+BattleScript_SyrupBombTurnDmgEnd:
 	end2
 
 BattleScript_EffectTrueLovesKiss::
@@ -5530,10 +5519,10 @@ BattleScript_OctolockEndTurn::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_OctolockTryLowerSpDef:
 	setstatchanger STAT_SPDEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_OctlockTurnDmgEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_OctolockTurnDmgEnd
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_OctlockTurnDmgEnd:
+BattleScript_OctolockTurnDmgEnd:
 	end2
 
 BattleScript_EffectPoltergeist:
@@ -18412,7 +18401,6 @@ BattleScript_ApplyCovenLightsStatChange:
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_TryCovenLights  @ loop until stats bitfield is empty
-    
 
 BattleScript_KlutzLoseItem::
     printstring STRINGID_LOSTITEM

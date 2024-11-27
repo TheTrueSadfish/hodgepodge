@@ -9580,7 +9580,6 @@ static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
     gBattlerTarget = opposingBattler;
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
-    && (gDisableStructs[opposingBattler].isFirstTurn)
     && IsBattlerAlive(opposingBattler)
     && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
     && IsBattlerAlive(battler))
