@@ -2607,6 +2607,7 @@ BattleScript_TropKickAtkDefDown::
 	setmoveeffect MOVE_EFFECT_ATK_DEF_DOWN
 	goto BattleScript_EffectHit
 BattleScript_TropKickAtkDefDownUserAtkUp::
+	setstatchanger STAT_ATK, 1, FALSE
 	setmoveeffect MOVE_EFFECT_ATK_DEF_DOWN
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
@@ -2628,7 +2629,18 @@ BattleScript_TropKickAtkDefDownUserAtkUp::
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
 	tryfaintmon BS_TARGET
-	modifybattlerstatstage BS_ATTACKER, STAT_ATK, INCREASE, 1, BattleScript_MoveEnd, ANIM_ON
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_TropKickEnd
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_TropKickEnd
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_TropKickDoAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_TropKickPrintString
+BattleScript_TropKickDoAnim::
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_TropKickPrintString::
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TropKickEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectNeedleArm::
