@@ -2406,6 +2406,7 @@ const u8 gText_Paralysis[] = _("paralysis");
 const u8 gText_Panic[] = _("panic");
 const u8 gText_Exposed[] = _("exposed");
 const u8 gText_Blooming[] = _("blooming");
+const u8 gText_RestStatus[] = _("rest");
 const u8 gText_Ice[] = _("ice");
 const u8 gText_Confusion[] = _("confusion");
 const u8 gText_Love[] = _("love");
