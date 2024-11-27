@@ -2340,6 +2340,10 @@ static void CopySwappedMonData(void)
     gPlayerParty[sFactorySwapScreen->playerMonId] = gEnemyParty[sFactorySwapScreen->enemyMonId];
     friendship = 0;
     SetMonData(&gPlayerParty[sFactorySwapScreen->playerMonId], MON_DATA_FRIENDSHIP, &friendship);
+    DebugPrintf("SettingPokedexFlag");
+    HandleSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gPlayerParty[sFactorySwapScreen->playerMonId], MON_DATA_SPECIES)), FLAG_SET_SEEN, 1);
+    HandleSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gPlayerParty[sFactorySwapScreen->playerMonId], MON_DATA_SPECIES)), FLAG_SET_CAUGHT, 1);
+    DebugPrintf("PokedexFlagSet");
     gSaveBlock2Ptr->frontier.rentalMons[sFactorySwapScreen->playerMonId].monId = gSaveBlock2Ptr->frontier.rentalMons[sFactorySwapScreen->enemyMonId + FRONTIER_PARTY_SIZE].monId;
     gSaveBlock2Ptr->frontier.rentalMons[sFactorySwapScreen->playerMonId].ivs = gSaveBlock2Ptr->frontier.rentalMons[sFactorySwapScreen->enemyMonId + FRONTIER_PARTY_SIZE].ivs;
     gSaveBlock2Ptr->frontier.rentalMons[sFactorySwapScreen->playerMonId].personality = GetMonData(&gEnemyParty[sFactorySwapScreen->enemyMonId], MON_DATA_PERSONALITY, NULL);
