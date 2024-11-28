@@ -362,9 +362,9 @@ static const u8 sAbsorbDescription[] = _(
     "Boosted if the user is blooming.");
 
 static const u8 sLeechSeedDescription[] = _(
-    "Plants a seed on the foe to take\n"
-    "HP each turn. Binds for 4 or 5\n"
-    "turns if the user is blooming.");
+    "A seed is planted on the target.\n"
+    "It steals some HP from the\n"
+    "target every turn.");
 
 static const u8 sGrowthDescription[] = _(
     "The user's body grows, boosting\n"
@@ -387,9 +387,9 @@ static const u8 sPoisonPowderDescription[] = _(
     "the user is blooming.");
 
 static const u8 sStunSporeDescription[] = _(
-    "Scatters a powder that paralyzes\n"
-    "the foe. Also makes the foe\n"
-    "flinch if the user is blooming.");
+    "The user scatters a cloud of\n"
+    "numbing powder that paralyzes\n"
+    "the target.");
 
 static const u8 sSleepPowderDescription[] = _(
     "Scatters a powder that causes\n"
@@ -732,9 +732,8 @@ static const u8 sDizzyPunchDescription[] = _(
     "This may leave the foe confused.");
 
 static const u8 sSporeDescription[] = _(
-    "Scatters a cloud of spores that\n"
-    "induce sleep. Ignores the foe's\n"
-    "Ability if the user is blooming.");
+    "The user scatters bursts of\n"
+    "spores that induce sleep.");
 
 static const u8 sFlashDescription[] = _(
     "The user flashes a light that\n"
@@ -986,9 +985,9 @@ static const u8 sDetectDescription[] = _(
     "attacker uses a contact move.");
 
 static const u8 sBoneRushDescription[] = _(
-    "The user strikes the target with\n"
-    "a hard bone that contains a\n"
-    "spirit 2 to 5 times in a row.");
+    "The user attacks by striking the\n"
+    "target with a hard bone. This\n"
+    "move hits 2 to 5 times in a row.");
 
 static const u8 sLockOnDescription[] = _(
     "Ensures the next attack hits.\n"
@@ -1006,9 +1005,9 @@ static const u8 sSandstormDescription[] = _(
     "Ground, and Steel.");
 
 static const u8 sGigaDrainDescription[] = _(
-    "An attack that absorbs half the\n"
-    "damage done. Lowers the foe's\n"
-    "Sp. Def if the user is blooming.");
+    "A nutrient-draining attack. The\n"
+    "user's HP is restored by half\n"
+    "the damage taken by the foe.");
 
 static const u8 sEndureDescription[] = _(
     "The user endures any hit with 1\n"
@@ -1171,9 +1170,9 @@ static const u8 sMorningSunDescription[] = _(
     "with the weather.");
 
 static const u8 sSynthesisDescription[] = _(
-    "Restores HP. The amount varies\n"
-    "with the weather. If the user is\n"
-    "blooming, resets stat drops.");
+    "The user restores its own HP.\n"
+    "The amount of HP regained varies\n"
+    "with the weather.");
 
 static const u8 sHiddenPowerDescription[] = _(
     "A unique attack that varies in\n"
@@ -1494,9 +1493,9 @@ static const u8 sMudSportDescription[] = _(
     "Electric-type moves for 5 turns.");
 
 static const u8 sNeedleArmDescription[] = _(
-    "Cuts the target's HP by a 1/5 as\n"
-    "bonus damage. If the user is\n"
-    "blooming, sets Spikes.");
+    "The user attacks by swinging its\n"
+    "thorny arms. This cuts the foe's\n"
+    "HP by 1/5 as extra damage.");
 
 static const u8 sSlackOffDescription[] = _(
     "The user slacks off, restoring\n"
@@ -2164,9 +2163,9 @@ static const u8 sLeafStormDescription[] = _(
     "both foes in a Double Battle.");
 
 static const u8 sPowerWhipDescription[] = _(
-    "Violently whirls vines or\n"
-    "tentacles to lash the foe. If the\n"
-    "user is blooming, never misses.");
+    "The user violently whirls its\n"
+    "vines, tentacles, or the like to\n"
+    "lash the target.");
 
 static const u8 sRockWreckerDescription[] = _(
     "The user launches a huge boulder\n"
@@ -2926,9 +2925,9 @@ static const u8 sMysticalFireDescription[] = _(
     "lowers the foe's Sp. Atk stat.");
 
 static const u8 sSpikyShieldDescription[] = _(
-    "Protects the user and hurts any\n"
-    "foe making contact. Does more\n"
-    "damage if the user is blooming.");
+    "Protects the user from attacks,\n"
+    "and also damages any attacker\n"
+    "that makes direct contact.");
 
 static const u8 sAromaticMistDescription[] = _(
     "Raises the Sp. Def of the user\n"
@@ -3074,9 +3073,9 @@ static const u8 sHighHorsepowerDescription[] = _(
     "target using its entire body.");
 
 static const u8 sStrengthSapDescription[] = _(
-    "The user lowers the foe's Attack\n"
-    "to restore HP. If the user is\n"
-    "blooming, makes the foe go last.");
+    "The user restores its HP by the\n"
+    "same amount as the foe's Attack.\n"
+    "It also lowers the foe's Attack.");
 
 static const u8 sLeafageDescription[] = _(
     "The user attacks by pelting the\n"
@@ -3564,9 +3563,9 @@ static const u8 sMistyExplosionDescription[] = _(
     "Boosted on Misty Terrain.");
 
 static const u8 sGrassyGlideDescription[] = _(
-    "Goes first on Grassy Terrain. If\n"
-    "the user is blooming, ignores\n"
-    "the target's stat drops.");
+    "Gliding on the ground, the user\n"
+    "attacks the foe. This move\n"
+    "goes first on Grassy Terrain.");
 
 static const u8 sRisingVoltageDescription[] = _(
     "Zaps with electricity rising from\n"
@@ -4609,9 +4608,9 @@ static const u8 sGrippingNailDescription[] = _(
     "user is blooming, plants seeds.");
 
 static const u8 sHornLeechDescription[] = _(
-    "An attack that absorbs half the\n"
-    "damage done. Lowers the foe's\n"
-    "Defense if the user is blooming.");
+    "The user drains the foe's energy\n"
+    "with its horns. The user absorbs\n"
+    "half the damage inflicted.");
 
 static const u8 sVigorRootDescription[] = _(
     "Recovers all the user's HP,\n"

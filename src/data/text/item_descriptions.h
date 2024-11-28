@@ -2601,7 +2601,7 @@ static const u8 sStickyBarbDesc[] = _(
     "A held item that\n"
     "damages the holder and\n"
     "drops its Speed and\n"
-    "Evasion every turn.");
+    "evasion every turn.");
 
 static const u8 sShedShellDesc[] = _(
     "Enables the holder\n"
@@ -3157,7 +3157,7 @@ static const u8 sTM09Desc[] = _(
 
 static const u8 sTM10Desc[] = _(
     "Chills the foe, to sharply\n"
-    "cut Evasion and Speed.");
+    "cut evasion and Speed.");
 
 static const u8 sTM11Desc[] = _(
     "Lowers the foe's Attack and\n"
@@ -4191,7 +4191,7 @@ static const u8 sYellowSodaDesc[] = _(
 
 static const u8 sDripShoesDesc[] = _(
     "Boosts Pantney's\n"
-    "Speed and Evasion\n"
+    "Speed and evasion\n"
     "in rain.");
 
 static const u8 sCoarseSandDesc[] = _(
