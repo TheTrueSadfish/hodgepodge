@@ -1218,9 +1218,12 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // check move effects
     switch (moveEffect)
     {
-        case EFFECT_HIT:
         default:
             break;  // check move damage
+        case EFFECT_HIT:
+            if (move == MOVE_PAIN_SPINES && (!gBattleMons[battlerDef].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON | STATUS1_FROSTBITE)))
+                score -= 10;
+            break;
         case EFFECT_SLEEP:
         case EFFECT_SLEEP_POWDER:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
@@ -2798,7 +2801,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_TAUNT:
             if (gDisableStructs[battlerDef].tauntTimer > 0
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
-                score--;
+                score -= 10;
+            break;
+        case EFFECT_OCTOLOCK:
+            if (gDisableStructs[battlerDef].octolock
+              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                score -= 10;
+            else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_SPDEF))
+                score -= 10;
+            else if (!ShouldLowerStat(battlerDef, aiData->abilities[battlerDef], STAT_DEF))
+                score -= 10;
             break;
         case EFFECT_RAGE_POWDER:
             if (gDisableStructs[battlerDef].tauntTimer > 0
@@ -4126,6 +4138,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     switch (moveEffect)
     {
     case EFFECT_HIT:
+        if (move == MOVE_PAIN_SPINES && gBattleMons[battlerDef].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON | STATUS1_FROSTBITE))
+            score++;
         break;
     case EFFECT_SLEEP:
     case EFFECT_YAWN:
@@ -5743,7 +5757,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_FAKE_OUT:
     case EFFECT_LOVE_TAP:
     case EFFECT_NOBLE_ROAR:
-        if ((move == MOVE_FAKE_OUT) || (move == MOVE_NOBLE_ROAR)) // filter out first impression
+        if ((move == MOVE_FAKE_OUT) || (move == MOVE_NOBLE_ROAR) || (move == MOVE_COLD_SNAP)) // filter out first impression
         {
             if (ShouldFakeOut(battlerAtk, battlerDef, move))
                 score += 4;
@@ -5752,8 +5766,23 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         if (move == MOVE_LOVE_TAP) // filter out first impression
         {
-            if (gBattleMons[battlerDef].status2 & (STATUS2_INFATUATION))
-                score -= 2;
+            if (gBattleMons[battlerDef].status2 & STATUS2_INFATUATION && gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
+                score -= 10;
+            else
+                score += 4;
+        }
+        if (move == MOVE_FIRST_IMPRESSION)
+        {
+            if (gDisableStructs[battlerAtk].isFirstTurn 
+            && AI_DATA->abilities[battlerAtk] != ABILITY_GORILLA_TACTICS
+            && AI_DATA->abilities[battlerAtk] != ABILITY_ONE_WAY_TRIP
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_BAND
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_SCARF
+            && AI_DATA->holdEffects[battlerAtk] != HOLD_EFFECT_CHOICE_SPECS
+            && DoesSubstituteBlockMove(battlerAtk, battlerDef, move))
+                score += 4;
+            else
+                score -= 10;
         }
         break;
     case EFFECT_STOCKPILE:

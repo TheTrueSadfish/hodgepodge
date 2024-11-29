@@ -741,6 +741,8 @@ struct BattleStruct
     u32 aiDelayFrames; // Number of frames it took to choose an action.
     u8 faintedMonCount[NUM_BATTLE_SIDES];
     u8 supremeOverlordCounter[MAX_BATTLERS_COUNT];
+    u8 quickClawRandom[MAX_BATTLERS_COUNT];
+    u8 quickDrawRandom[MAX_BATTLERS_COUNT];
     u8 timesGotHit[NUM_BATTLE_SIDES][PARTY_SIZE];
     u8 stickySyrupdBy[MAX_BATTLERS_COUNT];
     u8 enduredDamage;
