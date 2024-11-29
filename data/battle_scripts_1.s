@@ -7565,6 +7565,13 @@ BattleScript_InvertStats::
 	removeitem BS_ATTACKER
 	end3
 
+BattleScript_InvertStats2::
+	invertstatstages BS_ATTACKER
+	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
+	end3
+
 BattleScript_ClearSpeed::
 	normalisespeed
 	printstring STRINGID_SPEEDSTATCHANGESGONE
@@ -15076,27 +15083,43 @@ BattleScript_TitanicUnnervePrevented:
 BattleScript_HeartstringsActivates::
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HeartStringsPrevented
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicHeartstringsPrevented
-	tryinfatuating BattleScript_HeartstringEnds
-	printstring STRINGID_PKMNFELLINLOVE
+	printfromtable gSwitchInAbilityStringIds
 	waitmessage B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_HeartstringsLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_HeartstringsLoopIncrement
+	jumpiftargetally BattleScript_HeartstringsLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_HeartstringsLoopIncrement
+	jumpifstatus2 BS_TARGET, STATUS2_INFATUATION, BattleScript_HeartstringsLoopIncrement
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HeartstringsPrevented
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_HeartstringsPrevented
+BattleScript_HeartstringsEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	tryinfatuating BattleScript_HeartstringsLoopIncrement
+	printstring STRINGID_PKMNFELLINLOVE
+BattleScript_HeartstringsEffect_WaitString:
+	waitmessage B_WAIT_TIME_LONG
+	copybyte sBATTLER, gBattlerTarget
 	call BattleScript_TryDestinyKnotInfatuateAttacker
+BattleScript_HeartstringsLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_HeartstringsLoop
+BattleScript_HeartstringsEnd:
+	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	pause B_WAIT_TIME_MED
-BattleScript_HeartstringEnds:
 	end3
 
-BattleScript_HeartStringsPrevented:
+BattleScript_HeartstringsPrevented:
 	call BattleScript_AbilityPopUp
 	call BattleScript_AromaVeilProtectsRet
-	end3
+	goto BattleScript_HeartstringsLoopIncrement
 
 BattleScript_TitanicHeartstringsPrevented:
 	call BattleScript_AbilityPopUp
 	call BattleScript_TitanicProtectsRet
-	end3
+	goto BattleScript_HeartstringsLoopIncrement
 
 BattleScript_GlaringStaggerActivates::
 	showabilitypopup BS_ATTACKER

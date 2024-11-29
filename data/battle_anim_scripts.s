@@ -1207,6 +1207,7 @@ gBattleAnims_General::
 	.4byte Move_HEARTHWARM                  @ B_ANIM_HEARTHWARM_HEAL
 	.4byte Move_GRAVITY                     @ B_ANIM_GRAVITY
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
+	.4byte Move_DEFENSE_CURL                @ B_ANIM_NON_SEQUITUR_SETUP
 	.4byte Move_DEFENSE_CURL                @ B_ANIM_DEFENSE_CURL
 
 	.align 2
@@ -27799,12 +27800,14 @@ Move_WARD_SPELL::
 	blendoff
 	end
 
+Move_COLLISION_COURSE::
+	goto Move_EXTREME_SPEED
+
 Move_TERA_BLAST::
 Move_GLAIVE_RUSH::
 Move_REVIVAL_BLESSING::
 Move_TRIPLE_DIVE::
 Move_DOODLE::
-Move_COLLISION_COURSE::
 Move_ELECTRO_DRIFT::
 Move_ARMOR_CANNON::
 Move_WICKED_TORQUE::
@@ -36570,7 +36573,6 @@ Move_SILVER_WIND:
 	clearmonbg ANIM_DEF_PARTNER
 	delay 0
 	call UnsetBugBg
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_ATTACKER, 1, 0, 13, RGB(28, 0, 0)
 	end
 
 Move_SNATCH:

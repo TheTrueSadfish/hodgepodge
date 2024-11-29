@@ -1748,9 +1748,9 @@ static const u8 sPaintedHazardDescription[] = _(
     "depending on the move's type.");
 
 static const u8 sPelagicLightsDescription[] = _(
-    "The Pokémon confuses and torments\n"
-    "opposing Pokémon with stat\n"
-    "changes when it enters a battle.");
+    "The Pokémon confuses and\n"
+    "torments foes with stat changes\n"
+    "when it enters a battle.");
 
 static const u8 sPrecisionDescription[] = _(
     "Beam moves land more critical\n"

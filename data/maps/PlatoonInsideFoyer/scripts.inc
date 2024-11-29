@@ -270,12 +270,9 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_CHOICE_SCARF
 	giveitem ITEM_CLEANSE_TAG
 	giveitem ITEM_CLEAR_AMULET
-	giveitem ITEM_CLEAR_AMULET
 	giveitem ITEM_COBA_BERRY
 	giveitem ITEM_CORRODE_MOD
 	giveitem ITEM_COVERT_CLOAK
-	giveitem ITEM_COVERT_CLOAK
-	giveitem ITEM_CURSED_AMULET
 	giveitem ITEM_CURSED_AMULET
 	giveitem ITEM_CUSTAP_BERRY
 	giveitem ITEM_DESTINY_KNOT
@@ -313,9 +310,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_NANAB_BERRY
 	giveitem ITEM_NEVER_MELT_ICE
 	giveitem ITEM_PESKY_PLUSH
-	giveitem ITEM_PESKY_PLUSH
 	giveitem ITEM_PETAYA_BERRY
-	giveitem ITEM_PINAP_BERRY
 	giveitem ITEM_PINAP_BERRY
 	giveitem ITEM_POISON_BARB
 	giveitem ITEM_POMEG_BERRY

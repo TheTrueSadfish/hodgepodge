@@ -2631,8 +2631,8 @@ static const u8 sEvioliteDesc[] = _(
 
 static const u8 sFloatStoneDesc[] = _(
     "A held up that boosts\n"
-    "the holder's Speed stat\n"
-    "and reduces their\n"
+    "the holder's Speed\n"
+    "stat and reduces their\n"
     "weight.");
 
 static const u8 sRockyHelmetDesc[] = _(

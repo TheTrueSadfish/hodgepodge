@@ -9635,6 +9635,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 1,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPATK_UP_1,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_PARABOLIC_CHARGE] =
@@ -9837,6 +9838,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPATK_UP_1,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_PLAY_ROUGH] =
@@ -13731,6 +13733,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_COMEUPPANCE] =
@@ -16700,6 +16703,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
         .switchingMove = TRUE,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_STALAG_BLAST] =
@@ -17029,6 +17033,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_CHEESE_STEAL] =
@@ -17388,6 +17393,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPATK_UP_1,
         .magicCoatAffected = TRUE,
+        .cantUseTwice = TRUE,
     },
 
     [MOVE_FEATHER_RAZOR] =

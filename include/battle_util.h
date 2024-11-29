@@ -15,14 +15,9 @@
 #define MOVE_LIMITATION_BELCH                   (1 << 11)
 #define MOVE_LIMITATION_THROAT_CHOP             (1 << 12)
 #define MOVE_LIMITATION_STUFF_CHEEKS            (1 << 13)
-#define MOVE_LIMITATION_GIGATON_HAMMER          (1 << 14)
-#define MOVE_LIMITATION_ION_DELUGE              (1 << 15)
-#define MOVE_LIMITATION_PSY_SWAP                (1 << 16)
-#define MOVE_LIMITATION_PLIA_BALL               (1 << 17)
-#define MOVE_LIMITATION_EMBER_SNOW              (1 << 18)
-#define MOVE_LIMITATION_ELECTRIFY               (1 << 19)
+#define MOVE_LIMITATION_CANT_USE_TWICE          (1 << 14)
 
-#define MOVE_LIMITATION_PLACEHOLDER             (1 << 20)
+#define MOVE_LIMITATION_PLACEHOLDER             (1 << 15)
 #define MOVE_LIMITATIONS_ALL                    0xFFFF
 
 #define ABILITYEFFECT_ON_SWITCHIN                0
