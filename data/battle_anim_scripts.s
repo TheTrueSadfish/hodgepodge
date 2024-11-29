@@ -13012,12 +13012,10 @@ Move_ACCELEROCK::
 	delay 0x4
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 6, 1
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 0x0, 0x0, 0x1, 0x1
-	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
-	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 0x1, 0x3, 0x0, 0x5, 0x1
 	createsprite gRockFragmentSpriteTemplate, ANIM_TARGET, 2, 0x5, 0x0, 0xffec, 0x18, 0xe, 0x1
 	createsprite gRockFragmentSpriteTemplate, ANIM_TARGET, 2, 0x0, 0x5, 0x14, 0xffe8, 0xe, 0x2
 	createsprite gRockFragmentSpriteTemplate, ANIM_TARGET, 2, 0xfffb, 0x0, 0xffec, 0xffe8, 0xe, 0x2
-	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 0x1, 0x3, 0x0, 0x5, 0x1
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
@@ -33445,8 +33443,6 @@ Move_BONE_RUSH:
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
-	fadetobg BG_GHOST
-	waitbgfadein
 	playsewithpan SE_M_BONEMERANG, SOUND_PAN_TARGET
 	createsprite gSpinningBoneSpriteTemplate, ANIM_ATTACKER, 2, -42, -25, 0, 0, 15
 	delay 1
@@ -33455,8 +33451,6 @@ Move_BONE_RUSH:
 	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_TARGET
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
-	restorebg
-	waitbgfadein
 	blendoff
 	end
 

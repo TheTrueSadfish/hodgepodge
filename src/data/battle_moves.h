@@ -2979,7 +2979,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_NIGHTMARE,
         .power = 0,
         .type = TYPE_GHOST,
-        .pp = 15,
+        .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -7738,13 +7738,13 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ATTACK_ORDER] =
     {
         .effect = EFFECT_ATTACK_ORDER,
-        .power = 30,
+        .power = 50,
         .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 1,
+        .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .highCritRatio = TRUE,
@@ -12555,7 +12555,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     {
         .power = 90,
         #if B_USE_FROSTBITE == TRUE
-            .effect = EFFECT_FROSTBITE_HIT,
+            .effect = EFFECT_FREEZE_HIT,
         #else
             .effect = EFFECT_FREEZE_HIT,
         #endif
@@ -12772,7 +12772,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_RANDOM,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -17362,7 +17362,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FIREBALLS] =
     {
         .effect = EFFECT_FIREBALLS,
-        .power = 10,
+        .power = 20,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 15,
@@ -17561,6 +17561,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .piercingMove = TRUE,
     },
 
     [MOVE_NON_SEQUITUR] =
@@ -17693,7 +17694,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_PLIA_BALL] =
     {
         .effect = EFFECT_PLIA_BALL,
-        .power = 60,
+        .power = 40,
         .type = TYPE_RUBBER,
         .accuracy = 90,
         .pp = 10,

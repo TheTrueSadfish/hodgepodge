@@ -2244,8 +2244,8 @@ static const u8 sAquaJetDescription[] = _(
 
 static const u8 sAttackOrderDescription[] = _(
     "The user calls out its\n"
-    "underlings who may burn, poison,\n"
-    "or paralyze. Always goes first.");
+    "underlings who may poison or\n"
+    "paralyze. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
     "Raises the user's Defense.\n"
@@ -3994,9 +3994,9 @@ static const u8 sComeuppanceDescription[] = _(
     "that last dealt damage on it.");
 
 static const u8 sAquaCutterDescription[] = _(
-    "The user expels pressurized water\n"
-    "to cut at the foe like a blade.\n"
-    "Critical hits land more easily.");
+    "The user expels water to cut at\n"
+    "the foe like a blade. Critical\n"
+    "hits land more easily.");
 
 static const u8 sBlazingTorqueDescription[] = _(
     "---");
@@ -5058,8 +5058,8 @@ static const u8 sUprootEvilDescription[] = _(
     "Attack. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
-    "Hits twice. The 1st hit switches\n"
-    "the foe, but the 2nd is weaker.\n"
+    "This move hits twice, the 1st\n"
+    "strike switches the foe out.\n"
     "Can't be used consecutively.");
 
 static const u8 sIronJawsDescription[] = _(

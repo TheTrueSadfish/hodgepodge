@@ -4288,7 +4288,7 @@ static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"
     "damage with a Bug-type\n"
     "move, the target will\n"
-    "be tormented.");
+    "be taunted.");
 
 static const u8 sBlackSaladDesc[] = _(
     "Attacks may cause\n"

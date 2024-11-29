@@ -281,12 +281,12 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_CUSTAP_BERRY
 	giveitem ITEM_SALAC_BERRY
 	giveitem ITEM_FROST_ORB
-	giveitem ITEM_SPECTRAL_IDOL
+	giveitem ITEM_KEE_BERRY
 	giveitem ITEM_MUSCLE_BAND
 	giveitem ITEM_BLACK_SLUDGE
 	giveitem ITEM_FLOAT_STONE
 	giveitem ITEM_POISON_BARB
-	giveitem ITEM_SHUCA_BERRY
+	giveitem ITEM_MARANGA_BERRY
 	giveitem ITEM_PESKY_PLUSH
 	giveitem ITEM_SILVER_POWDER
 	giveitem ITEM_EJECT_BUTTON
