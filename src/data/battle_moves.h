@@ -7752,7 +7752,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_DEFEND_ORDER] =
     {
-        .effect = EFFECT_COSMIC_POWER,
+        .effect = EFFECT_DEFEND_ORDER,
         .power = 0,
         .type = TYPE_BUG,
         .accuracy = 0,
@@ -7767,7 +7767,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_HEAL_ORDER] =
     {
-        .effect = EFFECT_RESTORE_HP,
+        .effect = EFFECT_HEAL_ORDER,
         .power = 0,
         .type = TYPE_BUG,
         .accuracy = 0,
@@ -17252,14 +17252,14 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_NIGHT_BEAM] =
     {
-        .effect = EFFECT_NIGHT_BEAM,
+        .effect = EFFECT_CORE_ENFORCER,
         .power = 60,
         .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 10,
+        .pp = 15,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,

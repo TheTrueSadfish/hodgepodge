@@ -2857,7 +2857,8 @@ static const u8 sMistyTerrainDescription[] = _(
 
 static const u8 sElectrifyDescription[] = _(
     "Electrifies the foe making its\n"
-    "next move become Electric-type.");
+    "next move become Electric-type.\n"
+    "Can't be used consecutively.");
 
 static const u8 sPlayRoughDescription[] = _(
     "The user attacks by playing\n"

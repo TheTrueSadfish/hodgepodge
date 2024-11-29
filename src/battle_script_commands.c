@@ -1005,6 +1005,7 @@ static const u16 sFinalStrikeOnlyEffects[] =
     EFFECT_SCORP_FANG,
     EFFECT_GLACIAL_SHIFT,
     EFFECT_U_TURN,
+    EFFECT_WILD_SHUFFLE,
     EFFECT_SNOWFADE,
 };
 
@@ -7336,6 +7337,7 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_FLIP_TURN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT
                             || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN
+                            || gBattleMoves[gCurrentMove].effect == EFFECT_WILD_SHUFFLE
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
                             gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
                         BattleScriptPushCursor();
@@ -7377,6 +7379,7 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_FLIP_TURN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT
                             || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN
+                            || gBattleMoves[gCurrentMove].effect == EFFECT_WILD_SHUFFLE
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
                             gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
                         BattleScriptPushCursor();
