@@ -1432,7 +1432,8 @@ static void Cmd_attackcanceler(void)
         return;
     if (!gBattleMons[gBattlerAttacker].pp[gCurrMovePos] && gCurrentMove != MOVE_STRUGGLE
      && !(gHitMarker & (HITMARKER_ALLOW_NO_PP | HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT))
-     && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS))
+     && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+     && !gProtectStructs[gBattlerAttacker].extraMoveUsed)
     {
         gBattlescriptCurrInstr = BattleScript_NoPPForMove;
         gMoveResultFlags |= MOVE_RESULT_MISSED;

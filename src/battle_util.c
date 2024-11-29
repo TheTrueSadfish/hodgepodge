@@ -7274,10 +7274,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_SLIP_N_WHIP:   
-            if (gMoveResultFlags & MOVE_RESULT_MISSED
-            && (!(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE)
-            || gBattleCommunication[MISS_TYPE] > B_MSG_AVOIDED_ATK)
-            && IsBattlerAlive(gBattlerAttacker) 
+            if ((gMoveResultFlags & MOVE_RESULT_MISSED) 
+            && IsBattlerAlive(gBattlerAttacker)
             && gBattlerAttacker != gBattlerTarget
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed

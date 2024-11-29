@@ -1350,6 +1350,7 @@ BattleScript_DefenderExtraHitFromCritCalc::
 	damagecalc
 	adjustdamage
 BattleScript_DefenderExtraHitFromAtkAnimation::
+	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	playmoveanimation BS_ATTACKER, MOVE_NONE
 	waitanimation
 	effectivenesssound
