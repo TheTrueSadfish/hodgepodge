@@ -2119,6 +2119,22 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
         }
     }
 
+    if (gBattleMoves[move].effect == EFFECT_ELECTRIFY && move == gLastResultingMoves[battler])
+    {
+        gCurrentMove = move;
+        PREPARE_MOVE_BUFFER(gBattleTextBuff1, gCurrentMove);
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMoveInPalace;
+            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMove;
+            limitations++;
+        }
+    }
+
     if (gBattleMoves[move].effect == EFFECT_EMBER_SNOW && move == gLastResultingMoves[battler])
     {
         gCurrentMove = move;
@@ -2299,6 +2315,8 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_PLIA_BALL && gBattleMoves[move].effect == EFFECT_PLIA_BALL && move == gLastResultingMoves[battler])
         return TRUE;
     else if (check & MOVE_LIMITATION_ION_DELUGE && gBattleMoves[move].effect == EFFECT_ION_DELUGE && move == gLastResultingMoves[battler])
+        return TRUE;
+    else if (check & MOVE_LIMITATION_ELECTRIFY && gBattleMoves[move].effect == EFFECT_ELECTRIFY && move == gLastResultingMoves[battler])
         return TRUE;
     else if (check & MOVE_LIMITATION_PSY_SWAP && gBattleMoves[move].effect == EFFECT_PSY_SWAP && move == gLastResultingMoves[battler])
         return TRUE;
@@ -5544,16 +5562,24 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_FORECAST:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                i = Random() % 4;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                if (i < 1)
+                i = Random() % 4;
+                if (i == 0)
+                {
                     goto RAIN;
-                else if (i < 2)
+                }
+                else if (i == 1)
+                {
                     goto SAND;
-                else if (i < 3)
+                }
+                else if (i == 2)
+                {
                     goto SUN;
-                else if (i < 4)
+                }
+                else if (i == 3)
+                {
                     goto HAIL;
+                }
             }
         case ABILITY_DRIZZLE:
             RAIN:
@@ -5656,14 +5682,22 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 i = Random() % 4;
-                if (i < 1 && TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
+                if (i == 0 && TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
+                {
                     goto ELECTRIC;
-                else if (i < 2 && TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
+                }
+                else if (i == 1 && TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
+                {
                     goto GRASSY;
-                else if (i < 3 && TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN, &gFieldTimers.terrainTimer))
+                }
+                else if (i == 2 && TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN, &gFieldTimers.terrainTimer))
+                {
                     goto MISTY;
-                else if (i < 4 && TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, &gFieldTimers.terrainTimer))
+                }
+                else if (i == 3 && TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, &gFieldTimers.terrainTimer))
+                {
                     goto PSYCHIC;
+                }
             }
         case ABILITY_ELECTRIC_SURGE:
         case ABILITY_HADRON_ENGINE:
@@ -6916,7 +6950,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if ((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_ESCAPE 
                     || gBattleMoves[gCurrentMove].effect == EFFECT_FLIP_TURN 
                     || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN 
-                    || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT 
+                    || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT
+                    || gBattleMoves[gCurrentMove].effect == EFFECT_WILD_SHUFFLE
                     || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE) && CanBattlerSwitch(gBattlerAttacker))
                     gProtectStructs[battler].disableEjectPack = TRUE; // Set flag for target
 
@@ -7516,8 +7551,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && !(IS_MOVE_STATUS(move))
             && TARGET_TURN_DAMAGED
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1)
             && IsBattlerAlive(gBattlerAttacker)
-            && !gStatuses4[gBattlerAttacker] & STATUS4_INFECTION
+            && (!(gStatuses4[gBattlerAttacker] & STATUS4_INFECTION))
             && gBattleMons[gBattlerTarget].species == SPECIES_MALMARE_VIRUS)
             {
                 BattleScriptPushCursor();
@@ -7531,6 +7567,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(gBattlerAttacker)
+             && IsBattlerAlive(gBattlerTarget)
              && (gMultiHitCounter == 0 || gMultiHitCounter == 1)
              && (CanBattlerSwitch(gBattlerAttacker) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
              && !(gBattleTypeFlags & BATTLE_TYPE_ARENA)
@@ -8000,10 +8037,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     }
                     else 
                     {
-                        extraMove = MOVE_FURY_SWIPES;  //The Extra Move to be used
-                        movePower = 25;                  //The Move power, leave at 0 if you want it to be the same as the normal move
-                        moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
-                        extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
+                        extraMove = MOVE_CRUSH_CLAW;  //The Extra Move to be used
+                        movePower = 75;                  //The Move power, leave at 0 if you want it to be the same as the normal move
+                        moveEffectPercentChance  = 50;  //The percent chance of the move effect happening
+                        extraMoveSecondaryEffect = MOVE_EFFECT_DEF_MINUS_1;  //Leave at 0 to remove it's secondary effect
                     }
                 }
                 else if (gBattleMoves[move].slicingMove || gCurrentMove == MOVE_FURY_SWIPES)
@@ -8028,14 +8065,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 
                 gTempMove = gCurrentMove;
                 gCurrentMove = extraMove;
-                if (extraMove == MOVE_FURY_SWIPES)
-                {
-                    SetRandomMultiHitCounter();
-                }
-                else
-                {
-                    gMultiHitCounter = 0;
-                }
+                gMultiHitCounter = 0;
                 gProtectStructs[battler].extraMoveUsed = TRUE;
 
                 //Move Effect
@@ -10895,10 +10925,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
         case HOLD_EFFECT_CORRODE_MOD:
         {
             u16 ability = GetBattlerAbility(gBattlerAttacker);
-#if B_SERENE_GRACE_BOOST >= GEN_5
-            if (ability == ABILITY_SERENE_GRACE || ability == ABILITY_RISKTAKER || IsAbilityOnSide(battler, ABILITY_SERENE_AURA))
-                atkHoldEffectParam *= 2;
-#endif
+
             if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_RELIC))
             {
                 if (IS_MOVE_PHYSICAL(gCurrentMove))
@@ -10907,12 +10934,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                         && TARGET_TURN_DAMAGED
                         && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                        && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_HOLD_EFFECT_CORRODE_MOD, atkHoldEffectParam))
+                        && gBattleMons[gBattlerTarget].hp)
                     {
+                        SET_STATCHANGER(STAT_DEF, 1, TRUE);
                         gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
                         BattleScriptPushCursor();
-                        SetMoveEffect(FALSE, 0);
-                        BattleScriptPop();
+                        gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                        effect++;
                     }
                 }
                 if (IS_MOVE_SPECIAL(gCurrentMove))
@@ -10921,12 +10949,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                         && TARGET_TURN_DAMAGED
                         && CompareStat(gBattlerTarget, STAT_SPDEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                        && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_HOLD_EFFECT_CORRODE_MOD, atkHoldEffectParam))
+                        && gBattleMons[gBattlerTarget].hp)
                     {
+                        SET_STATCHANGER(STAT_SPDEF, 1, TRUE);
                         gBattleScripting.moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1;
                         BattleScriptPushCursor();
-                        SetMoveEffect(FALSE, 0);
-                        BattleScriptPop();
+                        gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                        effect++;
                     }
                 }
             }
@@ -12667,7 +12696,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_FICKLE_BEAM:
         if (gBattleStruct->fickleBeamBoosted)
-            basePower *= 2;
+            basePower = 160;
         break;
     case EFFECT_DRAGON_CLAW:
         if (gBattleStruct->fickleBeamBoosted)

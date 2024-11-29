@@ -1349,6 +1349,7 @@ BattleScript_DefenderExtraHitFromCritCalc::
 	critcalc
 	damagecalc
 	adjustdamage
+	typecalc
 BattleScript_DefenderExtraHitFromAtkAnimation::
 	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	playmoveanimation BS_ATTACKER, MOVE_NONE
@@ -15476,7 +15477,7 @@ BattleScript_SpaceCrook_Dmg:
 BattleScript_SpaceCrook_DmgAfterPopUp:
 	printstring STRINGID_SPACECROOKDMG
 	waitmessage B_WAIT_TIME_LONG
-	dmg_1_8_targethp
+	dmg_space_crook
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
@@ -16273,6 +16274,11 @@ BattleScript_AcidArmoredActivates::
 BattleScript_AbilityStatusEffect::
 	waitstate
 	call BattleScript_AbilityPopUp
+	seteffectsecondary
+	return
+
+BattleScript_ItemSecondaryEffect::
+	waitstate
 	seteffectsecondary
 	return
 

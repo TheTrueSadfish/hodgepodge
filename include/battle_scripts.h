@@ -254,6 +254,7 @@ extern const u8 BattleScript_CuteCharmActivates2[];
 extern const u8 BattleScript_DaringDeedActivatesTaunt[];
 extern const u8 BattleScript_EffectStickyHold[];
 extern const u8 BattleScript_AbilityStatusEffect[];
+extern const u8 BattleScript_ItemSecondaryEffect[];
 extern const u8 BattleScript_AbilitySetGlaiveRush[];
 extern const u8 BattleScript_AbilitySetInfection[];
 extern const u8 BattleScript_SunkCostMessage[];

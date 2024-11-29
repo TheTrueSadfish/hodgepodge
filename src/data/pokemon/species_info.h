@@ -12027,7 +12027,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_EARLY_BIRD, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_COMATOSE, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
     },
@@ -27377,10 +27377,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 86,
         .baseAttack    = 64,
-        .baseDefense   = 70,
+        .baseDefense   = 80,
         .baseSpeed     = 42,
         .baseSpAttack  = 141,
-        .baseSpDefense = 84,
+        .baseSpDefense = 104,
         .types = { TYPE_DRAGON, TYPE_DARK },
         .catchRate = 69,
         .expYield = 69,
@@ -27606,11 +27606,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_KITTEPUP] =
     {
-        .baseHP        = 105,
-        .baseAttack    = 95,
+        .baseHP        = 85,
+        .baseAttack    = 85,
         .baseDefense   = 65,
         .baseSpeed     = 110,
-        .baseSpAttack  = 60,
+        .baseSpAttack  = 90,
         .baseSpDefense = 60,
         .types = { TYPE_FAIRY, TYPE_DARK },
         .catchRate = 69,
