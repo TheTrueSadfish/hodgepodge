@@ -189,6 +189,7 @@ static const u8 sText_PkmnMakingUproar[] = _("{B_ATK_NAME_WITH_PREFIX} is making
 static const u8 sText_PkmnCalmedDown[] = _("{B_ATK_NAME_WITH_PREFIX} calmed down.");
 static const u8 sText_PkmnCantSleepInUproar[] = _("But {B_DEF_NAME_WITH_PREFIX} can't\nsleep in an UPROAR!");
 static const u8 sText_PkmnStockpiled[] = _("{B_ATK_NAME_WITH_PREFIX} stockpiled\n{B_BUFF1}!");
+static const u8 sText_TargetStockpiled[] = _("{B_DEF_NAME_WITH_PREFIX} stockpiled\n{B_BUFF1}!");
 static const u8 sText_PkmnCantStockpile[] = _("{B_ATK_NAME_WITH_PREFIX} can't\nstockpile any more!");
 static const u8 sText_PkmnCantSleepInUproar2[] = _("But {B_DEF_NAME_WITH_PREFIX} can't\nsleep in an UPROAR!");
 static const u8 sText_UproarKeptPkmnAwake[] = _("But the UPROAR kept\n{B_DEF_NAME_WITH_PREFIX} awake!");
@@ -560,6 +561,7 @@ static const u8 sText_Trainer2LoseText[];
 static const s8 sText_EnduredViaSturdy[] = _("{B_DEF_NAME_WITH_PREFIX} endured\nthe hit using {B_DEF_ABILITY}!");
 static const s8 sText_PowerHerbActivation[] = _("{B_ATK_NAME_WITH_PREFIX} became fully charged\ndue to its {B_LAST_ITEM}!");
 static const s8 sText_HurtByItem[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt\nby its {B_LAST_ITEM}!");
+static const s8 sText_TargetHurtByItem[] = _("{B_DEF_NAME_WITH_PREFIX} was hurt\nby its {B_LAST_ITEM}!");
 static const s8 sText_BadlyPoisonedByItem[] = _("{B_EFF_NAME_WITH_PREFIX} was badly\npoisoned by the {B_LAST_ITEM}!");
 static const s8 sText_BurnedByItem[] = _("{B_EFF_NAME_WITH_PREFIX} was burned\nby the {B_LAST_ITEM}!");
 static const s8 sText_TargetAbilityActivates[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} activates!");
@@ -1798,7 +1800,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_WASNOTTORMENTED - BATTLESTRINGS_TABLE_START] = sText_PkmnWasNotTormented,
     [STRINGID_ORDEREDANEXTRAHEAL - BATTLESTRINGS_TABLE_START] = sText_OrderedAnExtraHeal,
     [STRINGID_THEHEALORDERCAMEIN - BATTLESTRINGS_TABLE_START] = sText_TheHealOrderCameIn,
-    [STRINGID_ATTACKERBECAMEWEAKERTOFIRE - BATTLESTRINGS_TABLE_START] = sText_AttackerBecameWeakerToFire,   
+    [STRINGID_ATTACKERBECAMEWEAKERTOFIRE - BATTLESTRINGS_TABLE_START] = sText_AttackerBecameWeakerToFire,
+    [STRINGID_TARGETSTOCKPILED - BATTLESTRINGS_TABLE_START] = sText_TargetStockpiled,
+    [STRINGID_TARGETHURTBYITEM - BATTLESTRINGS_TABLE_START] = sText_TargetHurtByItem,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

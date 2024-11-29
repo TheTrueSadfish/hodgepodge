@@ -4960,8 +4960,8 @@ static const u8 sDarkHungerDescription[] = _(
 
 static const u8 sNightBeamDescription[] = _(
     "A piercing light is shot at the\n"
-    "foe with to inflict and remove\n"
-    "its Ability.");
+    "foe with to do damage and remove\n"
+    "its Ability. Always goes first.");
 
 static const u8 sInversionDescription[] = _(
     "A move that becomes stronger the\n"
@@ -5049,9 +5049,9 @@ static const u8 sAstralSpikesDescription[] = _(
     "remain scattered around the foe.");
 
 static const u8 sWildShuffleDescription[] = _(
-    "The fewer PP this move has, the\n"
-    "greater its power. This move\n"
-    "switches the user out.");
+    "Boosted the lower the PP it has.\n"
+    "This move switches the user out\n"
+    "and always goes first.");
 
 static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"
@@ -5059,9 +5059,9 @@ static const u8 sUprootEvilDescription[] = _(
     "Attack. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
-    "This move hits twice, the 1st\n"
-    "strike switches the foe out.\n"
-    "Can't be used consecutively.");
+    "This move hits twice, and\n"
+    "switches the foe out. Harshly\n"
+    "lowers the user's Speed after.");
 
 static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"

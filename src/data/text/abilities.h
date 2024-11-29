@@ -1713,9 +1713,9 @@ static const u8 sCovenLightsDescription[] = _(
     "are lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
-    "Doubles PP usage. Attacks may\n"
-    "earn money or taunt, critical\n"
-    "hit, or infatuate the foe.");
+    "Greatly boosts the critical-hit\n"
+    "ratios of moves, but doubles the\n"
+    "amount of PP they use.");
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"
@@ -1788,9 +1788,9 @@ static const u8 sMisfortuneDescription[] = _(
     "the PP used for those moves.");
 
 static const u8 sReboundDescription[] = _(
-    "Contact with the Pokémon forces\n"
-    "the attacker to switch out or\n"
-    "run away.");
+    "Attcking the Pokémon forces the\n"
+    "attacker to switch out o runr\n"
+    "away.");
 
 static const u8 sInstabilityDescription[] = _(
     "The Pokémon loses HP every turn.\n"

@@ -2071,21 +2071,6 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
         }
     }
 
-    if (gBattleMoves[move].effect == EFFECT_PLIA_BALL && move == gLastResultingMoves[battler])
-    {
-        gCurrentMove = move;
-        PREPARE_MOVE_BUFFER(gBattleTextBuff1, gCurrentMove);
-        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
-        {
-            gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMoveInPalace;
-            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
-        }
-        else
-        {
-            gSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMove;
-            limitations++;
-        }
-    }
 
     if (gBattleMoves[move].effect == EFFECT_PSY_SWAP && move == gLastResultingMoves[battler])
     {
@@ -4656,7 +4641,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             }
             else if (gCurrentMove == MOVE_NANAB_GATTLING && (gDisableStructs[gBattlerAttacker].stockpileCounter > 0))
             {
-                gMultiHitCounter = gDisableStructs[gBattlerAttacker].stockpileCounter + 1;
+                gMultiHitCounter = (gDisableStructs[gBattlerAttacker].stockpileCounter + 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
             else if (gCurrentMove == MOVE_FIREBALLS && CountBattlerStatIncreases(gBattlerAttacker, TRUE) > 0)
@@ -7572,7 +7557,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && (CanBattlerSwitch(gBattlerAttacker) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
              && !(gBattleTypeFlags & BATTLE_TYPE_ARENA)
              && CountUsablePartyMons(gBattlerAttacker) > 0
-             && (IsMoveMakingContact(move, gBattlerAttacker))
+             && (!(IS_MOVE_STATUS(gCurrentMove)))
              && !(gStatuses3[gBattlerAttacker] & STATUS3_SKY_DROPPED))
             {
                 gBattleResources->flags->flags[gBattlerAttacker] |= RESOURCE_FLAG_EMERGENCY_EXIT;
@@ -7853,51 +7838,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
-                effect++;
-            }
-            break;
-        case ABILITY_DARING_DEED:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && gBattleMons[gBattlerAttacker].hp != 0
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && TARGET_TURN_DAMAGED
-            && gBattleMons[gBattlerTarget].hp != 0
-            && (gProtectStructs[gBattlerAttacker].daringDeedHeart)
-            && !(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
-            && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
-            && GetBattlerAbility(gBattlerTarget) != ABILITY_OBLIVIOUS
-            && GetBattlerAbility(gBattlerTarget) != ABILITY_IGNORANT_BLISS
-            && !(IS_MOVE_STATUS(gCurrentMove))
-            && !IsAbilityOnSide(gBattlerTarget, ABILITY_AROMA_VEIL))
-            {
-                gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_CuteCharmActivates2;
-                effect++;
-            }
-            else if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && gBattleMons[gBattlerTarget].hp != 0
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && TARGET_TURN_DAMAGED
-            && !(IS_MOVE_STATUS(gCurrentMove))
-            && (gProtectStructs[gBattlerAttacker].daringDeedSpade))
-            {
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_DaringDeedActivatesTaunt;
-                effect++;
-            }
-            else if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && gBattleMons[gBattlerTarget].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && TARGET_TURN_DAMAGED
-            && gBattleMoves[gCurrentMove].effect != MOVE_EFFECT_PAYDAY
-            && (gProtectStructs[gBattlerAttacker].daringDeedDiamond)
-            && !(IS_MOVE_STATUS(gCurrentMove)))
-            {
-                gBattleScripting.moveEffect = MOVE_EFFECT_PAYDAY;
-                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 effect++;
             }
             break;
@@ -9280,7 +9220,7 @@ static u8 TrySetEnigmaBerry(u32 battler)
 
 static u8 DamagedStatBoostBerryEffect(u32 battler, u8 statId, u8 split)
 {
-    if (IsBattlerAlive(battler) && CompareStat(battler, statId, MAX_STAT_STAGE, CMP_LESS_THAN) && (gBattleScripting.overrideBerryRequirements || (!DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && GetBattleMoveSplit(gCurrentMove) == split && TARGET_TURN_DAMAGED)))
+    if (IsBattlerAlive(battler) && CompareStat(battler, statId, MAX_STAT_STAGE, CMP_LESS_THAN) && (gBattleScripting.overrideBerryRequirements || (!DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && GetBattleMoveSplit(gCurrentMove) == split && BATTLER_DAMAGED(battler))))
     {
         BufferStatChange(battler, statId, STRINGID_STATROSE);
 
@@ -9520,33 +9460,12 @@ static u8 DamagedRizzBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end
     return 0;
 }
 
-static u8 DamagedBlukBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
-{
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
-    && IsBattlerAlive(gBattlerAttacker))
-    {
-        gEffectBattler = gBattlerAttacker;
-
-        if (end2)
-        {
-            BattleScriptExecute(BattleScript_BlukBerryReturn);
-        }
-        else
-        {
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_BlukBerryActivatesRet;
-        }
-        return ITEM_EFFECT_OTHER;
-    }
-    return 0;
-}
-
 static u8 DamagedNanabBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    if (HasEnoughHpToEatBerry(gBattlerTarget, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
-    && gDisableStructs[gBattlerTarget].stockpileCounter < 3)
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && gDisableStructs[battler].stockpileCounter < 3)
     {
-        gEffectBattler = gBattlerTarget;
+        gEffectBattler = battler;
 
         if (end2)
         {
@@ -9850,9 +9769,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RIZZ_BERRY:
         effect = DamagedRizzBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
         break;
-    case HOLD_EFFECT_BLUK_BERRY:
-        effect = DamagedBlukBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
-        break;
     case HOLD_EFFECT_NANAB_BERRY:
         effect = DamagedNanabBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
         break;
@@ -10139,9 +10055,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_RIZZ_BERRY:
                 effect = DamagedRizzBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
-                break;
-            case HOLD_EFFECT_BLUK_BERRY:
-                effect = DamagedBlukBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
                 break;
             case HOLD_EFFECT_NANAB_BERRY:
                 effect = DamagedNanabBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
@@ -10628,10 +10541,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RIZZ_BERRY:
                 if (!moveTurn)
                     effect = DamagedRizzBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
-                break;
-            case HOLD_EFFECT_BLUK_BERRY:
-                if (!moveTurn)
-                    effect = DamagedBlukBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
                 break;
             case HOLD_EFFECT_NANAB_BERRY:
                 if (!moveTurn)
@@ -11334,6 +11243,18 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattlescriptCurrInstr = BattleScript_JabocaRowapBerryActivates;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_ROCKY_HELMET);
+                }
+                break;
+            case HOLD_EFFECT_BLUK_BERRY: // consume and damage attacker if used physical move
+                if (IsBattlerAlive(battler)
+                && TARGET_TURN_DAMAGED
+                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove))
+                {
+                    effect = ITEM_EFFECT_OTHER;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_BlukBerryActivatesRet;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_BLUK_BERRY);
                 }
                 break;
             case HOLD_EFFECT_ROWAP_BERRY: // consume and damage attacker if used special move
@@ -14151,7 +14072,7 @@ static inline uq4_12_t GetAttackerAbilitiesModifier(u32 battlerAtk, uq4_12_t typ
         break;
     case ABILITY_PRECISION:
         if (isCrit && gBattleMons[battlerAtk].statStages[STAT_ACC] > DEFAULT_STAT_STAGE)
-            return UQ_4_12(1.2 * CountBattlerAccuracyIncreases(battlerAtk));
+            return UQ_4_12(1.1 * CountBattlerAccuracyIncreases(battlerAtk));
         break;
     case ABILITY_PRODIGY:
         if (isCrit)

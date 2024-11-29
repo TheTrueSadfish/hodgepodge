@@ -2368,6 +2368,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_HIT_SWITCH_TARGET:
+        case EFFECT_PLIA_BALL:
         case EFFECT_BERRY_BAD_JOKE:
             if (DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
                 score -= 10; // don't scare away pokemon twice

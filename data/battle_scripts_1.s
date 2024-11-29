@@ -792,6 +792,7 @@ BattleScript_EffectWardSpell::
 	critcalc
 	damagecalc
 	adjustdamage
+	typecalc
 	attackanimation
 	waitanimation
 	effectivenesssound
@@ -804,6 +805,8 @@ BattleScript_EffectWardSpell::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
 	seteffectwithchance
 	setsafeguard
 	jumpifbyte CMP_NOT_EQUAL gBattleCommunication 0, BattleScript_MoveEnd
@@ -820,6 +823,7 @@ BattleScript_EffectPortentCast::
 	critcalc
 	damagecalc
 	adjustdamage
+	typecalc
 	attackanimation
 	waitanimation
 	effectivenesssound
@@ -833,6 +837,8 @@ BattleScript_EffectPortentCast::
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpiffainted BS_TARGET, TRUE, BattleScript_PortentCastNoDrop
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
 	seteffectwithchance
 BattleScript_PortentCastNoDrop::
 	setluckychant BS_ATTACKER, BattleScript_MoveEnd
@@ -7014,7 +7020,6 @@ BattleScript_EffectFinalGambit:
 BattleScript_EffectHitSwitchTarget:
 	call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
-	moveendall
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut 
 	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut 
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
@@ -11123,7 +11128,7 @@ BattleScript_EffectStockpile::
 	attackcanceler
 	attackstring
 	ppreduce
-	stockpile 0
+	stockpile BS_ATTACKER, 0
 	attackanimation
 	waitanimation
 	printfromtable gStockpileUsedStringIds
@@ -11149,7 +11154,7 @@ BattleScript_EffectStockpileSpDef::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_EffectStockpileEnd:
-	stockpile 1
+	stockpile BS_ATTACKER, 1
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveEffectStockpileWoreOff::
@@ -13819,6 +13824,11 @@ BattleScript_SelfSpeedDown::
 BattleScript_SelfSpeedDownRet:
 	return
 
+BattleScript_SelfSpeedDown2::
+	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 2, BattleScript_SelfSpeedDownRet2, ANIM_ON
+BattleScript_SelfSpeedDownRet2:
+	return
+
 BattleScript_SpecialDefenseUp::
 	goto BattleScript_EffectSpecialDefenseUp
 
@@ -15879,34 +15889,6 @@ BattleScript_ProteanActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
-BattleScript_DaringDeedPlayedASpade::
-	pause B_WAIT_TIME_SHORTEST
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNPLAYEDASPADE
-	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_DaringDeedPlayedAHeart::
-	pause B_WAIT_TIME_SHORTEST
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNPLAYEDAHEART
-	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_DaringDeedPlayedAClub::
-	pause B_WAIT_TIME_SHORTEST
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNPLAYEDACLUB
-	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_DaringDeedPlayedADiamond::
-	pause B_WAIT_TIME_SHORTEST
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNPLAYEDADIAMOND
-	waitmessage B_WAIT_TIME_LONG
-	return
-
 BattleScript_TeraShellDistortingTypeMatchups::
 	pause B_WAIT_TIME_SHORTEST
 	call BattleScript_AbilityPopUp
@@ -17374,7 +17356,12 @@ BattleScript_PinapBerryActivate_Anim:
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
 BattleScript_PinapBerryActivate_Dmg:
-	call BattleScript_HurtDefender
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	printstring STRINGID_TARGETHURTBYITEM
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
 	removeitem BS_TARGET
 BattleScript_PinapBerryEnd::
 	return
@@ -17416,13 +17403,13 @@ BattleScript_BlukBerryFail::
 	goto BattleScript_BlukBerryEnd
 
 BattleScript_NanabBerryActivatesRet::
-	stockpile 0
+	stockpile BS_TARGET, 0
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printfromtable gStockpileUsedStringIds
+	printstring STRINGID_TARGETSTOCKPILED
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_NanabBerryEnd::
-	stockpile 1
+	stockpile BS_TARGET, 1
 	return
 
 BattleScript_HondewBerryActivatesRet::

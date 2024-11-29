@@ -2972,7 +2972,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_NIGHTMARE] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_4
-            .accuracy = 60,
+            .accuracy = 50,
         #else
             .accuracy = 0,
         #endif
@@ -17253,7 +17253,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_NIGHT_BEAM] =
     {
         .effect = EFFECT_CORE_ENFORCER,
-        .power = 60,
+        .power = 30,
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = 15,
@@ -17639,7 +17639,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
@@ -17694,9 +17694,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_PLIA_BALL] =
     {
         .effect = EFFECT_PLIA_BALL,
-        .power = 40,
+        .power = 50,
         .type = TYPE_RUBBER,
-        .accuracy = 90,
+        .accuracy = 100,
         .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
