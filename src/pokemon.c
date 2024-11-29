@@ -8268,6 +8268,11 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
+        case TRAINER_CLASS_BARRY:
+        case TRAINER_CLASS_PKMN_BREEDER:
+        case TRAINER_CLASS_POKEFAN:
+        case TRAINER_CLASS_SOLDIER:
+            return MUS_VS_TRAINER;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
             return MUS_VS_AQUA_MAGMA_LEADER;
@@ -8275,9 +8280,23 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
+        case TRAINER_CLASS_CLOWN:
+        case TRAINER_CLASS_DELINQUENT:
+        case TRAINER_CLASS_VANDAL:
             return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
+        case TRAINER_CLASS_ELDER:
             return MUS_VS_GYM_LEADER;
+        case TRAINER_CLASS_ASSISTANT:
+            return MUS_RG_VS_DEOXYS;
+        case TRAINER_CLASS_SMITHY:
+        case TRAINER_CLASS_GUITARIST:
+        case TRAINER_CLASS_OFFICER:
+        case TRAINER_CLASS_COOLTRAINER:
+        case TRAINER_CLASS_PHOTOGRAPHER:
+            return MUS_RG_VS_TRAINER;
+        case TRAINER_CLASS_GRILLMEISTER:
+            return MUS_RG_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
@@ -8286,7 +8305,15 @@ u16 GetBattleBGM(void)
             if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
                 return MUS_VS_PTRAINER;
             return MUS_VS_RIVAL;
+        case TRAINER_CLASS_DAME:
+        case TRAINER_CLASS_THE_HEALER:
+            return MUS_VS_RIVAL;
+        case TRAINER_CLASS_GENTLEMAN:
+            return MUS_RG_GAME_CORNER;
+        case TRAINER_CLASS_AGENT:
+            return MUS_RG_SILPH;
         case TRAINER_CLASS_ELITE_FOUR:
+        case TRAINER_CLASS_SANE:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_SALON_MAIDEN:
         case TRAINER_CLASS_DOME_ACE:
@@ -8295,6 +8322,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_FACTORY_HEAD:
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
+        case TRAINER_CLASS_EXPERT:
             return MUS_VS_FRONTIER_BRAIN;
         default:
             return MUS_VS_PTRAINER;

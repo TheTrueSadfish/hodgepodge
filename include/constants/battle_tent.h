@@ -10,7 +10,7 @@
 
 #define TENT_MIN_LEVEL 30
 
-#define TENT_MINOR_LEVEL    30
+#define TENT_MINOR_LEVEL    50
 #define TENT_MAJOR_LEVEL    50
 #define TENT_CHAMP_LEVEL    80
 

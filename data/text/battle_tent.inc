@@ -213,8 +213,8 @@ VerdanturfTown_BattleTentLobby_Text_PresentYouWithPrize:
 	.string "we present you with this prize.$"
 
 SlateportCity_BattleTentLobby_Text_WelcomeToBattleTent:
-	.string "Welcome to the BATTLE TENT\n"
-	.string "SLATEPORT SITE!\p"
+	.string "Welcome to the Hodgepodge\n"
+	.string "Platoon Battle Facility!\p"
 	.string "I am your guide to the Battle Swap\n"
 	.string "Tournament.$"
 
@@ -223,20 +223,18 @@ SlateportCity_BattleTentLobby_Text_TakeChallenge:
 	.string "Swap challenge?$"
 
 SlateportCity_BattleTentLobby_Text_ExplainSlateportTent:
-	.string "Here at the SLATEPORT BATTLE TENT,\n"
+	.string "Here at the Hodgepodge Platoon,\n"
 	.string "we hold Battle Swap events\l"
-	.string "using rental POKéMON.\p"
+	.string "using rental Pokémon.\p"
 	.string "First, you will be loaned three\n"
-	.string "POKéMON specifically for this event.\p"
-	.string "Using the supplied rental POKéMON,\n"
+	.string "Pokémon specifically for this event.\p"
+	.string "Using the supplied rental Pokémon,\n"
 	.string "you must conduct a SINGLE BATTLE.\p"
 	.string "If you win, you are permitted to trade\n"
-	.string "one of your rental POKéMON.\p"
+	.string "one of your rental Pokémon.\p"
 	.string "Repeat this cycle of battling and\n"
 	.string "trading--if you win three times in\l"
 	.string "a row, you will earn a fine prize.\p"
-	.string "If you want to interrupt your\n"
-	.string "challenge, please save the game.\p"
 	.string "If you don't save before interrupting,\n"
 	.string "you will be disqualified.$"
 
