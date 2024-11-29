@@ -332,12 +332,65 @@ SlateportCity_BattleTentLobby_Mart_TMShop:
 	end	
 
 SlateportCity_BattleTentLobby_EventScript_CheckHPProgress::
+	call_if_eq VAR_HP_PROGRESS, 0, SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette
 	call_if_eq VAR_HP_PROGRESS, 1, SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette
 	goto SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge
 
 SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette::
 	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
 	return
+
+SlateportCity_BattleTentLobby_EventScript_CheckDescriptions::
+	msgbox SlateportCity_BattleTentLobby_Text_CheckDescriptions, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_EventScript_GoTillYouDrop::
+	msgbox SlateportCity_BattleTentLobby_Text_GoTillYouDrop, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_EventScript_CheckLanette::
+	msgbox SlateportCity_BattleTentLobby_Text_CheckLanette, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_Text_CheckDescriptions:
+	.string "You know, it pays to be highly\n"
+	.string "observant, challenger.\p"
+	.string "While you may think you know\n"
+	.string "everything about Pokemon battles,\l"
+	.string "I heavily suggest thoroughly\l"
+	.string "checking the descriptions\l"
+	.string "of every aspect of the Pokemon\l"
+	.string "you have to choose from at\l"
+	.string "the beginning of your challenge.\l"
+	.string "Especially the moves and abilities.\p"
+	.string "You never know when something\n"
+	.string "could be off from what you\l"
+	.string "remember, or if a new move\l"
+	.string "you have never seen before\l"
+	.string "has been put in.\p"
+	.string "Plan carefully, and victory\n"
+	.string "may shine down on you.$"
+
+SlateportCity_BattleTentLobby_Text_GoTillYouDrop:
+	.string "Once you start the gauntlet,\n"
+	.string "there's no stopping till\l"
+	.string "you either retire or get\l"
+	.string "knocked out!\p"
+	.string "Plan for the long haul and\n"
+	.string "try for the biggest, most\l"
+	.string "impressive streak!$"
+
+SlateportCity_BattleTentLobby_Text_CheckLanette:
+	.string "Do you know Lanette? That\n"
+	.string "nerd lady with the glasses.\l"
+	.string "She's, like, a manager here\l"
+	.string "or something, from what I hear.\p"
+	.string "She seems to take interest in\n"
+	.string "people who do good in the\l"
+	.string "Platoon's battles. May do ya\l"
+	.string "good to go say hi to her\l"
+	.string "after you get done\l"
+	.string "your bouts in there.$"
 
 SlateportCity_BattleTentLobby_Text_YouNeedToHaveStreak:
 	.string "u needa git gud$"

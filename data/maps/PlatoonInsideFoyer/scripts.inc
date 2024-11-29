@@ -30,7 +30,7 @@ PlatoonInsideFoyer_EventScript_CheckHPProgressWon::
 	lockall
 	setvar VAR_HP_POST_CHALLENGE_TEMP, 0
 	switch VAR_HP_PROGRESS
-	case 0, PlatoonInsideFoyer_EventScript_UnlockItemMenu
+	case 0, PlatoonInsideFoyer_EventScript_UnlockItemMenuPrevoChecker
 	case 1, PlatoonInsideFoyer_EventScript_UnlockPrevoChecker
 	case 2, PlatoonInsideFoyer_EventScript_Check50SeenMons
 	case 3, PlatoonInsideFoyer_EventScript_Check100SeenMons
@@ -63,6 +63,7 @@ PlatoonInsideFoyer_EventScript_UnlockItemMenu::
 	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
 	waitmovement 0
 	delay 4
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou, MSGBOX_DEFAULT
 	setvar VAR_HP_PROGRESS, 1
 	releaseall
@@ -87,6 +88,7 @@ PlatoonInsideFoyer_Movement_PlayerWalkToLanette:
 PlatoonInsideFoyer_EventScript_UnlockPrevoChecker::
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
 	waitmovement 0
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_ExcitingWin, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
@@ -97,6 +99,21 @@ PlatoonInsideFoyer_EventScript_UnlockPrevoChecker::
 	setvar VAR_HP_PROGRESS, 2
 	releaseall
 	end
+
+PlatoonInsideFoyer_EventScript_UnlockItemMenuPrevoChecker::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_IWasWatchingYourMatches, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkToLanette
+	waitmovement 0
+	delay 4
+	speakername PlatoonInsideFoyer_Text_NameLanette
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheItemAndPrevoForYou, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 2
+	releaseall
+	end	
 
 PlatoonInsideFoyer_EventScript_Check50SeenMons::
 	setvar VAR_0x8004, 0
@@ -113,6 +130,7 @@ PlatoonInsideFoyer_EventScript_Check50SeenMons::
 PlatoonInsideFoyer_EventScript_Seen50Mons::
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
 	waitmovement 0
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_50DexSeen, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
@@ -139,6 +157,7 @@ PlatoonInsideFoyer_EventScript_Check100SeenMons::
 PlatoonInsideFoyer_EventScript_Seen100Mons::
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
 	waitmovement 0
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_100DexSeen, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
@@ -147,6 +166,8 @@ PlatoonInsideFoyer_EventScript_Seen100Mons::
 	delay 4
 	msgbox PlatoonInsideFoyer_Text_IllUnlockTheFanClub, MSGBOX_DEFAULT
 	setvar VAR_HP_PROGRESS, 4
+	removeobject LOCALID_GUARD
+	setflag FLAG_TEMP_12
 	releaseall
 	end
 
@@ -165,6 +186,7 @@ PlatoonInsideFoyer_EventScript_Check80CaughtMons::
 PlatoonInsideFoyer_EventScript_Caught80Mons::
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
 	waitmovement 0
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_80DexCaught, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
@@ -191,6 +213,7 @@ PlatoonInsideFoyer_EventScript_Check140CaughtMons::
 PlatoonInsideFoyer_EventScript_CaughtAllMons::
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDoor
 	waitmovement 0
+	speakername PlatoonInsideFoyer_Text_NameLanette
 	msgbox PlatoonInsideFoyer_Text_140DexCaught, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
@@ -333,6 +356,116 @@ PlatoonInsideFoyer_EventScript_PrevoCheckerLocked::
 	release
 	end
 
+PlatoonInsideFoyer_Movement_PlayerWalkFromCounter:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+PlatoonInsideFoyer_EventScript_PrevoCheck50SeenMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8008, 49, PlatoonInsideFoyer_EventScript_PrevoSeen50Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoSeen50Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_50DexSeen, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkFromCounter
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 3
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCheck100SeenMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8008, 99, PlatoonInsideFoyer_EventScript_PrevoSeen100Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoSeen100Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_100DexSeen, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkFromCounter
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockTheFanClub, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 4
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCheck80CaughtMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8009, 79, PlatoonInsideFoyer_EventScript_PrevoCaught80Mons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCaught80Mons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_80DexCaught, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkFromCounter
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 5
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCheck140CaughtMons::
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008  @ Num Hoenn seen
+	buffernumberstring STR_VAR_2, VAR_0x8009  @ Num Hoenn caught
+	goto_if_gt VAR_0x8009, 139, PlatoonInsideFoyer_EventScript_PrevoCaughtAllMons
+	releaseall
+	end
+
+PlatoonInsideFoyer_EventScript_PrevoCaughtAllMons::
+	applymovement LOCALID_LANETTE, PlatoonInsideFoyer_Movement_LanetteFaceDown
+	waitmovement 0
+	msgbox PlatoonInsideFoyer_Text_140DexCaught, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PlatoonInsideFoyer_Movement_PlayerWalkFromCounter
+	waitmovement 0
+	delay 4
+	msgbox PlatoonInsideFoyer_Text_IllUnlockMuseum, MSGBOX_DEFAULT
+	setvar VAR_HP_PROGRESS, 6
+	releaseall
+	end
+
 PlatoonInsideFoyer_EventScript_FullPrevoCheck::
 	getcaughtmon SPECIES_RATICATE
 	call_if_eq VAR_RESULT, TRUE, PlatoonInsideFoyer_EventScript_SetNettata
@@ -429,6 +562,14 @@ PlatoonInsideFoyer_EventScript_FullPrevoCheck::
 	msgbox PlatoonInsideFoyer_Text_CheckYourDexNow, MSGBOX_DEFAULT
 	delay 8
 	closemessage
+	switch VAR_HP_PROGRESS
+	case 0, PlatoonInsideFoyer_EventScript_CancelOut
+	case 1, PlatoonInsideFoyer_EventScript_CancelOut
+	case 2, PlatoonInsideFoyer_EventScript_PrevoCheck50SeenMons
+	case 3, PlatoonInsideFoyer_EventScript_PrevoCheck100SeenMons
+	case 4, PlatoonInsideFoyer_EventScript_PrevoCheck80CaughtMons
+	case 5, PlatoonInsideFoyer_EventScript_PrevoCheck140CaughtMons
+	case 6, PlatoonInsideFoyer_EventScript_CancelOut
 	release
 	end
 
@@ -707,6 +848,1539 @@ PlatoonInsideFoyer_EventScript_OpenMuseumGateFirstTime::
 	release
 	end
 
+PlatoonInsideFoyer_EventScript_FanClubGuard::
+	msgbox PlatoonInsideFoyer_Text_FanClubClosed, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_WantToGetInMuseum::
+	msgbox PlatoonInsideFoyer_Text_WantToGetInMuseum, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_SleepRest::
+	msgbox PlatoonInsideFoyer_Text_SleepRest, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_SuperEffectiveSTAB::
+	msgbox PlatoonInsideFoyer_Text_SuperEffectiveSTAB, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_DragonType::
+	msgbox PlatoonInsideFoyer_Text_DragonType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_IceRelatedThings::
+	msgbox PlatoonInsideFoyer_Text_IceRelatedThings, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_CosmicType::
+	msgbox PlatoonInsideFoyer_Text_CosmicType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_GreasyType::
+	msgbox PlatoonInsideFoyer_Text_GreasyType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_RubberType::
+	msgbox PlatoonInsideFoyer_Text_RubberType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_RelicType::
+	msgbox PlatoonInsideFoyer_Text_RelicType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_BeastType::
+	msgbox PlatoonInsideFoyer_Text_BeastType, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_FormChanges::
+	msgbox PlatoonInsideFoyer_Text_FormChanges, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_LanetteIdle::
+	lock
+	faceplayer
+	goto_if_eq VAR_HP_PROGRESS, 0, PlatoonInsideFoyer_EventScript_LanettePreStart
+	goto_if_eq VAR_HP_PROGRESS, 6, PlatoonInsideFoyer_EventScript_LanetteEndgame
+	speakername PlatoonInsideFoyer_Text_NameLanette
+	msgbox PlatoonInsideFoyer_Text_HelloTawila, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_LanettePreStart::
+	msgbox PlatoonInsideFoyer_Text_LanetteBusy, MSGBOX_AUTOCLOSE
+	release
+	end	
+
+PlatoonInsideFoyer_EventScript_LanetteEndgame::
+	speakername PlatoonInsideFoyer_Text_NameLanette
+	msgbox PlatoonInsideFoyer_Text_LanetteEnd, MSGBOX_AUTOCLOSE
+	release
+	end	
+
+PlatoonInsideFoyer_EventScript_TerminalBepisClove::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_BEPIS_CLOVE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreMusalord
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreExpload
+	case 2, PlatoonInsideFoyer_EventScript_DevLorePorybot
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreVerglazard
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMusalord::
+	showmonpic SPECIES_MUSALORD, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMusalord, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreExpload::
+	showmonpic SPECIES_EXPLOAD, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreExpload, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLorePorybot::
+	showmonpic SPECIES_PORYGON2, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLorePorybot, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreVerglazard::
+	showmonpic SPECIES_CHARIZARD, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreVerglazard, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalBonzo::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_BONZO, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreBrevato
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreGravendor
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreShamburger
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBrevato::
+	showmonpic SPECIES_BREVATO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBrevato, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGravendor::
+	showmonpic SPECIES_GRAVENDOR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGravendor, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreShamburger::
+	showmonpic SPECIES_SHAMBURGER, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreShamburger, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalCeladonk::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_CELADONK, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreSwisquire
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreNinown
+	case 2, PlatoonInsideFoyer_EventScript_DevLorePeckachew
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSwisquire::
+	showmonpic SPECIES_SWISQUIRE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSwisquire, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreNinown::
+	showmonpic SPECIES_NINOWN, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreNinown, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLorePeckachew::
+	showmonpic SPECIES_PECKACHEW, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLorePeckachew, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalChairry::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_CHAIR, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreGracklin
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreStovlare
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreAstigmoray
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreSkooky
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGracklin::
+	showmonpic SPECIES_GRACKLIN, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGracklin, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreStovlare::
+	showmonpic SPECIES_STOVLARE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreStovlare, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreAstigmoray::
+	showmonpic SPECIES_ASTIGMORAY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreAstigmoray, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSkooky::
+	showmonpic SPECIES_SKOOKY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSkooky, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalDahlia::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_DAHLIA, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreShelebrate
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreOrbacle
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreWuvme
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreShelebrate::
+	showmonpic SPECIES_SHELEBRATE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreShelebrate, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreOrbacle::
+	showmonpic SPECIES_ORBACLE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreOrbacle, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreWuvme::
+	showmonpic SPECIES_WUVME, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreWuvme, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalDahViper::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_DAHVIPER, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLorePlantatori
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreDegourge
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreGelebrum
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLorePlantatori::
+	showmonpic SPECIES_PLANTATORI, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLorePlantatori, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreDegourge::
+	showmonpic SPECIES_DEGOURGE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreDegourge, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGelebrum::
+	showmonpic SPECIES_GELECTUAL, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGelebrum, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalEggDill::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_EGG_DILL, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreStuntisla
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreWakasuka
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreMantacore
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreRegiwyrm
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreStuntisla::
+	showmonpic SPECIES_STUNTISLA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreStuntisla, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreWakasuka::
+	showmonpic SPECIES_WAKASUKA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreWakasuka, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMantacore::
+	showmonpic SPECIES_MANTACORE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMantacore, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreRegiwyrm::
+	showmonpic SPECIES_REGIDRAGO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreRegiwyrm, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalAltermon::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_ALTERMON, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreCapybarna
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreParakuri
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreRalsea
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreChakraring
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCapybarna::
+	showmonpic SPECIES_MUSHARNA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCapybarna, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreParakuri::
+	showmonpic SPECIES_PARASECT, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreParakuri, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreRalsea::
+	showmonpic SPECIES_RALTS, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreRalsea, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreChakraring::
+	showmonpic SPECIES_URSARING, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreChakraring, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalEeveeEe::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_EEVEEEE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreHagoosh
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreGoogeist
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreDragong
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreHagoosh::
+	showmonpic SPECIES_HAGOOSH_VISCOUS, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreHagoosh, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGoogeist::
+	showmonpic SPECIES_GOURGEIST, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGoogeist, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreDragong::
+	showmonpic SPECIES_DEWGONG, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreDragong, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalEnwaitea::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_ENWAITEA, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreWyrmWing
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreCoorse
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreKittepup
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreWyrmWing::
+	showmonpic SPECIES_VOLCARONA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreWyrmWing, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCoorse::
+	showmonpic SPECIES_CURSOLA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCoorse, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreKittepup::
+	showmonpic SPECIES_KITTEPUP, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreKittepup, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalFBI::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_FBI, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreChernoboar
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreIcandesfen
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreCastermite
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreChernoboar::
+	showmonpic SPECIES_CHERNOBOAR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreChernoboar, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreIcandesfen::
+	showmonpic SPECIES_ICANDESFEN, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreIcandesfen, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCastermite::
+	showmonpic SPECIES_CASTERMITE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCastermite, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalGaboTy::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_GABO_TY, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreCelshrioom
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreSeraphure
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreTuetuerror
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreMagidash
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCelshrioom::
+	showmonpic SPECIES_CELSHRIOOM, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCelshrioom, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSeraphure::
+	showmonpic SPECIES_SERAPHURE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSeraphure, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreTuetuerror::
+	showmonpic SPECIES_TUETUERROR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreTuetuerror, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMagidash::
+	showmonpic SPECIES_MAGIDASH, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMagidash, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalKyuDoodle::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_KYU_DOODLE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreLuxstrobe
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreStarror
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreMiscladrus
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreSkuldugery
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreLuxstrobe::
+	showmonpic SPECIES_EELEKTROSS, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreLuxstrobe, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreStarror::
+	showmonpic SPECIES_STARMIE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreStarror, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMiscladrus::
+	showmonpic SPECIES_MISMAGIUS, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMiscladrus, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSkuldugery::
+	showmonpic SPECIES_SKULDUGERY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSkuldugery, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalLichen::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_LICHEN, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreOddiowave
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreBeholzer
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreVividawg
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreOddiowave::
+	showmonpic SPECIES_ODDIOWAVE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreOddiowave, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBeholzer::
+	showmonpic SPECIES_BEHOLZER, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBeholzer, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreVividawg::
+	showmonpic SPECIES_VIVIDAWG, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreVividawg, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalHydroBlue::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_HYDROBLUE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreSwalheart
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreCaclequin
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreGramkrow
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreIntriobang
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSwalheart::
+	showmonpic SPECIES_SWALOT, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSwalheart, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCaclequin::
+	showmonpic SPECIES_CACTURNE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCaclequin, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGramkrow::
+	showmonpic SPECIES_HONCHKROW, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGramkrow, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreIntriobang::
+	showmonpic SPECIES_DUGTRIO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreIntriobang, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalLivra::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_LIVRA, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreOkkamirizo
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreFrozforce
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreRickshawty
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreVizaaviso
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreOkkamirizo::
+	showmonpic SPECIES_OKKAMIRIZO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreOkkamirizo, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreFrozforce::
+	showmonpic SPECIES_FROZFORCE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreFrozforce, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreRickshawty::
+	showmonpic SPECIES_RICKSHAWTY_CHARIOT, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreRickshawty, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreVizaaviso::
+	showmonpic SPECIES_VIZAAVISO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreVizaaviso, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalMemelordFrank::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_MEMELORD_FRANKTURE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreCrusterror
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreRubimizer
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreArctikack
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreFrankture
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCrusterror::
+	showmonpic SPECIES_CRUSTERROR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCrusterror, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreRubimizer::
+	showmonpic SPECIES_RUBIMIZER, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreRubimizer, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreArctikack::
+	showmonpic SPECIES_ARCTIKACK, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreArctikack, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreFrankture::
+	showmonpic SPECIES_OGWON_ROCK, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreFrankture, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalOgwon::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_OGWON, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreProfur
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreDadalemma
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreBevolpin
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreGreese
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreProfur::
+	showmonpic SPECIES_PROFUR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreProfur, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreDadalemma::
+	showmonpic SPECIES_DADALEMMA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreDadalemma, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBevolpin::
+	showmonpic SPECIES_BEVOLPIN, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBevolpin, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreGreese::
+	showmonpic SPECIES_GREESE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreGreese, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalPabloPlasto::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_PABLO_PLASTO, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreCrawtendr
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreLurkelp
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreBaghoul
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreBuggory
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreCrawtendr::
+	showmonpic SPECIES_CRAWTENDR, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreCrawtendr, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreLurkelp::
+	showmonpic SPECIES_LURKELP, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreLurkelp, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBaghoul::
+	showmonpic SPECIES_BAGHOUL, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBaghoul, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBuggory::
+	showmonpic SPECIES_BUGGORY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBuggory, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalSav::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_SAV, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreSmaugron
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreBloomwile
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreStaalnary
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSmaugron::
+	showmonpic SPECIES_AGGRON, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSmaugron, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBloomwile::
+	showmonpic SPECIES_MAWILE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBloomwile, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreStaalnary::
+	showmonpic SPECIES_STAALNARY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreStaalnary, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalShark::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_SHARK, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreJaramari
+	case 1, PlatoonInsideFoyer_EventScript_DevLorePokerlord
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreMalmare
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreSetatonkre
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreJaramari::
+	showmonpic SPECIES_TANGROWTH, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreJaramari, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLorePokerlord::
+	showmonpic SPECIES_POKERLORD, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLorePokerlord, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMalmare::
+	showmonpic SPECIES_MALMARE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMalmare, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreSetatonkre::
+	showmonpic SPECIES_SETATONKRE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreSetatonkre, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalTardy::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_TARDY_SWEETAN, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreMelceralba
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreNettecate
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreLaRoc
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreWatchaugur
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMelceralba::
+	showmonpic SPECIES_MELCERALBA, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMelceralba, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreNettecate::
+	showmonpic SPECIES_RATICATE, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreNettecate, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreLaRoc::
+	showmonpic SPECIES_ARBOK, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreLaRoc, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreWatchaugur::
+	showmonpic SPECIES_WATCHOG, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreWatchaugur, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_TerminalVal::
+	lock
+	playse SE_PC_LOGIN
+	msgbox PlatoonInsideFoyer_Text_Terminal, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_MUSEUM_VAL, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	switch VAR_TEMP_1
+	case 0, PlatoonInsideFoyer_EventScript_DevLoreXolhm
+	case 1, PlatoonInsideFoyer_EventScript_DevLoreMalachrey
+	case 2, PlatoonInsideFoyer_EventScript_DevLoreFortifros
+	case 3, PlatoonInsideFoyer_EventScript_DevLoreBabobo
+	closemessage
+	playse SE_PC_OFF
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreXolhm::
+	showmonpic SPECIES_XOLHM, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreXolhm, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreMalachrey::
+	showmonpic SPECIES_MALACHREY, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreMalachrey, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreFortifros::
+	showmonpic SPECIES_FORTIFROS, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreFortifros, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_EventScript_DevLoreBabobo::
+	showmonpic SPECIES_BABOBO, 10, 3
+	msgbox PlatoonInsideFoyer_Text_DevLoreBabobo, MSGBOX_DEFAULT
+	closemessage
+	hidemonpic
+	playse SE_PC_OFF
+	waitse
+	release
+	end
+
+PlatoonInsideFoyer_Text_NameLanette:
+	.string "Lanette$"
+
+PlatoonInsideFoyer_Text_LanetteBusy:
+	.string "I apologize, but I am\n"
+	.string "terribly busy right now.\l"
+	.string "Please, go enjoy the\l"
+	.string "facility's offerings.$"
+
+PlatoonInsideFoyer_Text_HelloTawila:
+	.string "Tawila, how are you doing?\p"
+	.string "Give it your all in the\n"
+	.string "gauntlet for me, okay?$"
+
+PlatoonInsideFoyer_Text_LanetteEnd:
+	.string "...Tawila.\p"
+	.string "Time is ticking.\n"
+	.string "Why not make the most of it?$"
+
+PlatoonInsideFoyer_Text_FanClubClosed:
+	.string "Yo, bub.\n"
+	.string "Move right along.\p"
+	.string "No access to the Fan Club for\n"
+	.string "you unless I get the go ahead.$"
+
+PlatoonInsideFoyer_Text_WantToGetInMuseum:
+	.string "Jeez oh man, it is my dream to one\n"
+	.string "day roam the halls of the museum.\p"
+	.string "Legends say only the most VIP of\n"
+	.string "all of us trainers get access.\l"
+	.string "Specifically, those who manage to\l"
+	.string "fill out their ENTIRE Pokedex.\p"
+	.string "Best advice I can give is to keep\n"
+	.string "trying out new ones! Oh, and\l"
+	.string "swapping in a previously defeated\l"
+	.string "trainer's Pokemon will have that\l"
+	.string "count as Caught as well.\p"
+	.string "Maybe one day we'll both find\n"
+	.string "ourselves in those hallowed halls!$"
+
+PlatoonInsideFoyer_Text_SleepRest:
+	.string "Yawn...\p"
+	.string "...Oh, huh. Sorry I seem so tired...\n"
+	.string "It's from battling a lot.\p"
+	.string "My favorite strategy... is sleeping\n"
+	.string "moves... like Chernoboar's Spore...\p"
+	.string "It puts the enemy to sleep for\n"
+	.string "a couple turns... then, when I hit\l"
+	.string "'em... boom... automatic\l"
+	.string "critical hit...\p"
+	.string "...But that makes the sleeper\n"
+	.string "wake right up...\p"
+	.string "Now, Capybarna...\n"
+	.string "That Pokemon can use Rest...\p"
+	.string "A Resting Pokemon is different\n"
+	.string "than a Sleeping Pokemon...\l"
+	.string "...They stay asleep longer...\l"
+	.string "and can't be woken up\l"
+	.string "by attacks...\p"
+	.string "...Yawn. I'm boring myself...$"
+
+PlatoonInsideFoyer_Text_SuperEffectiveSTAB:
+	.string "Hey! Hey!\p"
+	.string "Hey!\p"
+	.string "Didja know that Super Effective\n"
+	.string "Moves work differently in here??\l"
+	.string "I did!\p"
+	.string "Super Effective Moves do like,\n"
+	.string "half? Of what they normally do.\l"
+	.string "Battles in this facility take\l"
+	.string "more time than most!\p"
+	.string "Resistances, though? Those block\n"
+	.string "the same amount of damage!\p"
+	.string "Things are flipped on their head\n"
+	.string "a bit! Resistances count for\l"
+	.string "more than weaknesses!\p"
+	.string "It fires me up when I see my team\n"
+	.string "tank through hard hits and come\l"
+	.string "out with a hard-earned victory!$"
+
+PlatoonInsideFoyer_Text_DragonType:
+	.string "Dragons are, erm, maybe the\n"
+	.string "most EPIC type of them all.\p"
+	.string "If a Parakuri tries to Intimidate\n"
+	.string "a Dragon? Heh...\l"
+	.string "Completely unphased.\p"
+	.string "My buddies tell me Fairy types\n"
+	.string "hard-counter them.\l"
+	.string "...How idiotic...!\p"
+	.string "They act like those darned\n"
+	.string "pixies are immune to Dragon type\l"
+	.string "moves, or something like that.\p"
+	.string "Last time I checked, they just\n"
+	.string "resist them! Now, Normal moves\l"
+	.string "against Ghosts? We'd be talking.$"
+
+PlatoonInsideFoyer_Text_IceRelatedThings:
+	.string "My husband has not stopped\n"
+	.string "criticizing my heavy usage of\l"
+	.string "Ice type Pokemon.\p"
+	.string "It is simple science.\n"
+	.string "Ice is not as brittle as he so\l"
+	.string "likes to claim. It is\l"
+	.string "wonderful defensively\l"
+	.string "against Water type Pokemon.\p"
+	.string "Oh, and when it is hailing?\n"
+	.string "Their physical defensive\l"
+	.string "capabilities rise.\p"
+	.string "I would be amiss to leave out\n"
+	.string "their multiple status ailments.\l"
+	.string "Frostbite can shut down\l"
+	.string "specially offensive threats,\l"
+	.string "and when I can manage to freeze\l"
+	.string "an adversary solid...\l"
+	.string "There is no saving them.\p"
+	.string "Much like there will be no\n"
+	.string "salvation for that man\l"
+	.string "when I next give him an earful.$"
+
+PlatoonInsideFoyer_Text_CosmicType:
+	.string "Are you perhaps interested in\n"
+	.string "the frontier of space?\l"
+	.string "Well, Cosmic is the type for you.\p"
+	.string "It is an impeccable type in\n"
+	.string "my opinion, with more\l"
+	.string "defensive pros than cons.\p"
+	.string "Cosmic type Pokemon\n"
+	.string "are weak to the following:\l"
+	.string "Rock, Dragon, and Dark types.\p"
+	.string "They are, then, resistant\n"
+	.string "to the following:\l"
+	.string "Normal, Flying, Ground,\l"
+	.string "Ghost, Water, and Fairy.\p"
+	.string "To top off this defensive\n"
+	.string "setup, Cosmic moves do not\l"
+	.string "affect Cosmic types.\p"
+	.string "On the offensive end...\n"
+	.string "this is where the type falters\l"
+	.string "some. It only hits\l"
+	.string "Fire, Flying, and Fairy\l"
+	.string "super effectively.\p"
+	.string "It is ill-advised to use\n"
+	.string "Cosmic moves on Dragon,\l"
+	.string "Dark, Ice, and Ghost.\p"
+	.string "That about runs the gamut.\n"
+	.string "Maybe invest in a Skooky\l"
+	.string "the next time you are\l"
+	.string "presented with one. It may\l"
+	.string "be out of this world.$"
+
+PlatoonInsideFoyer_Text_GreasyType:
+	.string "Okay, you don't have to stare.\p"
+	.string "Yes, I'm a bit hefty. Why do\n"
+	.string "you assume, then, that I like\l"
+	.string "the Greasy type?\p"
+	.string "I mean, I do. So, uh...\p"
+	.string "Listen. Greasy type Pokemon are\n"
+	.string "pretty fragile. They're weak\l"
+	.string "to Ground, Bug, Fire,\l"
+	.string "Psychic, and Fairy.\p"
+	.string "But they are defensively solid\n"
+	.string "against the same amount.\l"
+	.string "Fighting, Poison,\l"
+	.string "Water, Grass, and Ice.\p"
+	.string "On the offensive end, they\n"
+	.string "don't perform well against\l"
+	.string "Fairy, Water, and Poison.\p"
+	.string "And on the flip side,\n"
+	.string "they hit Fighting, Ground,\l"
+	.string "Grass, Ice, and Bug types\l"
+	.string "hard as a flat-top stove.\p"
+	.string "If you nab yourself a Greese,\n"
+	.string "let that thing let loose on\l"
+	.string "its foes before it gets\l"
+	.string "gunned down itself.$"
+
+PlatoonInsideFoyer_Text_RubberType:
+	.string "Style is what I aim for most\n"
+	.string "when choosing Pokemon!\l"
+	.string "Obviously, the shining jewel\l"
+	.string "of them all is Babobo.\l"
+	.string "The one and only Rubber type!\p"
+	.string "Rubber can easily slot in as\n"
+	.string "a neutral role offensively.\l"
+	.string "While its attacks only land\l"
+	.string "devastatingly hard versus\l"
+	.string "Electric and Fairy targets,\l"
+	.string "it will hit all else\l"
+	.string "neautrally except for\l"
+	.string "Rock, Steel, and Poison,\l"
+	.string "its only resistant types.\p"
+	.string "Rubber completely steals\n"
+	.string "the show when taking hits,\l"
+	.string "resisting Fighting, Ice,\l"
+	.string "Water, Electric, and Fairy\l"
+	.string "and bouncing back into\l"
+	.string "tip-top shape afterwards!\p"
+	.string "Keep an eye out for\n"
+	.string "Poison, Steel and Psychic\l"
+	.string "attacks. Those can particularly\l"
+	.string "bend a Rubber Pokemon.\p"
+	.string "If you can juggle all of that\n"
+	.string "knowledge, give Babobo a whirl!$"
+
+PlatoonInsideFoyer_Text_RelicType:
+	.string "Oi, laddie...\n"
+	.string "This old man has been commanding\l"
+	.string "a squadron of Pokemon for\l"
+	.string "many a decade now.\p"
+	.string "Let me clue you in on the ancient\n"
+	.string "terror that is Vizaaviso,\l"
+	.string "a Relic type Pokemon, once\l"
+	.string "long forgotten.\p"
+	.string "This type is older than many others.\n"
+	.string "Thus, it is relatively badly\l"
+	.string "documented. What can be observed\l"
+	.string "is its weakness to Grass and\l"
+	.string "Psychic type moves.\p"
+	.string "Relic type moves...? They are\n"
+	.string "some of the most complicated of\l"
+	.string "any I have witnessed.\l"
+	.string "They specialize in hitting\l"
+	.string "unique types super effectively\l"
+	.string "that vary per move. It is as\l"
+	.string "if Relic moves all have\l"
+	.string "special conditionals like\l"
+	.string "the move Freeze-Dry.\p"
+	.string "If you can manage a\n"
+	.string "Vizaaviso, it may serve\l"
+	.string "you dutifully.$"
+
+PlatoonInsideFoyer_Text_BeastType:
+	.string "YEAHHHHHH!!!\n"
+	.string "I like to go ALL OUT\l"
+	.string "when I'm on the field!\l"
+	.string "BEAST type Pokemon are perfect\l"
+	.string "for a BEAST like me!\p"
+	.string "Setatonkre is the biggest\n"
+	.string "BEAST out there! Attack,\l"
+	.string "attack, and DON'T LOOK BACK!\l"
+	.string "Only Dragon, Flying, and\l"
+	.string "Poison types can dare\l"
+	.string "withstand those blows!\p"
+	.string "Oh, and Bugs? Ghosts?\n"
+	.string "FORGET EM!\l"
+	.string "They practically distintegrate!\p"
+	.string "LET'S GOOOOO!$"
+
+PlatoonInsideFoyer_Text_FormChanges:
+	.string "Sometimes I get told I have a\n"
+	.string "complexity addiction.\l"
+	.string "Well, addiction's a strong word,\l"
+	.string "but I do like to run Pokemon\l"
+	.string "with a bit more detail\l"
+	.string "baked in.\p"
+	.string "Have you stumbled onto any with\n"
+	.string "form changes? Malmare and\l"
+	.string "Rickshawty can completely\l"
+	.string "turn the tides on opponents\l"
+	.string "when hit at the right times\l"
+	.string "with the right moves.\p"
+	.string "Hagoosh starts out very strong,\n"
+	.string "but its slime body can\l"
+	.string "dissipate when weak, making it\l"
+	.string "an easy Pokemon to sweep up\l"
+	.string "when low on health.\p"
+	.string "Astigmoray is a complete monster\n"
+	.string "out there. But, I hear if you\l"
+	.string "manage to use a move to\l"
+	.string "pierce its eye... that thing\l"
+	.string "crumples like paper.\p"
+	.string "If any of that sounded like\n"
+	.string "a good time, try 'em out.\l"
+	.string "I'm biased, sure.$"
+
 PlatoonInsideFoyer_Text_IWasWatchingYourMatches:
 	.string "Hey, you.\p"
 	.string "I've been observing your matches.\n"
@@ -715,6 +2389,61 @@ PlatoonInsideFoyer_Text_IWasWatchingYourMatches:
 	.string "for a moment?$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou:
+	.string "My name is Lanette.\n"
+	.string "I run this facility in my\l"
+	.string "sister's absence...\p"
+	.string "I really enjoy watching\n"
+	.string "unorthodox battling. Hence, my\l"
+	.string "interest in this randomized\l"
+	.string "battle format. I feel that is\l"
+	.string "a true measure of a good trainer;\l"
+	.string "one that can work under any\l"
+	.string "prerequisite.\p"
+	.string "You seem to know some stuff,\n"
+	.string "for a rookie. I will be tuning\l"
+	.string "in whenever you go back to the\l"
+	.string "gauntlet. And, as a show of\l"
+	.string "good will...\p"
+	.string "Check in with Teala, to your left.\n"
+	.string "I told her that you have been\l"
+	.string "cleared to receive the Item Bag\l"
+	.string "if you so wish.\p"
+	.string "Try aiming for a big streak\n"
+	.string "of battles won. If I see you\l"
+	.string "hit 3 or more, I will be\l"
+	.string "highly impressed. Mayhaps I will\l"
+	.string "give you a useful gift.\p"
+	.string "Have a good evening.$"
+
+PlatoonInsideFoyer_Text_ExcitingWin:
+	.string "That was a stimulating streak,\n"
+	.string "Tawila. Remarkable resilience.\p"
+	.string "Come on over, indulge me...$"
+
+PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
+	.string "Have you been checking your\n"
+	.string "Pokedex, Tawila? It records\l"
+	.string "data for every Pokemon you use\l"
+	.string "on your team. There's some\l"
+	.string "fascinating stuff to learn from it.\p"
+	.string "A profusion of the Pokemon you can\n"
+	.string "pick from in the facility have\l"
+	.string "pre-evolutions out in the wild.\l"
+	.string "If you're in for a pursuit of\l"
+	.string "knowledge, I would go talk to\l"
+	.string "Tanner at his counter. He can fill\l"
+	.string "in your Pokedex with data for\l"
+	.string "pre-evolutions of Pokemon you have\l"
+	.string "used in battle thus far.\p"
+	.string "I may have some further special\n"
+	.string "gifts for you if you humor me and\l"
+	.string "fill out that dex out yours.\p"
+	.string "Let's say... aim for 50 seen.\n"
+	.string "That'll show me that you've\l"
+	.string "witnessed your fair share of bouts.\p"
+	.string "Have a good evening.$"
+
+PlatoonInsideFoyer_Text_IllUnlockTheItemAndPrevoForYou:
 	.string "My name is Lanette.\n"
 	.string "I run this facility in my\l"
 	.string "sister's absence...\p"
@@ -734,15 +2463,8 @@ PlatoonInsideFoyer_Text_IllUnlockTheItemMenuForYou:
 	.string "I told her that you have been\l"
 	.string "cleared to receive the Item Bag\l"
 	.string "if you so wish.\p"
-	.string "Have a good evening.$"
-
-PlatoonInsideFoyer_Text_ExcitingWin:
-	.string "That was a stimulating streak,\n"
-	.string "Tawila. Remarkable resilience.\p"
-	.string "Come on over, indulge me...$"
-
-PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
-	.string "Have you been checking your\n"
+	.string "Also, I've been meaning to ask.\n"
+	.string "Have you been checking your\l"
 	.string "Pokedex, Tawila? It records\l"
 	.string "data for every Pokemon you use\l"
 	.string "on your team. There's some\l"
@@ -1005,3 +2727,798 @@ PlatoonInsideFoyer_Text_CheckYourDexNow:
 	.string "All should be situated.\n"
 	.string "Take a look at any entries\l"
 	.string "you've just unlocked.$"
+
+PlatoonInsideFoyer_Text_Terminal:
+	.string "Which Pokemon line would you\n"
+	.string "like to view the dev lore of?$"
+
+PlatoonInsideFoyer_Text_DevLoreMusalord:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreExpload:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLorePorybot:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreVerglazard:
+	.string "This Pokémon’s concept comes\n"
+	.string "from a Fire Red Rom Hack Clove\l"
+	.string "was making called Sparkling\l"
+	.string "Fire Red. It would’ve had new\l"
+	.string "shinies for every Pokémon, and\l"
+	.string "the shiny chance would be greatly\l"
+	.string "increased. There would also be\l"
+	.string "Delta Pokémon. All of this was\l"
+	.string "inspired by Ecnoid’s hacks of a\l"
+	.string "similar premise for 3DS and\l"
+	.string "Switch games. The actual sprite\l"
+	.string "has an interesting origin since it\l"
+	.string "was a Charizard sprite we had\l"
+	.string "planned for Pisces at one point\l"
+	.string "as a boss. The pose is\l"
+	.string "specifically based on the\l"
+	.string "famous Base Set Charizard card.$"
+
+PlatoonInsideFoyer_Text_DevLoreBrevato:
+	.string "Brevato’s design is the combined\n"
+	.string "form of a 3-stage line based on\l"
+	.string "frogs and radishes. It originates\l"
+	.string "from Bonzo's friend’s discontinued\l"
+	.string "Rom Hack project, Pokémon\l"
+	.string "Starlight. The first stage was an\l"
+	.string "angry rainfrog-looking fellow\l"
+	.string "called Ribbeet. The later evolutions\l"
+	.string "had spindly root legs for springy\l"
+	.string "jumps. So, Bonzo combined both\l"
+	.string "aspects for this design.$"
+
+PlatoonInsideFoyer_Text_DevLoreGravendor:
+	.string "Gravendor was originally a\n"
+	.string "legendary Pokémon that was\l"
+	.string "part of a Hunter, Gatherer, and\l"
+	.string "Scavenger trio for Pokémon\l"
+	.string "ScaleXFang. This design was\l"
+	.string "massively revamped from what it\l"
+	.string "once was for that project. Bonzo\l"
+	.string "even changed the typing around\l"
+	.string "by making it a Ground/Fighting\l"
+	.string "type as opposed to a\l"
+	.string "Ground/Ghost one. The goal for its\l"
+	.string "redesign was to make a ghastly\l"
+	.string "looking Pokémon that\l"
+	.string "was not Ghost-type.$"
+
+PlatoonInsideFoyer_Text_DevLoreShamburger:
+	.string "Shamburger originates from\n"
+	.string "a Fakémon design challenge\l"
+	.string "that Bonzo did last year during the\l"
+	.string "summer. For 18 days, Bonzo\l"
+	.string "designed Fakémon that fit into\l"
+	.string "each type. Shamburger was the\l"
+	.string "Rock-type representative. The\l"
+	.string "inspiration for it came from a\l"
+	.string "picture of a burger that looked\l"
+	.string "like it had a mouth. Thus, Bonzo\l"
+	.string "made a mimic that looked edible\l"
+	.string "but would eat you instead. Let\l"
+	.string "it be known that you should\l"
+	.string "never try eating a burger that\l"
+	.string "you found on the floor of a cave.$"
+
+PlatoonInsideFoyer_Text_DevLoreSwisquire:
+	.string "These Pokémon are based on a\n"
+	.string "combination of 2 tropes, the\l"
+	.string "regional rodent and cute pink\l"
+	.string "blob Pokémon like Jigglypuff\l"
+	.string "and Cleffa. The latter is one of\l"
+	.string "Celadonk’s favorite kinds of\l"
+	.string "Pokémon. These Pokémon were\l"
+	.string "for a hack that was supposed to\l"
+	.string "be more story-focused and was\l"
+	.string "based on the Great Lakes.$"
+
+PlatoonInsideFoyer_Text_DevLoreNinown:
+	.string "Nin’own was originally a\n"
+	.string "Seviian Unown, that Celadonk\l"
+	.string "made for fun and was kind of\l"
+	.string "considered to be in Fool’s Gold,\l"
+	.string "but in the end, it’s here.\l"
+	.string "Besides that, it represents\l"
+	.string "Celadonk’s love for stick legs and\l"
+	.string "weird gimmick Pokémon.$"
+
+PlatoonInsideFoyer_Text_DevLorePeckachew:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreGracklin:
+	.string "Gracklin comes from an\n"
+	.string "abandoned project aiming to\l"
+	.string "redo all the mons from the\l"
+	.string "open source Tuxemon project\l"
+	.string "with Chairry's own spin. This line\l"
+	.string "in particular is a retake\l"
+	.string "on the Grintrock line.$"
+
+PlatoonInsideFoyer_Text_DevLoreStovlare:
+	.string "Stovlare is a very old starter\n"
+	.string "of Chairry's dating almost 15\l"
+	.string "years back. It has a really\l"
+	.string "bad sprite that was made as\l"
+	.string "one of his first, pre-AlteRed.\l"
+	.string "As a kid, I guess he was just\l"
+	.string "really into the concept of a\l"
+	.string "stove based fire starter.$"
+
+PlatoonInsideFoyer_Text_DevLoreAstigmoray:
+	.string "Astigmoray comes from a group\n"
+	.string "of 4 or so Gen 5 styled lines of\l"
+	.string "Pokemon Chairry made after AlteRed\l"
+	.string "to try and do more original stuff.\l"
+	.string "He had wanted an Eyeball based\l"
+	.string "eel mon for a long time, which\l"
+	.string "crystallized into its old design.\l"
+	.string "It was significantly redesigned\l"
+	.string "for this game.$"
+
+PlatoonInsideFoyer_Text_DevLoreSkooky:
+	.string "Skooky’s Cosmic-type comes\n"
+	.string "from Chairry’s Alterverse,\l"
+	.string "although currently, it’s only in\l"
+	.string "one hack besides this,\l"
+	.string "AmalgaMagenta. Chairry\l"
+	.string "wanted to go for a more odd\l"
+	.string "Cosmic-type Pokémon, so made\l"
+	.string "one based on Scooby-Doo and\l"
+	.string "the Space Kook. As the Dex\l"
+	.string "Entry references, it’s specifically\l"
+	.string "based on Scooby-Doo: Night of\l"
+	.string "100 Frights, where the Space\l"
+	.string "Kook has a gun. The Dex Entry\l"
+	.string "also mimics how the trivia is\l"
+	.string "presented in that game. Its\l"
+	.string "shiny color scheme is based\l"
+	.string "on the Mystery Machine.$"
+
+PlatoonInsideFoyer_Text_DevLoreShelebrate:
+	.string "This line is pretty simple.\n"
+	.string "It's a shy crab that eventually\l"
+	.string "evolves to a jolly one based\l"
+	.string "on slapstick and dancing.$"
+
+PlatoonInsideFoyer_Text_DevLoreOrbacle:
+	.string "Orbacle is meant to be a\n"
+	.string "fortune teller box and Dahl's\l"
+	.string "attempt at a object-based Pokémon.$"
+
+PlatoonInsideFoyer_Text_DevLoreWuvme:
+	.string "Wuvme is intended to be a\n"
+	.string "Pokémon that doesn’t look like\l"
+	.string "its type. Here, it isn’t meant to\l"
+	.string "look like a Poison-type, and that\l"
+	.string "typing comes from its personality.\l"
+	.string "Wuvme mimics a doll, so kids\l"
+	.string "will find it and take it home, only\l"
+	.string "for it to be a nightmare.$"
+
+PlatoonInsideFoyer_Text_DevLorePlantatori:
+	.string "Plantatori is inspired by an\n"
+	.string "enemy from Epic Battle Fantasy\l"
+	.string "3. It was going to evolve into\l"
+	.string "a dinosaur, but DahViper was\l"
+	.string "unable to come up with a design.\l"
+	.string "It was scrapped from DahViper's\l"
+	.string "hack Ascend mainly just because\l"
+	.string "it was made so long ago it\l"
+	.string "was simply forgotten.$"
+
+PlatoonInsideFoyer_Text_DevLoreDegourge:
+	.string "Degourge was originally a\n"
+	.string "Pokémon that mimicked an\l"
+	.string "ice cream cone. Originally\l"
+	.string "planned for Pokémon Ascend,\l"
+	.string "DahViper had three other similar\l"
+	.string "horror-based designs and\l"
+	.string "decided to scrap this one.\l"
+	.string "Funnily enough, the one that\l"
+	.string "DahViper kept was redesigned to\l"
+	.string "remove the horror elements, so\l"
+	.string "technically Degourge could’ve\l"
+	.string "still been in Ascent, but it was\l"
+	.string "forgotten until now.$"
+
+PlatoonInsideFoyer_Text_DevLoreGelebrum:
+	.string "This Pokémon’s idea originates\n"
+	.string "from two phenomena, 'brain freeze'\l"
+	.string "and 'hidden strength in near\l"
+	.string "death/danger situations,' thus the\l"
+	.string "icicle in its head. A creature from a\l"
+	.string "Chinese club penguin game also\l"
+	.string "inspired the design.$"
+
+PlatoonInsideFoyer_Text_DevLoreStuntisla:
+	.string "Stuntisla is based off of the\n"
+	.string "Electric elemental arms from\l"
+	.string "the game Arms, as well as Mantis\l"
+	.string "Shrimp, Egg's favorite animal.$"
+
+PlatoonInsideFoyer_Text_DevLoreWakasuka:
+	.string "These two were originally\n"
+	.string "meant for Pisces, being the\l"
+	.string "only new evolution for an\l"
+	.string "existing Pokémon. It was part\l"
+	.string "of a group for Pisces called\l"
+	.string "Secretmons, in which some of\l"
+	.string "our artists would secretly make\l"
+	.string "Pokémon and then present them\l"
+	.string "to Livra. It was mainly done\l"
+	.string "since Pisces was mostly made\l"
+	.string "by Livra and also because I\l"
+	.string "(Jotaro G Sadfish) like being a\l"
+	.string "little annoying prick. The\l"
+	.string "Secretmons still exist, but\l"
+	.string "they’re all new Fakémon, and\l"
+	.string "it may be hard to tell which\l"
+	.string "ones they are when Pisces is\l"
+	.string "finally released. There’s not much\l"
+	.string "to say about Wakasuka itself\l"
+	.string "besides Dillsacke based them\l"
+	.string "on sea spiders.$"
+
+PlatoonInsideFoyer_Text_DevLoreMantacore:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
+	.string "If it wasn’t obvious, this Pokemon\n"
+	.string "is Regidrago’s hinted-at complete\l"
+	.string "form. There is not much to it,\l"
+	.string "although there is a Regieleki\l"
+	.string "powered-up form. Maybe you’ll\l"
+	.string "see it someday.$"
+
+PlatoonInsideFoyer_Text_DevLoreCapybarna:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreParakuri:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreRalsea:
+	.string "This was the first line to be\n"
+	.string "ever sprited by Livra and also\l"
+	.string "her first time spriting. Originally\l"
+	.string "for Hydro Blue, eventually the\l"
+	.string "idea was redone for\l"
+	.string "Mystery Mauve for the Alterverse,\l"
+	.string "but also was scrapped. After 4\l"
+	.string "years of being around they\l"
+	.string "have finally found a home.$"
+
+PlatoonInsideFoyer_Text_DevLoreChakraring:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreHagoosh:
+	.string "Hagoosh was made for Faketober\n"
+	.string "of 2021 for the prompt was\l"
+	.string "“Slime”. It's based on hagfish\l"
+	.string "since Eevee (the artist not the\l"
+	.string "Pokémon) learned they produce\l"
+	.string "enough slime to fill a garbage\l"
+	.string "truck. Besides being based on\l"
+	.string "a hagfish, the body type of the\l"
+	.string "Viscous Form is based on\l"
+	.string "Arctiguana from Ben 10.$"
+
+PlatoonInsideFoyer_Text_DevLoreGoogeist:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreDragong:
+	.string "This line comes from when Eevee\n"
+	.string "(not the Pokémon) and I (Joseph\l"
+	.string "G Sadfish) were watching Wild\l"
+	.string "Kratts, and I noted how Komodo\l"
+	.string "Dragons are like lizard seals. Also,\l"
+	.string "Eevee found the name Dragong\l"
+	.string "too funny to keep it unused.$"
+
+PlatoonInsideFoyer_Text_DevLoreWyrmWing:
+	.string "Wyrm Wing is another type\n"
+	.string "variant that never left the list\l"
+	.string "of potential concepts for\l"
+	.string "Weird Type Fun. It didn't have\l"
+	.string "any particular location or event\l"
+	.string "designated to it. It simply existed\l"
+	.string "as an observation that Slither\l"
+	.string "Wing's wings could be reworked\l"
+	.string "into a large fin, mainly to add\l"
+	.string "more aquatic Pokemon. It's\l"
+	.string "funny since this realized version\l"
+	.string "of Wyrm Wing did not become\l"
+	.string "a poor man's Water-type substitute\l"
+	.string "or a Water-type.$"
+
+PlatoonInsideFoyer_Text_DevLoreCoorse:
+	.string "These Pokémon were originally\n"
+	.string "a Beast-type Cursola concept\l"
+	.string "for Pokémon Weird Type Fun.\l"
+	.string "They were meant to appear in\l"
+	.string "Route 44, back when more of\l"
+	.string "Johto was supposed to be in\l"
+	.string "Weird Type Fun before the first\l"
+	.string "version was released. Neither\l"
+	.string "Route 44 nor this evolution line\l"
+	.string "made it beyond Enwaitea’s\l"
+	.string "notes, even though they\l"
+	.string "could’ve been in Ice Path, but\l"
+	.string "by that time, Weird Type Fun\l"
+	.string "already had a bunch of Beast-types.$"
+
+PlatoonInsideFoyer_Text_DevLoreKittepup:
+	.string "Kittepup was originally slated\n"
+	.string "for Weird Type Fun and was\l"
+	.string "another Beast-type. The idea came\l"
+	.string "from the fact that Enwaitea\l"
+	.string "thought Male and Female\l"
+	.string "Indeedee could easily be\l"
+	.string "turned into a cat and a dog.\l"
+	.string "However, Enwaitea didn’t know\l"
+	.string "how to add gender differences,\l"
+	.string "so instead, Enwaitea thought\l"
+	.string "of putting the two together\l"
+	.string "and making it a Chimera-type.\l"
+	.string "However, Enwaitea couldn’t\l"
+	.string "make a sprite for it that they\l"
+	.string "liked, so it never got past the\l"
+	.string "drawing board. Also, as a joke,\l"
+	.string "Enwaitea thought of giving it\l"
+	.string "Drizzle as a nod to the\l"
+	.string "'raining cats and dogs' saying.$"
+
+PlatoonInsideFoyer_Text_DevLoreChernoboar:
+	.string "This line comes from FBI's\n"
+	.string "cancelled project called Pokemon\l"
+	.string "Unnamed, and they were meant\l"
+	.string "to be the 3-stage Grass starter.$"
+
+PlatoonInsideFoyer_Text_DevLoreIcandesfen:
+	.string "This line comes from FBI's\n"
+	.string "cancelled project called Pokemon\l"
+	.string "Unnamed, and it were meant\l"
+	.string "to be the final stage\l"
+	.string "of the Fire starter.$"
+
+PlatoonInsideFoyer_Text_DevLoreCastermite:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreCelshrioom:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreSeraphure:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreTuetuerror:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreMagidash:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreLuxstrobe:
+	.string "This line was originally a\n"
+	.string "regional variant Kyu made\l"
+	.string "for his fan game, Pokémon Esper,\l"
+	.string "being one of the first made for\l"
+	.string "it. If you’re wondering why the\l"
+	.string "tail color changes as Luxross,\l"
+	.string "don’t ask me, I have no clue.$"
+
+PlatoonInsideFoyer_Text_DevLoreStarror:
+	.string "This line was originally a\n"
+	.string "regional variant Kyu made for\l"
+	.string "his fan game, Pokémon Esper.\l"
+	.string "It was originally a\l"
+	.string "Psychic/Ghost-type.$"
+
+PlatoonInsideFoyer_Text_DevLoreMiscladrus:
+	.string "This line was originally a\n"
+	.string "regional variant Kyu made for\l"
+	.string "his fan game, Pokémon Esper.\l"
+	.string "Not only did Livra sprite the\l"
+	.string "current Miscladrus, but she also\l"
+	.string "helped make the original sprite\l"
+	.string "too. The Misdarna sprite is still\l"
+	.string "the one Livra and Kyu made\l"
+	.string "way back then.$"
+
+PlatoonInsideFoyer_Text_DevLoreSkuldugery:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreOddiowave:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreBeholzer:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreVividawg:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreSwalheart:
+	.string "These Pokémon were originally\n"
+	.string "a Seviian Gulpin line for\l"
+	.string "Hydro Blue. They’re based on\l"
+	.string "hearts and ambrosia (a food/drink\l"
+	.string "in Greek mythology that granted\l"
+	.string "immortality). Seviian Swalot is\l"
+	.string "mostly unchanged both concept\l"
+	.string "and design-wise from its\l"
+	.string "original iteration.$"
+
+PlatoonInsideFoyer_Text_DevLoreCaclequin:
+	.string "These Pokémon were originally\n"
+	.string "a Seviian Cacnea line for\l"
+	.string "Hydro Blue. They’re based on\l"
+	.string "jack-o’-lanterns, jesters, and\l"
+	.string "juggling. Seviian Cacturne is\l"
+	.string "mostly unchanged from the\l"
+	.string "original iteration. However, its\l"
+	.string "shiny used to be based on\l"
+	.string "Jevil from Deltarune.$"
+
+PlatoonInsideFoyer_Text_DevLoreGramkrow:
+	.string "This line was made by Plasto\n"
+	.string "and Livra for Hydro Blue.\l"
+	.string "It's very simple in concept,\l"
+	.string "taking Murkrow and Honchkrow\l"
+	.string "and using the witch/wizard angle\l"
+	.string "they originally had and putting\l"
+	.string "it more in the forefront.$"
+
+PlatoonInsideFoyer_Text_DevLoreIntriobang:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreOkkamirizo:
+	.string "Okkamirizo is based on the\n"
+	.string "Occam's razor principle which\l"
+	.string "basically boils down to that the\l"
+	.string "best answer to something is\l"
+	.string "usually the simplest one, hence\l"
+	.string "why its Ability is Simple. It is also\l"
+	.string "vaguely based on a Grass/Dragon\l"
+	.string "Seviian Breloom Livra\l"
+	.string "made for Hydro Blue.$"
+
+PlatoonInsideFoyer_Text_DevLoreFrozforce:
+	.string "These Pokémon were originally\n"
+	.string "one of the fossil lines planned\l"
+	.string "for Pokémon Libra. Despite\l"
+	.string "trying to have some more\l"
+	.string "off-kilter picks for fossil\l"
+	.string "Pokémon, we somehow ended\l"
+	.string "up with triceratops. After a\l"
+	.string "long time of having them\l"
+	.string "around so long that Pisces\l"
+	.string "was starting to be made not\l"
+	.string "too long after, we scrapped it\l"
+	.string "for something more interesting,\l"
+	.string "and now Frozhorn and Frozforce\l"
+	.string "are here. What could its\l"
+	.string "replacement be? Well, you'll\l"
+	.string "have to play Pokémon Libra in\l"
+	.string "30 million years to find out.$"
+
+PlatoonInsideFoyer_Text_DevLoreRickshawty:
+	.string "Livra thought of combining the\n"
+	.string "word Rickshaw and the term\l"
+	.string "'shawty.' Where do the fire and\l"
+	.string "bugs come from? I don't know.$"
+
+PlatoonInsideFoyer_Text_DevLoreVizaaviso:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreCrusterror:
+	.string "These Pokémon are based on\n"
+	.string "earthworms and giant sand\l"
+	.string "worms from movies and stuff.\l"
+	.string "They're some of Memelord's\l"
+	.string "favorite Pokémon, and he thinks\l"
+	.string "they represent his style very well.$"
+
+PlatoonInsideFoyer_Text_DevLoreRubimizer:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreArctikack:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreFrankture:
+	.string "This Pokémon dates back to\n"
+	.string "a 2015 Essentials project Ogwon\l"
+	.string "was making with a friend. While\l"
+	.string "nothing ever came of it, Ogwon\l"
+	.string "kept around the design. It was\l"
+	.string "initially supposed to be a pure\l"
+	.string "Rock-type with Levitate, with it\l"
+	.string "being a weird rock balloon. The\l"
+	.string "horns and nose are mainly there\l"
+	.string "as Ogwon finds them easy\l"
+	.string "features to put on designs when\l"
+	.string "one seems too plain.$"
+
+PlatoonInsideFoyer_Text_DevLoreProfur:
+	.string "Mog's basically just a giant mop\n"
+	.string "ball because Ogwon thinks it's\l"
+	.string "funny. Although, Profur is based on\l"
+	.string "a Shisa dog, the same thing as\l"
+	.string "Growlithe and Arcanine. Ogwon\l"
+	.string "finds ugly and stupid-looking dogs\l"
+	.string "funny so this is just how most of his\l"
+	.string "dog Pokémon end up. It's also\l"
+	.string "supposed to be similar to Snubbull\l"
+	.string "in personality, a Pokémon Ogwon\l"
+	.string "loves. The name Mog may sound\l"
+	.string "like 'mogged' but the person who\l"
+	.string "made it had no clue that was a term.\l"
+	.string "Also, Mog may be inspired by\l"
+	.string "Quarantine Crystal's Moperdor\l"
+	.string "but Ogwon doesn't remember.\l"
+	.string "(please don't sue us)$"
+
+PlatoonInsideFoyer_Text_DevLoreDadalemma:
+	.string "Ogwon just found this guy in\n"
+	.string "a random art layer, it's simply\l"
+	.string "just a funny head and a funny\l"
+	.string "body put together. Dadalemma\l"
+	.string "simply is here.$"
+
+PlatoonInsideFoyer_Text_DevLoreBevolpin:
+	.string "Dullsod and Bevolpin are based\n"
+	.string "on blobfish and funnily enough\l"
+	.string "came before Sadsod. While\l"
+	.string "coming up with the idea for\l"
+	.string "Sadsod we wanted to just make\l"
+	.string "it a pathetic blobfish and Ogwon\l"
+	.string "decided he wanted to make one\l"
+	.string "too and got to it first, so now\l"
+	.string "Sadsod has some frogfish\l"
+	.string "elements also. The main reason\l"
+	.string "they was even added was due\l"
+	.string "to the accidental similarity of\l"
+	.string "Dullsod and Sadsod, although\l"
+	.string "the name similarity is intentional.\l"
+	.string "Also you may have seen these\l"
+	.string "designs before since Ogwon\l"
+	.string "posted them to Reddit a while\l"
+	.string "back. As a final fun fact, Ogwon\l"
+	.string "imagines Bevolpin's legs are\l"
+	.string "kind of like thicker-skinned\l"
+	.string "water balloons.$"
+
+PlatoonInsideFoyer_Text_DevLoreGreese:
+	.string "Groose and Greese were\n"
+	.string "supposed to be for Banquet\l"
+	.string "Brown, a food-themed Rom\l"
+	.string "Hack. While the hack had a\l"
+	.string "bunch of forms, it was also\l"
+	.string "supposed to have new\l"
+	.string "Pokémon like these two. The\l"
+	.string "names Groose and Greese\l"
+	.string "came first, followed by Greese’s\l"
+	.string "design, and Groose’s design\l"
+	.string "came last. For Hodgepodge,\l"
+	.string "Ogwon gave Greese a slight\l"
+	.string "touch-up, but redesigned\l"
+	.string "Groose completely because\l"
+	.string "its old design was lost. All that\l"
+	.string "Ogwon can remember from\l"
+	.string "beta Groose is that it was\l"
+	.string "based more on takoyaki and\l"
+	.string "had a grease pompadour. In\l"
+	.string "the end, Ogwon wants you\l"
+	.string "to feel you’re having\l"
+	.string "heartburn while looking at\l"
+	.string "them. So, are you?$"
+
+PlatoonInsideFoyer_Text_DevLoreCrawtendr:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreLurkelp:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreBaghoul:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreBuggory:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreSmaugron:
+	.string "This Pokémon was originally a\n"
+	.string "Seviian Aggron for Hydro Blue.\l"
+	.string "It initially started as a\l"
+	.string "Grass/Fire-type but was changed\l"
+	.string "by Sav to make a bit more sense.\l"
+	.string "The final sprite made by Livra\l"
+	.string "is just the same design but with\l"
+	.string "a nice pose. There is no Aron or\l"
+	.string "Lairon to go along with it since\l"
+	.string "we simply did not feel the need\l"
+	.string "to make them. Maybe imagine\l"
+	.string "it’s like a Bloodmoon Ursaluna\l"
+	.string "sort of deal.$"
+
+PlatoonInsideFoyer_Text_DevLoreBloomwile:
+	.string "This Pokémon was made for\n"
+	.string "Hydro Blue. The concept was just\l"
+	.string "'what if Mawile’s enormous jaw\l"
+	.string "ate itself', and Livra took that\l"
+	.string "and made it like a flower.$"
+
+PlatoonInsideFoyer_Text_DevLoreStaalnary:
+	.string "This Pokémon was a regional\n"
+	.string "form planned for Hydro Blue.\l"
+	.string "Savannah made the original\l"
+	.string "design; Ogwon touched it up,\l"
+	.string "and finally, Livra made the\l"
+	.string "sprite. It's very simple, just\l"
+	.string "taking Skarmory and making\l"
+	.string "it more wyvern-esque.$"
+
+PlatoonInsideFoyer_Text_DevLoreJaramari:
+	.string "This line comes from a\n"
+	.string "scrapped project called\l"
+	.string "Banquet Brown, where every\l"
+	.string "Pokémon was food-themed.\l"
+	.string "Jaramari used to be a lot more\l"
+	.string "slender but it was redesigned for\l"
+	.string "Hodgepodge to look more like the\l"
+	.string "beta Tangela evolution from\l"
+	.string "GSC Spaceworld. Also, their\l"
+	.string "shinies are based on Bloopers.$"
+
+PlatoonInsideFoyer_Text_DevLorePokerlord:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreMalmare:
+	.string "Malmare comes from a challenge\n"
+	.string "Shark did where he made a\l"
+	.string "Pokémon of every type, with\l"
+	.string "Malmare being the Bug-type\l"
+	.string "representative. It’s based on both\l"
+	.string "the wooden Trojan horse and Trojan\l"
+	.string "viruses. The busted form was\l"
+	.string "repurposed from an old\l"
+	.string "Bug/Electric Pokémon called\l"
+	.string "Malsquito.$"
+
+PlatoonInsideFoyer_Text_DevLoreSetatonkre:
+	.string "Originally, Ogwon was going to\n"
+	.string "be making the Beast-type\l"
+	.string "representative, however, they\l"
+	.string "were already making the Greasy\l"
+	.string "type one, so we got Shark to do\l"
+	.string "it instead. It's inspired by two\l"
+	.string "Ben 10 aliens: Wildmutt and\l"
+	.string "Spidermonkey. The shiny\l"
+	.string "specifically is based on\l"
+	.string "Ultimate Wildmutt.$"
+
+PlatoonInsideFoyer_Text_DevLoreMelceralba:
+	.string "Dev Lore Unavailable.$"
+
+PlatoonInsideFoyer_Text_DevLoreNettecate:
+	.string "Regional forms meant for an Emerald\n"
+	.string "Revamp hack Tardysoap was working\l"
+	.string "on. Nettata was meant to inhabit\l"
+	.string "Littleroot Grotto, a small forest\l"
+	.string "clearing west of Littleroot Town.\l"
+	.string "In both gameplay and lore both\l"
+	.string "Pokémon were supposed to be\l"
+	.string "more passive and supportive than\l"
+	.string "their other forms. In Nettecate's\l"
+	.string "redesign Livra decided to make\l"
+	.string "it more thorny due to its\l"
+	.string "flowers being roses.$"
+
+PlatoonInsideFoyer_Text_DevLoreLaRoc:
+	.string "Regional forms meant for an\n"
+	.string "Emerald Revamp hack Tardysoap\l"
+	.string "was working on. Tardy didn’t get\l"
+	.string "too far in making these. Arbok\l"
+	.string "didn’t even have a complete\l"
+	.string "sprite until Livra took it up. Their\l"
+	.string "only real basis is coral snakes,\l"
+	.string "obvious from the color scheme.$"
+
+PlatoonInsideFoyer_Text_DevLoreWatchaugur:
+	.string "Regional forms meant for an\n"
+	.string "Emerald Revamp hack Tardysoap\l"
+	.string "was working on. Patracle was\l"
+	.string "meant to inhabit Oldale Ruins,\l"
+	.string "a slightly foreboding set of\l"
+	.string "ruins east of Oldale Town. The\l"
+	.string "line was originally\l"
+	.string "Normal/Psychic, but I (Jonathan G.\l"
+	.string "Sadfish) misremembered them\l"
+	.string "as Bug/Psychic, but then we finally\l"
+	.string "decided on Psychic and\l"
+	.string "Psychic/Fighting.$"
+
+PlatoonInsideFoyer_Text_DevLoreXolhm:
+	.string "Wattl and Xolhm were\n"
+	.string "originally a Psychic/Electric-type\l"
+	.string "regional Wooper and a new\l"
+	.string "evolution, named Xolung, that\l"
+	.string "Val made for a Mexico region\l"
+	.string "in the early 2020s. They draw\l"
+	.string "inspiration from larval axolotls,\l"
+	.string "olms, Wooper, cartoon ghosts,\l"
+	.string "the trope of seeing a character’s\l"
+	.string "skeleton when they’re\l"
+	.string "electrocuted, the Aztec god\l"
+	.string "Xolotl, Blinky from\l"
+	.string "The Simpsons (since Aztec\l"
+	.string "religion attributed\l"
+	.string "deformities to Xolotl), and\l"
+	.string "the Xoloitzcuintle breed of dogs.\l"
+	.string "Xolhm lives in deep underground\l"
+	.string "caves because Xolotl is the god\l"
+	.string "of the underworld, which is also\l"
+	.string "where its Ghost-type comes from.\l"
+	.string "Xolotl is known as the deity of\l"
+	.string "ightning and flames, hence why\l"
+	.string "the line is Electric-type and is\l"
+	.string "associated with misfortune and\l"
+	.string "disease, which inspired Xolhm's\l"
+	.string "Ability, Misfortune. The partial\l"
+	.string "dog inspiration for Xolhm stems\l"
+	.string "from the term “mud puppies”\l"
+	.string "for salamanders, and the\l"
+	.string "Xolo dog’s connection to Xolotl\l"
+	.string "and it guiding souls in\l"
+	.string "the underworld.$"
+
+PlatoonInsideFoyer_Text_DevLoreMalachrey:
+	.string "This line was originally made for\n"
+	.string "an Australia region Val made\l"
+	.string "in middle school. They are based\l"
+	.string "on lampreys, leeches, and\l"
+	.string "bloodworms. The bloodworm basis\l"
+	.string "was a last-minute addition to justify\l"
+	.string "the Rock-type and crystal teeth.$"
+
+PlatoonInsideFoyer_Text_DevLoreFortifros:
+	.string "These Pokémon date back to\n"
+	.string "elementary school before even\l"
+	.string "Pokémon Sun and Moon came\l"
+	.string "out, so there was no Ice/Steel-type\l"
+	.string "yet. Val wanted to make one,\l"
+	.string "and initially, they were just\l"
+	.string "snowmen wearing hard hats and\l"
+	.string "holding tools. Ferrofros and\l"
+	.string "Fortifros were originally named\l"
+	.string "Doubwrench and Tripdrill. These\l"
+	.string "Pokémon are based on snowmen,\l"
+	.string "igloos, cement mixers, and\l"
+	.string "wrecking balls. The tail on\l"
+	.string "Ferrofros was something random\l"
+	.string "Val added as she thought it was\l"
+	.string "cool. Fortifros is partially inspired\l"
+	.string "by Melmetal and can rotate\l"
+	.string "its waist like Melmetal can.$"
+
+PlatoonInsideFoyer_Text_DevLoreBabobo:
+	.string "Despite recently becoming a\n"
+	.string "One Piece Fan, Val did not\l"
+	.string "intentionally make these\l"
+	.string "because of Luffy. These Pokémon\l"
+	.string "are an accidental pun based\l"
+	.string "on the phrases 'monkeying\l"
+	.string "around' and 'monkey business.'\l"
+	.string "Monkey Business was originally\l"
+	.string "going to be its ability, which\l"
+	.string "would give priority to all status,\l"
+	.string "switching-related, item\l"
+	.string "theft/swapping, etc. moves. They\l"
+	.string "are based on Gibbons, baboons,\l"
+	.string "mandrills, and clowns. The beta\l"
+	.string "name for Babobo was\l"
+	.string "“Mahahaque” which came from\l"
+	.string "macaque and “hahahaha,” but\l"
+	.string "Val ditched it thinking it\l"
+	.string "sounded bad.$"

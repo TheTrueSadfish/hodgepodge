@@ -8,6 +8,15 @@ PlatoonOutside_OnFrame:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, PlatoonOutside_EventScript_PlatoonOpening
 	.2byte 0
 
+PlatoonOutside_OnLoad:
+	call_if_gt VAR_HP_PROGRESS, 4, PlatoonOutside_EventScript_RemoveCaveBlocker
+	end
+
+PlatoonOutside_EventScript_RemoveCaveBlocker::
+	setmetatile 16, 7, METATILE_Fallarbor_NoCaveBlocker, FALSE
+	special DrawWholeMapView
+	return
+
 PlatoonOutside_EventScript_PlatoonOpening::
 	lockall
 	delay 16
@@ -82,6 +91,59 @@ PlatoonOutside_Movement_IntromanEnterDoor:
 	walk_up
 	set_invisible
 	step_end
+
+PlatoonOutside_EventScript_BugType::
+	msgbox PlatoonOutside_Text_BugType, MSGBOX_NPC
+	end
+
+PlatoonOutside_EventScript_SteelType::
+	msgbox PlatoonOutside_Text_SteelType, MSGBOX_NPC
+	end
+
+PlatoonOutside_EventScript_EachMonHasOneSet::
+	msgbox PlatoonOutside_Text_EachMonHasOneSet, MSGBOX_NPC
+	end
+
+PlatoonOutside_Text_BugType:
+	.string "I enjoy bugs. What more can\n"
+	.string "I say?\p"
+	.string "They're so fascinating.\n"
+	.string "Did you even realize that\l"
+	.string "any Bug type Pokemon can use\l"
+	.string "its attacks to bypass enemy\l"
+	.string "defensive barriers? Yep.\l"
+	.string "Protect, Substitute, Reflect,\l"
+	.string "Light Screen, Safeguard,\l"
+	.string "Mist, Lucky Chant...\l"
+	.string "Those won't protect you\l"
+	.string "from those sneaky critters.$"
+
+PlatoonOutside_Text_SteelType:
+	.string "Aww, man... it ain't easy\n"
+	.string "being a Steel type diehard\l"
+	.string "these days.\p"
+	.string "I coulda SWORN that my metal\n"
+	.string "masters could wall through\l"
+	.string "Grass, Psychic, and Ice moves\l"
+	.string "with ease. But I keep seein'\l"
+	.string "them hit me for normal\l"
+	.string "damage these days.\p"
+	.string "What has the world come to,\n"
+	.string "man???$"
+
+PlatoonOutside_Text_EachMonHasOneSet:
+	.string "You looking to make it big\n"
+	.string "in the Hodgepodge Platoon?\l"
+	.string "Here's a tip for ya:\p"
+	.string "Each unique Pokemon species\n"
+	.string "you can choose from has only\l"
+	.string "one setup. If you can memorize\l"
+	.string "the set each Pokemon has, it\l"
+	.string "will not change its moves out\l"
+	.string "between attempts.\p"
+	.string "Keep honing away at your strategy\n"
+	.string "and you'll be the best\l"
+	.string "of the best, pal!$"
 
 PlatoonOutside_Text_WelcomeToThePlatoon:
 	.string "Welcome to the\n"
