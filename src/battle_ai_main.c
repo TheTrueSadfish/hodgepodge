@@ -926,7 +926,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 case EFFECT_DEEP_GAZE:
                 case EFFECT_POISON_POWDER:
                 case EFFECT_WORRY_SEED:
-                case EFFECT_EMBER_SNOW:
                     score -= 5;
                     break;
                 case EFFECT_FROST_NOVA:
@@ -1417,6 +1416,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_FROST_SHRED:
             if (gBattleMons[battlerAtk].statStages[STAT_SPEED] <= DEFAULT_STAT_STAGE)
                 score -= 10;
+            break;
         case EFFECT_HAYWIRE:
             for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
             {
@@ -2224,8 +2224,13 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         #endif
             break;
         case EFFECT_WILL_O_WISP:
-        case EFFECT_EMBER_SNOW:
             if (!AI_CanBurn(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+                score -= 10;
+            break;
+        case EFFECT_EMBER_SNOW:
+            if (gBattleMons[battlerAtk].species == SPECIES_RICKSHAWTY_CHARIOT)
+                score += 10;
+            else if (!AI_CanBurn(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
                 score -= 10;
             break;
         case EFFECT_GLACIATE:
@@ -5795,8 +5800,13 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_SPIT_UP:
     case EFFECT_NANAB_GATTLING:
-        if (gDisableStructs[battlerAtk].stockpileCounter >= 2)
-            score++;
+        if (gDisableStructs[battlerAtk].stockpileCounter >= 1)
+            score+= gDisableStructs[battlerAtk].stockpileCounter * 2;
+        break;
+    case EFFECT_FEATHER_RAZOR:
+    case EFFECT_FROST_SHRED:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
+            score+= CountBattlerSpeedIncreases(battlerAtk) * 2;
         break;
     case EFFECT_ROLLOUT:
         if (gBattleMons[battlerAtk].status2 & STATUS2_DEFENSE_CURL)

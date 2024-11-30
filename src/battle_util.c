@@ -3093,7 +3093,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_HEARTHWARM: // aqua ring
-            if ((gStatuses4[battler] & STATUS4_HEARTHWARM) && !BATTLER_MAX_HP(battler) && !(gStatuses4[battler] & STATUS3_HEAL_BLOCK) && gBattleMons[battler].hp != 0)
+            if ((gStatuses4[battler] & STATUS4_HEARTHWARM) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) && gBattleMons[battler].hp != 0)
             {
                 gBattleMoveDamage = GetDrainedBigRootHp(battler, gBattleMons[battler].maxHP / 16);
                 BattleScriptExecute(BattleScript_HearthwarmHeal);
@@ -4555,7 +4555,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             }
             else if (gCurrentMove == MOVE_FIREBALLS && CountBattlerStatIncreases(gBattlerAttacker, TRUE) > 0)
             {
-                gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + 1;
+                gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + gBattleMoves[gCurrentMove].strikeCount;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
             else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[gBattlerAttacker].hp > (gBattleMons[gBattlerAttacker].maxHP / 4)))
@@ -4625,6 +4625,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 1, 0)
             }
 #endif
+            else
+            {
+                gMultiHitCounter = 0;
+            }
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_END:
@@ -7058,9 +7062,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 32;
                 else
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -7227,7 +7231,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 VarSet(VAR_TEMP_MOVEEFFECT_CHANCE, moveEffectPercentChance);
                 VarSet(VAR_TEMP_MOVEEFFECT,        extraMoveSecondaryEffect);
 
-                gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMove;
+                gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMoveFreshWhip;
                 effect++;
             }
             break;
@@ -8074,9 +8078,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && (IsMoveMakingContact(move, gBattlerAttacker) || gBattleMoves[gBattlerAttacker].piercingMove))
             {
                 if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 32;
                 else
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -11910,6 +11914,17 @@ u32 CountBattlerAccuracyIncreases(u32 battler)
     return count;
 }
 
+u32 CountBattlerSpeedIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_SPEED] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
 u32 GetMoveTargetCount(u32 move, u32 battlerAtk, u32 battlerDef)
 {
     switch (GetBattlerMoveTargetType(gBattlerAttacker, move))
@@ -12394,7 +12409,11 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
         break;
     case EFFECT_WITCH_HYMN:
-        basePower = 50 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
+        basePower = 50 + (CountBattlerStatDecreases(battlerDef, TRUE) * 15);
+        break;
+    case EFFECT_DARK_HUNGER:
+        if (gStatuses4[battlerAtk] & STATUS4_BERRY_EATEN)
+            basePower = 150;
         break;
     case EFFECT_HEAVY_CANNON:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] > DEFAULT_STAT_STAGE || gBattleMons[battlerAtk].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE)
@@ -12625,10 +12644,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_RETALIATE:
         if (gSideTimers[atkSide].retaliateTimer == 1)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
-        break;
-    case EFFECT_DARK_HUNGER:
-        if (gStatuses4[battlerAtk] & STATUS4_BERRY_EATEN)
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case EFFECT_SOLAR_BEAM:
         if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW)))

@@ -4990,7 +4990,7 @@ static const u8 sFireworkCrashDescription[] = _(
 
 static const u8 sEmberSnowDescription[] = _(
     "Burns the foe. If the user is in\n"
-    "a chariot it instead changes the\n"
+    "a chariot it also changes the\n"
     "foe's move into Fire-type.");
 
 static const u8 sFeatherRazorDescription[] = _(
@@ -5089,9 +5089,9 @@ static const u8 sGammaRayDescription[] = _(
     "condition does extra damage.");
 
 static const u8 sFireballsDescription[] = _(
-    "Adds a hit for each stat drop on\n"
-    "the user. Boosted for each stat\n"
-    "raise on the user. Resets stats.");
+    "Hits twice, or more for each\n"
+    "stat raise. Boosted for each\n"
+    "stat drop. Resets stats after.");
 
 static const u8 sIcebreakerDescription[] = _(
     "An attack that hurts the user a\n"

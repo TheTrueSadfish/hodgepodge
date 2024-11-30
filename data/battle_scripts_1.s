@@ -1355,9 +1355,7 @@ BattleScript_DefenderExtraHitFromCritCalc::
 	critcalc
 	damagecalc
 	adjustdamage
-	typecalc
 BattleScript_DefenderExtraHitFromAtkAnimation::
-	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	playmoveanimation BS_ATTACKER, MOVE_NONE
 	waitanimation
 	effectivenesssound
@@ -1375,6 +1373,38 @@ BattleScript_DefenderExtraRestoreBattlers::
 	copybyte gBattlerAttacker, sSAVED_BATTLER
 	restoretarget
 BattleScript_DefenderExtraMoveEnd::
+	moveendall
+	end
+
+BattleScript_DefenderUsedAnExtraMoveFreshWhip::
+	savetarget
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	copybyte gBattlerAttacker, gBattlerTarget
+	copybyte gBattlerTarget, sSAVED_BATTLER
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ABILITYLETITUSEMOVE
+	waitmessage B_WAIT_TIME_LONG
+	attackcanceler
+	attackstring
+	critcalc
+	damagecalc
+	adjustdamage
+	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	playmoveanimation BS_ATTACKER, MOVE_NONE
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	copybyte gBattlerAttacker, sSAVED_BATTLER
+	restoretarget
 	moveendall
 	end
 
@@ -7559,6 +7589,8 @@ BattleScript_EffectTopsyTurvyWorks:
 	goto BattleScript_MoveEnd
 
 BattleScript_InvertStats::
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
 	invertstatstages BS_TARGET
 	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
 	waitmessage B_WAIT_TIME_LONG
@@ -7566,6 +7598,8 @@ BattleScript_InvertStats::
 	end3
 
 BattleScript_InvertStats2::
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	invertstatstages BS_ATTACKER
 	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
 	waitmessage B_WAIT_TIME_LONG
@@ -15635,7 +15669,6 @@ BattleScript_MoveStatDrain::
 .endif
 BattleScript_MoveStatDrain_Cont:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveStatDrain2_PPLoss::
@@ -15666,7 +15699,6 @@ BattleScript_MoveStatDrain2TrySpAtk::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MoveStatDrain2End:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveStatNegativeDrain_PPLoss::
@@ -15689,7 +15721,6 @@ BattleScript_MoveStatNegativeDrain::
 .endif
 BattleScript_MoveStatNegativeDrain_Cont:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MonMadeMoveUseless_PPLoss::
@@ -15700,7 +15731,6 @@ BattleScript_MonMadeMoveUseless::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXMADEYUSELESS
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
 	orhalfword gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE
 	goto BattleScript_MoveEnd
 
@@ -15712,7 +15742,6 @@ BattleScript_FlashFireBoost::
 	call BattleScript_AbilityPopUp
 	printfromtable gFlashFireStringIds
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_AbilityPreventsPhasingOut::

@@ -2419,7 +2419,7 @@ static void Cmd_damagecalc(void)
     }
     else if (gCurrentMove == MOVE_BRIAR_WHIP)
     {
-        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 10) / 100);
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 5) / 100);
     }
     else
     {
@@ -6624,7 +6624,7 @@ static void Cmd_moveend(void)
 
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
 
-                    if (i == 0)
+                    if (i == 0 && CanBeBurned(gBattlerAttacker))
                     {
                         gBattleMons[gBattlerAttacker].status1 = STATUS1_BURN;
                         BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
@@ -6633,7 +6633,7 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_BeakBlastBurn;
                         effect = 1;
                     }
-                    else if (i == 1)
+                    else if (i == 1 && CanBeFrozen(gBattlerAttacker))
                     {
                         gBattleMons[gBattlerAttacker].status1 = STATUS1_FROSTBITE;
                         BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
@@ -6642,7 +6642,7 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_NonSequiturFrostbite;
                         effect = 1;
                     }
-                    else if (i == 2)
+                    else if (i == 2 && CanBePoisoned(gBattlerAttacker, gBattlerTarget))
                     {
                         gBattleMons[gBattlerAttacker].status1 = STATUS1_TOXIC_POISON;
                         BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
@@ -6651,7 +6651,7 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_NonSequiturToxic;
                         effect = 1;
                     }
-                    else if (i == 3)
+                    else if (i == 3 && CanBeParalyzed(gBattlerAttacker))
                     {
                         gBattleMons[gBattlerAttacker].status1 = STATUS1_PARALYSIS;
                         BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
