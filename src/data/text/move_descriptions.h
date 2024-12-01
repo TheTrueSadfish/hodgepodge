@@ -4989,8 +4989,8 @@ static const u8 sFireworkCrashDescription[] = _(
     "Speed and hurts it a little.");
 
 static const u8 sEmberSnowDescription[] = _(
-    "Burns the foe. If the user is in\n"
-    "a chariot it also changes the\n"
+    "Burns the foe. If the user is\n"
+    "transformed it also changes the\n"
     "foe's move into Fire-type.");
 
 static const u8 sFeatherRazorDescription[] = _(

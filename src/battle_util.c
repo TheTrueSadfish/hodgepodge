@@ -2498,7 +2498,7 @@ u8 DoFieldEndTurnEffects(void)
                     if (effect != 0)
                         break;
                 }
-                if (!effect)
+                if (effect == 0)
                 {
                     gBattleStruct->turnCountersTracker++;
                     gBattleStruct->turnSideTracker = 0;
@@ -2506,28 +2506,26 @@ u8 DoFieldEndTurnEffects(void)
             }
             break;
         case ENDTURN_HEAL_MELODY:
+            while (gBattleStruct->turnSideTracker < 2)
             {
+                side = gBattleStruct->turnSideTracker;
+                gBattlerAttacker = gSideTimers[side].healMelodyTimerBattlerId;
+                if (gSideStatuses[side] & SIDE_STATUS_HEAL_MELODY
+                && --gSideTimers[side].healMelodyTimer == 0
+                && gBattleMons[gBattlerAttacker].hp != 0)
                 {
-                    u32 battler = gBattlerByTurnOrder[gBattleStruct->turnSideTracker];
-                    side = gBattleStruct->turnSideTracker;
-                    gBattlerAttacker = gSideTimers[side].healMelodyTimerBattlerId;
-                    if (gSideStatuses[side] & SIDE_STATUS_HEAL_MELODY && --gSideTimers[side].healMelodyTimer == 0 && gBattleMons[battler].hp != 0)
-                    {
-                        gSideStatuses[side] &= ~SIDE_STATUS_HEAL_MELODY;
-                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
-                        gBattlescriptCurrInstr = BattleScript_HealingMelodyActivates;
-                        BattleScriptExecute(gBattlescriptCurrInstr);
-                        effect++;
-                    }
-                    gBattleStruct->turnSideTracker++;
-                    if (effect != 0)
-                        break;
+                    gSideStatuses[side] &= ~SIDE_STATUS_LUCKY_CHANT;
+                    BattleScriptExecute(BattleScript_HealingMelodyActivates);
+                    effect++;
                 }
-                if (!effect)
-                {
-                    gBattleStruct->turnCountersTracker++;
-                    gBattleStruct->turnSideTracker = 0;
-                }
+                gBattleStruct->turnSideTracker++;
+                if (effect != 0)
+                    break;
+            }
+            if (!effect)
+            {
+                gBattleStruct->turnCountersTracker++;
+                gBattleStruct->turnSideTracker = 0;
             }
             break;
         case ENDTURN_HEAL_ORDER:
@@ -2548,7 +2546,7 @@ u8 DoFieldEndTurnEffects(void)
                     if (effect != 0)
                         break;
                 }
-                if (!effect)
+                if (effect == 0)
                 {
                     gBattleStruct->turnCountersTracker++;
                     gBattleStruct->turnSideTracker = 0;
@@ -5548,6 +5546,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursorAndCallback(BattleScript_GustyActivatesTailwind);
                 effect++;
             }
+            break;
         case ABILITY_ALL_GAME:
             if (!(gFieldStatuses & STATUS_FIELD_MUDSPORT) && (gFieldStatuses & STATUS_FIELD_WATERSPORT))
             {
@@ -12410,7 +12409,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 20);
         break;
     case EFFECT_REDLINE:
-        basePower = 50 + (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
+        basePower = 50 + (CountBattlerStatDecreases(battlerAtk, TRUE) * 100);
         break;
     case EFFECT_ZAPPER:
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);

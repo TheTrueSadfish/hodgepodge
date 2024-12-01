@@ -4595,7 +4595,7 @@ void CalculateMonStats(struct Pokemon *mon)
 
     if (species == SPECIES_BAGHOUL)
     {
-        newMaxHP = 2;
+        newMaxHP = 3;
     }
 
     else if (species == SPECIES_SHUNYONG || species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)

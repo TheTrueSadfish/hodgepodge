@@ -17441,12 +17441,12 @@ BattleScript_RizzBerryEnd::
 	return
 
 BattleScript_BlukBerryActivatesRet::
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	blukberryppreduce BattleScript_BlukBerryFail
 	printstring STRINGID_PKMNREDUCEDPP
 BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
+	removeitem BS_TARGET
 BattleScript_BlukBerryReturn::
 	return
 

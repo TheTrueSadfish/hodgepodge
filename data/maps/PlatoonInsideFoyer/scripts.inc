@@ -2591,7 +2591,7 @@ PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave:
 	.string "The last conceivable milestone\l"
 	.string "would be getting every single\l"
 	.string "Pokedex entry filled out.\l"
-	.string "All 142. Good luck if you\l"
+	.string "All 140. Good luck if you\l"
 	.string "so choose to take that road.\p"
 	.string "And as always, good evening.\n$"
 

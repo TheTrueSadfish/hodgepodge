@@ -1877,9 +1877,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         break;
     case ABILITY_ICE_LENS:
         if (gBattleMons[battlerAtk].species == SPECIES_ASTIGMORAY_BLIND)
-            calc = moveAcc - 10; // -10 accuracy ice lens loss
+            calc = moveAcc - 20; // -20 accuracy ice lens loss
         if (gBattleMons[battlerAtk].species == SPECIES_ASTIGMORAY)
-            calc = moveAcc + 10; // +10 accuracy ice lens boost  
+            calc = moveAcc + 20; // +20 accuracy ice lens boost  
         break;
     case ABILITY_VICTORY_STAR:
         calc = (calc * 125) / 100; // 1.25 victory star boost

@@ -1728,9 +1728,9 @@ static const u8 sGooseChaserDescription[] = _(
     "foe in Tar and may hit twice.");
 
 static const u8 sHeatSeekerDescription[] = _(
-    "Burns from burned foes, or hit\n"
-    "by Fire, and transforms. Absorbs\n"
-    "Fire and burn hurts more.");
+    "Burn spreads to the Pokémon,\n"
+    "making it transform. Absorbs\n"
+    "Fire and foes' burns hurts more.");
 
 static const u8 sIceLensDescription[] = _(
     "Boosts accuracy and stops stat\n"
