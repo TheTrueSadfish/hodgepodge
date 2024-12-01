@@ -653,7 +653,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSpeedUpHit              @ EFFECT_FIREWORK_CRASH
 	.4byte BattleScript_EffectHit                     @ EFFECT_FIREBALLS
 	.4byte BattleScript_EffectEmberSnow               @ EFFECT_EMBER_SNOW
-	.4byte BattleScript_EffectHit                     @ EFFECT_FEATHER_RAZOR
+	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_FEATHER_RAZOR
 	.4byte BattleScript_EffectDragDown                @ EFFECT_DRAG_DOWN
 	.4byte BattleScript_EffectHauntMelody             @ EFFECT_HAUNT_MELODY
 	.4byte BattleScript_EffectOddcast                 @ EFFECT_ODDCAST
@@ -7777,7 +7777,7 @@ BattleScript_HealingMelodyActivates::
 	manipulatedamage DMG_CHANGE_SIGN
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	jumpifstatus BS_ATTACKER, STATUS1_PSN_ANY, BattleScript_HealingMelodyActivatesPoisonClear
+	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_HealingMelodyActivatesPoisonClear
 BattleScript_HealingMelodyContinue::
 	printstring STRINGID_HEALINGWISHHEALED
 	waitmessage B_WAIT_TIME_LONG

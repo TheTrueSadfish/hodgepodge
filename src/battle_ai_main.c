@@ -1064,6 +1064,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 if (IsStatLoweringMoveEffect(moveEffect))
                     RETURN_SCORE_MINUS(20);
                 break;
+            case ABILITY_ICE_LENS:
+                if (IsStatLoweringMoveEffect(moveEffect) && gBattleMons[battlerDef].species == SPECIES_ASTIGMORAY)
+                    RETURN_SCORE_MINUS(10);
+                break;
             case ABILITY_CLEAR_BODY:
             case ABILITY_FULL_METAL_BODY:
             case ABILITY_WHITE_SMOKE:

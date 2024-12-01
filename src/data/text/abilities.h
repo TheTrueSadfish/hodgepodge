@@ -1733,9 +1733,9 @@ static const u8 sHeatSeekerDescription[] = _(
     "Fire and burn hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Boosts accuracy. Transforms if\n"
-    "pierced. Takes more damage,\n"
-    "and reduces accuracy.");
+    "Boosts accuracy and stops stat\n"
+    "drops. Transforms if pierced.\n"
+    "Drops defenses and accuracy.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced\n"
@@ -1803,9 +1803,9 @@ static const u8 sViscerationDescription[] = _(
     "another Pokémon faints.");
 
 static const u8 sPanaceaDescription[] = _(
-    "The Pokémon's HP is slowly but\n"
-    "steadily restored throughout a\n"
-    "battle.");
+    "The Pokémon's HP is and status\n"
+    "conditions are healed throughout\n"
+    "a battle.");
 
 static const u8 sSurpriseDescription[] = _(
     "Lowers the opposing Pokémon's\n"
