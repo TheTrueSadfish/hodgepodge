@@ -2546,9 +2546,9 @@ static const u8 sAcrobaticsDescription[] = _(
     "isn't holding an item.");
 
 static const u8 sReflectTypeDescription[] = _(
-    "The user copies the foe's type\n"
-    "and then the user becomes immune\n"
-    "to moves of the same type as it.");
+    "The user copies the foe's primary\n"
+    "type and then the user becomes\n"
+    "immune to moves of the same type.");
 
 static const u8 sRetaliateDescription[] = _(
     "The user takes revenge for a\n"
@@ -3675,8 +3675,8 @@ static const u8 sEerieSpellDescription[] = _(
 
 static const u8 sDireClawDescription[] = _(
     "The user lashes out with ruinous\n"
-    "claws. This may poison,\n"
-    "paralyze, or panic the target.");
+    "claws. This may paralyze,\n"
+    "poison, or put the foe to sleep.");
 
 static const u8 sPsyshieldBashDescription[] = _(
     "The user slams into the foe,\n"
@@ -3945,9 +3945,9 @@ static const u8 sPounceDescription[] = _(
     "target's Speed stat.");
 
 static const u8 sTrailblazeDescription[] = _(
-    "The user leaps suddenly which\n"
-    "boosts its Speed. If the user is\n"
-    "blooming, also boosts accuracy.");
+    "The user attacks suddenly as if\n"
+    "leaping out from tall grass.\n"
+    "The boosts the user's Speed.");
 
 static const u8 sChillingWaterDescription[] = _(
     "The user attacks the target by\n"
@@ -4944,8 +4944,8 @@ static const u8 sWildArmsDescription[] = _(
     "the user's previous move failed.");
 
 static const u8 sPincerHookDescription[] = _(
-    "The user swings a perfectly\n"
-    "timed hook into the target.\n"
+    "This move goes first, but fails\n"
+    "if the foe is not attacking.\n"
     "Critical hits land more easily.");
 
 static const u8 sPainSpinesDescription[] = _(
@@ -4960,8 +4960,8 @@ static const u8 sDarkHungerDescription[] = _(
 
 static const u8 sNightBeamDescription[] = _(
     "A piercing light is shot at the\n"
-    "foe with to inflict and remove\n"
-    "its Ability.");
+    "foe with to do damage and remove\n"
+    "its Ability. Always goes first.");
 
 static const u8 sInversionDescription[] = _(
     "A move that becomes stronger the\n"
@@ -4989,14 +4989,14 @@ static const u8 sFireworkCrashDescription[] = _(
     "Speed and hurts it a little.");
 
 static const u8 sEmberSnowDescription[] = _(
-    "Burns the foe. If the user is in\n"
-    "a chariot it instead changes the\n"
+    "Burns the foe. If the user is\n"
+    "transformed it also changes the\n"
     "foe's move into Fire-type.");
 
 static const u8 sFeatherRazorDescription[] = _(
-    "Slashes twice, or more for each\n"
-    "Speed boost. Cuts the user's Spd.\n"
-    "Critical hits land more easily.");
+    "Hits twice, or more for each\n"
+    "Speed boost. Cuts foe's Def, and\n"
+    "user's Spd. Critical hits more.");
 
 static const u8 sDragDownDescription[] = _(
     "Switches the user out and resets\n"
@@ -5015,7 +5015,7 @@ static const u8 sOddcastDescription[] = _(
 
 static const u8 sKelpSapDescription[] = _(
     "Cuts 3 PP from the foe's last\n"
-    "used move. Absorbs 3/4 of the\n"
+    "used move. Absorbs all of the\n"
     "the damage taken by the foe.");
 
 static const u8 sNanabGattlingDescription[] = _(
@@ -5049,9 +5049,9 @@ static const u8 sAstralSpikesDescription[] = _(
     "remain scattered around the foe.");
 
 static const u8 sWildShuffleDescription[] = _(
-    "The fewer PP this move has, the\n"
-    "greater its power. This move\n"
-    "switches the user out.");
+    "Boosted the lower the PP it has.\n"
+    "This move switches the user out\n"
+    "and always goes first.");
 
 static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"
@@ -5059,9 +5059,9 @@ static const u8 sUprootEvilDescription[] = _(
     "Attack. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
-    "This move hits twice, the 1st\n"
-    "strike switches the foe out.\n"
-    "Can't be used consecutively.");
+    "This move hits twice, and\n"
+    "switches the foe out. Harshly\n"
+    "lowers the user's Speed after.");
 
 static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"
@@ -5089,9 +5089,9 @@ static const u8 sGammaRayDescription[] = _(
     "condition does extra damage.");
 
 static const u8 sFireballsDescription[] = _(
-    "Adds a hit for each stat drop on\n"
-    "the user. Boosted for each stat\n"
-    "raise on the user. Resets stats.");
+    "Hits twice, or more for each\n"
+    "stat raise. Boosted for each\n"
+    "stat drop. Resets stats after.");
 
 static const u8 sIcebreakerDescription[] = _(
     "An attack that hurts the user a\n"

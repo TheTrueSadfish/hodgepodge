@@ -736,8 +736,9 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro stockpile id:req
+	.macro stockpile battler:req, id:req
 	.byte 0x85
+	.byte \battler
 	.byte \id
 	.endm
 
@@ -2114,7 +2115,7 @@
 	.endm
 
 	.macro blukberryppreduce failInstr:req
-	various BS_TARGET, VARIOUS_BLUK_BERRY_PP_REDUCE
+	various BS_ATTACKER, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
 	.endm
 

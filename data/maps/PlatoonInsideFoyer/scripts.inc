@@ -252,89 +252,89 @@ PlatoonInsideFoyer_EventScript_ItemMenuLocked::
 
 PlatoonInsideFoyer_EventScript_GiveAllItems::
 	msgbox PlatoonInsideFoyer_Text_OkayBuckleUp, MSGBOX_DEFAULT
-	giveitem ITEM_BURNT_BRANCH
-	giveitem ITEM_HONDEW_BERRY
-	giveitem ITEM_RED_CARD
-	giveitem ITEM_SILK_SCARF
-	giveitem ITEM_FOCUS_SASH
-	giveitem ITEM_CHARCOAL
-	giveitem ITEM_ROCKY_HELMET
-	giveitem ITEM_FOCUS_BAND
-	giveitem ITEM_PUNCHING_GLOVE
-	giveitem ITEM_SHARP_BEAK
-	giveitem ITEM_STICKY_BARB
-	giveitem ITEM_MIRROR_HERB
-	giveitem ITEM_UTILITY_UMBRELLA
-	giveitem ITEM_NANAB_BERRY
-	giveitem ITEM_GRASSY_SEED
-	giveitem ITEM_SITRUS_BERRY
-	giveitem ITEM_BIG_ROOT
-	giveitem ITEM_LEFTOVERS
-	giveitem ITEM_COBA_BERRY
-	giveitem ITEM_BELUE_BERRY
-	giveitem ITEM_SCOPE_LENS
-	giveitem ITEM_LUMINOUS_MOSS
-	giveitem ITEM_RING_TARGET
-	giveitem ITEM_MENTAL_HERB
-	giveitem ITEM_CLEANSE_TAG
-	giveitem ITEM_CURSED_AMULET
-	giveitem ITEM_COVERT_CLOAK
-	giveitem ITEM_DESTINY_KNOT
-	giveitem ITEM_BLUK_BERRY
-	giveitem ITEM_WISE_GLASSES
-	giveitem ITEM_AIR_BALLOON
-	giveitem ITEM_ZOOM_LENS
-	giveitem ITEM_SOFT_SAND
-	giveitem ITEM_LIFE_ORB
-	giveitem ITEM_ABSORB_BULB
-	giveitem ITEM_PROTECTIVE_PADS
-	giveitem ITEM_LOST_MANTLE
-	giveitem ITEM_WEAKNESS_POLICY
-	giveitem ITEM_HARD_STONE
-	giveitem ITEM_BATTLE_HELM
-	giveitem ITEM_QUICK_CLAW
-	giveitem ITEM_CHOICE_BAND
-	giveitem ITEM_SHELL_BELL
 	giveitem ITEM_ABILITY_SHIELD
-	giveitem ITEM_METRONOME
-	giveitem ITEM_KINGS_ROCK
-	giveitem ITEM_WIDE_LENS
-	giveitem ITEM_TANGA_BERRY
-	giveitem ITEM_FLIP_COIN
-	giveitem ITEM_CUSTAP_BERRY
-	giveitem ITEM_SALAC_BERRY
-	giveitem ITEM_FROST_ORB
-	giveitem ITEM_KEE_BERRY
-	giveitem ITEM_MUSCLE_BAND
-	giveitem ITEM_BLACK_SLUDGE
-	giveitem ITEM_FLOAT_STONE
-	giveitem ITEM_POISON_BARB
-	giveitem ITEM_MARANGA_BERRY
-	giveitem ITEM_PESKY_PLUSH
-	giveitem ITEM_SILVER_POWDER
-	giveitem ITEM_EJECT_BUTTON
-	giveitem ITEM_BRIGHT_POWDER
-	giveitem ITEM_CLEAR_AMULET
-	giveitem ITEM_BINDING_BAND
-	giveitem ITEM_TOXIC_ORB
-	giveitem ITEM_DRAGON_FANG
-	giveitem ITEM_ROSELI_BERRY
-	giveitem ITEM_GLUE_TUBE
-	giveitem ITEM_PINAP_BERRY
-	giveitem ITEM_ICY_ROCK
-	giveitem ITEM_SPELON_BERRY
-	giveitem ITEM_POMEG_BERRY
-	giveitem ITEM_FLAME_ORB
-	giveitem ITEM_NEVER_MELT_ICE
-	giveitem ITEM_LIGHT_CLAY
-	giveitem ITEM_LOADED_DICE
-	giveitem ITEM_LIGHT_BALL
-	giveitem ITEM_JABOCA_BERRY
-	giveitem ITEM_CORRODE_MOD
-	giveitem ITEM_BLUNDER_POLICY
-	giveitem ITEM_MAGOST_BERRY
+	giveitem ITEM_ABSORB_BULB
+	giveitem ITEM_AIR_BALLOON
 	giveitem ITEM_ASSAULT_VEST
+	giveitem ITEM_BATTLE_HELM
+	giveitem ITEM_BELUE_BERRY
+	giveitem ITEM_BIG_ROOT
+	giveitem ITEM_BINDING_BAND
+	giveitem ITEM_BLACK_SLUDGE
+	giveitem ITEM_BLUK_BERRY
+	giveitem ITEM_PUNCHING_GLOVE
+	giveitem ITEM_BRIGHT_POWDER
+	giveitem ITEM_BURNT_BRANCH
+	giveitem ITEM_CHARCOAL
+	giveitem ITEM_CHOICE_BAND
+	giveitem ITEM_CHOICE_SCARF
+	giveitem ITEM_CLEANSE_TAG
+	giveitem ITEM_CLEAR_AMULET
+	giveitem ITEM_COBA_BERRY
+	giveitem ITEM_CORRODE_MOD
+	giveitem ITEM_COVERT_CLOAK
+	giveitem ITEM_CURSED_AMULET
+	giveitem ITEM_CUSTAP_BERRY
+	giveitem ITEM_DESTINY_KNOT
+	giveitem ITEM_DRAGON_FANG
+	giveitem ITEM_EJECT_BUTTON
 	giveitem ITEM_EJECT_PACK
+	giveitem ITEM_FLAME_ORB
+	giveitem ITEM_FLIP_COIN
+	giveitem ITEM_FLOAT_STONE
+	giveitem ITEM_FOCUS_BAND
+	giveitem ITEM_FOCUS_SASH
+	giveitem ITEM_FROST_ORB
+	giveitem ITEM_GLUE_TUBE
+	giveitem ITEM_GRASSY_SEED
+	giveitem ITEM_HARD_STONE
+	giveitem ITEM_HONDEW_BERRY
+	giveitem ITEM_ICY_ROCK
+	giveitem ITEM_JABOCA_BERRY
+	giveitem ITEM_KEE_BERRY
+	giveitem ITEM_KINGS_ROCK
+	giveitem ITEM_LEFTOVERS
+	giveitem ITEM_LIFE_ORB
+	giveitem ITEM_LIGHT_CLAY
+	giveitem ITEM_LIGHT_BALL
+	giveitem ITEM_LOADED_DICE
+	giveitem ITEM_LOST_MANTLE
+	giveitem ITEM_LUMINOUS_MOSS
+	giveitem ITEM_MAGOST_BERRY
+	giveitem ITEM_MARANGA_BERRY
+	giveitem ITEM_MENTAL_HERB
+	giveitem ITEM_METRONOME
+	giveitem ITEM_MIRROR_HERB
+	giveitem ITEM_BLUNDER_POLICY
+	giveitem ITEM_MUSCLE_BAND
+	giveitem ITEM_NANAB_BERRY
+	giveitem ITEM_NEVER_MELT_ICE
+	giveitem ITEM_PESKY_PLUSH
+	giveitem ITEM_PETAYA_BERRY
+	giveitem ITEM_PINAP_BERRY
+	giveitem ITEM_POISON_BARB
+	giveitem ITEM_POMEG_BERRY
+	giveitem ITEM_PROTECTIVE_PADS
+	giveitem ITEM_QUICK_CLAW
+	giveitem ITEM_RED_CARD
+	giveitem ITEM_RING_TARGET
+	giveitem ITEM_ROCKY_HELMET
+	giveitem ITEM_SALAC_BERRY
+	giveitem ITEM_SCOPE_LENS
+	giveitem ITEM_SHARP_BEAK
+	giveitem ITEM_SHELL_BELL
+	giveitem ITEM_SILK_SCARF
+	giveitem ITEM_SILVER_POWDER
+	giveitem ITEM_SITRUS_BERRY
+	giveitem ITEM_SOFT_SAND
+	giveitem ITEM_SPELON_BERRY
+	giveitem ITEM_STICKY_BARB
+	giveitem ITEM_TANGA_BERRY
+	giveitem ITEM_TOXIC_ORB
+	giveitem ITEM_WEAKNESS_POLICY
+	giveitem ITEM_WIDE_LENS
+	giveitem ITEM_WISE_GLASSES
+	giveitem ITEM_ZOOM_LENS
 	delay 8
 	setflag FLAG_HP_UNLOCKED_ITEM_MENU
 	msgbox PlatoonInsideFoyer_Text_ThatsEverything, MSGBOX_AUTOCLOSE
@@ -2591,7 +2591,7 @@ PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave:
 	.string "The last conceivable milestone\l"
 	.string "would be getting every single\l"
 	.string "Pokedex entry filled out.\l"
-	.string "All 142. Good luck if you\l"
+	.string "All 140. Good luck if you\l"
 	.string "so choose to take that road.\p"
 	.string "And as always, good evening.\n$"
 
@@ -2832,31 +2832,30 @@ PlatoonInsideFoyer_Text_DevLorePeckachew:
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreGracklin:
-	.string "Gracklin comes from an\n"
-	.string "abandoned project aiming to\l"
-	.string "redo all the mons from the\l"
-	.string "open source Tuxemon project\l"
-	.string "with Chairry's own spin. This line\l"
-	.string "in particular is a retake\l"
-	.string "on the Grintrock line.$"
+	.string "Gracklin comes from an abandoned\n"
+	.string "project aiming to redo all the\l"
+	.string "monsters from the open-source\l"
+	.string "“Tuxemon” project with Chairry’s\l"
+	.string "own spin on it. This line, in\l"
+	.string "particular, is a retake on the\l"
+	.string "Grintrock line.$"
 
 PlatoonInsideFoyer_Text_DevLoreStovlare:
-	.string "Stovlare is a very old starter\n"
-	.string "of Chairry's dating almost 15\l"
-	.string "years back. It has a really\l"
-	.string "bad sprite that was made as\l"
-	.string "one of his first, pre-AlteRed.\l"
-	.string "As a kid, I guess he was just\l"
-	.string "really into the concept of a\l"
-	.string "stove based fire starter.$"
+	.string "Stovlare is a very old starter of\n"
+	.string "Chairry's dating back almost 15\l"
+	.string "years. It has a terrible sprite\l"
+	.string "that was made as one of his first,\l"
+	.string "pre-AlteRed. As a kid, he was just\l"
+	.string "really into the concep of at\l"
+	.string "stove-based fire starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreAstigmoray:
-	.string "Astigmoray comes from a group\n"
-	.string "of 4 or so Gen 5 styled lines of\l"
-	.string "Pokemon Chairry made after AlteRed\l"
-	.string "to try and do more original stuff.\l"
-	.string "He had wanted an Eyeball based\l"
-	.string "eel mon for a long time, which\l"
+	.string "Astigmoray comes from a group of\n"
+	.string "four or so Gen 5-styled lines of\l"
+	.string "Pokémon Chairry made after AlteRed\l"
+	.string "to try more original stuff. He had\l"
+	.string "wanted an eyeball-based eel\l"
+	.string "Pokémon for a long time, which\l"
 	.string "crystallized into its old design.\l"
 	.string "It was significantly redesigned\l"
 	.string "for this game.$"

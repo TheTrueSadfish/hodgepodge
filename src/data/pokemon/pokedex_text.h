@@ -6749,11 +6749,9 @@ const u8 gGooperPokedexText[] = _(
 	"perceive any of the negativity.");
 
 const u8 gSwisquirePokedexText[] = _(
-	"Swisquire are large, cuddly rodent Pokémon that\n"
-	"love hugs. In the past, people made pillows and\n"
-	"blankets from Swisquire fur, but this practice\n"
-	"fell out of favor because of concerns that it\n"
-	"would encourage trophy hunting.");
+	"Swiquire are large, cuddly rodent Pokémon that\n"
+	"love hugs. In the past, pillows and blankets\n"
+	"were made from Swisquire furs.");
 
 const u8 gCelshrioomPokedexText[] = _(
 	"Celshrioom can completely control the\n"

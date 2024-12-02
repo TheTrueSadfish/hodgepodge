@@ -3422,10 +3422,6 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].statFell = FALSE;
     gProtectStructs[battler].pranksterElevated = FALSE;
     gProtectStructs[battler].defendOrder = FALSE;
-    gProtectStructs[battler].daringDeedSpade = FALSE;
-    gProtectStructs[battler].daringDeedHeart = FALSE;
-    gProtectStructs[battler].daringDeedClub = FALSE;
-    gProtectStructs[battler].daringDeedDiamond = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
 
@@ -5175,10 +5171,6 @@ static void TurnValuesCleanUp(bool8 var0)
             gProtectStructs[i].usedCustapBerry = FALSE;
             gProtectStructs[i].quickDraw = FALSE;
             gProtectStructs[i].defendOrder = FALSE;
-            gProtectStructs[i].daringDeedSpade = FALSE;
-            gProtectStructs[i].daringDeedHeart = FALSE;
-            gProtectStructs[i].daringDeedClub = FALSE;
-            gProtectStructs[i].daringDeedDiamond = FALSE;
             memset(&gQueuedStatBoosts[i], 0, sizeof(struct QueuedStatBoost));
         }
         else

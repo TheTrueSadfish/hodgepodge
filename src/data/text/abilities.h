@@ -1713,9 +1713,9 @@ static const u8 sCovenLightsDescription[] = _(
     "are lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
-    "Doubles PP usage. Attacks may\n"
-    "earn money or taunt, critical\n"
-    "hit, or infatuate the foe.");
+    "Greatly boosts the critical-hit\n"
+    "ratios of moves, but doubles the\n"
+    "amount of PP they use.");
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"
@@ -1728,14 +1728,14 @@ static const u8 sGooseChaserDescription[] = _(
     "foe in Tar and may hit twice.");
 
 static const u8 sHeatSeekerDescription[] = _(
-    "Burns from burned foes, or hit\n"
-    "by Fire, and transforms. Absorbs\n"
-    "Fire and burn hurts more.");
+    "Burn spreads to the Pokémon,\n"
+    "making it transform. Absorbs\n"
+    "Fire and foes' burns hurts more.");
 
 static const u8 sIceLensDescription[] = _(
-    "Boosts accuracy. Transforms if\n"
-    "pierced. Takes more damage,\n"
-    "and reduces accuracy.");
+    "Boosts accuracy and stops stat\n"
+    "drops. Transforms if pierced.\n"
+    "Drops defenses and accuracy.");
 
 static const u8 sNegatePlateDescription[] = _(
     "The Pokémon takes reduced\n"
@@ -1748,9 +1748,9 @@ static const u8 sPaintedHazardDescription[] = _(
     "depending on the move's type.");
 
 static const u8 sPelagicLightsDescription[] = _(
-    "The Pokémon confuses and torments\n"
-    "opposing Pokémon with stat\n"
-    "changes when it enters a battle.");
+    "The Pokémon confuses and\n"
+    "torments foes with stat changes\n"
+    "when it enters a battle.");
 
 static const u8 sPrecisionDescription[] = _(
     "Beam moves land more critical\n"
@@ -1788,9 +1788,9 @@ static const u8 sMisfortuneDescription[] = _(
     "the PP used for those moves.");
 
 static const u8 sReboundDescription[] = _(
-    "Contact with the Pokémon forces\n"
-    "the attacker to switch out or\n"
-    "run away.");
+    "Attcking the Pokémon forces the\n"
+    "attacker to switch out o runr\n"
+    "away.");
 
 static const u8 sInstabilityDescription[] = _(
     "The Pokémon loses HP every turn.\n"
@@ -1803,9 +1803,9 @@ static const u8 sViscerationDescription[] = _(
     "another Pokémon faints.");
 
 static const u8 sPanaceaDescription[] = _(
-    "The Pokémon's HP is slowly but\n"
-    "steadily restored throughout a\n"
-    "battle.");
+    "The Pokémon's HP is and status\n"
+    "conditions are healed throughout\n"
+    "a battle.");
 
 static const u8 sSurpriseDescription[] = _(
     "Lowers the opposing Pokémon's\n"
