@@ -1,6 +1,7 @@
 .set LOCALID_INTROMAN, 1
 
 PlatoonOutside_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, PlatoonOutside_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlatoonOutside_OnFrame
 	.byte 0
 
@@ -13,7 +14,10 @@ PlatoonOutside_OnLoad:
 	end
 
 PlatoonOutside_EventScript_RemoveCaveBlocker::
-	setmetatile 16, 7, METATILE_Fallarbor_NoCaveBlocker, FALSE
+	setmetatile 17, 7, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 17, 8, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 18, 8, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 18, 9, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
 	special DrawWholeMapView
 	return
 
@@ -70,13 +74,9 @@ PlatoonOutside_EventScript_EnjoyThePlatoon::
 	msgbox PlatoonOutside_Text_EnjoyThePlatoon, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanAdjourn
 	waitmovement 0
-	opendoor 9, 5
-	waitdooranim
 	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanEnterDoor
 	waitmovement 0
 	playse SE_EXIT
-	closedoor 9, 5
-	waitdooranim
 	removeobject LOCALID_INTROMAN
 	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	releaseall
