@@ -79,21 +79,21 @@
       "x": 24,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_PLATOON_OUTSIDE",
+      "dest_map": "MAP_PEBBLERITE_CAVE",
       "dest_warp_id": "0"
     },
     {
       "x": 8,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PLATOON_OUTSIDE",
+      "dest_map": "MAP_PLATOON_INSIDE_FOYER",
       "dest_warp_id": "0"
     },
     {
       "x": 10,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_PLATOON_OUTSIDE",
+      "dest_map": "MAP_PLATOON_INSIDE_FOYER",
       "dest_warp_id": "0"
     }
   ],

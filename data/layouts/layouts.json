@@ -5840,6 +5840,16 @@
       "secondary_tileset": "gTileset_TrainerHill",
       "border_filepath": "data/layouts/PlatoonInsideFoyer/border.bin",
       "blockdata_filepath": "data/layouts/PlatoonInsideFoyer/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE",
+      "name": "PebbleriteCave_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/PebbleriteCave/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCave/map.bin"
     }
   ]
 }
