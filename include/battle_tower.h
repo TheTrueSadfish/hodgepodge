@@ -26,8 +26,8 @@ struct BattleFrontierTrainer
     const u16 *monSet;
 };
 
-extern const u8 gTowerMaleFacilityClasses[13];
-extern const u8 gTowerMaleTrainerGfxIds[13];
+extern const u8 gTowerMaleFacilityClasses[14];
+extern const u8 gTowerMaleTrainerGfxIds[14];
 extern const u8 gTowerFemaleFacilityClasses[8];
 extern const u8 gTowerFemaleTrainerGfxIds[8];
 extern const struct TrainerMon gBattleFrontierMons[];

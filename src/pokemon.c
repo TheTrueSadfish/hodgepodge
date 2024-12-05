@@ -8272,6 +8272,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PKMN_BREEDER:
         case TRAINER_CLASS_POKEFAN:
         case TRAINER_CLASS_SOLDIER:
+        case TRAINER_CLASS_YOUNGSTER:
             return MUS_VS_TRAINER;
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_LEADER:
