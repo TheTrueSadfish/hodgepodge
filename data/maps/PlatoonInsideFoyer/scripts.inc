@@ -2141,7 +2141,7 @@ PlatoonInsideFoyer_Text_WantToGetInMuseum:
 	.string "Best advice I can give is to keep\n"
 	.string "trying out new ones! Oh, and\l"
 	.string "swapping in a previously defeated\l"
-	.string "trainer's Pokemon will have that\l"
+	.string "trainer's Pokémon will have that\l"
 	.string "count as Caught as well.\p"
 	.string "Maybe one day we'll both find\n"
 	.string "ourselves in those hallowed halls!$"
@@ -2159,9 +2159,9 @@ PlatoonInsideFoyer_Text_SleepRest:
 	.string "...But that makes the sleeper\n"
 	.string "wake right up...\p"
 	.string "Now, Capybarna...\n"
-	.string "That Pokemon can use Rest...\p"
-	.string "A Resting Pokemon is different\n"
-	.string "than a Sleeping Pokemon...\l"
+	.string "That Pokémon can use Rest...\p"
+	.string "A Resting Pokémon is different\n"
+	.string "than a Sleeping Pokémon...\l"
 	.string "...They stay asleep longer...\l"
 	.string "and can't be woken up\l"
 	.string "by attacks...\p"
@@ -2205,12 +2205,12 @@ PlatoonInsideFoyer_Text_DragonType:
 PlatoonInsideFoyer_Text_IceRelatedThings:
 	.string "My husband has not stopped\n"
 	.string "criticizing my heavy usage of\l"
-	.string "Ice type Pokemon.\p"
+	.string "Ice type Pokémon.\p"
 	.string "It is simple science.\n"
 	.string "Ice is not as brittle as he so\l"
 	.string "likes to claim. It is\l"
 	.string "wonderful defensively\l"
-	.string "against Water type Pokemon.\p"
+	.string "against Water type Pokémon.\p"
 	.string "Oh, and when it is hailing?\n"
 	.string "Their physical defensive\l"
 	.string "capabilities rise.\p"
@@ -2232,7 +2232,7 @@ PlatoonInsideFoyer_Text_CosmicType:
 	.string "It is an impeccable type in\n"
 	.string "my opinion, with more\l"
 	.string "defensive pros than cons.\p"
-	.string "Cosmic type Pokemon\n"
+	.string "Cosmic type Pokémon\n"
 	.string "are weak to the following:\l"
 	.string "Rock, Dragon, and Dark types.\p"
 	.string "They are, then, resistant\n"
@@ -2262,7 +2262,7 @@ PlatoonInsideFoyer_Text_GreasyType:
 	.string "you assume, then, that I like\l"
 	.string "the Greasy type?\p"
 	.string "I mean, I do. So, uh...\p"
-	.string "Listen. Greasy type Pokemon are\n"
+	.string "Listen. Greasy type Pokémon are\n"
 	.string "pretty fragile. They're weak\l"
 	.string "to Ground, Bug, Fire,\l"
 	.string "Psychic, and Fairy.\p"
@@ -2284,7 +2284,7 @@ PlatoonInsideFoyer_Text_GreasyType:
 
 PlatoonInsideFoyer_Text_RubberType:
 	.string "Style is what I aim for most\n"
-	.string "when choosing Pokemon!\l"
+	.string "when choosing Pokémon!\l"
 	.string "Obviously, the shining jewel\l"
 	.string "of them all is Babobo.\l"
 	.string "The one and only Rubber type!\p"
@@ -2294,7 +2294,7 @@ PlatoonInsideFoyer_Text_RubberType:
 	.string "devastatingly hard versus\l"
 	.string "Electric and Fairy targets,\l"
 	.string "it will hit all else\l"
-	.string "neautrally except for\l"
+	.string "neutrally except for\l"
 	.string "Rock, Steel, and Poison,\l"
 	.string "its only resistant types.\p"
 	.string "Rubber completely steals\n"
@@ -2306,18 +2306,18 @@ PlatoonInsideFoyer_Text_RubberType:
 	.string "Keep an eye out for\n"
 	.string "Poison, Steel and Psychic\l"
 	.string "attacks. Those can particularly\l"
-	.string "bend a Rubber Pokemon.\p"
+	.string "bend a Rubber Pokémon.\p"
 	.string "If you can juggle all of that\n"
 	.string "knowledge, give Babobo a whirl!$"
 
 PlatoonInsideFoyer_Text_RelicType:
 	.string "Oi, laddie...\n"
 	.string "This old man has been commanding\l"
-	.string "a squadron of Pokemon for\l"
+	.string "a squadron of Pokémon for\l"
 	.string "many a decade now.\p"
 	.string "Let me clue you in on the ancient\n"
 	.string "terror that is Vizaaviso,\l"
-	.string "a Relic type Pokemon, once\l"
+	.string "a Relic type Pokémon, once\l"
 	.string "long forgotten.\p"
 	.string "This type is older than many others.\n"
 	.string "Thus, it is relatively badly\l"
@@ -2341,7 +2341,7 @@ PlatoonInsideFoyer_Text_BeastType:
 	.string "YEAHHHHHH!!!\n"
 	.string "I like to go ALL OUT\l"
 	.string "when I'm on the field!\l"
-	.string "BEAST type Pokemon are perfect\l"
+	.string "BEAST type Pokémon are perfect\l"
 	.string "for a BEAST like me!\p"
 	.string "Setatonkre is the biggest\n"
 	.string "BEAST out there! Attack,\l"
@@ -2358,7 +2358,7 @@ PlatoonInsideFoyer_Text_FormChanges:
 	.string "Sometimes I get told I have a\n"
 	.string "complexity addiction.\l"
 	.string "Well, addiction's a strong word,\l"
-	.string "but I do like to run Pokemon\l"
+	.string "but I do like to run Pokémon\l"
 	.string "with a bit more detail\l"
 	.string "baked in.\p"
 	.string "Have you stumbled onto any with\n"
@@ -2370,7 +2370,7 @@ PlatoonInsideFoyer_Text_FormChanges:
 	.string "Hagoosh starts out very strong,\n"
 	.string "but its slime body can\l"
 	.string "dissipate when weak, making it\l"
-	.string "an easy Pokemon to sweep up\l"
+	.string "an easy Pokémon to sweep up\l"
 	.string "when low on health.\p"
 	.string "Astigmoray is a complete monster\n"
 	.string "out there. But, I hear if you\l"
@@ -2423,17 +2423,17 @@ PlatoonInsideFoyer_Text_ExcitingWin:
 PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
 	.string "Have you been checking your\n"
 	.string "Pokedex, Tawila? It records\l"
-	.string "data for every Pokemon you use\l"
+	.string "data for every Pokémon you use\l"
 	.string "on your team. There's some\l"
 	.string "fascinating stuff to learn from it.\p"
-	.string "A profusion of the Pokemon you can\n"
+	.string "A profusion of the Pokémon you can\n"
 	.string "pick from in the facility have\l"
 	.string "pre-evolutions out in the wild.\l"
 	.string "If you're in for a pursuit of\l"
 	.string "knowledge, I would go talk to\l"
 	.string "Tanner at his counter. He can fill\l"
 	.string "in your Pokedex with data for\l"
-	.string "pre-evolutions of Pokemon you have\l"
+	.string "pre-evolutions of Pokémon you have\l"
 	.string "used in battle thus far.\p"
 	.string "I may have some further special\n"
 	.string "gifts for you if you humor me and\l"
@@ -2466,17 +2466,17 @@ PlatoonInsideFoyer_Text_IllUnlockTheItemAndPrevoForYou:
 	.string "Also, I've been meaning to ask.\n"
 	.string "Have you been checking your\l"
 	.string "Pokedex, Tawila? It records\l"
-	.string "data for every Pokemon you use\l"
+	.string "data for every Pokémon you use\l"
 	.string "on your team. There's some\l"
 	.string "fascinating stuff to learn from it.\p"
-	.string "A profusion of the Pokemon you can\n"
+	.string "A profusion of the Pokémon you can\n"
 	.string "pick from in the facility have\l"
 	.string "pre-evolutions out in the wild.\l"
 	.string "If you're in for a pursuit of\l"
 	.string "knowledge, I would go talk to\l"
 	.string "Tanner at his counter. He can fill\l"
 	.string "in your Pokedex with data for\l"
-	.string "pre-evolutions of Pokemon you have\l"
+	.string "pre-evolutions of Pokémon you have\l"
 	.string "used in battle thus far.\p"
 	.string "I may have some further special\n"
 	.string "gifts for you if you humor me and\l"
@@ -2503,13 +2503,13 @@ PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons:
 	.string "for even more of a mix-up to\l"
 	.string "regular battles in this facility,\l"
 	.string "I can set you up with the\l"
-	.string "experimental Pokemon.\p"
+	.string "experimental Pokémon.\p"
 	.string "Not everyone wants to have them in\n"
 	.string "the pool, as they are wildly\l"
 	.string "out of most peoples' wheelhouse.\l"
 	.string "Why so, you may ask? Well, most\l"
 	.string "of them have Types that have not\l"
-	.string "been seen on any other Pokemon.\p"
+	.string "been seen on any other Pokémon.\p"
 	.string "Cosmic. Beast. Relic.\n"
 	.string "Rubber. Greasy.\l"
 	.string "I would wager that these Type\l"
@@ -2523,7 +2523,7 @@ PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons:
 	.string "Oh, and, hmm...\n"
 	.string "The next milestone I want you\l"
 	.string "to strive for is seeing 100\l"
-	.string "Pokemon in total.\l"
+	.string "Pokémon in total.\l"
 	.string "Go back to battling whenever\l"
 	.string "you would like and get those\l"
 	.string "numbers up.\p"
@@ -2538,7 +2538,7 @@ PlatoonInsideFoyer_Text_100DexSeen:
 
 PlatoonInsideFoyer_Text_IllUnlockTheFanClub:
 	.string "Yep. I can already tell.\n"
-	.string "100 Pokemon seen...\l"
+	.string "100 Pokémon seen...\l"
 	.string "awesome possum.\p"
 	.string "I could always tell you had an\n"
 	.string "appreciation for the wildlife\l"
@@ -2602,7 +2602,7 @@ PlatoonInsideFoyer_Text_140DexCaught:
 	.string "show off?$"
 
 PlatoonInsideFoyer_Text_IllUnlockMuseum:
-	.string "Every. Single. Pokemon. Catalogued.\p"
+	.string "Every. Single. Pokémon. Catalogued.\p"
 	.string "Kudos, Tawila. You've seen\n"
 	.string "everything there could be to see.\p"
 	.string "So, I suppose it's time to fill you\n"
@@ -2619,12 +2619,12 @@ PlatoonInsideFoyer_Text_IllUnlockMuseum:
 	.string "I was interested in taking that\n"
 	.string "base and spinning it into my\l"
 	.string "own game. A game where people\l"
-	.string "could use custom Pokemon unseen\l"
+	.string "could use custom Pokémon unseen\l"
 	.string "and unheard of in our world.\p"
 	.string "Friends of mine gathered around\n"
 	.string "to help me out with various parts\l"
 	.string "of the design process. The\l"
-	.string "Pokemon you have been battling with\l"
+	.string "Pokémon you have been battling with\l"
 	.string "have been designed by many\l"
 	.string "different talented folks.\p"
 	.string "Every individual you see in this\n"
@@ -2716,7 +2716,7 @@ PlatoonInsideFoyer_Text_WantToFillOutYourDex:
 	.string "Would you like me to fill out\n"
 	.string "pre-evolution dex entries\l"
 	.string "in your Pokedex? This will only\l"
-	.string "be for Pokemon you have registered\l"
+	.string "be for Pokémon you have registered\l"
 	.string "as Caught.$"
 
 PlatoonInsideFoyer_Text_OkayThen:
@@ -2729,17 +2729,34 @@ PlatoonInsideFoyer_Text_CheckYourDexNow:
 	.string "you've just unlocked.$"
 
 PlatoonInsideFoyer_Text_Terminal:
-	.string "Which Pokemon line would you\n"
+	.string "Which Pokémon line would you\n"
 	.string "like to view the dev lore of?$"
 
 PlatoonInsideFoyer_Text_DevLoreMusalord:
-	.string "Dev Lore Unavailable.$"
+	.string "Musalord and its pre-evolution\n"
+	.string "were designed by Bepis\l"
+	.string "for his project Let's Go Voreon.\l"
+	.string "Believe it or not, it is very\l"
+	.string "loosely originating from the\l"
+	.string "Peanut Butter Jelly Time Banana\l"
+	.string "meme. How does that make you feel?$"
 
 PlatoonInsideFoyer_Text_DevLoreExpload:
-	.string "Dev Lore Unavailable.$"
+	.string "This Pokémon is based on\n"
+	.string "fire belly toads, and is a very\l"
+	.string "revamped version of a line of\l"
+	.string "toad starters made by Bepis.\l"
+	.string "They were intended to be used\l"
+	.string "in his project Let's Go Voreon,\l"
+	.string "which is on indefinite hiatus.$"
 
 PlatoonInsideFoyer_Text_DevLorePorybot:
-	.string "Dev Lore Unavailable.$"
+	.string "Porybot's line, made by Bepis,\n"
+	.string "are based on BattleBots.\l"
+	.string "They were originally made for\l"
+	.string "SharkGuy's abandoned hack,\l"
+	.string "Exchanged Emerald, and had\l"
+	.string "their sprites remade for this.$"
 
 PlatoonInsideFoyer_Text_DevLoreVerglazard:
 	.string "This Pokémon’s concept comes\n"
@@ -2829,7 +2846,16 @@ PlatoonInsideFoyer_Text_DevLoreNinown:
 	.string "weird gimmick Pokémon.$"
 
 PlatoonInsideFoyer_Text_DevLorePeckachew:
-	.string "Dev Lore Unavailable.$"
+	.string "This Pokémon was one of the\n"
+	.string "first Gen 2 Sprites Celadonk made,\l"
+	.string "which was in 2018. It’s obviously\l"
+	.string "supposed to be a bootleg Pikachu,\l"
+	.string "since Celadonk finds it both funny\l"
+	.string "and possible, as we’ve seen with\l"
+	.string "Mimikyu. While adding Peckachew\l"
+	.string "to this hack, Celadonk wanted\l"
+	.string "many silly things, like not having\l"
+	.string "any Electric-type moves in its set.$"
 
 PlatoonInsideFoyer_Text_DevLoreGracklin:
 	.string "Gracklin comes from an abandoned\n"
@@ -2968,7 +2994,7 @@ PlatoonInsideFoyer_Text_DevLoreMantacore:
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
-	.string "If it wasn’t obvious, this Pokemon\n"
+	.string "If it wasn’t obvious, this Pokémon\n"
 	.string "is Regidrago’s hinted-at complete\l"
 	.string "form. There is not much to it,\l"
 	.string "although there is a Regieleki\l"
@@ -2976,10 +3002,24 @@ PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
 	.string "see it someday.$"
 
 PlatoonInsideFoyer_Text_DevLoreCapybarna:
-	.string "Dev Lore Unavailable.$"
+	.string "Capybarna and its prevo Bakunna\n"
+	.string "were made by EeVeeEe for Chairry's\l"
+	.string "abandoned AlterVerse game,\l"
+	.string "Pokémon Mystery Mauve. In that\l"
+	.string "romhack, they would have filled\l"
+	.string "the 'regional rodent' role.$"
 
 PlatoonInsideFoyer_Text_DevLoreParakuri:
-	.string "Dev Lore Unavailable.$"
+	.string "Parakuri and its prevo Paribo\n"
+	.string "were made by EeVeeEe for\l"
+	.string "a game currently on hiatus,\l"
+	.string "Pokémon Varia Blue. They were made\l"
+	.string "to replace the Alter Gastly\l"
+	.string "line, also based on Goombas,\l"
+	.string "before a nice redesign of that\l"
+	.string "line was sprited. Parakuri had\l"
+	.string "no role left to fill, so it\l"
+	.string "was put into this hack.$"
 
 PlatoonInsideFoyer_Text_DevLoreRalsea:
 	.string "This was the first line to be\n"
@@ -2993,7 +3033,18 @@ PlatoonInsideFoyer_Text_DevLoreRalsea:
 	.string "have finally found a home.$"
 
 PlatoonInsideFoyer_Text_DevLoreChakraring:
-	.string "Dev Lore Unavailable.$"
+	.string "This Pokémon line was sprited\n"
+	.string "by Ogwon for the now-on-hiatus\l"
+	.string "Pokémon VariaBlue. The general\l"
+	.string "concept was for a specially\l"
+	.string "offensive pure Fighting type.\l"
+	.string "It also has an Alter Ursaluna\l"
+	.string "evolution called Ursawaken,\l"
+	.string "which was Fighting/Cosmic type,\l"
+	.string "and was cut from this roster\l"
+	.string "to have all the fan typed mons\l"
+	.string "be pure typed and at the end\l"
+	.string "of the dex listing.$"
 
 PlatoonInsideFoyer_Text_DevLoreHagoosh:
 	.string "Hagoosh was made for Faketober\n"
@@ -3008,7 +3059,17 @@ PlatoonInsideFoyer_Text_DevLoreHagoosh:
 	.string "Arctiguana from Ben 10.$"
 
 PlatoonInsideFoyer_Text_DevLoreGoogeist:
-	.string "Dev Lore Unavailable.$"
+	.string "Googeist and its preevolution\n"
+	.string "are based on classic fantasy\l"
+	.string "slimes, often seen in DnD.\l"
+	.string "It was made for a Pokémon designing\l"
+	.string "contest held by Chairry for\l"
+	.string "VariaBlue, and unfortunately\l"
+	.string "did not end up winning. However,\l"
+	.string "with the sprites sitting around\l"
+	.string "they inevitably were going to be\l"
+	.string "used for something, and thus got\l"
+	.string "slotted in here.$"
 
 PlatoonInsideFoyer_Text_DevLoreDragong:
 	.string "This line comes from when Eevee\n"
@@ -3029,7 +3090,7 @@ PlatoonInsideFoyer_Text_DevLoreWyrmWing:
 	.string "as an observation that Slither\l"
 	.string "Wing's wings could be reworked\l"
 	.string "into a large fin, mainly to add\l"
-	.string "more aquatic Pokemon. It's\l"
+	.string "more aquatic Pokémon. It's\l"
 	.string "funny since this realized version\l"
 	.string "of Wyrm Wing did not become\l"
 	.string "a poor man's Water-type substitute\l"
@@ -3074,31 +3135,68 @@ PlatoonInsideFoyer_Text_DevLoreKittepup:
 
 PlatoonInsideFoyer_Text_DevLoreChernoboar:
 	.string "This line comes from FBI's\n"
-	.string "cancelled project called Pokemon\l"
+	.string "cancelled project called Pokémon\l"
 	.string "Unnamed, and they were meant\l"
 	.string "to be the 3-stage Grass starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreIcandesfen:
 	.string "This line comes from FBI's\n"
-	.string "cancelled project called Pokemon\l"
+	.string "cancelled project called Pokémon\l"
 	.string "Unnamed, and it were meant\l"
 	.string "to be the final stage\l"
 	.string "of the Fire starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreCastermite:
-	.string "Dev Lore Unavailable.$"
+	.string "Castermite and its line were made\n"
+	.string "for FBI's half-serious, half-joke\l"
+	.string "project Pokémon Astral, which\l"
+	.string "is now long defunct. While\l"
+	.string "Castermite itself was resprited,\l"
+	.string "its prevos still have the same\l"
+	.string "sprites from back when they were\l"
+	.string "first shown off years ago.$"
 
 PlatoonInsideFoyer_Text_DevLoreCelshrioom:
-	.string "Dev Lore Unavailable.$"
+	.string "One of Gabo's first Fakemon\n"
+	.string "designs, originally made for a\l"
+	.string "regional Pokémon contest. This,\l"
+	.string "and its preevolution used to be\l"
+	.string "a regional Morelull and Shiinotic.\l"
+	.string "Gabo ended up reutilizing these\l"
+	.string "designs for this romhack, and\l"
+	.string "changing them from regional\l"
+	.string "Pokémon, to Fakemon.$"
 
 PlatoonInsideFoyer_Text_DevLoreSeraphure:
-	.string "Dev Lore Unavailable.$"
+	.string "Originally made for a Fakemon\n"
+	.string "challenge where one made\l"
+	.string "Fakemon based on a specific\l"
+	.string "Pokémon move, Seraphure was\l"
+	.string "based on the move Purify. For this\l"
+	.string "rom hack Gabo thought that\l"
+	.string "Seraphure's original design looked\l"
+	.string "cool enough to submit. The design\l"
+	.string "was adapted to sprite form with\l"
+	.string "little overall editing.$"
 
 PlatoonInsideFoyer_Text_DevLoreTuetuerror:
-	.string "Dev Lore Unavailable.$"
+	.string "After a break of designing Fakemon,\n"
+	.string "and focusing more on projects in\l"
+	.string "Smogon, Gabo decided to go back to\l"
+	.string "drawing Fakemon for a bit.\l"
+	.string "Tuetuerror's evolution line was the\l"
+	.string "first design he made on that period.\l"
+	.string "He remade the original Tuetuerror\l"
+	.string "design for this romhack, ending\l"
+	.string "up, in his opinion, way better\l"
+	.string "than how it originally looked.$"
 
 PlatoonInsideFoyer_Text_DevLoreMagidash:
-	.string "Dev Lore Unavailable.$"
+	.string "Magidash was created by Ty\n"
+	.string "almost 10 years ago at the time\l"
+	.string "of release of this romhack.\l"
+	.string "It was supposed to be a Mythical\l"
+	.string "Pokémon in the same vein as Darkrai.$"
 
 PlatoonInsideFoyer_Text_DevLoreLuxstrobe:
 	.string "This line was originally a\n"
@@ -3128,16 +3226,42 @@ PlatoonInsideFoyer_Text_DevLoreMiscladrus:
 	.string "way back then.$"
 
 PlatoonInsideFoyer_Text_DevLoreSkuldugery:
-	.string "Dev Lore Unavailable.$"
+	.string "An old sprite for Skuldugery\n"
+	.string "was made by PurrfectDoodle way\l"
+	.string "back in 2016, and was originally\l"
+	.string "Fire/Steel, made of lava.\l"
+	.string "It was retooled to marshy mud\l"
+	.string "to fill in a lack of Ground types\l"
+	.string "on this game's roster.\l"
+	.string "One of its potential names\l"
+	.string "was Oozkull.$"
 
 PlatoonInsideFoyer_Text_DevLoreOddiowave:
-	.string "Dev Lore Unavailable.$"
+	.string "Oddiowave, alongside the\n"
+	.string "other Lichen-made designs for\l"
+	.string "this romhack, were originally\l"
+	.string "made for her game Pokémon\l"
+	.string "Hazel, which is now no longer\l"
+	.string "a thing due to losing steam\l"
+	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreBeholzer:
-	.string "Dev Lore Unavailable.$"
+	.string "Beholzer, alongside the\n"
+	.string "other Lichen-made designs for\l"
+	.string "this romhack, were originally\l"
+	.string "made for her game Pokémon\l"
+	.string "Hazel, which is now no longer\l"
+	.string "a thing due to losing steam\l"
+	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreVividawg:
-	.string "Dev Lore Unavailable.$"
+	.string "Vividawg, alongside the\n"
+	.string "other Lichen-made designs for\l"
+	.string "this romhack, were originally\l"
+	.string "made for her game Pokémon\l"
+	.string "Hazel, which is now no longer\l"
+	.string "a thing due to losing steam\l"
+	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreSwalheart:
 	.string "These Pokémon were originally\n"
@@ -3171,7 +3295,18 @@ PlatoonInsideFoyer_Text_DevLoreGramkrow:
 	.string "it more in the forefront.$"
 
 PlatoonInsideFoyer_Text_DevLoreIntriobang:
-	.string "Dev Lore Unavailable.$"
+	.string "Intriobang and Queglett\n"
+	.string "are, out of the entire roster\l"
+	.string "of Hodgepodge Platoon, the only\l"
+	.string "ones to be currently playable\l"
+	.string "in a public romhack. They are\l"
+	.string "Alter Forms of Wiglett and\l"
+	.string "Wugtrio, and can be caught\l"
+	.string "in Pokémon AlteRed with Gun.\l"
+	.string "Since they are so representative\l"
+	.string "of the creators of these hacks,\l"
+	.string "it found its way in as\l"
+	.string "a mascot of sorts.$"
 
 PlatoonInsideFoyer_Text_DevLoreOkkamirizo:
 	.string "Okkamirizo is based on the\n"
@@ -3221,10 +3356,17 @@ PlatoonInsideFoyer_Text_DevLoreCrusterror:
 	.string "they represent his style very well.$"
 
 PlatoonInsideFoyer_Text_DevLoreRubimizer:
-	.string "Dev Lore Unavailable.$"
+	.string "A long staple of Memelord's\n"
+	.string "fakedex, Rubimizer's line\l"
+	.string "has received many changes\l"
+	.string "over the years.$"
 
 PlatoonInsideFoyer_Text_DevLoreArctikack:
-	.string "Dev Lore Unavailable.$"
+	.string "Arctikack is a more recent design\n"
+	.string "made by Memelord after getting\l"
+	.string "asked to join a romhacking group\l"
+	.string "made him get back into\l"
+	.string "Fakemon design.$"
 
 PlatoonInsideFoyer_Text_DevLoreFrankture:
 	.string "This Pokémon dates back to\n"
@@ -3398,7 +3540,13 @@ PlatoonInsideFoyer_Text_DevLoreSetatonkre:
 	.string "Ultimate Wildmutt.$"
 
 PlatoonInsideFoyer_Text_DevLoreMelceralba:
-	.string "Dev Lore Unavailable.$"
+	.string "An Alter Melmetal design\n"
+	.string "made for the scrapped\l"
+	.string "Alterverse hack, Mystery\l"
+	.string "Mauve. Its spritesheet was\l"
+	.string "laying around fully complete,\l"
+	.string "and was an easy add to this\l"
+	.string "game's Pokémon list.$"
 
 PlatoonInsideFoyer_Text_DevLoreNettecate:
 	.string "Regional forms meant for an Emerald\n"

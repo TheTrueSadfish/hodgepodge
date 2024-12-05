@@ -29,6 +29,13 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "PebbleriteCaveMeatFloor_EventScript_BrainOfTheOperation"
+    }
   ]
 }
