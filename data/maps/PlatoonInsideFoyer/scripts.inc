@@ -2137,7 +2137,7 @@ PlatoonInsideFoyer_Text_WantToGetInMuseum:
 	.string "Legends say only the most VIP of\n"
 	.string "all of us trainers get access.\l"
 	.string "Specifically, those who manage to\l"
-	.string "fill out their ENTIRE Pokedex.\p"
+	.string "fill out their ENTIRE Pokédex.\p"
 	.string "Best advice I can give is to keep\n"
 	.string "trying out new ones! Oh, and\l"
 	.string "swapping in a previously defeated\l"
@@ -2422,7 +2422,7 @@ PlatoonInsideFoyer_Text_ExcitingWin:
 
 PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
 	.string "Have you been checking your\n"
-	.string "Pokedex, Tawila? It records\l"
+	.string "Pokédex, Tawila? It records\l"
 	.string "data for every Pokémon you use\l"
 	.string "on your team. There's some\l"
 	.string "fascinating stuff to learn from it.\p"
@@ -2432,7 +2432,7 @@ PlatoonInsideFoyer_Text_IllUnlockThePrevoCheckerForYou:
 	.string "If you're in for a pursuit of\l"
 	.string "knowledge, I would go talk to\l"
 	.string "Tanner at his counter. He can fill\l"
-	.string "in your Pokedex with data for\l"
+	.string "in your Pokédex with data for\l"
 	.string "pre-evolutions of Pokémon you have\l"
 	.string "used in battle thus far.\p"
 	.string "I may have some further special\n"
@@ -2465,7 +2465,7 @@ PlatoonInsideFoyer_Text_IllUnlockTheItemAndPrevoForYou:
 	.string "if you so wish.\p"
 	.string "Also, I've been meaning to ask.\n"
 	.string "Have you been checking your\l"
-	.string "Pokedex, Tawila? It records\l"
+	.string "Pokédex, Tawila? It records\l"
 	.string "data for every Pokémon you use\l"
 	.string "on your team. There's some\l"
 	.string "fascinating stuff to learn from it.\p"
@@ -2475,7 +2475,7 @@ PlatoonInsideFoyer_Text_IllUnlockTheItemAndPrevoForYou:
 	.string "If you're in for a pursuit of\l"
 	.string "knowledge, I would go talk to\l"
 	.string "Tanner at his counter. He can fill\l"
-	.string "in your Pokedex with data for\l"
+	.string "in your Pokédex with data for\l"
 	.string "pre-evolutions of Pokémon you have\l"
 	.string "used in battle thus far.\p"
 	.string "I may have some further special\n"
@@ -2490,7 +2490,7 @@ PlatoonInsideFoyer_Text_50DexSeen:
 	.string "Tawila, Tawila, Tawila.\p"
 	.string "Always good to see you battle.\p"
 	.string "Mind coming over here so I can\n"
-	.string "peruse your Pokedex?$"
+	.string "peruse your Pokédex?$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheCustomTypeMons:
 	.string "Hmm. Now, let's see...\p"
@@ -2534,7 +2534,7 @@ PlatoonInsideFoyer_Text_100DexSeen:
 	.string "Well. If it isn't the one and\n"
 	.string "only Tawila.\p"
 	.string "You know the drill. It's\n"
-	.string "Pokedex time.$"
+	.string "Pokédex time.$"
 
 PlatoonInsideFoyer_Text_IllUnlockTheFanClub:
 	.string "Yep. I can already tell.\n"
@@ -2590,7 +2590,7 @@ PlatoonInsideFoyer_Text_IllUnlockPebbleriteCave:
 	.string "to tax you with, Tawila.\l"
 	.string "The last conceivable milestone\l"
 	.string "would be getting every single\l"
-	.string "Pokedex entry filled out.\l"
+	.string "Pokédex entry filled out.\l"
 	.string "All 140. Good luck if you\l"
 	.string "so choose to take that road.\p"
 	.string "And as always, good evening.\n$"
@@ -2715,7 +2715,7 @@ PlatoonInsideFoyer_Text_GateAlreadyOpen:
 PlatoonInsideFoyer_Text_WantToFillOutYourDex:
 	.string "Would you like me to fill out\n"
 	.string "pre-evolution dex entries\l"
-	.string "in your Pokedex? This will only\l"
+	.string "in your Pokédex? This will only\l"
 	.string "be for Pokémon you have registered\l"
 	.string "as Caught.$"
 
@@ -2733,6 +2733,8 @@ PlatoonInsideFoyer_Text_Terminal:
 	.string "like to view the dev lore of?$"
 
 PlatoonInsideFoyer_Text_DevLoreMusalord:
+	.string "DESIGNS: BEPIS\n"
+	.string "SPRITES: BEPIS\p"
 	.string "Musalord and its pre-evolution\n"
 	.string "were designed by Bepis\l"
 	.string "for his project Let's Go Voreon.\l"
@@ -2742,6 +2744,8 @@ PlatoonInsideFoyer_Text_DevLoreMusalord:
 	.string "meme. How does that make you feel?$"
 
 PlatoonInsideFoyer_Text_DevLoreExpload:
+	.string "DESIGNS: BEPIS\n"
+	.string "SPRITES: BEPIS\p"
 	.string "This Pokémon is based on\n"
 	.string "fire belly toads, and is a very\l"
 	.string "revamped version of a line of\l"
@@ -2751,6 +2755,8 @@ PlatoonInsideFoyer_Text_DevLoreExpload:
 	.string "which is on indefinite hiatus.$"
 
 PlatoonInsideFoyer_Text_DevLorePorybot:
+	.string "DESIGNS: BEPIS\n"
+	.string "SPRITES: BEPIS\p"
 	.string "Porybot's line, made by Bepis,\n"
 	.string "are based on BattleBots.\l"
 	.string "They were originally made for\l"
@@ -2759,6 +2765,8 @@ PlatoonInsideFoyer_Text_DevLorePorybot:
 	.string "their sprites remade for this.$"
 
 PlatoonInsideFoyer_Text_DevLoreVerglazard:
+	.string "DESIGNS: CLOVE\n"
+	.string "SPRITES: OGWON & CHAIRRY\p"
 	.string "This Pokémon’s concept comes\n"
 	.string "from a Fire Red Rom Hack Clove\l"
 	.string "was making called Sparkling\l"
@@ -2778,6 +2786,8 @@ PlatoonInsideFoyer_Text_DevLoreVerglazard:
 	.string "famous Base Set Charizard card.$"
 
 PlatoonInsideFoyer_Text_DevLoreBrevato:
+	.string "DESIGNS: BONZO\n"
+	.string "SPRITES: BONZO\p"
 	.string "Brevato’s design is the combined\n"
 	.string "form of a 3-stage line based on\l"
 	.string "frogs and radishes. It originates\l"
@@ -2791,6 +2801,8 @@ PlatoonInsideFoyer_Text_DevLoreBrevato:
 	.string "aspects for this design.$"
 
 PlatoonInsideFoyer_Text_DevLoreGravendor:
+	.string "DESIGNS: BONZO\n"
+	.string "SPRITES: BONZO\p"
 	.string "Gravendor was originally a\n"
 	.string "legendary Pokémon that was\l"
 	.string "part of a Hunter, Gatherer, and\l"
@@ -2807,6 +2819,8 @@ PlatoonInsideFoyer_Text_DevLoreGravendor:
 	.string "was not Ghost-type.$"
 
 PlatoonInsideFoyer_Text_DevLoreShamburger:
+	.string "DESIGNS: BONZO\n"
+	.string "SPRITES: BONZO\p"
 	.string "Shamburger originates from\n"
 	.string "a Fakémon design challenge\l"
 	.string "that Bonzo did last year during the\l"
@@ -2824,6 +2838,8 @@ PlatoonInsideFoyer_Text_DevLoreShamburger:
 	.string "you found on the floor of a cave.$"
 
 PlatoonInsideFoyer_Text_DevLoreSwisquire:
+	.string "DESIGNS: CELADONK\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "These Pokémon are based on a\n"
 	.string "combination of 2 tropes, the\l"
 	.string "regional rodent and cute pink\l"
@@ -2836,6 +2852,8 @@ PlatoonInsideFoyer_Text_DevLoreSwisquire:
 	.string "based on the Great Lakes.$"
 
 PlatoonInsideFoyer_Text_DevLoreNinown:
+	.string "DESIGNS: CELADONK\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "Nin’own was originally a\n"
 	.string "Seviian Unown, that Celadonk\l"
 	.string "made for fun and was kind of\l"
@@ -2846,6 +2864,8 @@ PlatoonInsideFoyer_Text_DevLoreNinown:
 	.string "weird gimmick Pokémon.$"
 
 PlatoonInsideFoyer_Text_DevLorePeckachew:
+	.string "DESIGNS: CELADONK\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "This Pokémon was one of the\n"
 	.string "first Gen 2 Sprites Celadonk made,\l"
 	.string "which was in 2018. It’s obviously\l"
@@ -2858,6 +2878,8 @@ PlatoonInsideFoyer_Text_DevLorePeckachew:
 	.string "any Electric-type moves in its set.$"
 
 PlatoonInsideFoyer_Text_DevLoreGracklin:
+	.string "DESIGNS: CHAIRRY\n"
+	.string "SPRITES: CHAIRRY\p"
 	.string "Gracklin comes from an abandoned\n"
 	.string "project aiming to redo all the\l"
 	.string "monsters from the open-source\l"
@@ -2867,6 +2889,8 @@ PlatoonInsideFoyer_Text_DevLoreGracklin:
 	.string "Grintrock line.$"
 
 PlatoonInsideFoyer_Text_DevLoreStovlare:
+	.string "DESIGNS: CHAIRRY\n"
+	.string "SPRITES: CHAIRRY\p"
 	.string "Stovlare is a very old starter of\n"
 	.string "Chairry's dating back almost 15\l"
 	.string "years. It has a terrible sprite\l"
@@ -2876,6 +2900,8 @@ PlatoonInsideFoyer_Text_DevLoreStovlare:
 	.string "stove-based fire starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreAstigmoray:
+	.string "DESIGNS: CHAIRRY\n"
+	.string "SPRITES: CHAIRRY\p"
 	.string "Astigmoray comes from a group of\n"
 	.string "four or so Gen 5-styled lines of\l"
 	.string "Pokémon Chairry made after AlteRed\l"
@@ -2887,6 +2913,8 @@ PlatoonInsideFoyer_Text_DevLoreAstigmoray:
 	.string "for this game.$"
 
 PlatoonInsideFoyer_Text_DevLoreSkooky:
+	.string "DESIGNS: CHAIRRY\n"
+	.string "SPRITES: CHAIRRY\p"
 	.string "Skooky’s Cosmic-type comes\n"
 	.string "from Chairry’s Alterverse,\l"
 	.string "although currently, it’s only in\l"
@@ -2906,17 +2934,23 @@ PlatoonInsideFoyer_Text_DevLoreSkooky:
 	.string "on the Mystery Machine.$"
 
 PlatoonInsideFoyer_Text_DevLoreShelebrate:
+	.string "DESIGNS: DAHLIA\n"
+	.string "SPRITES: DAHLIA & LIVRA\p"
 	.string "This line is pretty simple.\n"
 	.string "It's a shy crab that eventually\l"
 	.string "evolves to a jolly one based\l"
 	.string "on slapstick and dancing.$"
 
 PlatoonInsideFoyer_Text_DevLoreOrbacle:
+	.string "DESIGNS: DAHLIA\n"
+	.string "SPRITES: DAHLIA & LIVRA\p"
 	.string "Orbacle is meant to be a\n"
 	.string "fortune teller box and Dahl's\l"
 	.string "attempt at a object-based Pokémon.$"
 
 PlatoonInsideFoyer_Text_DevLoreWuvme:
+	.string "DESIGNS: DAHLIA\n"
+	.string "SPRITES: DAHLIA\p"
 	.string "Wuvme is intended to be a\n"
 	.string "Pokémon that doesn’t look like\l"
 	.string "its type. Here, it isn’t meant to\l"
@@ -2927,6 +2961,8 @@ PlatoonInsideFoyer_Text_DevLoreWuvme:
 	.string "for it to be a nightmare.$"
 
 PlatoonInsideFoyer_Text_DevLorePlantatori:
+	.string "DESIGNS: DAHVIPER\n"
+	.string "SPRITES: DAHVIPER\p"
 	.string "Plantatori is inspired by an\n"
 	.string "enemy from Epic Battle Fantasy\l"
 	.string "3. It was going to evolve into\l"
@@ -2938,6 +2974,8 @@ PlatoonInsideFoyer_Text_DevLorePlantatori:
 	.string "was simply forgotten.$"
 
 PlatoonInsideFoyer_Text_DevLoreDegourge:
+	.string "DESIGNS: DAHVIPER\n"
+	.string "SPRITES: DAHVIPER\p"
 	.string "Degourge was originally a\n"
 	.string "Pokémon that mimicked an\l"
 	.string "ice cream cone. Originally\l"
@@ -2953,6 +2991,8 @@ PlatoonInsideFoyer_Text_DevLoreDegourge:
 	.string "forgotten until now.$"
 
 PlatoonInsideFoyer_Text_DevLoreGelebrum:
+	.string "DESIGNS: DAHVIPER\n"
+	.string "SPRITES: DAHVIPER\p"
 	.string "This Pokémon’s idea originates\n"
 	.string "from two phenomena, 'brain freeze'\l"
 	.string "and 'hidden strength in near\l"
@@ -2962,12 +3002,16 @@ PlatoonInsideFoyer_Text_DevLoreGelebrum:
 	.string "inspired the design.$"
 
 PlatoonInsideFoyer_Text_DevLoreStuntisla:
+	.string "DESIGNS: DEMON EGG\n"
+	.string "SPRITES: CHAIRRY\p"
 	.string "Stuntisla is based off of the\n"
 	.string "Electric elemental arms from\l"
 	.string "the game Arms, as well as Mantis\l"
 	.string "Shrimp, Egg's favorite animal.$"
 
 PlatoonInsideFoyer_Text_DevLoreWakasuka:
+	.string "DESIGNS: DILLSACKE\n"
+	.string "SPRITES: DILLSACKE\p"
 	.string "These two were originally\n"
 	.string "meant for Pisces, being the\l"
 	.string "only new evolution for an\l"
@@ -2991,9 +3035,13 @@ PlatoonInsideFoyer_Text_DevLoreWakasuka:
 	.string "on sea spiders.$"
 
 PlatoonInsideFoyer_Text_DevLoreMantacore:
+	.string "DESIGNS: DILLSACKE\n"
+	.string "SPRITES: DILLSACKE\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
+	.string "DESIGNS: DILLSACKE\n"
+	.string "SPRITES: DILLSACKE\p"
 	.string "If it wasn’t obvious, this Pokémon\n"
 	.string "is Regidrago’s hinted-at complete\l"
 	.string "form. There is not much to it,\l"
@@ -3002,6 +3050,8 @@ PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
 	.string "see it someday.$"
 
 PlatoonInsideFoyer_Text_DevLoreCapybarna:
+	.string "DESIGNS: EEVEEEE\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "Capybarna and its prevo Bakunna\n"
 	.string "were made by EeVeeEe for Chairry's\l"
 	.string "abandoned AlterVerse game,\l"
@@ -3010,6 +3060,8 @@ PlatoonInsideFoyer_Text_DevLoreCapybarna:
 	.string "the 'regional rodent' role.$"
 
 PlatoonInsideFoyer_Text_DevLoreParakuri:
+	.string "DESIGNS: EEVEEEE\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "Parakuri and its prevo Paribo\n"
 	.string "were made by EeVeeEe for\l"
 	.string "a game currently on hiatus,\l"
@@ -3022,6 +3074,8 @@ PlatoonInsideFoyer_Text_DevLoreParakuri:
 	.string "was put into this hack.$"
 
 PlatoonInsideFoyer_Text_DevLoreRalsea:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "This was the first line to be\n"
 	.string "ever sprited by Livra and also\l"
 	.string "her first time spriting. Originally\l"
@@ -3033,6 +3087,8 @@ PlatoonInsideFoyer_Text_DevLoreRalsea:
 	.string "have finally found a home.$"
 
 PlatoonInsideFoyer_Text_DevLoreChakraring:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "This Pokémon line was sprited\n"
 	.string "by Ogwon for the now-on-hiatus\l"
 	.string "Pokémon VariaBlue. The general\l"
@@ -3047,6 +3103,8 @@ PlatoonInsideFoyer_Text_DevLoreChakraring:
 	.string "of the dex listing.$"
 
 PlatoonInsideFoyer_Text_DevLoreHagoosh:
+	.string "DESIGNS: EEVEEEE\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "Hagoosh was made for Faketober\n"
 	.string "of 2021 for the prompt was\l"
 	.string "“Slime”. It's based on hagfish\l"
@@ -3059,6 +3117,8 @@ PlatoonInsideFoyer_Text_DevLoreHagoosh:
 	.string "Arctiguana from Ben 10.$"
 
 PlatoonInsideFoyer_Text_DevLoreGoogeist:
+	.string "DESIGNS: EEVEEEE\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "Googeist and its preevolution\n"
 	.string "are based on classic fantasy\l"
 	.string "slimes, often seen in DnD.\l"
@@ -3072,6 +3132,8 @@ PlatoonInsideFoyer_Text_DevLoreGoogeist:
 	.string "slotted in here.$"
 
 PlatoonInsideFoyer_Text_DevLoreDragong:
+	.string "DESIGNS: EEVEEEE\n"
+	.string "SPRITES: EEVEEEE\p"
 	.string "This line comes from when Eevee\n"
 	.string "(not the Pokémon) and I (Joseph\l"
 	.string "G Sadfish) were watching Wild\l"
@@ -3081,6 +3143,8 @@ PlatoonInsideFoyer_Text_DevLoreDragong:
 	.string "too funny to keep it unused.$"
 
 PlatoonInsideFoyer_Text_DevLoreWyrmWing:
+	.string "DESIGNS: ENWAITEA\n"
+	.string "SPRITES: ENWAITEA\p"
 	.string "Wyrm Wing is another type\n"
 	.string "variant that never left the list\l"
 	.string "of potential concepts for\l"
@@ -3097,6 +3161,8 @@ PlatoonInsideFoyer_Text_DevLoreWyrmWing:
 	.string "or a Water-type.$"
 
 PlatoonInsideFoyer_Text_DevLoreCoorse:
+	.string "DESIGNS: ENWAITEA\n"
+	.string "SPRITES: ENWAITEA\p"
 	.string "These Pokémon were originally\n"
 	.string "a Beast-type Cursola concept\l"
 	.string "for Pokémon Weird Type Fun.\l"
@@ -3113,6 +3179,8 @@ PlatoonInsideFoyer_Text_DevLoreCoorse:
 	.string "already had a bunch of Beast-types.$"
 
 PlatoonInsideFoyer_Text_DevLoreKittepup:
+	.string "DESIGNS: ENWAITEA\n"
+	.string "SPRITES: ENWAITEA\p"
 	.string "Kittepup was originally slated\n"
 	.string "for Weird Type Fun and was\l"
 	.string "another Beast-type. The idea came\l"
@@ -3134,12 +3202,16 @@ PlatoonInsideFoyer_Text_DevLoreKittepup:
 	.string "'raining cats and dogs' saying.$"
 
 PlatoonInsideFoyer_Text_DevLoreChernoboar:
+	.string "DESIGNS: FBI\n"
+	.string "SPRITES: FBI\p"
 	.string "This line comes from FBI's\n"
 	.string "cancelled project called Pokémon\l"
 	.string "Unnamed, and they were meant\l"
 	.string "to be the 3-stage Grass starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreIcandesfen:
+	.string "DESIGNS: FBI\n"
+	.string "SPRITES: FBI\p"
 	.string "This line comes from FBI's\n"
 	.string "cancelled project called Pokémon\l"
 	.string "Unnamed, and it were meant\l"
@@ -3147,6 +3219,8 @@ PlatoonInsideFoyer_Text_DevLoreIcandesfen:
 	.string "of the Fire starter.$"
 
 PlatoonInsideFoyer_Text_DevLoreCastermite:
+	.string "DESIGNS: FBI\n"
+	.string "SPRITES: FBI\p"
 	.string "Castermite and its line were made\n"
 	.string "for FBI's half-serious, half-joke\l"
 	.string "project Pokémon Astral, which\l"
@@ -3157,6 +3231,8 @@ PlatoonInsideFoyer_Text_DevLoreCastermite:
 	.string "first shown off years ago.$"
 
 PlatoonInsideFoyer_Text_DevLoreCelshrioom:
+	.string "DESIGNS: GABOSWAMPERT\n"
+	.string "SPRITES: LIVRA\p"
 	.string "One of Gabo's first Fakemon\n"
 	.string "designs, originally made for a\l"
 	.string "regional Pokémon contest. This,\l"
@@ -3168,6 +3244,8 @@ PlatoonInsideFoyer_Text_DevLoreCelshrioom:
 	.string "Pokémon, to Fakemon.$"
 
 PlatoonInsideFoyer_Text_DevLoreSeraphure:
+	.string "DESIGNS: GABOSWAMPERT\n"
+	.string "SPRITES: LIVRA\p"
 	.string "Originally made for a Fakemon\n"
 	.string "challenge where one made\l"
 	.string "Fakemon based on a specific\l"
@@ -3180,6 +3258,8 @@ PlatoonInsideFoyer_Text_DevLoreSeraphure:
 	.string "little overall editing.$"
 
 PlatoonInsideFoyer_Text_DevLoreTuetuerror:
+	.string "DESIGNS: GABOSWAMPERT\n"
+	.string "SPRITES: LIVRA\p"
 	.string "After a break of designing Fakemon,\n"
 	.string "and focusing more on projects in\l"
 	.string "Smogon, Gabo decided to go back to\l"
@@ -3192,6 +3272,8 @@ PlatoonInsideFoyer_Text_DevLoreTuetuerror:
 	.string "than how it originally looked.$"
 
 PlatoonInsideFoyer_Text_DevLoreMagidash:
+	.string "DESIGNS: TY\n"
+	.string "SPRITES: TY\p"
 	.string "Magidash was created by Ty\n"
 	.string "almost 10 years ago at the time\l"
 	.string "of release of this romhack.\l"
@@ -3199,6 +3281,8 @@ PlatoonInsideFoyer_Text_DevLoreMagidash:
 	.string "Pokémon in the same vein as Darkrai.$"
 
 PlatoonInsideFoyer_Text_DevLoreLuxstrobe:
+	.string "DESIGNS: CUPRITE\n"
+	.string "SPRITES: LIVRA & CUPRITE\p"
 	.string "This line was originally a\n"
 	.string "regional variant Kyu made\l"
 	.string "for his fan game, Pokémon Esper,\l"
@@ -3208,6 +3292,8 @@ PlatoonInsideFoyer_Text_DevLoreLuxstrobe:
 	.string "don’t ask me, I have no clue.$"
 
 PlatoonInsideFoyer_Text_DevLoreStarror:
+	.string "DESIGNS: CUPRITE\n"
+	.string "SPRITES: LIVRA & CUPRITE\p"
 	.string "This line was originally a\n"
 	.string "regional variant Kyu made for\l"
 	.string "his fan game, Pokémon Esper.\l"
@@ -3215,6 +3301,8 @@ PlatoonInsideFoyer_Text_DevLoreStarror:
 	.string "Psychic/Ghost-type.$"
 
 PlatoonInsideFoyer_Text_DevLoreMiscladrus:
+	.string "DESIGNS: CUPRITE\n"
+	.string "SPRITES: LIVRA & CUPRITE\p"
 	.string "This line was originally a\n"
 	.string "regional variant Kyu made for\l"
 	.string "his fan game, Pokémon Esper.\l"
@@ -3226,6 +3314,8 @@ PlatoonInsideFoyer_Text_DevLoreMiscladrus:
 	.string "way back then.$"
 
 PlatoonInsideFoyer_Text_DevLoreSkuldugery:
+	.string "DESIGNS: PURRFECTDOODLE\n"
+	.string "SPRITES: PURRFECTDOODLE\p"
 	.string "An old sprite for Skuldugery\n"
 	.string "was made by PurrfectDoodle way\l"
 	.string "back in 2016, and was originally\l"
@@ -3237,6 +3327,8 @@ PlatoonInsideFoyer_Text_DevLoreSkuldugery:
 	.string "was Oozkull.$"
 
 PlatoonInsideFoyer_Text_DevLoreOddiowave:
+	.string "DESIGNS: LICHEN\n"
+	.string "SPRITES: LICHEN\p"
 	.string "Oddiowave, alongside the\n"
 	.string "other Lichen-made designs for\l"
 	.string "this romhack, were originally\l"
@@ -3246,6 +3338,8 @@ PlatoonInsideFoyer_Text_DevLoreOddiowave:
 	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreBeholzer:
+	.string "DESIGNS: LICHEN\n"
+	.string "SPRITES: LICHEN\p"
 	.string "Beholzer, alongside the\n"
 	.string "other Lichen-made designs for\l"
 	.string "this romhack, were originally\l"
@@ -3255,6 +3349,8 @@ PlatoonInsideFoyer_Text_DevLoreBeholzer:
 	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreVividawg:
+	.string "DESIGNS: LICHEN\n"
+	.string "SPRITES: LICHEN\p"
 	.string "Vividawg, alongside the\n"
 	.string "other Lichen-made designs for\l"
 	.string "this romhack, were originally\l"
@@ -3264,6 +3360,8 @@ PlatoonInsideFoyer_Text_DevLoreVividawg:
 	.string "and losing files.$"
 
 PlatoonInsideFoyer_Text_DevLoreSwalheart:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "These Pokémon were originally\n"
 	.string "a Seviian Gulpin line for\l"
 	.string "Hydro Blue. They’re based on\l"
@@ -3275,6 +3373,8 @@ PlatoonInsideFoyer_Text_DevLoreSwalheart:
 	.string "original iteration.$"
 
 PlatoonInsideFoyer_Text_DevLoreCaclequin:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "These Pokémon were originally\n"
 	.string "a Seviian Cacnea line for\l"
 	.string "Hydro Blue. They’re based on\l"
@@ -3286,6 +3386,8 @@ PlatoonInsideFoyer_Text_DevLoreCaclequin:
 	.string "Jevil from Deltarune.$"
 
 PlatoonInsideFoyer_Text_DevLoreGramkrow:
+	.string "DESIGNS: PLASTO & LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "This line was made by Plasto\n"
 	.string "and Livra for Hydro Blue.\l"
 	.string "It's very simple in concept,\l"
@@ -3295,6 +3397,8 @@ PlatoonInsideFoyer_Text_DevLoreGramkrow:
 	.string "it more in the forefront.$"
 
 PlatoonInsideFoyer_Text_DevLoreIntriobang:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON & LICHEN\p"
 	.string "Intriobang and Queglett\n"
 	.string "are, out of the entire roster\l"
 	.string "of Hodgepodge Platoon, the only\l"
@@ -3309,6 +3413,8 @@ PlatoonInsideFoyer_Text_DevLoreIntriobang:
 	.string "a mascot of sorts.$"
 
 PlatoonInsideFoyer_Text_DevLoreOkkamirizo:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "Okkamirizo is based on the\n"
 	.string "Occam's razor principle which\l"
 	.string "basically boils down to that the\l"
@@ -3320,6 +3426,8 @@ PlatoonInsideFoyer_Text_DevLoreOkkamirizo:
 	.string "made for Hydro Blue.$"
 
 PlatoonInsideFoyer_Text_DevLoreFrozforce:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: FBI & LIVRA\p"
 	.string "These Pokémon were originally\n"
 	.string "one of the fossil lines planned\l"
 	.string "for Pokémon Libra. Despite\l"
@@ -3339,15 +3447,21 @@ PlatoonInsideFoyer_Text_DevLoreFrozforce:
 	.string "30 million years to find out.$"
 
 PlatoonInsideFoyer_Text_DevLoreRickshawty:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "Livra thought of combining the\n"
 	.string "word Rickshaw and the term\l"
 	.string "'shawty.' Where do the fire and\l"
 	.string "bugs come from? I don't know.$"
 
 PlatoonInsideFoyer_Text_DevLoreVizaaviso:
+	.string "DESIGNS: LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreCrusterror:
+	.string "DESIGNS: MEMELORD\n"
+	.string "SPRITES: MEMELORD\p"
 	.string "These Pokémon are based on\n"
 	.string "earthworms and giant sand\l"
 	.string "worms from movies and stuff.\l"
@@ -3356,12 +3470,16 @@ PlatoonInsideFoyer_Text_DevLoreCrusterror:
 	.string "they represent his style very well.$"
 
 PlatoonInsideFoyer_Text_DevLoreRubimizer:
+	.string "DESIGNS: MEMELORD\n"
+	.string "SPRITES: MEMELORD\p"
 	.string "A long staple of Memelord's\n"
 	.string "fakedex, Rubimizer's line\l"
 	.string "has received many changes\l"
 	.string "over the years.$"
 
 PlatoonInsideFoyer_Text_DevLoreArctikack:
+	.string "DESIGNS: MEMELORD\n"
+	.string "SPRITES: MEMELORD\p"
 	.string "Arctikack is a more recent design\n"
 	.string "made by Memelord after getting\l"
 	.string "asked to join a romhacking group\l"
@@ -3369,6 +3487,8 @@ PlatoonInsideFoyer_Text_DevLoreArctikack:
 	.string "Fakemon design.$"
 
 PlatoonInsideFoyer_Text_DevLoreFrankture:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "This Pokémon dates back to\n"
 	.string "a 2015 Essentials project Ogwon\l"
 	.string "was making with a friend. While\l"
@@ -3383,6 +3503,8 @@ PlatoonInsideFoyer_Text_DevLoreFrankture:
 	.string "one seems too plain.$"
 
 PlatoonInsideFoyer_Text_DevLoreProfur:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "Mog's basically just a giant mop\n"
 	.string "ball because Ogwon thinks it's\l"
 	.string "funny. Although, Profur is based on\l"
@@ -3402,6 +3524,8 @@ PlatoonInsideFoyer_Text_DevLoreProfur:
 	.string "(please don't sue us)$"
 
 PlatoonInsideFoyer_Text_DevLoreDadalemma:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "Ogwon just found this guy in\n"
 	.string "a random art layer, it's simply\l"
 	.string "just a funny head and a funny\l"
@@ -3409,6 +3533,8 @@ PlatoonInsideFoyer_Text_DevLoreDadalemma:
 	.string "simply is here.$"
 
 PlatoonInsideFoyer_Text_DevLoreBevolpin:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "Dullsod and Bevolpin are based\n"
 	.string "on blobfish and funnily enough\l"
 	.string "came before Sadsod. While\l"
@@ -3432,6 +3558,8 @@ PlatoonInsideFoyer_Text_DevLoreBevolpin:
 	.string "water balloons.$"
 
 PlatoonInsideFoyer_Text_DevLoreGreese:
+	.string "DESIGNS: OGWON\n"
+	.string "SPRITES: OGWON\p"
 	.string "Groose and Greese were\n"
 	.string "supposed to be for Banquet\l"
 	.string "Brown, a food-themed Rom\l"
@@ -3457,18 +3585,28 @@ PlatoonInsideFoyer_Text_DevLoreGreese:
 	.string "them. So, are you?$"
 
 PlatoonInsideFoyer_Text_DevLoreCrawtendr:
+	.string "DESIGNS: PABLO\n"
+	.string "SPRITES: LIVRA\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreLurkelp:
+	.string "DESIGNS: PABLO\n"
+	.string "SPRITES: LIVRA & EEVEEEE\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreBaghoul:
+	.string "DESIGNS: PABLO\n"
+	.string "SPRITES: LIVRA & EEVEEEE\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreBuggory:
+	.string "DESIGNS: PLASTO\n"
+	.string "SPRITES: VAL\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreSmaugron:
+	.string "DESIGNS: SAVANNAH\n"
+	.string "SPRITES: LIVRA\p"
 	.string "This Pokémon was originally a\n"
 	.string "Seviian Aggron for Hydro Blue.\l"
 	.string "It initially started as a\l"
@@ -3484,6 +3622,8 @@ PlatoonInsideFoyer_Text_DevLoreSmaugron:
 	.string "sort of deal.$"
 
 PlatoonInsideFoyer_Text_DevLoreBloomwile:
+	.string "DESIGNS: SAVANNAH & LIVRA\n"
+	.string "SPRITES: LIVRA\p"
 	.string "This Pokémon was made for\n"
 	.string "Hydro Blue. The concept was just\l"
 	.string "'what if Mawile’s enormous jaw\l"
@@ -3491,6 +3631,8 @@ PlatoonInsideFoyer_Text_DevLoreBloomwile:
 	.string "and made it like a flower.$"
 
 PlatoonInsideFoyer_Text_DevLoreStaalnary:
+	.string "DESIGNS: SAVANNAH & OGWON\n"
+	.string "SPRITES: LIVRA\p"
 	.string "This Pokémon was a regional\n"
 	.string "form planned for Hydro Blue.\l"
 	.string "Savannah made the original\l"
@@ -3501,6 +3643,8 @@ PlatoonInsideFoyer_Text_DevLoreStaalnary:
 	.string "it more wyvern-esque.$"
 
 PlatoonInsideFoyer_Text_DevLoreJaramari:
+	.string "DESIGNS: SHARKGUY\n"
+	.string "SPRITES: SHARKGUY\p"
 	.string "This line comes from a\n"
 	.string "scrapped project called\l"
 	.string "Banquet Brown, where every\l"
@@ -3513,9 +3657,13 @@ PlatoonInsideFoyer_Text_DevLoreJaramari:
 	.string "shinies are based on Bloopers.$"
 
 PlatoonInsideFoyer_Text_DevLorePokerlord:
+	.string "DESIGNS: SHARKGUY\n"
+	.string "SPRITES: SHARKGUY\p"
 	.string "Dev Lore Unavailable.$"
 
 PlatoonInsideFoyer_Text_DevLoreMalmare:
+	.string "DESIGNS: SHARKGUY\n"
+	.string "SPRITES: SHARKGUY\p"
 	.string "Malmare comes from a challenge\n"
 	.string "Shark did where he made a\l"
 	.string "Pokémon of every type, with\l"
@@ -3528,6 +3676,8 @@ PlatoonInsideFoyer_Text_DevLoreMalmare:
 	.string "Malsquito.$"
 
 PlatoonInsideFoyer_Text_DevLoreSetatonkre:
+	.string "DESIGNS: SHARKGUY\n"
+	.string "SPRITES: SHARKGUY\p"
 	.string "Originally, Ogwon was going to\n"
 	.string "be making the Beast-type\l"
 	.string "representative, however, they\l"
@@ -3540,6 +3690,8 @@ PlatoonInsideFoyer_Text_DevLoreSetatonkre:
 	.string "Ultimate Wildmutt.$"
 
 PlatoonInsideFoyer_Text_DevLoreMelceralba:
+	.string "DESIGNS: SHARKGUY\n"
+	.string "SPRITES: SHARKGUY\p"
 	.string "An Alter Melmetal design\n"
 	.string "made for the scrapped\l"
 	.string "Alterverse hack, Mystery\l"
@@ -3549,6 +3701,8 @@ PlatoonInsideFoyer_Text_DevLoreMelceralba:
 	.string "game's Pokémon list.$"
 
 PlatoonInsideFoyer_Text_DevLoreNettecate:
+	.string "DESIGNS: TARDYSOAP\n"
+	.string "SPRITES: TARDYSOAP & LIVRA\p"
 	.string "Regional forms meant for an Emerald\n"
 	.string "Revamp hack Tardysoap was working\l"
 	.string "on. Nettata was meant to inhabit\l"
@@ -3563,6 +3717,8 @@ PlatoonInsideFoyer_Text_DevLoreNettecate:
 	.string "flowers being roses.$"
 
 PlatoonInsideFoyer_Text_DevLoreLaRoc:
+	.string "DESIGNS: TARDYSOAP\n"
+	.string "SPRITES: TARDYSOAP & LIVRA\p"
 	.string "Regional forms meant for an\n"
 	.string "Emerald Revamp hack Tardysoap\l"
 	.string "was working on. Tardy didn’t get\l"
@@ -3573,6 +3729,8 @@ PlatoonInsideFoyer_Text_DevLoreLaRoc:
 	.string "obvious from the color scheme.$"
 
 PlatoonInsideFoyer_Text_DevLoreWatchaugur:
+	.string "DESIGNS: TARDYSOAP & OGWON\n"
+	.string "SPRITES: LIVRA & OGWON\p"
 	.string "Regional forms meant for an\n"
 	.string "Emerald Revamp hack Tardysoap\l"
 	.string "was working on. Patracle was\l"
@@ -3587,40 +3745,26 @@ PlatoonInsideFoyer_Text_DevLoreWatchaugur:
 	.string "Psychic/Fighting.$"
 
 PlatoonInsideFoyer_Text_DevLoreXolhm:
-	.string "Wattl and Xolhm were\n"
-	.string "originally a Psychic/Electric-type\l"
-	.string "regional Wooper and a new\l"
-	.string "evolution, named Xolung, that\l"
-	.string "Val made for a Mexico region\l"
-	.string "in the early 2020s. They draw\l"
-	.string "inspiration from larval axolotls,\l"
-	.string "olms, Wooper, cartoon ghosts,\l"
-	.string "the trope of seeing a character’s\l"
-	.string "skeleton when they’re\l"
-	.string "electrocuted, the Aztec god\l"
-	.string "Xolotl, Blinky from\l"
-	.string "The Simpsons (since Aztec\l"
-	.string "religion attributed\l"
-	.string "deformities to Xolotl), and\l"
-	.string "the Xoloitzcuintle breed of dogs.\l"
-	.string "Xolhm lives in deep underground\l"
-	.string "caves because Xolotl is the god\l"
-	.string "of the underworld, which is also\l"
-	.string "where its Ghost-type comes from.\l"
-	.string "Xolotl is known as the deity of\l"
-	.string "ightning and flames, hence why\l"
-	.string "the line is Electric-type and is\l"
-	.string "associated with misfortune and\l"
-	.string "disease, which inspired Xolhm's\l"
-	.string "Ability, Misfortune. The partial\l"
-	.string "dog inspiration for Xolhm stems\l"
-	.string "from the term “mud puppies”\l"
-	.string "for salamanders, and the\l"
-	.string "Xolo dog’s connection to Xolotl\l"
-	.string "and it guiding souls in\l"
-	.string "the underworld.$"
+	.string "DESIGNS: VAL\n"
+	.string "SPRITES: VAL\p"
+	.string "Wattl and Xolhm are a part of Val's\n"
+	.string "Mexico-based region from 2020.\l"
+	.string "Based on the aztec god of the\l"
+	.string "underworld, fire, and lightning,\l"
+	.string "Xolotl. This is why Xolhm is\l"
+	.string "Electric/Ghost and has a Fire\l"
+	.string "type move. Axolotls are named\l"
+	.string "after this god, befitting the\l"
+	.string "design, which also takes aspects\l"
+	.string "from Mexican hairless dogs, also\l"
+	.string "named after Xolotl.\l"
+	.string "To add to the theming, 'mudpuppy'\l"
+	.string "is the name of a different\l"
+	.string "axolotl-esque amphibian.$"
 
 PlatoonInsideFoyer_Text_DevLoreMalachrey:
+	.string "DESIGNS: VAL\n"
+	.string "SPRITES: VAL\p"
 	.string "This line was originally made for\n"
 	.string "an Australia region Val made\l"
 	.string "in middle school. They are based\l"
@@ -3630,6 +3774,8 @@ PlatoonInsideFoyer_Text_DevLoreMalachrey:
 	.string "the Rock-type and crystal teeth.$"
 
 PlatoonInsideFoyer_Text_DevLoreFortifros:
+	.string "DESIGNS: VAL\n"
+	.string "SPRITES: VAL\p"
 	.string "These Pokémon date back to\n"
 	.string "elementary school before even\l"
 	.string "Pokémon Sun and Moon came\l"
@@ -3650,6 +3796,8 @@ PlatoonInsideFoyer_Text_DevLoreFortifros:
 	.string "its waist like Melmetal can.$"
 
 PlatoonInsideFoyer_Text_DevLoreBabobo:
+	.string "DESIGNS: VAL\n"
+	.string "SPRITES: VAL\p"
 	.string "Despite recently becoming a\n"
 	.string "One Piece Fan, Val did not\l"
 	.string "intentionally make these\l"
