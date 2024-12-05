@@ -5850,6 +5850,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/PebbleriteCave/border.bin",
       "blockdata_filepath": "data/layouts/PebbleriteCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE_MEAT_FLOOR",
+      "name": "PebbleriteCaveMeatFloor_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Meat",
+      "border_filepath": "data/layouts/PebbleriteCaveMeatFloor/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCaveMeatFloor/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE_GREEN_FLOORS",
+      "name": "PebbleriteCaveGreenFloors_Layout",
+      "width": 52,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/PebbleriteCaveGreenFloors/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCaveGreenFloors/map.bin"
     }
   ]
 }

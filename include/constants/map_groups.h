@@ -12,6 +12,8 @@
 #define MAP_PLATOON_OUTSIDE                        (3 | (0 << 8))
 #define MAP_PLATOON_INSIDE_FOYER                   (4 | (0 << 8))
 #define MAP_PEBBLERITE_CAVE                        (5 | (0 << 8))
+#define MAP_PEBBLERITE_CAVE_MEAT_FLOOR             (6 | (0 << 8))
+#define MAP_PEBBLERITE_CAVE_GREEN_FLOORS           (7 | (0 << 8))
 
 // gMapGroup_PiscesLeg1Major
 #define MAP_SS_TIDAL_EXTERIOR       (0 | (1 << 8))
