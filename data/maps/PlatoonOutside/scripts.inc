@@ -1,6 +1,7 @@
 .set LOCALID_INTROMAN, 1
 
 PlatoonOutside_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, PlatoonOutside_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PlatoonOutside_OnFrame
 	.byte 0
 
@@ -13,7 +14,10 @@ PlatoonOutside_OnLoad:
 	end
 
 PlatoonOutside_EventScript_RemoveCaveBlocker::
-	setmetatile 16, 7, METATILE_Fallarbor_NoCaveBlocker, FALSE
+	setmetatile 17, 7, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 17, 8, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 18, 8, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
+	setmetatile 18, 9, METATILE_FortreeGymNew_PlatoonRockFloor, FALSE
 	special DrawWholeMapView
 	return
 
@@ -70,13 +74,9 @@ PlatoonOutside_EventScript_EnjoyThePlatoon::
 	msgbox PlatoonOutside_Text_EnjoyThePlatoon, MSGBOX_AUTOCLOSE
 	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanAdjourn
 	waitmovement 0
-	opendoor 9, 5
-	waitdooranim
 	applymovement LOCALID_INTROMAN, PlatoonOutside_Movement_IntromanEnterDoor
 	waitmovement 0
 	playse SE_EXIT
-	closedoor 9, 5
-	waitdooranim
 	removeobject LOCALID_INTROMAN
 	setflag FLAG_HIDE_INTRO_MAN_AFTER
 	releaseall
@@ -109,7 +109,7 @@ PlatoonOutside_Text_BugType:
 	.string "I say?\p"
 	.string "They're so fascinating.\n"
 	.string "Did you even realize that\l"
-	.string "any Bug type Pokemon can use\l"
+	.string "any Bug type Pokémon can use\l"
 	.string "its attacks to bypass enemy\l"
 	.string "defensive barriers? Yep.\l"
 	.string "Protect, Substitute, Reflect,\l"
@@ -135,10 +135,10 @@ PlatoonOutside_Text_EachMonHasOneSet:
 	.string "You looking to make it big\n"
 	.string "in the Hodgepodge Platoon?\l"
 	.string "Here's a tip for ya:\p"
-	.string "Each unique Pokemon species\n"
+	.string "Each unique Pokémon species\n"
 	.string "you can choose from has only\l"
 	.string "one setup. If you can memorize\l"
-	.string "the set each Pokemon has, it\l"
+	.string "the set each Pokémon has, it\l"
 	.string "will not change its moves out\l"
 	.string "between attempts.\p"
 	.string "Keep honing away at your strategy\n"
@@ -152,11 +152,11 @@ PlatoonOutside_Text_WelcomeToThePlatoon:
 	.string "focused on a format similar\l"
 	.string "to Hoenn's Battle Factory.\p"
 	.string "You get a choice of 3 out of\n"
-	.string "6 starting Pokemon, then\l"
+	.string "6 starting Pokémon, then\l"
 	.string "go up against opponents with\l"
 	.string "randomized teams of 3.\l"
 	.string "After every match, you may\l"
-	.string "swap out one of your Pokemon\l"
+	.string "swap out one of your Pokémon\l"
 	.string "for an opponent's.\p"
 	.string "To accompany you throughout\n"
 	.string "the Platoon's grounds,\l"

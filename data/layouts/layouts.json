@@ -5824,10 +5824,10 @@
     {
       "id": "LAYOUT_PLATOON_OUTSIDE",
       "name": "PlatoonOutside_Layout",
-      "width": 20,
+      "width": 30,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fallarbor",
+      "secondary_tileset": "gTileset_FortreeGymNew",
       "border_filepath": "data/layouts/PlatoonOutside/border.bin",
       "blockdata_filepath": "data/layouts/PlatoonOutside/map.bin"
     },
@@ -5840,6 +5840,36 @@
       "secondary_tileset": "gTileset_TrainerHill",
       "border_filepath": "data/layouts/PlatoonInsideFoyer/border.bin",
       "blockdata_filepath": "data/layouts/PlatoonInsideFoyer/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE",
+      "name": "PebbleriteCave_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/PebbleriteCave/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE_MEAT_FLOOR",
+      "name": "PebbleriteCaveMeatFloor_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Meat",
+      "border_filepath": "data/layouts/PebbleriteCaveMeatFloor/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCaveMeatFloor/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEBBLERITE_CAVE_GREEN_FLOORS",
+      "name": "PebbleriteCaveGreenFloors_Layout",
+      "width": 52,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/PebbleriteCaveGreenFloors/border.bin",
+      "blockdata_filepath": "data/layouts/PebbleriteCaveGreenFloors/map.bin"
     }
   ]
 }

@@ -3719,3 +3719,9 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/PlatoonOutside/scripts.inc"
 
 	.include "data/maps/PlatoonInsideFoyer/scripts.inc"
+
+	.include "data/maps/PebbleriteCave/scripts.inc"
+
+	.include "data/maps/PebbleriteCaveMeatFloor/scripts.inc"
+
+	.include "data/maps/PebbleriteCaveGreenFloors/scripts.inc"

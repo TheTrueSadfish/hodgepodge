@@ -88,7 +88,7 @@ static u8 SetTentPtrsGetLevel(void);
 #include "data/battle_frontier/battle_frontier_trainers.h"
 #include "data/battle_frontier/battle_frontier_mons.h"
 
-const u8 gTowerMaleFacilityClasses[13] =
+const u8 gTowerMaleFacilityClasses[14] =
 {
     FACILITY_CLASS_CLOWN,
     FACILITY_CLASS_GENTLEMAN,
@@ -102,7 +102,8 @@ const u8 gTowerMaleFacilityClasses[13] =
     FACILITY_CLASS_VANDAL,
     FACILITY_CLASS_POKEFAN_M,
     FACILITY_CLASS_SOLDIER,
-    FACILITY_CLASS_GRILLMEISTER
+    FACILITY_CLASS_GRILLMEISTER,
+    FACILITY_CLASS_YOUNGSTER
 };
 
 const u8 gTowerFemaleFacilityClasses[8] =
@@ -117,7 +118,7 @@ const u8 gTowerFemaleFacilityClasses[8] =
     FACILITY_CLASS_ASSISTANT
 };
 
-const u8 gTowerMaleTrainerGfxIds[13] =
+const u8 gTowerMaleTrainerGfxIds[14] =
 {
     OBJ_EVENT_GFX_FAT_MAN,
     OBJ_EVENT_GFX_GENTLEMAN,
@@ -131,7 +132,8 @@ const u8 gTowerMaleTrainerGfxIds[13] =
     OBJ_EVENT_GFX_VANDAL,
     OBJ_EVENT_GFX_POKEFAN_M,
     OBJ_EVENT_GFX_CAMPER,
-    OBJ_EVENT_GFX_MAN_5
+    OBJ_EVENT_GFX_MAN_5,
+    OBJ_EVENT_GFX_YOUNGSTER
 };
 
 const u8 gTowerFemaleTrainerGfxIds[8] =

@@ -1938,3 +1938,22 @@ const u16 gTilesetPalettes_TrickHouseNew[][16] =
 };
 
 const u32 gTilesetTiles_TrickHouseNew[] = INCBIN_U32("data/tilesets/secondary/trick_house_new/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Meat[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/meat/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Meat[] = INCBIN_U32("data/tilesets/secondary/meat/tiles.4bpp.lz");

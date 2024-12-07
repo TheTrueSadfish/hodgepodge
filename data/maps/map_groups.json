@@ -63,7 +63,10 @@
     "SlateportCity_BattleTentCorridor",
     "SlateportCity_BattleTentBattleRoom",
     "PlatoonOutside",
-    "PlatoonInsideFoyer"
+    "PlatoonInsideFoyer",
+    "PebbleriteCave",
+    "PebbleriteCaveMeatFloor",
+    "PebbleriteCaveGreenFloors"
   ],
   "gMapGroup_PiscesLeg1Major": [
     "SSTidalExterior",
