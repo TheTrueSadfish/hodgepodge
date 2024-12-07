@@ -11411,7 +11411,7 @@ static const struct TrainerMon sParty_PCentauri[] = {
     {
     .species = SPECIES_MEGALITO,
     .ability = ABILITY_DROUGHT,
-    .heldItem = ITEM_HEAT_ROCK,
+    .heldItem = ITEM_FROST_ORB,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 72,
     },

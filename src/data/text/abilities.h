@@ -1723,9 +1723,9 @@ static const u8 sFilthmongerDescription[] = _(
     "next move it uses is boosted.");
 
 static const u8 sGooseChaserDescription[] = _(
-    "After attacking, the Pokémon\n"
-    "may use a move that covers the\n"
-    "foe in Tar and may hit twice.");
+    "After attacking, it may use a\n"
+    "move that covers the foe in Tar\n"
+    "or drop Speed and may hit twice.");
 
 static const u8 sHeatSeekerDescription[] = _(
     "Burn spreads to the Pokémon,\n"
@@ -1770,7 +1770,7 @@ static const u8 sTerraformerDescription[] = _(
 static const u8 sToothNNailDescription[] = _(
     "After using a biting, sound,\n"
     "claw, or slicing move uses Slash,\n"
-    "Fury Swipes, Crunch, or Growl.");
+    "Crush Claw, Crunch, or Howl.");
 
 static const u8 sSunkCostDescription[] = _(
     "The Pokémon has a chance to do\n"
@@ -1789,7 +1789,7 @@ static const u8 sMisfortuneDescription[] = _(
 
 static const u8 sReboundDescription[] = _(
     "Attcking the Pokémon forces the\n"
-    "attacker to switch out o runr\n"
+    "attacker to switch out or run\n"
     "away.");
 
 static const u8 sInstabilityDescription[] = _(
@@ -1808,9 +1808,9 @@ static const u8 sPanaceaDescription[] = _(
     "a battle.");
 
 static const u8 sSurpriseDescription[] = _(
-    "Lowers the opposing Pokémon's\n"
-    "accuracy and evasion upon\n"
-    "entering battle.");
+    "Sharply lowers opposing\n"
+    "Pokémons' accuracy and evasion\n"
+    "upon entering battle.");
 
 static const u8 sSpaceCrookDescription[] = _(
     "If opposing Pokémon have status\n"
@@ -1818,9 +1818,14 @@ static const u8 sSpaceCrookDescription[] = _(
     "damage at the end of every turn.");
 
 static const u8 sCurlingStoneDescription[] = _(
-    "Boosts the Pokémon's Defense\n"
-    "stat and curls up when the\n"
-    "Pokémon enters a battle.");
+    "Sharply boosts the Pokémon's\n"
+    "Defense stat and curls up when\n"
+    "it enters a battle.");
+
+static const u8 sPalpitationsDescription[] = _(
+    "The Pokémon takes damage every\n"
+    "turn based on every positive\n"
+    "stat change it has.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2232,6 +2237,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SURPRISE] = _("Surprise"),
     [ABILITY_SPACE_CROOK] = _("Space Crook"),
     [ABILITY_CURLING_STONE] = _("Curling Stone"),
+    [ABILITY_PALPITATIONS] = _("Palpitations"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2643,6 +2649,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SURPRISE] = _("Surprise"),
     [ABILITY_SPACE_CROOK] = _("Space Crook"),
     [ABILITY_CURLING_STONE] = _("Curling Stone"),
+    [ABILITY_PALPITATIONS] = _("Palpitations"),
 };
 #endif
 
@@ -3055,4 +3062,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SURPRISE] = sSurpriseDescription,
     [ABILITY_SPACE_CROOK] = sSpaceCrookDescription,
     [ABILITY_CURLING_STONE] = sCurlingStoneDescription,
+    [ABILITY_PALPITATIONS] = sPalpitationsDescription,
 };

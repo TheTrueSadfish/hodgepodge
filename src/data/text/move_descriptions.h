@@ -273,9 +273,9 @@ static const u8 sFlamethrowerDescription[] = _(
     "also leave the foe with a burn.");
 
 static const u8 sMistDescription[] = _(
-    "Cloaks itself and allies in a\n"
-    "white mist that stops stat drops\n"
-    "and added effects for 6 turns.");
+    "Stops stat drops and added\n"
+    "effects for 6 turns. This move\n"
+    "always goes first.");
 
 static const u8 sWaterGunDescription[] = _(
     "The target is blasted with a\n"
@@ -472,9 +472,9 @@ static const u8 sPsychicDescription[] = _(
     "Boosted if the user's in Gravity.");
 
 static const u8 sHypnosisDescription[] = _(
-    "The user employs hypnotic\n"
-    "suggestion to make the target\n"
-    "fall asleep.");
+    "The user employs hypnosis to\n"
+    "make the target fall asleep.\n"
+    "Psychic-types are immune.");
 
 static const u8 sMeditateDescription[] = _(
     "The user meditates to awaken the\n"
@@ -1090,9 +1090,9 @@ static const u8 sFrustrationDescription[] = _(
     "likes its Trainer.");
 
 static const u8 sSafeguardDescription[] = _(
-    "The user creates a protective\n"
-    "field that prevents certain\n"
-    "statuses for 6 turns.");
+    "Prevents certain status for 6\n"
+    "turns. This move always goes\n"
+    "first.");
 
 static const u8 sPainSplitDescription[] = _(
     "The user adds its HP to the\n"
@@ -1883,9 +1883,9 @@ static const u8 sGastroAcidDescription[] = _(
     "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
-    "For 6 turns, prevents foes from\n"
-    "landing critical hits and weakens\n"
-    "their super effective moves.");
+    "For 6 turns, prevents critical\n"
+    "hits and weakens super effective\n"
+    "moves. This always goes first.");
 
 static const u8 sMeFirstDescription[] = _(
     "The user tries to cut ahead of\n"
@@ -1938,9 +1938,9 @@ static const u8 sToxicSpikesDescription[] = _(
     "switching in. Can set 2 layers.");
 
 static const u8 sHeartSwapDescription[] = _(
-    "The user employs its psychic\n"
-    "power to switch stat changes\n"
-    "with the target.");
+    "The user employs its powers\n"
+    "to switch stat changes with\n"
+    "the target. Always goes first.");
 
 static const u8 sAquaRingDescription[] = _(
     "The user envelops itself in a\n"
@@ -4954,9 +4954,9 @@ static const u8 sPainSpinesDescription[] = _(
     "the foe has a status condition.");
 
 static const u8 sDarkHungerDescription[] = _(
-    "The move makes the user eat the\n"
-    "foe's Berry. Boosted if the user\n"
-    "ate a berry the previous turn.");
+    "Eats the foe's Berry. Boosted if\n"
+    "the user ate a Berry last turn.\n"
+    "Absorbs some of the damage done.");
 
 static const u8 sNightBeamDescription[] = _(
     "A piercing light is shot at the\n"
@@ -4979,9 +4979,9 @@ static const u8 sHealMelodyDescription[] = _(
     "healed and has its poison cured.");
 
 static const u8 sRoastRoustDescription[] = _(
-    "The foe is hit with a\n"
-    "superheated tail. Hitting a foe\n"
-    "boosts the user's Sp. Def stat.");
+    "If the move goes through raises\n"
+    "Sp. Def. If the user is below\n"
+    "half health also raises Atk.");
 
 static const u8 sFireworkCrashDescription[] = _(
     "The user crashes into the foe\n"
@@ -4995,18 +4995,18 @@ static const u8 sEmberSnowDescription[] = _(
 
 static const u8 sFeatherRazorDescription[] = _(
     "Hits twice, or more for each\n"
-    "Speed boost. Cuts foe's Def, and\n"
-    "user's Spd. Critical hits more.");
+    "Speed boost. Always critical\n"
+    "hits. Drops user's Speed after.");
 
 static const u8 sDragDownDescription[] = _(
-    "Switches the user out and resets\n"
-    "the foe's stat changes. If the\n"
-    "foe has stat changes, goes first.");
+    "After attacking the foe, the\n"
+    "user switches place with a party\n"
+    "Pokémon. Flips foe's stat buffs.");
 
 static const u8 sHauntMelodyDescription[] = _(
-    "Cuts 3 PP from the foe and stops\n"
-    "healing for 5 turns. Cuts all PP\n"
-    "of poisoned foes, but removes it.");
+    "Stops foe from healing for 5\n"
+    "turns. Boosted against poisoned\n"
+    "foes, but removes the poison.");
 
 static const u8 sOddcastDescription[] = _(
     "Lets out a signal that may\n"
@@ -5041,7 +5041,7 @@ static const u8 sNonSequiturDescription[] = _(
 static const u8 sBeldamBrewDescription[] = _(
     "The user lobs a magical brew\n"
     "that changes the foe's type to\n"
-    "Poison. This blocks healing.");
+    "Poison. This disables abilities.");
 
 static const u8 sAstralSpikesDescription[] = _(
     "The user shoots odd spikes 2 to\n"
@@ -5050,8 +5050,8 @@ static const u8 sAstralSpikesDescription[] = _(
 
 static const u8 sWildShuffleDescription[] = _(
     "Boosted the lower the PP it has.\n"
-    "This move switches the user out\n"
-    "and always goes first.");
+    "This move switches both the user\n"
+    "and foe out.");
 
 static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"
@@ -5059,9 +5059,9 @@ static const u8 sUprootEvilDescription[] = _(
     "Attack. Always goes first.");
 
 static const u8 sPliaBallDescription[] = _(
-    "This move hits twice, and\n"
-    "switches the foe out. Harshly\n"
-    "lowers the user's Speed after.");
+    "The target is thrown and\n"
+    "switched. This harshly lowers\n"
+    "user's Speed stat, however.");
 
 static const u8 sIronJawsDescription[] = _(
     "The user bites with steel-hard\n"
@@ -5096,17 +5096,42 @@ static const u8 sFireballsDescription[] = _(
 static const u8 sIcebreakerDescription[] = _(
     "An attack that hurts the user a\n"
     "little. If the foe is frostbitten\n"
-    "or frozen, may OHKO the foe.");
+    "or frozen, OHKOs. Goes first.");
 
 static const u8 sPortentCastDescription[] = _(
     "Casts a magical spell that makes\n"
     "lucky chant on the user's side\n"
-    "and may lower the foe's accuracy.");
+    "and lowers the foe's accuracy.");
 
 static const u8 sWardSpellDescription[] = _(
     "Casts a magical spell that makes\n"
     "safeguard on the user's side and\n"
-    "raises the user's Defense stat.");
+    "sharply boosts the user's Def.");
+
+static const u8 sMoltenCoreDescription[] = _(
+    "Restores half its missing HP.\n"
+    "Boosts Atk/Sp. Def. Goes first.\n"
+    "Can't be used consecutively.");
+
+static const u8 sHeartAttackDescription[] = _(
+    "A move that alters the target's\n"
+    "heartbeat by making its Ability\n"
+    "Palpitations.");
+
+static const u8 sIllFateDescription[] = _(
+    "This move always lands critical\n"
+    "hits and never misses if the\n"
+    "target has a status condition.");
+
+static const u8 sSandSlipDescription[] = _(
+    "Traps the foe permanently. Each\n"
+    "turn the move hurts them and\n"
+    "cuts Def. Switches the user out.");
+
+static const u8 sChakraSurgeDescription[] = _(
+    "The user restores 1/4 of its HP.\n"
+    "If below half HP, also raises\n"
+    "Def/Sp. Def. Always goes first.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -6182,4 +6207,9 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_ICEBREAKER - 1] = sIcebreakerDescription,
     [MOVE_PORTENT_CAST - 1] = sPortentCastDescription,
     [MOVE_WARD_SPELL - 1] = sWardSpellDescription,
+    [MOVE_MOLTEN_CORE - 1] = sMoltenCoreDescription,
+    [MOVE_HEART_ATTACK - 1] = sHeartAttackDescription,
+    [MOVE_ILL_FATE - 1] = sIllFateDescription,
+    [MOVE_SAND_SLIP - 1] = sSandSlipDescription,
+    [MOVE_CHAKRA_SURGE - 1] = sChakraSurgeDescription,
 };

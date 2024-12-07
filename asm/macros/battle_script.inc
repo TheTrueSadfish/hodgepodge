@@ -840,9 +840,8 @@
 	.byte 0x9b
 	.endm
 
-	.macro setsubstitute, half:req
+	.macro setsubstitute
 	.byte 0x9c
-	.byte \half
 	.endm
 
 	.macro mimicattackcopy failInstr:req
@@ -2109,11 +2108,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro hauntmelodyppreduce failInstr:req
-	various BS_TARGET, VARIOUS_HAUNT_MELODY_PP_REDUCE
-	.4byte \failInstr
-	.endm
-
 	.macro blukberryppreduce failInstr:req
 	various BS_ATTACKER, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
@@ -2126,6 +2120,11 @@
 
 	.macro tryhealquarterhealth battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_HEAL_QUARTER_HP
+	.4byte \failInstr
+	.endm
+
+	.macro tryhealhalfmissinghealth battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_HEAL_HALF_MISSING_HP
 	.4byte \failInstr
 	.endm
 
@@ -2251,6 +2250,11 @@
 
 	.macro setoctolock battler:req, failInstr:req
 	various \battler, VARIOUS_SET_OCTOLOCK
+	.4byte \failInstr
+	.endm
+
+	.macro setsandslip battler:req, failInstr:req
+	various \battler, VARIOUS_SET_SAND_SLIP
 	.4byte \failInstr
 	.endm
 
@@ -2523,6 +2527,10 @@
 
 	.macro invertnegativestatstages battler:req
 	various \battler, VARIOUS_INVERT_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro invertpositivestatstages battler:req
+	various \battler, VARIOUS_INVERT_POSITIVE_STAT_STAGES
 	.endm
 
 	.macro jumpifsafeguard jumpInstr:req

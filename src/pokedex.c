@@ -1403,7 +1403,7 @@ static const struct SearchOptionText sDexSearchTypeOptions[NUMBER_OF_MON_TYPES +
     {gText_DexEmptyString, gTypeNames[TYPE_BEAST]},
     {gText_DexEmptyString, gTypeNames[TYPE_COSMIC]},
     {gText_DexEmptyString, gTypeNames[TYPE_GREASY]},
-    {gText_DexEmptyString, gTypeNames[TYPE_COSMIC]},
+    {gText_DexEmptyString, gTypeNames[TYPE_RUBBER]},
     {},
 };
 

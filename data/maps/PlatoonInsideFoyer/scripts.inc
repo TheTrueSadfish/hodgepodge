@@ -254,7 +254,6 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	msgbox PlatoonInsideFoyer_Text_OkayBuckleUp, MSGBOX_DEFAULT
 	giveitem ITEM_ABILITY_SHIELD
 	giveitem ITEM_ABSORB_BULB
-	giveitem ITEM_AIR_BALLOON
 	giveitem ITEM_ASSAULT_VEST
 	giveitem ITEM_BATTLE_HELM
 	giveitem ITEM_BELUE_BERRY
@@ -268,6 +267,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_CHARCOAL
 	giveitem ITEM_CHOICE_BAND
 	giveitem ITEM_CHOICE_SCARF
+	giveitem ITEM_CHOPLE_BERRY
 	giveitem ITEM_CLEANSE_TAG
 	giveitem ITEM_CLEAR_AMULET
 	giveitem ITEM_COBA_BERRY
@@ -276,12 +276,11 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_CURSED_AMULET
 	giveitem ITEM_CUSTAP_BERRY
 	giveitem ITEM_DESTINY_KNOT
+	giveitem ITEM_DURIN_BERRY
 	giveitem ITEM_DRAGON_FANG
 	giveitem ITEM_EJECT_BUTTON
 	giveitem ITEM_EJECT_PACK
 	giveitem ITEM_FLAME_ORB
-	giveitem ITEM_FLIP_COIN
-	giveitem ITEM_FLOAT_STONE
 	giveitem ITEM_FOCUS_BAND
 	giveitem ITEM_FOCUS_SASH
 	giveitem ITEM_FROST_ORB
@@ -299,6 +298,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_LIGHT_BALL
 	giveitem ITEM_LOADED_DICE
 	giveitem ITEM_LOST_MANTLE
+	giveitem ITEM_LUM_BERRY
 	giveitem ITEM_LUMINOUS_MOSS
 	giveitem ITEM_MAGOST_BERRY
 	giveitem ITEM_MARANGA_BERRY
@@ -316,17 +316,17 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_POMEG_BERRY
 	giveitem ITEM_PROTECTIVE_PADS
 	giveitem ITEM_QUICK_CLAW
-	giveitem ITEM_RED_CARD
 	giveitem ITEM_RING_TARGET
+	giveitem ITEM_RIZZ_BERRY
 	giveitem ITEM_ROCKY_HELMET
 	giveitem ITEM_SALAC_BERRY
 	giveitem ITEM_SCOPE_LENS
 	giveitem ITEM_SHARP_BEAK
 	giveitem ITEM_SHELL_BELL
-	giveitem ITEM_SILK_SCARF
 	giveitem ITEM_SILVER_POWDER
-	giveitem ITEM_SITRUS_BERRY
 	giveitem ITEM_SOFT_SAND
+	giveitem ITEM_SPECTRAL_IDOL
+	giveitem ITEM_SPELL_TAG
 	giveitem ITEM_SPELON_BERRY
 	giveitem ITEM_STICKY_BARB
 	giveitem ITEM_TANGA_BERRY

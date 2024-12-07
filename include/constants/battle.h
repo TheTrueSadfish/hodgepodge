@@ -457,7 +457,7 @@
 #define MOVE_EFFECT_IRON_JAWS           117
 #define MOVE_EFFECT_FRESH_WHIP          118
 #define MOVE_EFFECT_ATTACK_ORDER        119
-#define MOVE_EFFECT_FEATHER_RAZOR       120
+#define MOVE_EFFECT_ATK_SPDEF_UP        120
 
 #define NUM_MOVE_EFFECTS                121
 

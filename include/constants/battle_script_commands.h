@@ -294,14 +294,16 @@
 #define VARIOUS_BLUK_BERRY_PP_REDUCE                 203
 #define VARIOUS_TRY_RESET_STAT_STAGES                204
 #define VARIOUS_TRY_EMBER_SNOW                       205
-#define VARIOUS_HAUNT_MELODY_PP_REDUCE               206
-#define VARIOUS_JUMP_IF_NO_STOCKPILE                 207
-#define VARIOUS_SET_NON_SEQUITUR                     208
-#define VARIOUS_TRY_ACTIVATE_VISCERATION             209
-#define VARIOUS_SET_FILTHMONGER                      210
-#define VARIOUS_TRY_DEFEND_ORDER                     211
-#define VARIOUS_STORE_HEAL_MELODY                    212
-#define VARIOUS_STORE_HEAL_ORDER                     213
+#define VARIOUS_JUMP_IF_NO_STOCKPILE                 206
+#define VARIOUS_SET_NON_SEQUITUR                     207
+#define VARIOUS_TRY_ACTIVATE_VISCERATION             208
+#define VARIOUS_SET_FILTHMONGER                      209
+#define VARIOUS_TRY_DEFEND_ORDER                     210
+#define VARIOUS_STORE_HEAL_MELODY                    211
+#define VARIOUS_STORE_HEAL_ORDER                     212
+#define VARIOUS_TRY_HEAL_HALF_MISSING_HP             213
+#define VARIOUS_INVERT_POSITIVE_STAT_STAGES          214
+#define VARIOUS_SET_SAND_SLIP                        215
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

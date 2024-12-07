@@ -652,7 +652,12 @@
 #define EFFECT_ATTACK_ORDER                 646
 #define EFFECT_DEFEND_ORDER                 647
 #define EFFECT_HEAL_ORDER                   648
+#define EFFECT_MOLTEN_CORE                  649
+#define EFFECT_ROAST_ROUST                  650
+#define EFFECT_HEART_ATTACK                 651
+#define EFFECT_SAND_SLIP                    652
+#define EFFECT_CHAKRA_SURGE                 653
 
-#define NUM_BATTLE_MOVE_EFFECTS             649
+#define NUM_BATTLE_MOVE_EFFECTS             654
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

@@ -13465,13 +13465,13 @@ const struct PokedexEntry gPokedexEntries[] =
     [NATIONAL_DEX_SWISQUIRE] =
     {
         .categoryName = _("Mammal"),
-        .height = 6,
-        .weight = 60,
+        .height = 20,
+        .weight = 828,
         .description = gSwisquirePokedexText,
-        .pokemonScale = 422,
-        .pokemonOffset = 0, // 12,
-        .trainerScale = 256,
-        .trainerOffset = 0,
+        .pokemonScale = 261,
+        .pokemonOffset = 0, // 1,
+        .trainerScale = 334,
+        .trainerOffset = 4,
     },
 
     [NATIONAL_DEX_MOG] =
@@ -13909,13 +13909,13 @@ const struct PokedexEntry gPokedexEntries[] =
     [NATIONAL_DEX_MANTACORE] =
     {
         .categoryName = _("Marrow"),
-        .height = 300,
-        .weight = 9999,
+        .height = 10,
+        .weight = 650,
         .description = gMantacorePokedexText,
-        .pokemonScale = 256,
-        .pokemonOffset = 0, // 0,
-        .trainerScale = 2797,
-        .trainerOffset = 18,
+        .pokemonScale = 305,
+        .pokemonOffset = 0, // 7,
+        .trainerScale = 257,
+        .trainerOffset = 0,
     },
 
     [NATIONAL_DEX_SKULDUGERY] =

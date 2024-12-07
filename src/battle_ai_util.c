@@ -416,6 +416,8 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_PSYCH_UP,
     EFFECT_FUTURE_SIGHT,
     EFFECT_FAKE_OUT,
+    EFFECT_OCTOLOCK,
+    EFFECT_SPIDER_WEB,
     EFFECT_STOCKPILE,
     EFFECT_SPIT_UP,
     EFFECT_SWALLOW,
@@ -959,6 +961,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
                     dmg = 20 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
                 break;
             case EFFECT_MULTI_HIT:
+            case EFFECT_BARB_BARRAGE:
             case EFFECT_BLACK_BUFFET:
                 dmg *= (aiData->abilities[battlerAtk] == ABILITY_SKILL_LINK ? 5 : 3);
                 break;
@@ -991,10 +994,60 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
             }
 
             // Handle other multi-strike moves
-            if (gBattleMoves[move].strikeCount > 1 && gBattleMoves[move].effect != EFFECT_TRIPLE_KICK)
+            if ((gBattleMoves[move].effect == EFFECT_FROST_SHRED || gBattleMoves[move].effect == EFFECT_FEATHER_RAZOR) && (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE))
+            {
+                u32 count = 0;
+                count += gBattleMons[battlerAtk].statStages[STAT_SPEED] - DEFAULT_STAT_STAGE;
+                dmg *= count + gBattleMoves[move].strikeCount;
+            }
+            else if (gBattleMoves[move].effect == EFFECT_HAYWIRE)
+            {
+                u32 count = 0;
+                u32 i;
+
+                for (i = 0; i < NUM_BATTLE_STATS; i++)
+                {
+                    if (gBattleMons[battlerAtk].statStages[i] > DEFAULT_STAT_STAGE)
+                    {
+                        count += gBattleMons[battlerAtk].statStages[i] - DEFAULT_STAT_STAGE;
+                        dmg *= count + gBattleMoves[move].strikeCount;
+                        if ((count + gBattleMoves[move].strikeCount) > 10)
+                            dmg *= 10;
+                    }
+                    else
+                    {
+                        dmg *= gBattleMoves[move].strikeCount;
+                    }
+                }
+            }
+            else if ((gBattleStruct->lastMoveFailed & gBitTable[battlerAtk]) && move == MOVE_WILD_ARMS)
+            {
+                dmg *= 4;
+            }
+            else if (gBattleMoves[move].strikeCount > 1 && gBattleMoves[move].effect != EFFECT_TRIPLE_KICK)
+            {
                 dmg *= gBattleMoves[move].strikeCount;
+            }
             else if (move == MOVE_WATER_SHURIKEN && gBattleMons[battlerAtk].species == SPECIES_GRENINJA_ASH)
+            {
                 dmg *= 3;
+            }
+            else if (move == MOVE_AQUASCADE && (gBattleWeather & B_WEATHER_RAIN))
+            {
+                dmg *= 2;
+            }
+            else if (move == MOVE_NANAB_GATTLING && (gDisableStructs[battlerAtk].stockpileCounter > 0))
+            {
+                dmg *= gDisableStructs[battlerAtk].stockpileCounter + 1;
+            }
+            else if (move == MOVE_FIREBALLS && CountBattlerStatIncreases(battlerAtk, TRUE) > 0)
+            {
+                dmg *= CountBattlerStatIncreases(battlerAtk, TRUE) + 1;
+            }
+            else if ((gBattleMoves[move].effect == EFFECT_CANNONADE) && (gBattleMons[battlerAtk].hp > (gBattleMons[battlerAtk].maxHP / 4)))
+            {
+                dmg *= 2;
+            }
 
             if (dmg == 0)
                 dmg = 1;

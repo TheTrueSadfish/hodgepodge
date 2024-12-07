@@ -2287,14 +2287,15 @@ static const u8 sSilverPowderDesc[] = _(
 
 static const u8 sHardStoneDesc[] = _(
     "A held item that\n"
-    "raises the power of\n"
-    "Rock-type moves.");
-
-static const u8 sSpellTagDesc[] = _(
-    "A held item that\n"
     "boosts Rock-type\n"
     "moves. Reduces damage\n"
     "after using one.");
+
+static const u8 sSpellTagDesc[] = _(
+    "A held item that\n"
+    "boosts Ghost-type\n"
+    "moves, and depletes\n"
+    "the target's PP.");
 
 static const u8 sDragonFangDesc[] = _(
     "A held item that\n"
@@ -2700,10 +2701,10 @@ static const u8 sTerrainExtenderDesc[] = _(
     "battle terrain.");
 
 static const u8 sProtectivePadsDesc[] = _(
-    "Protects the holder\n"
-    "from effects caused\n"
-    "by making contact with\n"
-    "the target.");
+    "Reduces recoil damage\n"
+    "takesn from moves and\n"
+    "prevents direct\n"
+    "contact with targets.");
 
 static const u8 sThroatSprayDesc[] = _(
     "Raises Sp. Atk. if\n"
@@ -2779,9 +2780,10 @@ static const u8 sPersimBerryDesc[] = _(
     "in battle.");
 
 static const u8 sLumBerryDesc[] = _(
-    "A held item that\n"
-    "heals any status\n"
-    "problem in battle.");
+    "It may be used or held\n"
+    "by a Pokémon to cure\n"
+    "itself of any status\n"
+    "condition it may have.");
 
 static const u8 sSitrusBerryDesc[] = _(
 #if I_SITRUS_BERRY_HEAL >= GEN_4
@@ -2842,9 +2844,10 @@ static const u8 sWepearBerryDesc[] = _(
     "the opponent.");
 
 static const u8 sPinapBerryDesc[] = _(
-    "If in a pinch, the\n"
+    "If the holder is hit\n"
+    "with a move, the\n"
     "holder will be hurt\n"
-    "further.");
+    "even further.");
 
 static const u8 sPomegBerryDesc[] = _(
     "The holder will be\n"
@@ -2915,14 +2918,14 @@ static const u8 sWatmelBerryDesc[] = _(
     "explode destructively.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "Eaten at 1/2 HP\n"
-    "To lower all stats\n"
-    "of the opponent.");
+    "The holder will be\n"
+    "able to drop all the\n"
+    "foe's stats.");
 
 static const u8 sBelueBerryDesc[] = _(
     "The holder will be\n"
     "able to cover the\n"
-    "attacker in Tar.");
+    "foe in Tar.");
 
 static const u8 sChilanBerryDesc[] = _(
     "If held by a Pokémon,\n"
@@ -4282,9 +4285,9 @@ static const u8 sCreditCardDesc[] = _(
     "card.");
 
 static const u8 sRizzBerryDesc[] = _(
-    "Eaten at 1/4 HP\n"
-    "to infatuate a foe.\n"
-    "Ignores gender.");
+    "The holder will be\n"
+    "able to infatuate\n"
+    "targets of any gender.");
 
 static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"

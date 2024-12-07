@@ -436,8 +436,9 @@
 #define ABILITY_SURPRISE 407
 #define ABILITY_SPACE_CROOK 408
 #define ABILITY_CURLING_STONE 409
+#define ABILITY_PALPITATIONS 410
 
-#define ABILITIES_COUNT_PISCES 410
+#define ABILITIES_COUNT_PISCES 411
 
 // fullmetal - full metal body
 // gloopomancy - huddle up

@@ -691,7 +691,8 @@ static const u8 sText_StickyWebDisappearedFromTeam[] = _("The sticky web has dis
 static const u8 sText_StickyWebUsed[] = _("A sticky web spreads out on the\nground around {B_DEF_TEAM2} team!");
 static const u8 sText_QuashSuccess[] = _("The opposing {B_DEF_NAME_WITH_PREFIX}'s\nmove was postponed!");
 static const u8 sText_IonDelugeOn[] = _("A deluge of ions showers\nthe battlefield!");
-static const u8 sText_TopsyTurvySwitchedStats[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s stat changes were\nall reversed!");
+static const u8 sText_TopsyTurvySwitchedStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat changes were\nall reversed!");
+static const u8 sText_DragDownSwitchedStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat buffs were\nall reversed!");
 static const u8 sText_TerrainBecomesMisty[] = _("Mist swirled about\nthe battlefield!");
 static const u8 sText_TerrainBecomesGrassy[] = _("Grass grew to cover\nthe battlefield!");
 static const u8 sText_TerrainBecomesElectric[] = _("An electric current runs across\nthe battlefield!");
@@ -1803,6 +1804,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ATTACKERBECAMEWEAKERTOFIRE - BATTLESTRINGS_TABLE_START] = sText_AttackerBecameWeakerToFire,
     [STRINGID_TARGETSTOCKPILED - BATTLESTRINGS_TABLE_START] = sText_TargetStockpiled,
     [STRINGID_TARGETHURTBYITEM - BATTLESTRINGS_TABLE_START] = sText_TargetHurtByItem,
+    [STRINGID_DRAGDOWNSWITCHEDSTATS - BATTLESTRINGS_TABLE_START] = sText_DragDownSwitchedStats,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

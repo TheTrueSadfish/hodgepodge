@@ -1050,7 +1050,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_HAUNT_MELODY] = _("Haunt Melody"),
     [MOVE_ODDCAST] = _("Oddcast"),
     [MOVE_KELP_SAP] = _("Kelp Sap"),
-    [MOVE_NANAB_GATTLING] = _("Nanab Gattling"),
+    [MOVE_NANAB_GATTLING] = _("Nanab Gatling"),
     [MOVE_BRIAR_WHIP] = _("Briar Whip"),
     [MOVE_GOOSE_CHASER] = _("Goose Chaser"),
     [MOVE_GREASE_LIGHTNING] = _("Grease Lightning"),
@@ -1069,6 +1069,11 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_ICEBREAKER] = _("Icebreaker"),
     [MOVE_PORTENT_CAST] = _("Portent Cast"),
     [MOVE_WARD_SPELL] = _("Ward Spell"),
+    [MOVE_MOLTEN_CORE] = _("Molten Core"),
+    [MOVE_HEART_ATTACK] = _("Heart Attack"),
+    [MOVE_ILL_FATE] = _("Ill Fate"),
+    [MOVE_SAND_SLIP] = _("Sand Slip"),
+    [MOVE_CHAKRA_SURGE] = _("Chakra Surge"),
 };
 #else
 // 12 letters
@@ -2122,7 +2127,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_HAUNT_MELODY] = _("Haunt Melody"),
     [MOVE_ODDCAST] = _("Oddcast"),
     [MOVE_KELP_SAP] = _("Kelp Sap"),
-    [MOVE_NANAB_GATTLING] = _("Nanab Gattling"),
+    [MOVE_NANAB_GATTLING] = _("Nanab Gatling"),
     [MOVE_BRIAR_WHIP] = _("Briar Whip"),
     [MOVE_GOOSE_CHASER] = _("Goose Chaser"),
     [MOVE_GREASE_LIGHTNING] = _("Grease Lightning"),
@@ -2141,6 +2146,11 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_ICEBREAKER] = _("Icebreaker"),
     [MOVE_PORTENT_CAST] = _("Portent Cast"),
     [MOVE_WARD_SPELL] = _("Ward Spell"),
+    [MOVE_MOLTEN_CORE] = _("Molten Core"),
+    [MOVE_HEART_ATTACK] = _("Heart Attack"),
+    [MOVE_ILL_FATE] = _("Ill Fate"),
+    [MOVE_SAND_SLIP] = _("Sand Slip"),
+    [MOVE_CHAKRA_SURGE] = _("Chakra Surge"),
 };
 #endif
 

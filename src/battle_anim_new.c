@@ -689,6 +689,25 @@ const struct SpriteTemplate gHornLeechHornTemplate =
     .callback = AnimShadowBall
 };
 
+static const union AnimCmd sAnimCmdFlippedX[] = {
+	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+	ANIMCMD_END,
+};
+static const union AnimCmd *const sAnimCmdTable_FlippedX[] = {
+	sAnimCmdFlippedX,
+};
+
+const struct SpriteTemplate gHornLeechHornOpponentTemplate =
+{
+    .tileTag = ANIM_TAG_HORN_LEECH,
+    .paletteTag = ANIM_TAG_HORN_LEECH,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = sAnimCmdTable_FlippedX,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimShadowBall
+};
+
 //dual chop
 const struct SpriteTemplate gDualChopImpactTemplate =
 {
@@ -4614,13 +4633,6 @@ const struct SpriteTemplate gSpriteTemplate_PowerShiftDefenseBall = {
 };
 
 // stone axe
-static const union AnimCmd sAnimCmdFlippedX[] = {
-	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
-	ANIMCMD_END,
-};
-static const union AnimCmd *const sAnimCmdTable_FlippedX[] = {
-	sAnimCmdFlippedX,
-};
 const struct SpriteTemplate gSpriteTemplate_StoneAxeSlash = {
     .tileTag = ANIM_TAG_SLAM_HIT_2,
     .paletteTag = ANIM_TAG_SLAM_HIT_2,
@@ -5517,6 +5529,34 @@ const struct SpriteTemplate gGiantsSpearLaunchSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimSuperpowerFireball
+};
+static const union AnimCmd sAnimCmdFlippedXY[] = {
+	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
+	ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
+	ANIMCMD_END,
+};
+static const union AnimCmd *const sAnimCmdTable_FlippedXY[] = {
+	sAnimCmdFlippedXY,
+};
+const struct SpriteTemplate gGiantsSpearLaunchOpponentSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GIANTS_SPEAR,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .oam = &gOamData_AffineNormal_ObjNormal_64x64,
+    .anims = sAnimCmdTable_FlippedXY,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimSuperpowerFireball
+};
+const struct SpriteTemplate gGiantsSpearChargingOpponentSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GIANTS_SPEAR,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .oam = &gOamData_AffineNormal_ObjNormal_64x64,
+    .anims = sAnimCmdTable_FlippedXY,
+    .images = NULL,
+    .affineAnims = gAffineAnims_GrowingElectricOrb,
+    .callback = AnimGrowingChargeOrb
 };
 const struct SpriteTemplate gGigavoltHavocRingsSpriteTemplate =
 {
