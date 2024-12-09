@@ -563,7 +563,7 @@ const u8 *const gStatusConditionStringsTable[11][2] =
     {gStatusConditionString_PanicJpn, gText_Panic},
     {gStatusConditionString_ExposedJpn, gText_Exposed},
     {gStatusConditionString_BloomingJpn, gText_Blooming},
-    {gStatusConditionString_RestJpn, gText_RestStatus}
+    {gStatusConditionString_RestJpn, gText_RestStatus},
 };
 
 void CB2_InitBattle(void)

@@ -4164,10 +4164,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                         else
                             gBattleMons[gBattlerAttacker].status1 -= toSub;
                     } else if (gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) {
-                        if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) < toSub)
+                        if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) < STATUS1_REST_TURN(toSub))
                             gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_REST;
                         else
-                            gBattleMons[gBattlerAttacker].status1 -= toSub;
+                            gBattleMons[gBattlerAttacker].status1 -= STATUS1_REST_TURN(toSub);
                     }
                         
                     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
