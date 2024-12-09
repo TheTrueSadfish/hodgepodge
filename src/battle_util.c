@@ -68,7 +68,7 @@ static uq4_12_t GetSupremeOverlordModifier(u32 battler);
 static bool32 CanBeInfinitelyConfused(u32 battler);
 static void CovenLightsQueueStatDrops(u32 battler);
 static bool32 BattlerCanHaveStatLowered(u32 battler);
-static u32 BufferStatusCondition(u32 battler);
+static u32 BufferStatusCondition(u32 battler, bool32 checkStatus2);
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForRunningByItem[];
@@ -4168,10 +4168,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                         else
                             gBattleMons[gBattlerAttacker].status1 -= toSub;
                     } else if (gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) {
-                        if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) < toSub)
+                        if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_REST) < STATUS1_REST_TURN(toSub))
                             gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_REST;
                         else
-                            gBattleMons[gBattlerAttacker].status1 -= toSub;
+                            gBattleMons[gBattlerAttacker].status1 -= STATUS1_REST_TURN(toSub);
                     }
                         
                     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP_ANY)
@@ -6096,7 +6096,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 else if (gBattleMons[battler].status1 & STATUS1_ANY && ((!(gBattleMons[battler].hp < gBattleMons[battler].maxHP)) || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
-                    BufferStatusCondition(battler);
+                    BufferStatusCondition(battler, FALSE);
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
@@ -6112,7 +6112,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
 
-                    BufferStatusCondition(battler);
+                    BufferStatusCondition(battler, FALSE);
 
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
@@ -6201,7 +6201,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if ((gBattleMons[battler].status1 & STATUS1_ANY) && (Random() % 2) == 0)
                 {
                 ABILITY_HEAL_MON_STATUS:
-                    BufferStatusCondition(battler);
+                    BufferStatusCondition(battler, FALSE);
 
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
@@ -9719,7 +9719,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_CURE_STATUS:
         if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
         {
-            BufferStatusCondition(battler);
+            BufferStatusCondition(battler, TRUE);
             gBattleMons[battler].status1 = 0;
             RemoveConfusionStatus(battler);
             BattleScriptPushCursor();
@@ -9731,7 +9731,7 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_FAVOR_SCARF:
         if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
         {
-            BufferStatusCondition(battler);
+            BufferStatusCondition(battler, TRUE);
             
             gBattleMons[battler].status1 = 0;
             RemoveConfusionStatus(battler);
@@ -9979,7 +9979,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_CURE_STATUS:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    i = BufferStatusCondition(battler);
+                    i = BufferStatusCondition(battler, TRUE);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -9993,7 +9993,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_FAVOR_SCARF:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
-                    i = BufferStatusCondition(battler);
+                    i = BufferStatusCondition(battler, TRUE);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -10468,7 +10468,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_CURE_STATUS:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    i = BufferStatusCondition(battler);
+                    i = BufferStatusCondition(battler, TRUE);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -10482,7 +10482,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_FAVOR_SCARF:
                 if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
                 {
-                    i = BufferStatusCondition(battler);
+                    i = BufferStatusCondition(battler, TRUE);
                     if (i <= 1)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
@@ -15860,7 +15860,7 @@ static void CovenLightsQueueStatDrops(u32 battler)
     }
 }
 
-static u32 BufferStatusCondition(u32 battler)
+static u32 BufferStatusCondition(u32 battler, bool32 checkStatus2)
 {
     u32 ret = 0;
     
@@ -15905,10 +15905,13 @@ static u32 BufferStatusCondition(u32 battler)
         StringCopy(gBattleTextBuff1, gText_RestStatus);
         ret++;
     }
-    if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
-    {
-        StringCopy(gBattleTextBuff1, gText_Confusion);
-        ret++;
+    
+    if (checkStatus2) {
+        if (gBattleMons[battler].status2 & STATUS2_CONFUSION)
+        {
+            StringCopy(gBattleTextBuff1, gText_Confusion);
+            ret++;
+        }
     }
     return ret;
 }
