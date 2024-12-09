@@ -3008,21 +3008,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_SNORE] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
-            .power = 75,
+            .power = 50,
         #else
-            .power = 75,
+            .power = 50,
         #endif
         .effect = EFFECT_SNORE,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 15,
         .secondaryEffectChance = 30,
-        .target = MOVE_TARGET_BOTH,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .split = SPLIT_SPECIAL,
+        .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
-        .soundMove = TRUE,
         .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .lazyMove = TRUE,
     },
@@ -16090,7 +16089,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 20,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -17645,7 +17644,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,

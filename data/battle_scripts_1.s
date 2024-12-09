@@ -665,7 +665,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFocusPunch              @ EFFECT_NON_SEQUITUR
 	.4byte BattleScript_EffectLovelyPoison            @ EFFECT_LOVELY_POISON
 	.4byte BattleScript_EffectBeldamBrew              @ EFFECT_BELDAM_BREW
-	.4byte BattleScript_EffectWildShuffle             @ EFFECT_WILD_SHUFFLE
+	.4byte BattleScript_EffectHitEscape               @ EFFECT_WILD_SHUFFLE
 	.4byte BattleScript_EffectPortentCast             @ EFFECT_PORTENT_CAST
 	.4byte BattleScript_EffectWardSpell               @ EFFECT_WARD_SPELL
 	.4byte BattleScript_EffectUprootEvil              @ EFFECT_UPROOT_EVIL
@@ -700,10 +700,11 @@ BattleScript_ChakraSurgeRaiseStats::
 	attackstring
 	ppreduce
 	tryhealquarterhealth BS_ATTACKER, BattleScript_CosmicPowerAfterPPReduce
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_RestoreHpAnimation
+BattleScript_ChakraSurgeAnimation::
 	attackanimation
 	waitanimation
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_RestoreHp
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_RestoreHp
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
@@ -741,32 +742,6 @@ BattleScript_EffectSandSlip::
 	jumpifbyte CMP_NOT_EQUAL gBattleOutcome 0, BattleScript_HitEscapeEnd
 	jumpifemergencyexited BS_TARGET, BattleScript_HitEscapeEnd
 	goto BattleScript_MoveSwitch
-
-BattleScript_EffectWildShuffle::
-	call BattleScript_EffectHit_Ret
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	tryfaintmon BS_TARGET
-	moveendto MOVEEND_ATTACKER_VISIBLE
-	moveendfrom MOVEEND_TARGET_VISIBLE
-	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_WildShuffleTrySwitchUser 
-	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_WildShuffleTrySwitchUser 
-	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_WildShuffleTrySwitchUser
-	tryhitswitchtarget BattleScript_WildShuffleTrySwitchUser
-	forcerandomswitch BattleScript_WildShuffleTrySwitchUser
-	jumpifbattleend BattleScript_WildShuffleEnd
-	jumpifbyte CMP_NOT_EQUAL gBattleOutcome 0, BattleScript_WildShuffleEnd
-	jumpifemergencyexited BS_TARGET, BattleScript_WildShuffleEnd
-	goto BattleScript_MoveSwitch
-BattleScript_WildShuffleEnd:
-	moveendall
-	end
-BattleScript_WildShuffleTrySwitchUser:
-	jumpifbattleend BattleScript_WildShuffleEnd
-	jumpifbyte CMP_NOT_EQUAL gBattleOutcome 0, BattleScript_WildShuffleEnd
-	jumpifemergencyexited BS_TARGET, BattleScript_WildShuffleEnd
-	goto BattleScript_MoveSwitch
-	moveendall
-	end
 
 BattleScript_EffectDarkHunger::
 	setmoveeffect MOVE_EFFECT_BUG_BITE | MOVE_EFFECT_CERTAIN
@@ -1241,7 +1216,7 @@ BattleScript_DragDownSkipStatInversion::
 	goto BattleScript_MoveSwitch
 
 BattleScript_EffectEmberSnow:
-	jumpifspecies BS_ATTACKER, SPECIES_MORPEKO, BattleScript_EffectWillOWisp
+	jumpifspecies BS_ATTACKER, SPECIES_RICKSHAWTY, BattleScript_EffectWillOWisp
 	attackcanceler
 	attackstring
 	ppreduce
@@ -5812,8 +5787,6 @@ BattleScript_OctolockTurnDmgEnd:
 	end2
 
 BattleScript_SandSlipEndTurn::
-	playanimation BS_TARGET, TRAP_ANIM_SAND_TOMB, NULL
-	waitanimation
 	call BattleScript_HurtTarget_NoString
 	printstring STRINGID_TARGETISHURTBYSALTCURE
 	waitmessage B_WAIT_TIME_LONG
@@ -7806,16 +7779,16 @@ BattleScript_InvertStats::
 	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_ATTACKER
-	end3
+	end2
 
 BattleScript_InvertStats2::
 	pause B_WAIT_TIME_SHORT
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	invertstatstages BS_ATTACKER
-	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
+	printstring STRINGID_FLIPCOINCHANGEDATTACKERSSTATS
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
-	end3
+	return
 
 BattleScript_ClearSpeed::
 	normalisespeed
@@ -8128,8 +8101,8 @@ BattleScript_EffectPowerSwap:
 	ppreduce
 	checkpowerswap BattleScript_ButItFailed
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
-	swapstatstages STAT_ATK
-	swapstatstages STAT_SPATK
+	swapstats STAT_ATK
+	swapstats STAT_SPATK
 	attackanimation
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
@@ -8174,8 +8147,8 @@ BattleScript_EffectGuardSwap:
 	ppreduce
 	checkguardswap BattleScript_ButItFailed
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
-	swapstatstages STAT_DEF
-	swapstatstages STAT_SPDEF
+	swapstats STAT_DEF
+	swapstats STAT_SPDEF
 	attackanimation
 	waitanimation
 	modifybattlerstatstage BS_TARGET, STAT_DEF, DECREASE, 1, BattleScript_GuardSwapTrySpdefTarget, ANIM_ON
@@ -9443,6 +9416,7 @@ BattleScript_EffectRestoreHp::
 	attackstring
 	ppreduce
 	tryhealhalfhealth BattleScript_AlreadyAtFullHp, BS_ATTACKER
+BattleScript_RestoreHpAnimation:
 	attackanimation
 	waitanimation
 BattleScript_RestoreHp:
@@ -13108,6 +13082,7 @@ BattleScript_WeaknessPolicyEnd:
 	return
 
 BattleScript_LostMantle::
+	copybyte sBATTLER, gBattlerAttacker
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_LostMantleDef
 	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_LostMantleEnd
 BattleScript_LostMantleDef:
@@ -15393,6 +15368,7 @@ BattleScript_HeartstringsEffect:
 	copybyte sBATTLER, gBattlerAttacker
 	tryinfatuating BattleScript_HeartstringsLoopIncrement
 	printstring STRINGID_PKMNFELLINLOVE
+	status2animation BS_TARGET, STATUS2_INFATUATION
 BattleScript_HeartstringsEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
 	copybyte sBATTLER, gBattlerTarget
@@ -17703,7 +17679,7 @@ BattleScript_RizzBerryEnd::
 
 BattleScript_BlukBerryActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	blukberryppreduce BattleScript_BlukBerryFail
+	blukberryppreduce BattleScript_BlukBerryReturn
 	printstring STRINGID_PKMNREDUCEDPP
 BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
@@ -17711,18 +17687,14 @@ BattleScript_BlukBerryEnd::
 BattleScript_BlukBerryReturn::
 	return
 
-BattleScript_BlukBerryFail::
-	printstring STRINGID_BUTITFAILED
-	goto BattleScript_BlukBerryEnd
-
 BattleScript_NanabBerryActivatesRet::
-	stockpile BS_TARGET, 0
+	stockpile BS_SCRIPTING, 0
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_TARGETSTOCKPILED
+	printstring STRINGID_PKMNSTOCKPILED
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_NanabBerryEnd::
-	stockpile BS_TARGET, 1
+	stockpile BS_SCRIPTING, 1
 	return
 
 BattleScript_HondewBerryActivatesRet::

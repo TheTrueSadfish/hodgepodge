@@ -2437,6 +2437,7 @@ bool32 IsStatRaisingEffect(u32 effect)
     #endif
 	case EFFECT_CALM_MIND:
     case EFFECT_COSMIC_POWER:
+    case EFFECT_CHAKRA_SURGE:
 	case EFFECT_DRAGON_DANCE:
 	case EFFECT_ACUPRESSURE:
 	case EFFECT_SHELL_SMASH:

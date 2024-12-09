@@ -2131,6 +2131,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_HIT_ESCAPE:
         case EFFECT_U_TURN:
+        case EFFECT_WILD_SHUFFLE:
         case EFFECT_FLIP_TURN:
         case EFFECT_SNOWFADE:
         case EFFECT_GLACIAL_SHIFT:
@@ -2369,7 +2370,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_HIT_SWITCH_TARGET:
-        case EFFECT_WILD_SHUFFLE:
         case EFFECT_PLIA_BALL:
         case EFFECT_BERRY_BAD_JOKE:
             if (DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
@@ -3381,6 +3381,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score--;
             if (aiData->hpPercents[battlerDef] < 50)
                 score--;
+            if (aiData->hpPercents[battlerDef] >= 75)
+                score++;
             break;
         case EFFECT_LONE_SHARK:
             if (aiData->hpPercents[battlerDef] < 60)
@@ -3565,6 +3567,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_ALWAYS_CRIT:
+        case EFFECT_SNORE:
         case EFFECT_SEIZE_CHANCE:
         case EFFECT_DUNE_SLICER:
             // Ally decided to use Frost Breath on us. we must have Anger Point as our ability

@@ -228,7 +228,8 @@ static const u8 sThickFatDescription[] = _(
 
 static const u8 sEarlyBirdDescription[] = _(
     "The Pokémon awakens from sleep\n"
-    "twice as fast as other Pokémon.");
+    "more quickly. Boosts the Speed\n"
+    "stat if the Pokémon is asleep.");
 
 static const u8 sFlameBodyDescription[] = _(
     "Contact with the Pokémon may\n"

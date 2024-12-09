@@ -855,9 +855,9 @@ static const u8 sFlameWheelDescription[] = _(
     "also leave the foe with a burn.");
 
 static const u8 sSnoreDescription[] = _(
-    "This attack can be used only if\n"
-    "the user is asleep. The harsh\n"
-    "noise may make the foe flinch.");
+    "Can be used only if the user is\n"
+    "asleep. It may flinch the foe\n"
+    "and always lands critical hits.");
 
 static const u8 sCurseDescription[] = _(
     "If user is Ghost-type halves\n"
@@ -4170,9 +4170,9 @@ static const u8 sArcanePowerDescription[] = _(
     "user's stats at once.");
 
 static const u8 sDragonRuinDescription[] = _(
-    "Boosts defenses on the first\n"
-    "turn, attacks on the second, but\n"
-    "recharges on the third.");
+    "Boosts defenses on the 1st turn,\n"
+    "attacks on the 2nd, but recharges\n"
+    "on the 3rd. Uses Atk and Sp. Atk.");
 
 static const u8 sCinderTwirlDescription[] = _(
     "Removes moves like Bind and\n"
@@ -5050,8 +5050,8 @@ static const u8 sAstralSpikesDescription[] = _(
 
 static const u8 sWildShuffleDescription[] = _(
     "Boosted the lower the PP it has.\n"
-    "This move switches both the user\n"
-    "and foe out.");
+    "This move switches the user out\n"
+    "and always goes first.");
 
 static const u8 sUprootEvilDescription[] = _(
     "This move is super effective on\n"

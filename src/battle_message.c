@@ -693,6 +693,7 @@ static const u8 sText_QuashSuccess[] = _("The opposing {B_DEF_NAME_WITH_PREFIX}'
 static const u8 sText_IonDelugeOn[] = _("A deluge of ions showers\nthe battlefield!");
 static const u8 sText_TopsyTurvySwitchedStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat changes were\nall reversed!");
 static const u8 sText_DragDownSwitchedStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s stat buffs were\nall reversed!");
+static const u8 sText_FlipCoinChangedAttackerssStats[] = _("{B_ATK_NAME_WITH_PREFIX}'s stat changes were\nall reversed!");
 static const u8 sText_TerrainBecomesMisty[] = _("Mist swirled about\nthe battlefield!");
 static const u8 sText_TerrainBecomesGrassy[] = _("Grass grew to cover\nthe battlefield!");
 static const u8 sText_TerrainBecomesElectric[] = _("An electric current runs across\nthe battlefield!");
@@ -1805,6 +1806,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETSTOCKPILED - BATTLESTRINGS_TABLE_START] = sText_TargetStockpiled,
     [STRINGID_TARGETHURTBYITEM - BATTLESTRINGS_TABLE_START] = sText_TargetHurtByItem,
     [STRINGID_DRAGDOWNSWITCHEDSTATS - BATTLESTRINGS_TABLE_START] = sText_DragDownSwitchedStats,
+    [STRINGID_FLIPCOINCHANGEDATTACKERSSTATS - BATTLESTRINGS_TABLE_START] = sText_FlipCoinChangedAttackerssStats,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

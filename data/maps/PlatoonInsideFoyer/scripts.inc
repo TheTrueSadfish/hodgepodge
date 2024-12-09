@@ -267,7 +267,6 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_CHARCOAL
 	giveitem ITEM_CHOICE_BAND
 	giveitem ITEM_CHOICE_SCARF
-	giveitem ITEM_CHOPLE_BERRY
 	giveitem ITEM_CLEANSE_TAG
 	giveitem ITEM_CLEAR_AMULET
 	giveitem ITEM_COBA_BERRY
@@ -323,6 +322,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_SCOPE_LENS
 	giveitem ITEM_SHARP_BEAK
 	giveitem ITEM_SHELL_BELL
+	giveitem ITEM_SILK_SCARF
 	giveitem ITEM_SILVER_POWDER
 	giveitem ITEM_SOFT_SAND
 	giveitem ITEM_SPECTRAL_IDOL

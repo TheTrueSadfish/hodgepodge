@@ -2256,6 +2256,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     }
     else if (gStatuses3[battlerAtk] & STATUS3_LASER_FOCUS
              || gBattleMoves[move].effect == EFFECT_ALWAYS_CRIT
+             || gBattleMoves[move].effect == EFFECT_SNORE
              || gBattleMoves[move].effect == EFFECT_FEATHER_RAZOR
              || gBattleMoves[move].effect == EFFECT_DUNE_SLICER
              || gBattleMoves[move].effect == EFFECT_SEIZE_CHANCE
@@ -7229,6 +7230,7 @@ static void Cmd_moveend(void)
             && gMultiHitCounter
             && !(gCurrentMove == MOVE_PRESENT && gBattleStruct->presentBasePower == 0)) // Silly edge case
             {
+                gMultiHitCounter--;
                 gBattleScripting.multihitString[4]++;
                 if (gMultiHitCounter == 0)
                 {
@@ -11415,8 +11417,8 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
-            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Negative becomes positive.
-                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE - (DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i]);
+            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Positive becomes Negative.
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE - (gBattleMons[battler].statStages[i] - DEFAULT_STAT_STAGE);
         }
         break;
     }

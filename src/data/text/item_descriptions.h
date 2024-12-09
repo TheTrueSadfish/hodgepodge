@@ -2828,10 +2828,10 @@ static const u8 sRazzBerryDesc[] = _(
     "of the opposite gender.");
 
 static const u8 sBlukBerryDesc[] = _(
-    "The holder will be\n"
-    "able reduce the PP of\n"
-    "the foe's last chosen\n"
-    "move.");
+    "If the holder is hit,\n"
+    "the attacker's last\n"
+    "used move will have\n"
+    "its PP reduced.");
 
 static const u8 sNanabBerryDesc[] = _(
     "The holder will be\n"
@@ -2902,10 +2902,10 @@ static const u8 sNomelBerryDesc[] = _(
     "up damage by 1.5x.");
 
 static const u8 sSpelonBerryDesc[] = _(
-    "The holder will be\n"
-    "able lay spikes on the\n"
-    "foe's side of the\n"
-    "field.");
+    "If the holder is hit,\n"
+    "spikes will be laid on\n"
+    "the attacker's side of\n"
+    "the field.");
 
 static const u8 sPamtreBerryDesc[] = _(
     "A held item that\n"
@@ -2918,14 +2918,15 @@ static const u8 sWatmelBerryDesc[] = _(
     "explode destructively.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "The holder will be\n"
-    "able to drop all the\n"
-    "foe's stats.");
+    "If the holder is hit,\n"
+    "the attacker will have\n"
+    "all their stats\n"
+    "lowered.");
 
 static const u8 sBelueBerryDesc[] = _(
-    "The holder will be\n"
-    "able to cover the\n"
-    "foe in Tar.");
+    "If the holder is hit,\n"
+    "the attacker will be\n"
+    "covered in Tar.");
 
 static const u8 sChilanBerryDesc[] = _(
     "If held by a Pokémon,\n"
@@ -4285,9 +4286,10 @@ static const u8 sCreditCardDesc[] = _(
     "card.");
 
 static const u8 sRizzBerryDesc[] = _(
-    "The holder will be\n"
-    "able to infatuate\n"
-    "targets of any gender.");
+    "If the holder is hit\n"
+    "by a super effective\n"
+    "move, the attacker\n"
+    "will be infatuated.");
 
 static const u8 sPeskyPlushDesc[] = _(
     "When the holder deals\n"

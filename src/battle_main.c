@@ -4734,6 +4734,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     }
 
     // own abilities
+    if (ability == ABILITY_EARLY_BIRD && gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
+        speed *= 2;
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
         speed *= 2;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)

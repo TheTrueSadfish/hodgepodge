@@ -4477,12 +4477,12 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
     },
     [TENT_MAJOR_MON_CAPYBARNA] = {
         .species = SPECIES_MUSHARNA,
-        .ability = ABILITY_COMATOSE,
+        .ability = ABILITY_EARLY_BIRD,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
-        .moves = {MOVE_BODY_SLAM, MOVE_WAVE_CRASH, MOVE_YAWN, MOVE_SLACK_OFF},
-        .heldItem = ITEM_CHOPLE_BERRY,
+        .moves = {MOVE_SNORE, MOVE_REST, MOVE_MEDITATE, MOVE_MYTH_BUSTER},
+        .heldItem = ITEM_SILK_SCARF,
         .nature = NATURE_QUIRKY,
     },
     [TENT_MAJOR_MON_PARAKURI] = {
@@ -5187,7 +5187,7 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
     },
     [TENT_MAJOR_MON_COORSE] = {
         .species = SPECIES_CURSOLA,
-        .ability = ABILITY_MOXIE,
+        .ability = ABILITY_DEFIANT,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
@@ -5322,12 +5322,12 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
     },
     [TENT_MINOR_MON_CAPYBARNA] = {
         .species = SPECIES_MUSHARNA,
-        .ability = ABILITY_COMATOSE,
+        .ability = ABILITY_EARLY_BIRD,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
-        .moves = {MOVE_BODY_SLAM, MOVE_WAVE_CRASH, MOVE_YAWN, MOVE_SLACK_OFF},
-        .heldItem = ITEM_CHOPLE_BERRY,
+        .moves = {MOVE_SNORE, MOVE_REST, MOVE_MEDITATE, MOVE_MYTH_BUSTER},
+        .heldItem = ITEM_SILK_SCARF,
         .nature = NATURE_QUIRKY,
     },
     [TENT_MINOR_MON_PARAKURI] = {
@@ -6032,7 +6032,7 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
     },
     [TENT_MINOR_MON_COORSE] = {
         .species = SPECIES_CURSOLA,
-        .ability = ABILITY_MOXIE,
+        .ability = ABILITY_DEFIANT,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,

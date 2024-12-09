@@ -4997,7 +4997,7 @@ Cry_Wakasuka::
 
 	.align 2
 Cry_Dullsod::
-	.incbin "sound/direct_sound_samples/cries/feebas.bin"
+	.incbin "sound/direct_sound_samples/cries/sadsod.bin"
 
 	.align 2
 Cry_Bevolpin::
