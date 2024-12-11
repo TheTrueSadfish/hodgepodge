@@ -4170,9 +4170,9 @@ static const u8 sArcanePowerDescription[] = _(
     "user's stats at once.");
 
 static const u8 sDragonRuinDescription[] = _(
-    "Boosts defenses on the 1st turn,\n"
-    "attacks on the 2nd, but recharges\n"
-    "on the 3rd. Uses Atk and Sp. Atk.");
+    "Boosts defenses on the first\n"
+    "turn, attacks on the second, but\n"
+    "recharges on the third.");
 
 static const u8 sCinderTwirlDescription[] = _(
     "Removes moves like Bind and\n"
@@ -4976,7 +4976,7 @@ static const u8 sWitchHymnDescription[] = _(
 static const u8 sHealMelodyDescription[] = _(
     "At the end of the next turn the\n"
     "Pokémon currently in is fully\n"
-    "healed and has its poison cured.");
+    "healed and has its status cured.");
 
 static const u8 sRoastRoustDescription[] = _(
     "If the move goes through raises\n"
@@ -5014,7 +5014,7 @@ static const u8 sOddcastDescription[] = _(
     "foe has a status condition.");
 
 static const u8 sKelpSapDescription[] = _(
-    "Cuts 3 PP from the foe's last\n"
+    "Cuts 1 PP from the foe's last\n"
     "used move. Absorbs all of the\n"
     "the damage taken by the foe.");
 
@@ -5039,9 +5039,9 @@ static const u8 sNonSequiturDescription[] = _(
     "spreads statuses on contact.");
 
 static const u8 sBeldamBrewDescription[] = _(
-    "The user lobs a magical brew\n"
-    "that changes the foe's type to\n"
-    "Poison. This disables abilities.");
+    "The user traps the foe, turns\n"
+    "its type to Poison, and disables\n"
+    "its ability.");
 
 static const u8 sAstralSpikesDescription[] = _(
     "The user shoots odd spikes 2 to\n"
@@ -5109,7 +5109,7 @@ static const u8 sWardSpellDescription[] = _(
     "sharply boosts the user's Def.");
 
 static const u8 sMoltenCoreDescription[] = _(
-    "Restores half its missing HP.\n"
+    "Restores 2/3 of its missing HP.\n"
     "Boosts Atk/Sp. Def. Goes first.\n"
     "Can't be used consecutively.");
 

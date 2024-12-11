@@ -2214,8 +2214,7 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CHOICE_ITEM && GetBattlerAbility(battler) == ABILITY_ONE_WAY_TRIP && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
         return TRUE;
     else if (check & MOVE_LIMITATION_CANT_USE_TWICE && gBattleMoves[move].cantUseTwice && move == gLastResultingMoves[battler])
-        return TRUE;
-    
+        return TRUE;    
     return 0;
 }
 
@@ -2511,6 +2510,7 @@ u8 DoFieldEndTurnEffects(void)
                 if (gSideStatuses[side] & SIDE_STATUS_HEAL_MELODY)
                 {            
                     if (--gSideTimers[side].healMelodyTimer == 0
+                    && (!(BATTLER_MAX_HP(gBattlerAttacker)))
                     && gBattleMons[gBattlerAttacker].hp != 0
                     && (!(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
                     {
@@ -2538,7 +2538,8 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     if (--gSideTimers[side].healOrderTimer == 0
                     && gBattleMons[gBattlerAttacker].hp != 0
-                    && !gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)
+                    && (!(BATTLER_MAX_HP(gBattlerAttacker)))
+                    && (!(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)))
                     {
                         gSideStatuses[side] &= ~SIDE_STATUS_HEAL_ORDER;
                         BattleScriptExecute(BattleScript_HealOrderActivates);
@@ -3380,7 +3381,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_SAND_SLIP:
-            if (gDisableStructs[battler].sandSlip && gBattleMons[battler].hp != 0)
+            if (gDisableStructs[battler].sandSlip && gBattleMons[battler].hp != 0 && IsBattlerAlive(battler))
             {
                 gBattlerTarget = battler;
                 gBattlerAttacker = BATTLE_OPPOSITE(gBattlerTarget);    // needed to track who lowered stats
@@ -4553,6 +4554,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             {
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
+            }
+            else if (gCurrentMove == MOVE_FIREBALLS)
+            {
+                gMultiHitCounter = 1;
             }
             else if (gCurrentMove == MOVE_GOOSE_CHASER && (RandomPercentage(RNG_GREASY, 50)))
             {
@@ -12001,7 +12006,7 @@ static const u16 sWeightToDamageTableBlooming[] =
 
 static const u8 sSpeedDiffPowerTable[] = {40, 60, 80, 120, 150};
 static const u8 sHeatCrashPowerTable[] = {40, 40, 60, 80, 100, 120};
-static const u8 sTrumpCardPowerTable[] = {200, 80, 60, 50, 40};
+static const u8 sTrumpCardPowerTable[] = {200, 160, 120, 80, 40};
 static const u8 sPilgrimagePowerTable[] = {170, 150, 130, 110, 90};
 
 const struct TypePower gNaturalGiftTable[] =
@@ -12382,7 +12387,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 60 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
         break;
     case EFFECT_WITCH_HYMN:
-        basePower = 50 + (CountBattlerStatDecreases(battlerDef, TRUE) * 15);
+        basePower = 40 + (CountBattlerStatDecreases(battlerDef, TRUE) * 20);
         break;
     case EFFECT_DARK_HUNGER:
         if (gStatuses4[battlerAtk] & STATUS4_BERRY_EATEN)

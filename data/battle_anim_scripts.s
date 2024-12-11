@@ -18988,8 +18988,8 @@ BloodMoonOnslaughtPlayer:
 Move_FICKLE_BEAM::
 	createvisualtask AnimTask_IsPowerOver99, 2
 	waitforvisualfinish
-	jumpreteq FALSE, FickleBeamRegular
-	jumpreteq TRUE, FickleBeamIntense
+	jumpargeq 15, FALSE, FickleBeamRegular
+	jumpargeq 15, TRUE, FickleBeamIntense
 FickleBeamRegular:
 	loadspritegfx ANIM_TAG_GOLD_RING
 	playsewithpan SE_M_PSYBEAM, SOUND_PAN_ATTACKER
@@ -26862,6 +26862,7 @@ Move_DARK_HUNGER::
 	delay 15
 	playsewithpan SE_M_NIGHTMARE, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_DarkHungerEffect, 2, 0
+	waitforvisualfinish
 	playsewithpan SE_M_LICK, SOUND_PAN_TARGET
 	createsprite gLickSpriteTemplate, ANIM_TARGET, 2, 0, 0
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 16, 1
@@ -27597,6 +27598,7 @@ Move_IRON_JAWS::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	loopsewithpan SE_M_HARDEN, SOUND_PAN_ATTACKER, 28, 2
+	monbg ANIM_DEF_PARTNER
 	createvisualtask AnimTask_MetallicShine, 5, 0, 0, RGB_BLACK
 	waitforvisualfinish
 	setalpha 12, 8
@@ -27615,6 +27617,7 @@ Move_IRON_JAWS::
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 8, 4, 2
 	waitforvisualfinish
 	blendoff
+	clearmonbg ANIM_DEF_PARTNER
 	end
 
 Move_FRESH_WHIP::

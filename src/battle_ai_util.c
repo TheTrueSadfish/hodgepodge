@@ -4048,6 +4048,12 @@ void IncreaseStatUpScore(u32 battlerAtk, u32 battlerDef, u32 statId, s32 *score)
     if ((AI_THINKING_STRUCT->aiFlags & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
         return; // Damaging moves would get a score boost from AI_TryToFaint or PreferStrongestMove so we don't consider them here
 
+    if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+        *(score)++;
+
+    if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+        *(score)++;
+
     switch (statId)
     {
     case STAT_ATK:
