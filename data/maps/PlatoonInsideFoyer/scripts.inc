@@ -2189,8 +2189,8 @@ PlatoonInsideFoyer_Text_SuperEffectiveSTAB:
 PlatoonInsideFoyer_Text_DragonType:
 	.string "Dragons are, erm, maybe the\n"
 	.string "most EPIC type of them all.\p"
-	.string "If a Parakuri tries to Intimidate\n"
-	.string "a Dragon? Heh...\l"
+	.string "If a Bloomwile tries to\n"
+	.string "Intimidate a Dragon? Heh...\l"
 	.string "Completely unphased.\p"
 	.string "My buddies tell me Fairy types\n"
 	.string "hard-counter them.\l"

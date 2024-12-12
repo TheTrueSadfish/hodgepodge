@@ -304,6 +304,8 @@
 #define VARIOUS_TRY_HEAL_HALF_MISSING_HP             213
 #define VARIOUS_INVERT_POSITIVE_STAT_STAGES          214
 #define VARIOUS_SET_SAND_SLIP                        215
+#define VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES       216
+#define VARIOUS_SPELL_TAG_PP_REDUCE                  217
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

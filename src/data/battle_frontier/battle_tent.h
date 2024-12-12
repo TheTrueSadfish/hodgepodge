@@ -4987,7 +4987,7 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
     },
     [TENT_MAJOR_MON_BLOOMWILE] = {
         .species = SPECIES_MAWILE,
-        .ability = ABILITY_DISTURB,
+        .ability = ABILITY_INTIMIDATE,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
@@ -5832,7 +5832,7 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
     },
     [TENT_MINOR_MON_BLOOMWILE] = {
         .species = SPECIES_MAWILE,
-        .ability = ABILITY_DISTURB,
+        .ability = ABILITY_INTIMIDATE,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,

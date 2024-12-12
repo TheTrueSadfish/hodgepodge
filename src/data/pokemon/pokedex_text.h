@@ -7339,7 +7339,7 @@ const u8 gPokerlordPokedexText[] = _(
 	"Pokerlord's favor.");
 
 const u8 gEyerishPokedexText[] = _(
-	"Their singular eyeball gets filthy, forcing\n"
+	"Their singular eyeball ofen gets filthy, forcing\n"
 	"Eyerish to make frequent trips to clean water to\n"
 	"wash it off. They produce lasers from their\n"
 	"retina, frying bugs to consume them.");

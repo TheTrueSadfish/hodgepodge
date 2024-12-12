@@ -932,8 +932,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetspikes failInstr:req
+	.macro trysetspikes battler:req, failInstr:req
 	.byte 0xb0
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -2108,6 +2109,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro spelltagppreduce failInstr:req
+	various BS_TARGET, VARIOUS_SPELL_TAG_PP_REDUCE
+	.4byte \failInstr
+	.endm
+
 	.macro blukberryppreduce failInstr:req
 	various BS_ATTACKER, VARIOUS_BLUK_BERRY_PP_REDUCE
 	.4byte \failInstr
@@ -2292,6 +2298,10 @@
 
 	.macro tryresetnegativestatstages battler:req
 	various \battler, VARIOUS_TRY_RESET_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro tryresetpositivestatstages battler:req
+	various \battler, VARIOUS_TRY_RESET_POSITIVE_STAT_STAGES
 	.endm
 
 	.macro tryresetstatstages battler:req

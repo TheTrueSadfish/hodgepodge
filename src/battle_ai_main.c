@@ -1400,7 +1400,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (gBattleMons[battlerAtk].statStages[STAT_SPEED] <= DEFAULT_STAT_STAGE)
                 score -= 10;
             break;
-        case EFFECT_HAYWIRE:
+        case EFFECT_STORED_POWER:
             for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
             {
                 if (gBattleMons[battlerAtk].statStages[i] <= DEFAULT_STAT_STAGE)
@@ -4234,6 +4234,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_ATTACK_UP:
     case EFFECT_ATTACK_UP_2:
     case EFFECT_ATTACK_UP_USER_ALLY:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (MovesWithSplitUnusable(battlerAtk, battlerDef, SPLIT_PHYSICAL))
         {
             score -= 8;
@@ -4257,6 +4261,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_DEFENSE_UP_2:
     case EFFECT_DEFENSE_UP_3:
     case EFFECT_ACID_ARMOR:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (!HasMoveWithSplit(battlerDef, SPLIT_PHYSICAL))
             score -= 2;
         if (aiData->hpPercents[battlerAtk] > 90 && AI_RandLessThan(128))
@@ -4269,6 +4277,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SPEED_UP:
     case EFFECT_SPEED_UP_2:
     case EFFECT_SPEED_UP_USER_ALLY:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_FROST_SHRED))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_FEATHER_RAZOR))
+            score += 2;
         if (!AI_STRIKES_FIRST(battlerAtk, battlerDef, move))
         {
             if (!AI_RandLessThan(70))
@@ -4282,6 +4298,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SPECIAL_ATTACK_UP:
     case EFFECT_SPECIAL_ATTACK_UP_2:
     case EFFECT_SPECIAL_ATTACK_UP_3:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (MovesWithSplitUnusable(battlerAtk, battlerDef, SPLIT_SPECIAL))
         {
             score -= 8;
@@ -4303,6 +4323,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_SPECIAL_DEFENSE_UP:
     case EFFECT_SPECIAL_DEFENSE_UP_2:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (!HasMoveWithSplit(battlerDef, SPLIT_SPECIAL))
             score -= 2;
         if (aiData->hpPercents[battlerAtk] > 90 && AI_RandLessThan(128))
@@ -4314,6 +4338,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_ACCURACY_UP:
     case EFFECT_ACCURACY_UP_2:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (gBattleMons[battlerAtk].statStages[STAT_ACC] >= 9 && !AI_RandLessThan(50))
             score -= 2;
         else if (aiData->hpPercents[battlerAtk] <= 70)
@@ -4323,6 +4351,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_EVASION_UP:
     case EFFECT_EVASION_UP_2:
+        if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
+            score += 2;
+        if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
+            score += 2;
         if (aiData->hpPercents[battlerAtk] > 90 && !AI_RandLessThan(100))
             score += 3;
         if (gBattleMons[battlerAtk].statStages[STAT_EVASION] > 9 && AI_RandLessThan(128))
@@ -5851,7 +5883,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_FEATHER_RAZOR:
     case EFFECT_FROST_SHRED:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
-            score+= CountBattlerSpeedIncreases(battlerAtk) * 2;
+            score+= CountBattlerSpeedIncreases(battlerAtk);
+        break;
+    case EFFECT_STORED_POWER:
+        for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
+        {
+            if (gBattleMons[battlerAtk].statStages[i] > DEFAULT_STAT_STAGE)
+                score += CountBattlerStatIncreases(battlerAtk, TRUE);
+        }
         break;
     case EFFECT_WITCH_HYMN:
         for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)

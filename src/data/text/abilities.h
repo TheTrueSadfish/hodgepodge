@@ -74,7 +74,7 @@ static const u8 sInsomniaDescription[] = _(
 
 static const u8 sColorChangeDescription[] = _(
     "The Pokémon's type becomes the\n"
-    "type of the Pokémon that\n"
+    "primary type of the Pokémon that\n"
     "attacked it.");
 
 static const u8 sImmunityDescription[] = _(
@@ -494,7 +494,7 @@ static const u8 sSuperLuckDescription[] = _(
 
 static const u8 sAftermathDescription[] = _(
     "The Pokémon cannot be knocked\n"
-    "out by a single hit. At 1 HP,\n"
+    "out before exploding. At 1 HP,\n"
     "uses a Fire-type exploding move.");
 
 static const u8 sAnticipationDescription[] = _(
@@ -1715,8 +1715,8 @@ static const u8 sCovenLightsDescription[] = _(
 
 static const u8 sDaringDeedDescription[] = _(
     "Greatly boosts the critical-hit\n"
-    "ratios of moves, but doubles the\n"
-    "amount of PP they use.");
+    "ratios of moves, but increases\n"
+    "the amount of PP they use.");
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"

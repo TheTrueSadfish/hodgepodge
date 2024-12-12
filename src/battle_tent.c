@@ -365,6 +365,8 @@ static void GenerateInitialRentalMons(void)
     league = GetBattleTentLeague();
     nMons = SetBattleTentMonsTrainers(league);
 
+    gFacilityTrainerMons[monSetId].nature == NATURE_QUIRKY;
+
     firstMonId = 0;
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -428,6 +430,8 @@ static void GenerateOpponentMons(void)
     u32 nTrainers = SetBattleTentTrainers(league);
 
     SetBattleTentMonsTrainers(league);
+
+    gFacilityTrainerMons[sRandMonId].nature == NATURE_QUIRKY;
 
     while (1)
     {
