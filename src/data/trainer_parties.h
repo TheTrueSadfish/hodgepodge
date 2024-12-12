@@ -18,13 +18,7 @@ static const struct TrainerMon sParty_Sawyer1[] = {
 static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
-    .species = SPECIES_LEDIAN,
-    .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
-    },
-    {
-    .lvl = 50,
-    .species = SPECIES_MOSKOPO,
+    .species = SPECIES_GARDEVOIR,
     .heldItem = ITEM_POKE_BALL,
     .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }

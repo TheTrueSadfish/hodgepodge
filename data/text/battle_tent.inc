@@ -332,9 +332,7 @@ SlateportCity_BattleTentLobby_Text_ExplainSwapPartnerRules:
 SlateportCity_BattleTentLobby_Text_ExplainSwapNumberRules:
 	.string "After every battle you win, you may\n"
 	.string "swap for one of your defeated\l"
-	.string "opponent's Pokémon.\p"
-	.string "You will not be able to swap Pokémon\n"
-	.string "with the third Trainer in the event.$"
+	.string "opponent's Pokémon.$"
 
 SlateportCity_BattleTentLobby_Text_ExplainSwapNotes:
 	.string "There are two key points to be aware\n"
