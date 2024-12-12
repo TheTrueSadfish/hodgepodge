@@ -12268,7 +12268,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
             basePower *= (4 - gMultiHitCounter);
         break;
     case EFFECT_SPIT_UP:
-        basePower = 100 + ((30 * gDisableStructs[battlerAtk].stockpileCounter) - 1);
+        basePower = 100 + (30 * (gDisableStructs[battlerAtk].stockpileCounter - 1));
         break;
     case EFFECT_REVENGE:
     case EFFECT_STALAG_BLAST:

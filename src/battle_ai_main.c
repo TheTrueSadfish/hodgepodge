@@ -6852,10 +6852,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score -= 2;
         break;
     case EFFECT_MAGNET_RISE:
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
         if (IsBattlerGrounded(battlerAtk) && HasDamagingMoveOfType(battlerDef, TYPE_ELECTRIC)
           && !(AI_GetTypeEffectiveness(MOVE_EARTHQUAKE, battlerDef, battlerAtk) == AI_EFFECTIVENESS_x0)) // Doesn't resist ground move
         {
-            IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
             if (AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER) // Attacker goes first
            {
                 if (gBattleMoves[predictedMove].type == TYPE_GROUND)
@@ -7288,6 +7288,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_PORTENT_CAST:
     case EFFECT_UPROOT_EVIL:
     case EFFECT_OCTOLOCK:
+    case EFFECT_MAGNET_RISE:
     case EFFECT_SAND_SLIP:
         score += 2;
         break;
@@ -7675,6 +7676,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_DRAGON_CHEER:
             case EFFECT_SPIDER_WEB:
             case EFFECT_OCTOLOCK:
+            case EFFECT_MAGNET_RISE:
             case EFFECT_EERIE_IMPULSE:
             case EFFECT_CHARM:
             case EFFECT_MEDITATE:
