@@ -555,7 +555,7 @@ static const u8 sFriskDescription[] = _(
 
 static const u8 sRecklessDescription[] = _(
     "Powers up moves that have recoil\n"
-    "damage.");
+    "damage by a random amount.");
 
 static const u8 sMultitypeDescription[] = _(
     "Changes the Pokémon's type to\n"
@@ -949,8 +949,8 @@ static const u8 sSurgeSurferDescription[] = _(
 
 static const u8 sHuddleUpDescription[] = _(
     "The Pokémon becomes a powerful\n"
-    "slimy beast until at low HP.\n"
-    "It also heals HP every turn.");
+    "beast until at low HP. Boosts\n"
+    "the healing of draining moves.");
 
 static const u8 sDisguiseDescription[] = _(
     "Once per battle, the armor that\n"
@@ -1709,9 +1709,9 @@ static const u8 sStormBrewDescription[] = _(
     "Electric move used that turn.");
 
 static const u8 sCovenLightsDescription[] = _(
-    "Once per turn, if an opponent's\n"
-    "stat is lowered, 2 more stats\n"
-    "are lowered also.");
+    "Twice per turn, if an opponent's\n"
+    "stat is lowered, another random\n"
+    "stat is lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
     "Greatly boosts the critical-hit\n"
@@ -1720,8 +1720,8 @@ static const u8 sDaringDeedDescription[] = _(
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"
-    "Poison, or Greasy-type move, the\n"
-    "next move it uses is boosted.");
+    "Poison, or Greasy-type move,\n"
+    "sharply boosts the Attack stat.");
 
 static const u8 sGooseChaserDescription[] = _(
     "After attacking, it may use a\n"
@@ -2102,7 +2102,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_LINGERING_AROMA] = _("Lingering Aroma"),
     [ABILITY_SEED_SOWER] = _("Seed Sower"),
     [ABILITY_THERMAL_EXCHANGE] = _("Heat Transfer"),
-    [ABILITY_ANGER_SHELL] = _("Anger Shell"),
+    [ABILITY_ANGER_SHELL] = _("Groovy Shell"),
     [ABILITY_PURIFYING_SALT] = _("Purifying Salt"),
     [ABILITY_WELL_BAKED_BODY] = _("Well-Baked Body"),
     [ABILITY_WIND_RIDER] = _("Wind Rider"),
@@ -2514,7 +2514,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_LINGERING_AROMA] = _("LngerngAroma"),
     [ABILITY_SEED_SOWER] = _("Seed Sower"),
     [ABILITY_THERMAL_EXCHANGE] = _("HeatTransfer"),
-    [ABILITY_ANGER_SHELL] = _("Anger Shell"),
+    [ABILITY_ANGER_SHELL] = _("Groovy Shell"),
     [ABILITY_PURIFYING_SALT] = _("PurfyingSalt"),
     [ABILITY_WELL_BAKED_BODY] = _("WellBakedBdy"),
     [ABILITY_WIND_RIDER] = _("Wind Rider"),

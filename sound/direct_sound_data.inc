@@ -4889,7 +4889,7 @@ Cry_Profur::
 
 	.align 2
 Cry_Celshrioom::
-	.incbin "sound/direct_sound_samples/cries/breloom.bin"
+	.incbin "sound/direct_sound_samples/cries/shiinotic.bin"
 
 	.align 2
 Cry_Dadalemma::

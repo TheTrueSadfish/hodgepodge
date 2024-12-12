@@ -2550,9 +2550,10 @@ static const u8 sLifeOrbDesc[] = _(
     "of some HP per hit.");
 
 static const u8 sPowerHerbDesc[] = _(
-    "Allows immediate\n"
-    "use of a move that\n"
-    "charges first.");
+    "A single-use held item\n"
+    "that allows the\n"
+    "immediate use of a\n"
+    "move that charges.");
 
 static const u8 sFocusSashDesc[] = _(
     "If the holder has full\n"
@@ -4422,9 +4423,10 @@ static const u8 sCrypticPlateDesc[] = _(
     "SPATK. For Uhefoe.");
 
 static const u8 sChupacabraDesc[] = _(
-    "Holder moves last.\n"
-    "Attacks do\n"
-    "additional damage.");
+    "A held item that makes\n"
+    "the holder move last,\n"
+    "but makes its attacks\n"
+    "do bonus damage.");
 
 static const u8 sHeartGiftDesc[] = _(
     "Explodes after 2\n"

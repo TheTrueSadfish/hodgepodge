@@ -839,8 +839,12 @@
 #define STRINGID_DRAGDOWNSWITCHEDSTATS                837
 #define STRINGID_FLIPCOINCHANGEDATTACKERSSTATS        838
 #define STRINGID_ATKPKMNREDUCEDPP                     839
+#define STRINGID_CLEARAMULETWONTLOWERSTATS            840
+#define STRINGID_ITEMWONTLOWERCERTAINSTAT             841
+#define STRINGID_PURIFIEDNOSTATCHANGE                 842
+#define STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS  843
 
-#define BATTLESTRINGS_COUNT                           840
+#define BATTLESTRINGS_COUNT                           844
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

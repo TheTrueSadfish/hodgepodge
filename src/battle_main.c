@@ -3387,6 +3387,9 @@ void FaintClearSetData(u32 battler)
 
     gProtectStructs[battler].protected = FALSE;
     gProtectStructs[battler].spikyShielded = FALSE;
+    gProtectStructs[battler].covenLights1 = FALSE;
+    gProtectStructs[battler].covenLights2 = FALSE;
+    gProtectStructs[battler].hardStoneBoost = FALSE;
     gProtectStructs[battler].kingsShielded = FALSE;
     gProtectStructs[battler].shelltered = FALSE;
     gProtectStructs[battler].detectShielded = FALSE;
@@ -4017,6 +4020,8 @@ void BattleTurnPassed(void)
         if (DoBattlerEndTurnEffects())
             return;
     }
+    gProtectStructs[i].covenLights1 = FALSE;
+    gProtectStructs[i].covenLights2 = FALSE;
     if (HandleFaintedMonActions())
         return;
     gBattleStruct->faintedActionsState = 0;
@@ -4945,6 +4950,17 @@ s8 GetMovePriority(u32 battler, u16 move)
     if (gProtectStructs[battler].quash)
         priority = -8;
 
+    if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG)
+    {
+        for (i = 0; i < NUM_BATTLE_STATS; i++)
+        {
+            if (gBattleMons[gBattlerTarget].statStages[i] != DEFAULT_STAT_STAGE)
+            {
+                priority++;
+            }
+        }
+    }
+
     return priority;
 }
 
@@ -5153,6 +5169,7 @@ static void TurnValuesCleanUp(bool8 var0)
         {
             gProtectStructs[i].protected = FALSE;
             gProtectStructs[i].spikyShielded = FALSE;
+            gProtectStructs[i].hardStoneBoost = FALSE;
             gProtectStructs[i].kingsShielded = FALSE;
             gProtectStructs[i].shelltered = FALSE;
             gProtectStructs[i].detectShielded = FALSE;

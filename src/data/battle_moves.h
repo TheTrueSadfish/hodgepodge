@@ -7737,13 +7737,13 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ATTACK_ORDER] =
     {
         .effect = EFFECT_ATTACK_ORDER,
-        .power = 50,
+        .power = 30,
         .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 10,
-        .secondaryEffectChance = 0,
+        .pp = 15,
+        .secondaryEffectChance = 20,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .highCritRatio = TRUE,
@@ -14453,7 +14453,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .split = SPLIT_SPECIAL,
+        .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresKingsRock = B_UPDATED_MOVE_FLAGS < GEN_3,
         .instructBanned = TRUE,
@@ -17209,18 +17209,17 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PINCER_HOOK] =
     {
-        .effect = EFFECT_SUCKER_PUNCH,
-        .power = 90,
+        .effect = EFFECT_HIT,
+        .power = 60,
         .type = TYPE_BUG,
-        .accuracy = 95,
-        .pp = 10,
+        .accuracy = 90,
+        .pp = 15,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
-        .highCritRatio = TRUE,
         .punchingMove = TRUE,
     },
 
@@ -17250,7 +17249,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
-        .argument = 30,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
     },
@@ -17592,7 +17590,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_LOVELY_POISON] =
     {
         .effect = EFFECT_LOVELY_POISON,
-        .power = 70,
+        .power = 100,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 10,
@@ -17732,7 +17730,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FRESH_WHIP] =
     {
         .effect = EFFECT_FRESH_WHIP,
-        .power = 70,
+        .power = 50,
         .type = TYPE_WATER,
         .accuracy = 0,
         .pp = 10,

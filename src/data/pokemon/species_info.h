@@ -2909,12 +2909,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_DEWGONG] =
     {
-        .baseHP        = 90,
+        .baseHP        = 85,
         .baseAttack    = 70,
         .baseDefense   = 80,
         .baseSpeed     = 60,
         .baseSpAttack  = 80,
-        .baseSpDefense = 95,
+        .baseSpDefense = 100,
         .types = { TYPE_DRAGON, TYPE_DRAGON },
         .catchRate = 190,
         .expYield = 65,
@@ -13962,15 +13962,15 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_EELEKTROSS] =
     {
         .baseHP        = 80,
-        .baseAttack    = 120,
+        .baseAttack    = 135,
         .baseDefense   = 69,
         .baseSpeed     = 85,
-        .baseSpAttack  = 85,
+        .baseSpAttack  = 70,
         .baseSpDefense = 89,
         .types = { TYPE_ELECTRIC, TYPE_FIRE},
         .catchRate = 190,
         .expYield = 55,
-        .evYield_Speed     = 1,
+        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -25886,8 +25886,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 86,
         .baseAttack    = 112,
-        .baseDefense   = 90,
-        .baseSpeed     = 85,
+        .baseDefense   = 100,
+        .baseSpeed     = 90,
         .baseSpAttack  = 60,
         .baseSpDefense = 70,
         .types = { TYPE_NORMAL, TYPE_NORMAL },
@@ -26057,7 +26057,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseDefense   = 81,
         .baseSpeed     = 118,
         .baseSpAttack  = 90,
-        .baseSpDefense = 65,
+        .baseSpDefense = 76,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 69,
         .expYield = 69,
@@ -26066,7 +26066,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_DANCER, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_ANGER_SHELL, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },
@@ -26255,7 +26255,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_MYCELIUM_MIGHT, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_NEUTRALIZING_GAS, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
@@ -26745,12 +26745,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SHAMBURGER] =
     {
-        .baseHP        = 55,
-        .baseAttack    = 97,
+        .baseHP        = 65,
+        .baseAttack    = 129,
         .baseDefense   = 132,
-        .baseSpeed     = 72,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 73,
+        .baseSpeed     = 102,
+        .baseSpAttack  = 35,
+        .baseSpDefense = 77,
         .types = { TYPE_ROCK, TYPE_FAIRY },
         .catchRate = 69,
         .expYield = 69,
@@ -27102,7 +27102,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_MALACHREY] =
     {
-        .baseHP        = 88,
+        .baseHP        = 98,
         .baseAttack    = 114,
         .baseDefense   = 90,
         .baseSpeed     = 88,
@@ -27333,7 +27333,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_CASTERMITE] =
     {
-        .baseHP        = 115,
+        .baseHP        = 100,
         .baseAttack    = 75,
         .baseDefense   = 150,
         .baseSpeed     = 30,
@@ -27439,7 +27439,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_ASTIGMORAY] =
     {
         .baseHP        = 160,
-        .baseAttack    = 50,
+        .baseAttack    = 80,
         .baseDefense   = 110,
         .baseSpeed     = 130,
         .baseSpAttack  = 100,
@@ -27460,8 +27460,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_GELECTUAL] =
     {
         .baseHP        = 55,
-        .baseAttack    = 100,
-        .baseDefense   = 135,
+        .baseAttack    = 95,
+        .baseDefense   = 115,
         .baseSpeed     = 105,
         .baseSpAttack  = 40,
         .baseSpDefense = 80,
@@ -31732,7 +31732,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_ASTIGMORAY_BLIND] =
     {
         .baseHP        = 160,
-        .baseAttack    = 50,
+        .baseAttack    = 80,
         .baseDefense   = 110,
         .baseSpeed     = 130,
         .baseSpAttack  = 100,

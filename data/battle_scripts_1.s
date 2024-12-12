@@ -682,37 +682,35 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectChakraSurge             @ EFFECT_CHAKRA_SURGE
 
 BattleScript_EffectChakraSurge::
-	jumpifhpthreshold BS_ATTACKER, BattleScript_ChakraSurgeRaiseStats
 	attackcanceler
 	attackstring
 	ppreduce
-	tryhealquarterhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
-	attackanimation
-	waitanimation
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	printstring STRINGID_PKMNREGAINEDHEALTH
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_ChakraSurgeRaiseStats::
-	attackcanceler
-	attackstring
-	ppreduce
-	tryhealquarterhealth BS_ATTACKER, BattleScript_CosmicPowerAfterPPReduce
+	setuserstatus3 STATUS3_AQUA_RING, BattleScript_ChakraSurgeJustRaiseStats
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_RestoreHpAnimation
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_JustAquaRing
 BattleScript_ChakraSurgeAnimation::
 	attackanimation
 	waitanimation
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	printstring STRINGID_PKMNREGAINEDHEALTH
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_ChakraSurgeStatRaising::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, 0
+	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPATK | BIT_SPDEF, 0
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_ChakraSurgeTryDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_ChakraSurgeTryDef
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_ChakraSurgeTryDef::
 	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_ChakraSurgeTrySpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_ChakraSurgeTrySpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_ChakraSurgeTrySpAtk::
+	setstatchanger STAT_SPATK, 1, FALSE
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_ChakraSurgeTrySpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_ChakraSurgeTrySpDef
 	printfromtable gStatUpStringIds
@@ -722,6 +720,21 @@ BattleScript_ChakraSurgeTrySpDef::
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MoveEnd
 	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_ChakraSurgeJustRaiseStats::
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_ChakraSurgeContinue
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_ChakraSurgeContinue
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_ChakraSurgeContinue
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_ButItFailed
+BattleScript_ChakraSurgeContinue::
+	attackanimation
+	waitanimation
+	goto BattleScript_ChakraSurgeStatRaising
+BattleScript_JustAquaRing::
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -889,7 +902,7 @@ BattleScript_EffectAttackOrder::
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATTACK_ORDER
-	seteffectprimary
+	seteffectwithchance
 	setmoveeffect MOVE_EFFECT_WRAP
 	seteffectsecondary
 	moveendall
@@ -2406,6 +2419,9 @@ BattleScript_EffectPurification:
 	waitmessage B_WAIT_TIME_LONG
 	tryresetstatstages BS_TARGET
 	printstring STRINGID_TARGETSTATCHANGESGONE
+	waitmessage B_WAIT_TIME_LONG
+	setpurified BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -4095,8 +4111,9 @@ BattleScript_EffectAllStatsDownHit::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectVenomDrain:
-	jumpifsubstituteblocks BattleScript_EffectAbsorb
-	setmoveeffect MOVE_EFFECT_REMOVE_STATUS | MOVE_EFFECT_CERTAIN
+	jumpifstatus BS_TARGET, STATUS1_PSN_ANY, BattleScript_VenomDrain
+	goto BattleScript_EffectAbsorb
+BattleScript_VenomDrain::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_VenomDrainHealBlock
@@ -4120,6 +4137,14 @@ BattleScript_VenomDrainTryFainting::
 	tryfaintmon BS_ATTACKER
 BattleScript_VenomDrainHealBlock::
 	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_ATK_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_EffectHit
+	setmoveeffect MOVE_EFFECT_REMOVE_STATUS
+	seteffectsecondary
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectDefAccDownHit::
@@ -12671,6 +12696,7 @@ BattleScript_HandlePursuit::
 	trysetdestinybondtohappen
 	call BattleScript_PursuitDmgOnSwitchOut
 	jumpifmove MOVE_IMPRISON BattleScript_CancelSwitch
+	jumpifmove MOVE_LOVELY_POISON BattleScript_PoisonGuys
 	swapattackerwithtarget
 	call BattleScript_DoSwitchOut
 
@@ -12679,6 +12705,16 @@ BattleScript_CancelSwitch::
 	printfromtable STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
 	end2
+
+BattleScript_PoisonGuys::
+	jumpifstatus2 BS_TARGET, STATUS2_INFATUATION, BattleScript_PoisonGuysReal
+	swapattackerwithtarget
+	call BattleScript_DoSwitchOut
+BattleScript_PoisonGuysReal::
+	setmoveeffect MOVE_EFFECT_POISON
+	seteffectsecondary
+	swapattackerwithtarget
+	call BattleScript_DoSwitchOut
 
 BattleScript_PursuitDmgOnSwitchOut::
 	pause B_WAIT_TIME_SHORT
@@ -13462,7 +13498,7 @@ BattleScript_PaintedHazardStealthRockRet:
 BattleScript_PaintedHazardSpikes::
 	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_SHORT
-	trysetspikes BS_ATTACKER, BattleScript_PaintedHazardSpikesRet
+	trysetspikes BS_TARGET, BattleScript_PaintedHazardSpikesRet
 	printstring STRINGID_SPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_PaintedHazardSpikesRet:
@@ -14960,6 +14996,16 @@ BattleScript_AbilityRaisesDefenderStat::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_CovenLightsLowersDefenderStat::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	statbuffchange 0, NULL
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_DEFENDERSSTATROSE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_AbilityPopUpTarget:
 	copybyte gBattlerAbility, gBattlerTarget
 BattleScript_AbilityPopUp:
@@ -16000,7 +16046,23 @@ BattleScript_AbilityNoStatLoss::
 
 BattleScript_ItemNoStatLoss::
 	pause B_WAIT_TIME_SHORT
-	printstring STRINGID_STATWASNOTLOWERED
+	printstring STRINGID_CLEARAMULETWONTLOWERSTATS
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_ItemNoSpecificStatLoss::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+BattleScript_ItemNoSpecificStatLossPrint:
+	printstring STRINGID_ITEMWONTLOWERCERTAINSTAT
+	waitmessage B_WAIT_TIME_LONG
+	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
+	orhalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
+	return
+
+BattleScript_PurifiedNoStatChange::
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PURIFIEDNOSTATCHANGE
 	waitmessage B_WAIT_TIME_LONG
 	return
 

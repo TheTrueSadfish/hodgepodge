@@ -253,7 +253,6 @@ PlatoonInsideFoyer_EventScript_ItemMenuLocked::
 PlatoonInsideFoyer_EventScript_GiveAllItems::
 	msgbox PlatoonInsideFoyer_Text_OkayBuckleUp, MSGBOX_DEFAULT
 	giveitem ITEM_ABILITY_SHIELD
-	giveitem ITEM_ABSORB_BULB
 	giveitem ITEM_ASSAULT_VEST
 	giveitem ITEM_BATTLE_HELM
 	giveitem ITEM_BELUE_BERRY
@@ -264,9 +263,9 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_PUNCHING_GLOVE
 	giveitem ITEM_BRIGHT_POWDER
 	giveitem ITEM_BURNT_BRANCH
-	giveitem ITEM_CHARCOAL
 	giveitem ITEM_CHOICE_BAND
 	giveitem ITEM_CHOICE_SCARF
+	giveitem ITEM_CHUPACABRA
 	giveitem ITEM_CLEANSE_TAG
 	giveitem ITEM_CLEAR_AMULET
 	giveitem ITEM_COBA_BERRY
@@ -314,6 +313,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_POISON_BARB
 	giveitem ITEM_POMEG_BERRY
 	giveitem ITEM_PROTECTIVE_PADS
+	giveitem ITEM_POWER_HERB
 	giveitem ITEM_QUICK_CLAW
 	giveitem ITEM_RING_TARGET
 	giveitem ITEM_RIZZ_BERRY

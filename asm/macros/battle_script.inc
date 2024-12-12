@@ -2259,6 +2259,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro setpurified battler:req, failInstr:req
+	various \battler, VARIOUS_SET_PURIFIED
+	.4byte \failInstr
+	.endm
+
 	.macro setsandslip battler:req, failInstr:req
 	various \battler, VARIOUS_SET_SAND_SLIP
 	.4byte \failInstr

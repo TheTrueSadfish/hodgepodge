@@ -216,6 +216,10 @@ static const u8 sText_PkmnTryingToTakeFoe[] = _("{B_ATK_NAME_WITH_PREFIX} is try
 static const u8 sText_PkmnTookFoe[] = _("{B_DEF_NAME_WITH_PREFIX} took\n{B_ATK_NAME_WITH_PREFIX} with it!");
 static const u8 sText_PkmnReducedPP[] = _("Reduced {B_DEF_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
 static const u8 sText_AtkPkmnReducedPP[] = _("Reduced {B_ATK_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
+static const u8 sText_ClearAmuletWontLowerStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM} prevents\nits stats from being lowered!");
+static const u8 sText_PurifiedNoStatChange[] = _("{B_DEF_NAME_WITH_PREFIX} is too pure\nfor stat changes!");
+static const u8 sText_TargetWasPurifiedAndCantChangeStats[] = _("{B_DEF_NAME_WITH_PREFIX} has been purified\nand cannot change their stats!");
+static const u8 sText_ItemWontLowerCertainStat[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\nprevents {B_BUFF1} loss!");
 static const u8 sText_PkmnStoleItem[] = _("{B_ATK_NAME_WITH_PREFIX} stole\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_TargetCantEscapeNow[] = _("{B_DEF_NAME_WITH_PREFIX} can't\nescape now!");
 static const u8 sText_AttackerCantEscapeNow[] = _("{B_ATK_NAME_WITH_PREFIX} can't\nescape now!");
@@ -1809,6 +1813,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_DRAGDOWNSWITCHEDSTATS - BATTLESTRINGS_TABLE_START] = sText_DragDownSwitchedStats,
     [STRINGID_FLIPCOINCHANGEDATTACKERSSTATS - BATTLESTRINGS_TABLE_START] = sText_FlipCoinChangedAttackerssStats,
     [STRINGID_ATKPKMNREDUCEDPP - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnReducedPP,
+    [STRINGID_CLEARAMULETWONTLOWERSTATS - BATTLESTRINGS_TABLE_START] = sText_ClearAmuletWontLowerStats,
+    [STRINGID_ITEMWONTLOWERCERTAINSTAT - BATTLESTRINGS_TABLE_START] = sText_ItemWontLowerCertainStat,
+    [STRINGID_PURIFIEDNOSTATCHANGE - BATTLESTRINGS_TABLE_START] = sText_PurifiedNoStatChange,
+    [STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS - BATTLESTRINGS_TABLE_START] = sText_TargetWasPurifiedAndCantChangeStats,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

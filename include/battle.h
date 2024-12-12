@@ -65,6 +65,7 @@ struct DisableStruct
     u16 encoredMove;
     u8 protectUses;
     u8 stockpileCounter;
+    u8 purified;
     s8 stockpileDef;
     s8 stockpileSpDef;
     s8 stockpileBeforeDef;
@@ -129,7 +130,6 @@ struct ProtectStruct
     u32 protected:1;
     u32 spikyShielded:1;
     u32 defendOrder:1;
-
     u32 kingsShielded:1;
     u32 shelltered:1;
     u32 detectShielded:1;
@@ -183,6 +183,8 @@ struct ProtectStruct
     u32 hardStoneBoost:1;
     u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
     u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
+    u8 covenLights1:1;
+    u8 covenLights2:1;
 };
 
 struct SpecialStatus

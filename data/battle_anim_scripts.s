@@ -7090,7 +7090,7 @@ Move_HORN_LEECH::
 	playsewithpan SE_M_HEADBUTT, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_IsTargetPlayerSide, 0x2
 	jumpargeq 0x7 ANIM_TARGET HornLeechOnPlayer
-	createsprite gHornLeechHornTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
+	createsprite gHornLeechHornOpponentTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
 HornLeechContinue:
 	waitforvisualfinish
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 6, 1
@@ -7102,7 +7102,7 @@ HornLeechContinue:
 	waitforvisualfinish
 	end
 HornLeechOnPlayer::
-	createsprite gHornLeechHornOpponentTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
+	createsprite gHornLeechHornTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
 	goto HornLeechContinue
 
 Move_SACRED_SWORD::
@@ -38006,7 +38006,7 @@ Status_Verglastrom:
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 0, 3, RGB_BLACK
 	waitforvisualfinish
-	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 6, 0, 40
+	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 6, 0, 20
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 2, 47, 1
 	call IceSpinEffect
 	createsprite gIceCrystalSpiralInwardSmall, ANIM_ATTACKER, 2, 0

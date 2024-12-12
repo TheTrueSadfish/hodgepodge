@@ -647,7 +647,7 @@ static const u8 sSwiftDescription[] = _(
     "and always goes first.");
 
 static const u8 sSkullBashDescription[] = _(
-    "boosts Defense on the first\n"
+    "Boosts Defense on the first\n"
     "turn, then attacks on the next.\n"
     "Based on the user's Defense.");
 
@@ -1495,7 +1495,7 @@ static const u8 sMudSportDescription[] = _(
 static const u8 sNeedleArmDescription[] = _(
     "The user attacks by swinging its\n"
     "thorny arms. This cuts the foe's\n"
-    "HP by 1/5 as extra damage.");
+    "HP by 1/5 as bonus damage.");
 
 static const u8 sSlackOffDescription[] = _(
     "The user slacks off, restoring\n"
@@ -2243,9 +2243,9 @@ static const u8 sAquaJetDescription[] = _(
     "move always goes first.");
 
 static const u8 sAttackOrderDescription[] = _(
-    "The user calls out its\n"
-    "underlings who may poison or\n"
-    "paralyze. Always goes first.");
+    "May poison or paralyze. Traps\n"
+    "and hurts the foe for 4 to 5\n"
+    "turns. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
     "Raises the user's Defense.\n"
@@ -4284,9 +4284,9 @@ static const u8 sVenomGaleDescription[] = _(
     "Defense stats.");
 
 static const u8 sVenomDrainDescription[] = _(
-    "Drains some of the damage done.\n"
-    "Drains more if the foe is\n"
-    "poisoned, but removes it.");
+    "Drains half of the damage done.\n"
+    "Boosts the user's Attack if the\n"
+    "foe is poisoned, but removes it.");
 
 static const u8 sGunkFunkDescription[] = _(
     "The user spreads gunk that may\n"
@@ -4784,9 +4784,9 @@ static const u8 sGrandSlamDescription[] = _(
     "turn, but takes less damage.");
 
 static const u8 sPurificationDescription[] = _(
-    "Changes the foe into a\n"
-    "Normal-type and resets their\n"
-    "stat changes. Always goes first.");
+    "Changes the foe to a Normal-type\n"
+    "and resets its stats. Stops\n"
+    "future stat changes. Goes first.");
 
 static const u8 sSurpriseEggDescription[] = _(
     "The user opens an easter egg and\n"
@@ -4944,9 +4944,9 @@ static const u8 sWildArmsDescription[] = _(
     "the user's previous move failed.");
 
 static const u8 sPincerHookDescription[] = _(
-    "This move goes first, but fails\n"
-    "if the foe is not attacking.\n"
-    "Critical hits land more easily.");
+    "At half health, hits twice. At\n"
+    "1/4 health always lands critical\n"
+    "hits. Always goes first.");
 
 static const u8 sPainSpinesDescription[] = _(
     "The user shoots spines 3 times.\n"
@@ -4956,7 +4956,7 @@ static const u8 sPainSpinesDescription[] = _(
 static const u8 sDarkHungerDescription[] = _(
     "Eats the foe's Berry. Boosted if\n"
     "the user ate a Berry last turn.\n"
-    "Absorbs some of the damage done.");
+    "Absorbs half of the damage done.");
 
 static const u8 sNightBeamDescription[] = _(
     "A piercing light is shot at the\n"
@@ -5014,7 +5014,7 @@ static const u8 sOddcastDescription[] = _(
     "foe has a status condition.");
 
 static const u8 sKelpSapDescription[] = _(
-    "Cuts 1 PP from the foe's last\n"
+    "Cuts 3 PP from the foe's last\n"
     "used move. Absorbs all of the\n"
     "the damage taken by the foe.");
 
@@ -5086,7 +5086,7 @@ static const u8 sLovelyPoisonDescription[] = _(
 static const u8 sGammaRayDescription[] = _(
     "Burns, paralyzes, or frostbites\n"
     "the foe. If the foe has a status\n"
-    "condition does extra damage.");
+    "condition does bonus damage.");
 
 static const u8 sFireballsDescription[] = _(
     "Hits twice, or more for each\n"
@@ -5129,9 +5129,9 @@ static const u8 sSandSlipDescription[] = _(
     "cuts Def. Switches the user out.");
 
 static const u8 sChakraSurgeDescription[] = _(
-    "The user restores 1/4 of its HP.\n"
-    "If below half HP, also raises\n"
-    "Def/Sp. Def. Always goes first.");
+    "Gains Aqua Ring. Boosts Atk,\n"
+    "Def, Sp. Atk, and Sp. Def. Can\n"
+    "only be used once per switch-in.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
