@@ -176,7 +176,8 @@ static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
     if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_FIRE)
     {
         absorbingTypeAbilities[0] = ABILITY_FLASH_FIRE;
-        numAbsorbingAbilities = 1;
+        absorbingTypeAbilities[0] = ABILITY_HEAT_SEEKER;
+        numAbsorbingAbilities = 2;
     }
     else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_WATER)
     {

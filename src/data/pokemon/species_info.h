@@ -12013,10 +12013,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_MUSHARNA] =
     {
         .baseHP        = 116,
-        .baseAttack    = 87,
+        .baseAttack    = 97,
         .baseDefense   = 95,
         .baseSpeed     = 69,
-        .baseSpAttack  = 55,
+        .baseSpAttack  = 65,
         .baseSpDefense = 85,
         .types = { TYPE_NORMAL, TYPE_NORMAL},
         .catchRate = 75,

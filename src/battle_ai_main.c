@@ -973,6 +973,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(20);
                 break;
             case ABILITY_FLASH_FIRE:
+            case ABILITY_HEAT_SEEKER:
                 if (moveType == TYPE_FIRE)
                     RETURN_SCORE_MINUS(20);
                 break;
@@ -2224,8 +2225,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_EMBER_SNOW:
-            if (gBattleMons[battlerAtk].species == SPECIES_RICKSHAWTY_CHARIOT)
-                score += 10;
+            if (predictedMove != MOVE_NONE
+             && aiData->abilities[battlerAtk] == ABILITY_HEAT_SEEKER
+             && gBattleMons[battlerAtk].species == SPECIES_RICKSHAWTY_CHARIOT)
+                score += 3;
             else if (!AI_CanBurn(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
                 score -= 10;
             break;
@@ -3709,6 +3712,12 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     break;
                 case ABILITY_WATER_ABSORB:
                 case ABILITY_DRY_SKIN:
+                    if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
+                    {
+                        RETURN_SCORE_MINUS(10);
+                    }
+                    break;  // handled in AI_HPAware
+                case ABILITY_HEAT_SEEKER:
                     if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
                     {
                         RETURN_SCORE_MINUS(10);
@@ -7458,6 +7467,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     {
         if ((effect == EFFECT_HEAL_PULSE || effect == EFFECT_HIT_ENEMY_HEAL_ALLY || effect == EFFECT_FLORAL_HEALING)
          || (moveType == TYPE_ELECTRIC && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_VOLT_ABSORB)
+         || (moveType == TYPE_FIRE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_HEAT_SEEKER)
          || ((moveType == TYPE_GHOST || moveType == TYPE_POISON) && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_MISFORTUNE)
          || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB)))
         {

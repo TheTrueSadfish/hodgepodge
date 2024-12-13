@@ -3558,38 +3558,6 @@ BattleScript_EffectSunBask:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SUN, BattleScript_EffectTrySunBaskBlooming
-	goto BattleScript_SunBaskStatBoost
-BattleScript_EffectTrySunBaskBlooming::
-	jumpifstatus BS_TARGET, STATUS1_BLOOMING, BattleScript_SunBaskStatBoost
-	jumpiftype BS_TARGET, TYPE_FIRE, BattleScript_SunBaskStatBoost
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_SunBaskStatBoost
-	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_SunBaskStatBoost
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_SunBaskDoMoveAnimWithBlooming
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_SunBaskJustBloom
-BattleScript_SunBaskDoMoveAnimWithBlooming::
-	attackanimation
-	waitanimation
-	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_CERTAIN
-	seteffectprimary
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, 0
-	setstatchanger STAT_DEF, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_SunBaskTrySpDefWithBlooming
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SunBaskTrySpDefWithBlooming
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_SunBaskTrySpDefWithBlooming::
-	setstatchanger STAT_SPDEF, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MoveEnd
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_SunBaskJustBloom::
-	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_CERTAIN
-	goto BattleScript_MoveEnd
-BattleScript_SunBaskStatBoost::
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_SunBaskDoMoveAnim
 	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
 BattleScript_SunBaskDoMoveAnim::
@@ -3597,17 +3565,28 @@ BattleScript_SunBaskDoMoveAnim::
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
 	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, 0
+	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SUN, BattleScript_SunBaskDef2
 	setstatchanger STAT_DEF, 1, FALSE
+	goto BattleScript_SunBaskDef
+BattleScript_SunBaskDef2:
+	setstatchanger STAT_DEF, 2, FALSE
+BattleScript_SunBaskDef:
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_SunBaskTrySpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SunBaskTrySpDef
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_SunBaskTrySpDef::
+	jumpifweatheraffected BS_ATTACKER, B_WEATHER_SUN, BattleScript_SunBaskSpDef2
 	setstatchanger STAT_SPDEF, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MoveEnd
+	goto BattleScript_SunBaskSpDef
+BattleScript_SunBaskSpDef2:
+	setstatchanger STAT_SPDEF, 2, FALSE
+BattleScript_SunBaskSpDef:
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_SunBaskEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SunBaskEnd
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_SunBaskEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpAttackAccUp:

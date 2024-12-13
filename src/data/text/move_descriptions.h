@@ -4580,8 +4580,8 @@ static const u8 sWaterWheelDescription[] = _(
 
 static const u8 sSunBaskDescription[] = _(
     "The user basks in the sun,\n"
-    "boosting Def and Sp. Def. The\n"
-    "user blooms in harsh sunlight.");
+    "boosting the Defense and Special\n"
+    "Defense stats.");
 
 static const u8 sHearthwarmDescription[] = _(
     "The user envelops itself and\n"
