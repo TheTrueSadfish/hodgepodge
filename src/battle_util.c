@@ -7459,9 +7459,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 {
                     gDisableStructs[gBattlerTarget].iceScalesCounter--;
                     gDisableStructs[gBattlerTarget].iceScalesCounter--;
+                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
                 }
                 else
                 {
+                    gDisableStructs[gBattlerTarget].iceScalesCounter--;
                     gDisableStructs[gBattlerTarget].iceScalesCounter--;
                 }
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerTarget].iceScalesCounter);

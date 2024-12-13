@@ -1020,8 +1020,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_CHARIZARD] =
     {
         .baseHP        = 80,
-        .baseAttack    = 85,
-        .baseDefense   = 75,
+        .baseAttack    = 75,
+        .baseDefense   = 85,
         .baseSpeed     = 104,
         .baseSpAttack  = 90,
         .baseSpDefense = 105,
