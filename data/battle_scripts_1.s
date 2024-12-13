@@ -685,6 +685,7 @@ BattleScript_EffectChakraSurge::
 	attackcanceler
 	attackstring
 	ppreduce
+	trychakrasurge BS_TARGET, BattleScript_ButItFailed
 	setuserstatus3 STATUS3_AQUA_RING, BattleScript_ChakraSurgeJustRaiseStats
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_ChakraSurgeAnimation
@@ -1762,6 +1763,7 @@ BattleScript_HunkerDownTrySpDef::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_HunkerDownEnd::
+	seteffectwithchance
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMoonBeam:
@@ -15612,6 +15614,15 @@ BattleScript_WhiteSmokeAbilityActivates::
 	printstring STRINGID_ABILITYSUMMONEDMIST
 	playanimation BS_ATTACKER, B_ANIM_WHITE_SMOKE	
 	waitmessage B_WAIT_TIME_SHORT
+	end3
+
+BattleScript_DaringDeedActivates::
+	call BattleScript_AbilityPopUp
+	setluckychant BS_ATTACKER, BattleScript_DaringDeedEnd
+	printstring STRINGID_ABILITYSUMMONEDLUCKYCHANT
+	playanimation BS_ATTACKER, B_ANIM_DARING_DEED	
+	waitmessage B_WAIT_TIME_SHORT
+BattleScript_DaringDeedEnd::
 	end3
 
 BattleScript_EntrancingAbilityActivates::

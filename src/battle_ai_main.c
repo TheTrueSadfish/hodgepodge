@@ -4167,6 +4167,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             && gDisableStructs[battlerAtk].purpleHazeDefense == FALSE))
             score += 8;
         break;
+    case ABILITY_DARING_DEED:
+        if (move == MOVE_TRUMP_CARD || move == MOVE_WILD_SHUFFLE)
+            score += 2;
+        break;
     case ABILITY_PRODIGY:
     case ABILITY_LOVESICK:
     case ABILITY_PICKPOCKET:
@@ -5282,6 +5286,12 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SLEEP_TALK:
     case EFFECT_SNORE:
         if (!IsWakeupTurn(battlerAtk) && gBattleMons[battlerAtk].status1 & STATUS1_SLEEP_ANY)
+            score += 10;
+        if (!IsWakeupTurn(battlerAtk) && gBattleMons[battlerAtk].status1 & STATUS1_REST_TURN(1))
+            score += 10;
+        else if (!IsWakeupTurn(battlerAtk) && gBattleMons[battlerAtk].status1 & STATUS1_REST_TURN(2))
+            score += 10;
+        else if (!IsWakeupTurn(battlerAtk) && gBattleMons[battlerAtk].status1 & STATUS1_REST_TURN(3))
             score += 10;
         break;
     case EFFECT_LOCK_ON:

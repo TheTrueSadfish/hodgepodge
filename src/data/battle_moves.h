@@ -17337,7 +17337,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_COSMIC,
         .accuracy = 90,
         .pp = 15,
-        .secondaryEffectChance = 100,
+        .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -17376,6 +17376,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .thawsUser = TRUE,
         .ballisticMove = TRUE,
+        .strikeCount = 2,
     },
 
     [MOVE_EMBER_SNOW] =
@@ -17590,7 +17591,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_LOVELY_POISON] =
     {
         .effect = EFFECT_LOVELY_POISON,
-        .power = 100,
+        .power = 70,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 10,

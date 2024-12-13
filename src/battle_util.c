@@ -3114,7 +3114,7 @@ u8 DoBattlerEndTurnEffects(void)
         case ENDTURN_AQUA_RING: // aqua ring
             if ((gStatuses3[battler] & STATUS3_AQUA_RING) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) && gBattleMons[battler].hp != 0)
             {
-                gBattleMoveDamage = GetDrainedBigRootHp(battler, ((gBattleMons[battler].maxHP - gBattleMons[battler].hp) / 3));
+                gBattleMoveDamage = GetDrainedBigRootHp(battler, ((gBattleMons[battler].maxHP - gBattleMons[battler].hp) / 5));
                 BattleScriptExecute(BattleScript_AquaRingHeal);
                 effect++;
             }
@@ -4583,10 +4583,6 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
-            else if (gCurrentMove == MOVE_FIREBALLS)
-            {
-                gMultiHitCounter = 1;
-            }
             else if (gCurrentMove == MOVE_GOOSE_CHASER && (RandomPercentage(RNG_GREASY, 50)))
             {
                 gMultiHitCounter = 2;
@@ -4597,17 +4593,12 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gMultiHitCounter = (gDisableStructs[gBattlerAttacker].stockpileCounter + 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
-            else if (gCurrentMove == MOVE_FIREBALLS && CountBattlerStatIncreases(gBattlerAttacker, TRUE) > 0)
-            {
-                gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + 1;
-                PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
-            }
             else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[gBattlerAttacker].hp > (gBattleMons[gBattlerAttacker].maxHP / 4)))
             {
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
             }
-            else if ((gCurrentMove == MOVE_PINCER_HOOK) && (gBattleMons[gBattlerAttacker].hp > (gBattleMons[gBattlerAttacker].maxHP / 2)))
+            else if ((gCurrentMove == MOVE_PINCER_HOOK) && (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 2)))
             {
                 gMultiHitCounter = 2;
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
@@ -4622,6 +4613,11 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 if (gBattleMoves[gCurrentMove].effect == EFFECT_POPULATION_BOMB && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
                 {
                     gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 10);
+                }
+                else if (gCurrentMove == MOVE_FIREBALLS && CountBattlerStatIncreases(gBattlerAttacker, TRUE) > 0)
+                {
+                    gMultiHitCounter = CountBattlerStatIncreases(gBattlerAttacker, TRUE) + gBattleMoves[gCurrentMove].strikeCount;
+                    PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 3, 0)
                 }
                 else if (gBattleMoves[gCurrentMove].effect == EFFECT_GATTLING_PINS && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
                 {
@@ -5978,6 +5974,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_WhiteSmokeAbilityActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_DARING_DEED:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_DaringDeedActivates);
                 effect++;
             }
             break;
@@ -12420,7 +12425,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower += (CountBattlerStatIncreases(battlerAtk, TRUE) * 20);
         break;
     case EFFECT_FIREBALLS:
-        basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 20);
+        basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 15);
         break;
     case EFFECT_REDLINE:
         basePower = 50 + (CountBattlerStatDecreases(battlerAtk, TRUE) * 100);
@@ -13242,11 +13247,6 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     {
         atkStat = gBattleMons[battlerDef].attack;
         atkStage = gBattleMons[battlerDef].statStages[STAT_ATK];
-    }
-    else if (gBattleMoves[move].effect == EFFECT_DRAGON_RUIN)
-    {
-        atkStat = gBattleMons[battlerAtk].attack + gBattleMons[battlerAtk].spAttack;
-        atkStage = gBattleMons[battlerAtk].statStages[STAT_ATK] + gBattleMons[battlerAtk].statStages[STAT_SPATK];
     }
     else if (gBattleMoves[move].effect == EFFECT_MIND_BREAK)
     {

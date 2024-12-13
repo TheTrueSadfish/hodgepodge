@@ -613,6 +613,7 @@
 #define B_ANIM_INFERNAL_REIGN           52
 #define B_ANIM_NON_SEQUITUR_SETUP       53
 #define B_ANIM_DEFENSE_CURL             54
+#define B_ANIM_DARING_DEED              55
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

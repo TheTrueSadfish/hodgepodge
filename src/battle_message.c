@@ -869,6 +869,7 @@ static const u8 sText_TargetIsBeingSaltCorned[] = _("{B_ATK_NAME_WITH_PREFIX} is
 static const u8 sText_AttackerIsBeingInfected[] = _("{B_ATK_NAME_WITH_PREFIX} is being infected!");
 static const u8 sText_AbilityWeakenedSurroundingMonsStats[] = _("A falling valley is present...");
 static const u8 sText_AbilitySummonedMist[] = _("A strange mist appears...");
+static const u8 sText_AbilitySummonedLuckyChant[] = _("{B_ATK_NAME_WITH_PREFIX} let out a\nLucky Chant!");
 static const u8 sText_AbilityEntranced[] = _("All opponents were entranced by\n{B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnTellChillingReceptionJoke[] = _("{B_ATK_NAME_WITH_PREFIX} is preparing to tell a\nchillingly bad joke!");
 static const u8 sText_ShedItsTail[] = _("{B_ATK_NAME_WITH_PREFIX} shed its tail\nto create a decoy!");
@@ -1817,6 +1818,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ITEMWONTLOWERCERTAINSTAT - BATTLESTRINGS_TABLE_START] = sText_ItemWontLowerCertainStat,
     [STRINGID_PURIFIEDNOSTATCHANGE - BATTLESTRINGS_TABLE_START] = sText_PurifiedNoStatChange,
     [STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS - BATTLESTRINGS_TABLE_START] = sText_TargetWasPurifiedAndCantChangeStats,
+    [STRINGID_ABILITYSUMMONEDLUCKYCHANT - BATTLESTRINGS_TABLE_START] = sText_AbilitySummonedLuckyChant,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -96,6 +96,7 @@ struct DisableStruct
     u8 wrapTurns;
     u8 usedMoves:4;
     u8 noRetreat:1;
+    u8 chakraSurge:1;
     u8 tarShot:1;
     u8 octolock:1;
     u8 sandSlip:1;

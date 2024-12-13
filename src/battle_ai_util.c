@@ -3466,6 +3466,8 @@ bool32 IsWakeupTurn(u32 battler)
     // Check if rest was used 2 turns ago
     if ((gBattleMons[battler].status1 & STATUS1_SLEEP_ANY) == 1 && FindMoveUsedXTurnsAgo(battler, 2) == MOVE_REST)
         return TRUE;
+    else if ((gBattleMons[battler].status1 & STATUS1_REST_TURN(1)) && FindMoveUsedXTurnsAgo(battler, 2) == MOVE_REST)
+        return TRUE;
     else // no way to know
         return FALSE;
 }

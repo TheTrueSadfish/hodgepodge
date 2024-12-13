@@ -1214,6 +1214,7 @@ gBattleAnims_General::
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
 	.4byte Move_DEFENSE_CURL                @ B_ANIM_NON_SEQUITUR_SETUP
 	.4byte Move_DEFENSE_CURL                @ B_ANIM_DEFENSE_CURL
+	.4byte Move_LUCKY_CHANT                 @ B_ANIM_DARING_DEED
 
 	.align 2
 gBattleAnims_Special::
@@ -38126,42 +38127,7 @@ General_SmokeballEscape:
 	end
 
 General_WhiteSmoke:
-	loadspritegfx ANIM_TAG_PINK_CLOUD
-	monbg ANIM_ATTACKER
-	setalpha 12, 4
-	delay 0
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_TARGET, 0, 0, 32, 28, 30
-	delay 4
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 127, 2, 12, 20, 30
-	delay 12
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 126, 2, -28, 4, 30
-	delay 12
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 124, 2, 14, -20, 30
-	delay 4
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createvisualtask AnimTask_AttackerFadeToInvisible, 2, 2
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 123, 3, 4, 4, 30
-	delay 14
-	playsewithpan SE_BALL_OPEN, SOUND_PAN_TARGET
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 122, 3, -14, 18, 46
-	delay 0
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 121, 3, 14, -14, 46
-	delay 0
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 120, 3, -12, -10, 46
-	delay 0
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 119, 3, 14, 14, 46
-	delay 0
-	createsprite gSmokeBallEscapeCloudSpriteTemplate, ANIM_ATTACKER, 118, 3, 0, 0, 46
-	waitforvisualfinish
-	clearmonbg ANIM_ATTACKER
-	visible ANIM_ATTACKER
-	delay 0
-	blendoff
-	end
+	goto Move_MIST
 
 General_SwitchItems:
 	loadspritegfx ANIM_TAG_ITEM_BAG

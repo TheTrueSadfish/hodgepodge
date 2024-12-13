@@ -2202,7 +2202,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || gBattleMoves[move].effect == EFFECT_ALWAYS_CRIT
              || gBattleMoves[move].effect == EFFECT_SNORE
              || gBattleMoves[move].effect == EFFECT_FEATHER_RAZOR
-             || (gCurrentMove == MOVE_PINCER_HOOK && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 4))
+             || (gCurrentMove == MOVE_PINCER_HOOK && (gBattleMons[battlerAtk].hp <= gBattleMons[battlerAtk].maxHP / 4))
              || gBattleMoves[move].effect == EFFECT_DUNE_SLICER
              || gBattleMoves[move].effect == EFFECT_SEIZE_CHANCE
              || gBattleMoves[move].effect == EFFECT_VITAL_THROW
@@ -13070,6 +13070,20 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_CHAKRA_SURGE:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gDisableStructs[battler].chakraSurge)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gDisableStructs[battler].chakraSurge = TRUE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_DEFEND_ORDER:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -14284,6 +14298,8 @@ static void Cmd_setdrainedhp(void)
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_SPIRIT_AWAY)
         gBattleMoveDamage = (gHpDealt * 75 / 100);
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_VENOM_DRAIN && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY)
+        gBattleMoveDamage = (gHpDealt);
     else if (gBattleMoves[gCurrentMove].argument != 0)
         gBattleMoveDamage = (gHpDealt * gBattleMoves[gCurrentMove].argument / 100);
     else

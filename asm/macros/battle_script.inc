@@ -2204,6 +2204,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trychakrasurge battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_CHAKRA_SURGE
+	.4byte \failInstr
+	.endm
+
 	.macro trydefendorder battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_DEFEND_ORDER
 	.4byte \failInstr

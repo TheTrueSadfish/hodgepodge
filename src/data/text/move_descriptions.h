@@ -4284,9 +4284,9 @@ static const u8 sVenomGaleDescription[] = _(
     "Defense stats.");
 
 static const u8 sVenomDrainDescription[] = _(
-    "Drains half of the damage done.\n"
-    "Boosts the user's Attack if the\n"
-    "foe is poisoned, but removes it.");
+    "Drains HP. Boosts Atk if the foe\n"
+    "is poisoned and drains all damage\n"
+    "done, but removes the poison.");
 
 static const u8 sGunkFunkDescription[] = _(
     "The user spreads gunk that may\n"
@@ -5084,7 +5084,7 @@ static const u8 sLovelyPoisonDescription[] = _(
     "other. Hits foes switching out.");
 
 static const u8 sGammaRayDescription[] = _(
-    "Burns, paralyzes, or frostbites\n"
+    "May burn, paralyze, or frostbite\n"
     "the foe. If the foe has a status\n"
     "condition does bonus damage.");
 
