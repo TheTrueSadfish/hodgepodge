@@ -4732,7 +4732,7 @@ const struct TrainerMon gBattleTentMons_MajorLeague[NUM_TENT_MAJOR_MONS] = {
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
         .moves = {MOVE_BANEFUL_BUNKER, MOVE_COUNTER, MOVE_SPIDER_WEB, MOVE_NEEDLE_ARM},
-        .heldItem = ITEM_DESTINY_KNOT,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_QUIRKY,
     },
     [TENT_MAJOR_MON_BEVOLPIN] = {
@@ -5577,7 +5577,7 @@ const struct TrainerMon gBattleTentMons_MinorLeague[NUM_TENT_MINOR_MONS] =
         .ev = TRAINER_PARTY_EVS(85, 85, 85, 85, 85, 85),
         .lvl = 50,
         .moves = {MOVE_BANEFUL_BUNKER, MOVE_COUNTER, MOVE_SPIDER_WEB, MOVE_NEEDLE_ARM},
-        .heldItem = ITEM_DESTINY_KNOT,
+        .heldItem = ITEM_SITRUS_BERRY,
         .nature = NATURE_QUIRKY,
     },
     [TENT_MINOR_MON_BEVOLPIN] = {

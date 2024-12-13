@@ -273,7 +273,6 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_COVERT_CLOAK
 	giveitem ITEM_CURSED_AMULET
 	giveitem ITEM_CUSTAP_BERRY
-	giveitem ITEM_DESTINY_KNOT
 	giveitem ITEM_DURIN_BERRY
 	giveitem ITEM_DRAGON_FANG
 	giveitem ITEM_EJECT_BUTTON
@@ -324,6 +323,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_SHELL_BELL
 	giveitem ITEM_SILK_SCARF
 	giveitem ITEM_SILVER_POWDER
+	giveitem ITEM_SITRUS_BERRY
 	giveitem ITEM_SOFT_SAND
 	giveitem ITEM_SPECTRAL_IDOL
 	giveitem ITEM_SPELL_TAG
