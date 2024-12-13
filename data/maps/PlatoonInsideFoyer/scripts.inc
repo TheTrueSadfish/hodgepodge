@@ -896,6 +896,34 @@ PlatoonInsideFoyer_EventScript_FormChanges::
 	msgbox PlatoonInsideFoyer_Text_FormChanges, MSGBOX_NPC
 	end
 
+PlatoonInsideFoyer_EventScript_Ghoulslash::
+	msgbox PlatoonInsideFoyer_Text_Ghoulslash, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_Wiz::
+	msgbox PlatoonInsideFoyer_Text_Wiz, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_TrainerX::
+	msgbox PlatoonInsideFoyer_Text_TrainerX, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_Celia::
+	msgbox PlatoonInsideFoyer_Text_Celia, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_Sadfish::
+	msgbox PlatoonInsideFoyer_Text_Sadfish, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_Mixone::
+	msgbox PlatoonInsideFoyer_Text_Mixone, MSGBOX_NPC
+	end
+
+PlatoonInsideFoyer_EventScript_HeardAboutTheAlterverse::
+	msgbox PlatoonInsideFoyer_Text_HeardAboutTheAlterverse, MSGBOX_NPC
+	end
+
 PlatoonInsideFoyer_EventScript_LanetteIdle::
 	lock
 	faceplayer
@@ -3037,7 +3065,13 @@ PlatoonInsideFoyer_Text_DevLoreWakasuka:
 PlatoonInsideFoyer_Text_DevLoreMantacore:
 	.string "DESIGNS: DILLSACKE\n"
 	.string "SPRITES: DILLSACKE\p"
-	.string "Dev Lore Unavailable.$"
+	.string "Mantacore is a stylized evolution\n"
+	.string "of Mantleray, a Fakemon Dill made\l"
+	.string "in collaboration with Gabo for\l"
+	.string "a previous art event. It is\l"
+	.string "partially inspired by the\l"
+	.string "shield circle gesture\l"
+	.string "from Hylics 2.$"
 
 PlatoonInsideFoyer_Text_DevLoreRegiwyrm:
 	.string "DESIGNS: DILLSACKE\n"
@@ -3817,3 +3851,92 @@ PlatoonInsideFoyer_Text_DevLoreBabobo:
 	.string "macaque and “hahahaha,” but\l"
 	.string "Val ditched it thinking it\l"
 	.string "sounded bad.$"
+
+PlatoonInsideFoyer_Text_Ghoulslash:
+	.string "Hello! I'm Ghoulslash.\n"
+	.string "I programmed the more in-depth\l"
+	.string "version of the Slateport Battle\l"
+	.string "Tent facility that is used\l"
+	.string "in this game!\p"
+	.string "I've been working on my own\n"
+	.string "game for a while now, called\l"
+	.string "Pokemon Voyager. If you liked\l"
+	.string "this, consider checking Voyager\l"
+	.string "out; we have a beta released,\l"
+	.string "and many of the folks who worked\l"
+	.string "on this also worked on Voyager.$"
+
+PlatoonInsideFoyer_Text_Wiz:
+	.string "Game Master Wiz checking in!\n"
+	.string "I did some coding for this hack.\p"
+	.string "If you want to try my independent\n"
+	.string "works, I have a trio of short\l"
+	.string "Escape Room hacks you could give\l"
+	.string "a spin sometime!\p"
+	.string "The most recent release is\n"
+	.string "Pokemon: Maxie's Island.\l"
+	.string "Have you got the wits for it?$"
+
+PlatoonInsideFoyer_Text_TrainerX:
+	.string "My name is TrainerX493. I was\n"
+	.string "this romhack's extensive\l"
+	.string "beta tester. A good amount of\l"
+	.string "bugs were squashed in the\l"
+	.string "pre-release period due to\l"
+	.string "my efforts.\p"
+	.string "I have been at work on\n"
+	.string "Pokemon Glazed's newer versions\l"
+	.string "if you felt like checking them out.$"
+
+PlatoonInsideFoyer_Text_Celia:
+	.string "Ever hear of this fella called\n"
+	.string "Celia? Apparently, they\l"
+	.string "make romhacks.\p"
+	.string "The only one I've caught wind\n"
+	.string "of is a pretty Stupid one.\l"
+	.string "Literally.\l"
+	.string "Celia's Stupid Romhack.\l"
+	.string "It has a demo out right now,\l"
+	.string "maybe it's up your alley?$"
+
+PlatoonInsideFoyer_Text_Sadfish:
+	.string "Yeah. I know. I'm a fish.\n"
+	.string "Jonathan J. Sadfish.\p"
+	.string "I kinda coded most of this\n"
+	.string "cod-forsaken game.\l"
+	.string "So yeah, you should really\l"
+	.string "thank me that Hodgepodge\l"
+	.string "even exists.\p"
+	.string "I've been working on\n"
+	.string "Pokemon Pisces as well.\l"
+	.string "Yeah. I know. The fish sign.\p"
+	.string "You should check that one\n"
+	.string "out when it releases.$"
+
+PlatoonInsideFoyer_Text_Mixone:
+	.string "Allow me to beguile you\n"
+	.string "with a tale of the Shuckle Lord.\p"
+	.string "The tale is that he did some\n"
+	.string "code for Hodgepodge Platoon.\l"
+	.string "The Shuckle Lord is pretty\l"
+	.string "prolific in the Pokemon hacking\l"
+	.string "community. Chances are,\l"
+	.string "a modern hack has used code\l"
+	.string "he developed.$"
+
+PlatoonInsideFoyer_Text_HeardAboutTheAlterverse:
+	.string "Check it. There's some romhacks\n"
+	.string "made by the weirdos who made\l"
+	.string "this one that you just GOTTA\l"
+	.string "get into.\p"
+	.string "It's a series called the\n"
+	.string "Alterverse. Namely, Pokemon\l"
+	.string "AlteRed, and Pokemon AmalgaMagenta.\l"
+	.string "There's also a special hard mode\l"
+	.string "of AlteRed called With Gun\l"
+	.string "if you're into that.\p"
+	.string "Their theme is all regional forms\n"
+	.string "of existing Pokemon. Both are\l"
+	.string "fully complete adventures!\l"
+	.string "Go have a good time with 'em!\l"
+	.string "Or else!$"
