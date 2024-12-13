@@ -11425,20 +11425,26 @@ static void Cmd_various(void)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
-        else if (GetBattlerType(gBattlerTarget, 0) == TYPE_MYSTERY)
+        else if (GetBattlerType(gBattlerTarget, 0) == TYPE_MYSTERY && GetBattlerType(gBattlerTarget, 1) != TYPE_MYSTERY)
         {
-            gBattlescriptCurrInstr = cmd->failInstr;
+            gBattleMons[gBattlerAttacker].type1 = GetBattlerType(gBattlerTarget, 1);
+            gBattleMons[gBattlerAttacker].type2 = GetBattlerType(gBattlerTarget, 1);
+            gBattlescriptCurrInstr = cmd->nextInstr;
         }
-        else if (GetBattlerType(gBattlerTarget, 0) != TYPE_MYSTERY)
+        else if (GetBattlerType(gBattlerTarget, 0) != TYPE_MYSTERY && GetBattlerType(gBattlerTarget, 1) == TYPE_MYSTERY)
         {
             gBattleMons[gBattlerAttacker].type1 = GetBattlerType(gBattlerTarget, 0);
             gBattleMons[gBattlerAttacker].type2 = GetBattlerType(gBattlerTarget, 0);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
+        else if (GetBattlerType(gBattlerTarget, 0) == TYPE_MYSTERY && GetBattlerType(gBattlerTarget, 1) == TYPE_MYSTERY)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
         else
         {
             gBattleMons[gBattlerAttacker].type1 = GetBattlerType(gBattlerTarget, 0);
-            gBattleMons[gBattlerAttacker].type2 = GetBattlerType(gBattlerTarget, 0);
+            gBattleMons[gBattlerAttacker].type2 = GetBattlerType(gBattlerTarget, 1);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
@@ -17571,7 +17577,9 @@ static void Cmd_setgastroacid(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability) || (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD))
+    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability)
+    || (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
+    || gStatuses3[gBattlerTarget] == STATUS3_GASTRO_ACID)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }

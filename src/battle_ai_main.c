@@ -1439,6 +1439,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     score -= 6;
             }
             break;
+        case EFFECT_CHAKRA_SURGE:
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
+                score -= 10;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK) || !HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL))
+                score -= 8;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
+                score -= 6;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
+                score -= 6;
+            break;
         case EFFECT_PHANTASM:
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
             {
@@ -2410,7 +2420,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             //fallthrough
         case EFFECT_RESTORE_HP:
-        case EFFECT_CHAKRA_SURGE:
         case EFFECT_MOLTEN_CORE:
         case EFFECT_SOFTBOILED:
         case EFFECT_ROOST:
@@ -5761,15 +5770,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
             score += 3;
         break;
-    case EFFECT_CHAKRA_SURGE:
-        if (gBattleMons[battlerAtk].hp <= gBattleMons[battlerAtk].maxHP / 2)
-        {
-            IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
-            IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
-        }
-        if (ShouldRecover(battlerAtk, battlerDef, move, 50))
-            score += 3;
-        break;
     case EFFECT_SPECIAL_ATTACK_UP_HIT:
         if (sereneGraceBoost)
             IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPATK, &score);
@@ -6421,6 +6421,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPATK, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
+        break;
+    case EFFECT_CHAKRA_SURGE:
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPATK, &score);
+        IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
+        if (!(gStatuses3[battlerAtk] & STATUS3_AQUA_RING))
+            score += 2;
         break;
     case EFFECT_PHANTASM:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_RESTORE_STATS)
@@ -7234,6 +7242,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_AUTOTOMIZE:
     case EFFECT_SHIFT_GEAR:
     case EFFECT_SHELL_SMASH:
+    case EFFECT_CHAKRA_SURGE:
     case EFFECT_GROWTH:
     case EFFECT_QUIVER_DANCE:
     case EFFECT_ATTACK_SPATK_UP:
@@ -7492,7 +7501,6 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
             case EFFECT_EXPLOSION:
             case EFFECT_RESTORE_HP:
-            case EFFECT_CHAKRA_SURGE:
             case EFFECT_MOLTEN_CORE:
             case EFFECT_REST:
             case EFFECT_DESTINY_BOND:

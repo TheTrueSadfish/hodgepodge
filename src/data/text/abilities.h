@@ -74,8 +74,7 @@ static const u8 sInsomniaDescription[] = _(
 
 static const u8 sColorChangeDescription[] = _(
     "The Pokémon's type becomes the\n"
-    "primary type of the Pokémon that\n"
-    "attacked it.");
+    "type of the move used on it. ");
 
 static const u8 sImmunityDescription[] = _(
     "The Pokémon's immune system\n"

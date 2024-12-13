@@ -2546,9 +2546,9 @@ static const u8 sAcrobaticsDescription[] = _(
     "isn't holding an item.");
 
 static const u8 sReflectTypeDescription[] = _(
-    "The user copies the foe's primary\n"
-    "type and then the user becomes\n"
-    "immune to moves of the same type.");
+    "The user copies the foe's types\n"
+    "and then the user resists moves\n"
+    "of the same type as it.");
 
 static const u8 sRetaliateDescription[] = _(
     "The user takes revenge for a\n"

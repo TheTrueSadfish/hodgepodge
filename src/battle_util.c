@@ -7030,6 +7030,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 case ABILITY_STELLAR_BODY:
                 case ABILITY_WONDER_GUARD:
                 case ABILITY_ZEN_MODE:
+                case ABILITY_FULL_METAL_BODY:
                 case ABILITY_SHUNYONG:
                     break;
                 default:
@@ -7093,10 +7094,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_COLOR_CHANGE:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && move != MOVE_STRUGGLE && gBattleMoves[move].power != 0 && TARGET_TURN_DAMAGED && !IS_BATTLER_OF_TYPE(battler, gBattleMons[gBattlerAttacker].type1) && gBattleMons[battler].hp != 0)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && move != MOVE_STRUGGLE && gBattleMoves[move].power != 0 && TARGET_TURN_DAMAGED && !IS_BATTLER_OF_TYPE(battler, moveType) && gBattleMons[battler].hp != 0)
             {
-                SET_BATTLER_TYPE(battler, gBattleMons[gBattlerAttacker].type1);
-                PREPARE_TYPE_BUFFER(gBattleTextBuff1, gBattleMons[gBattlerAttacker].type1);
+                SET_BATTLER_TYPE(battler, moveType);
+                PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
                 effect++;
@@ -8606,6 +8607,7 @@ bool32 IsNeutralizingGasBannedAbility(u32 ability)
     {
     case ABILITY_MULTITYPE:
     case ABILITY_ZEN_MODE:
+    case ABILITY_FULL_METAL_BODY:
     case ABILITY_STELLAR_BODY:
     case ABILITY_DORMANT:
     case ABILITY_HUDDLE_UP:
@@ -8689,6 +8691,7 @@ u32 GetBattlerAbility(u32 battler)
     || gBattleMons[battler].ability == ABILITY_ICE_LENS
     || gBattleMons[battler].ability == ABILITY_HEAT_SEEKER
     || gBattleMons[battler].ability == ABILITY_SHIELDS_DOWN
+    || gBattleMons[battler].ability == ABILITY_FULL_METAL_BODY
     || gBattleMons[battler].ability == ABILITY_STELLAR_BODY)
     {
         // Edge case: pokemon under the effect of gastro acid transforms into a pokemon with Comatose (Todo: verify how other unsuppressable abilities behave)
@@ -14467,7 +14470,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
     }
 
     if ((moveType == defType) && gStatuses4[battlerDef] & STATUS4_REFLECTED_TYPE)
-        mod = UQ_4_12(0.0);
+        mod = UQ_4_12(0.5);
     if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);
     if (gBattleMoves[move].effect == EFFECT_FREEZE_DRY && defType == TYPE_WATER)
