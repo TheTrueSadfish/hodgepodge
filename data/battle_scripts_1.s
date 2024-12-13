@@ -4028,6 +4028,7 @@ BattleScript_AllStatsDownRet::
 	return
 
 BattleScript_DurinBerryAllStatsDown::
+	copybyte sBATTLER, gBattlerAttacker
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
@@ -4036,34 +4037,48 @@ BattleScript_DurinBerryAllStatsDown::
 	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownRet
 BattleScript_DurinBerryAllStatsDownAtk::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_DEF | BIT_SPEED | BIT_SPATK | BIT_SPDEF | BIT_ACC | BIT_EVASION, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
 	playstatchangeanimation BS_ATTACKER, BIT_ATK, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_ATK, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownDef
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownDef::
 	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpeed
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpeed
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpeed::
 	playstatchangeanimation BS_ATTACKER, BIT_SPEED, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPEED, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpAtk
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpAtk
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpAtk::
 	playstatchangeanimation BS_ATTACKER, BIT_SPATK, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPATK, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpDef
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownSpDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DurinBerryAllStatsDownSpDef::
 	playstatchangeanimation BS_ATTACKER, BIT_SPDEF, STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_SPDEF, 1, TRUE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownRet
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownAccuracy
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_TARGET
+BattleScript_DurinBerryAllStatsDownAccuracy::
+	playstatchangeanimation BS_ATTACKER, BIT_ACC, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_ACC, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownEvasion
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_TARGET
+BattleScript_DurinBerryAllStatsDownEvasion::
+	playstatchangeanimation BS_ATTACKER, BIT_EVASION, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_EVASION, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER |  STAT_CHANGE_ALLOW_PTR, BattleScript_DurinBerryAllStatsDownRet
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
@@ -5236,7 +5251,7 @@ BattleScript_EffectHitSetEntryHazard::
 	goto BattleScript_EffectHit
 
 BattleScript_SpikesActivates::
-	trysetspikes BS_TARGET, BattleScript_MoveEnd
+	trysetspikes BattleScript_MoveEnd
 	printfromtable gDmgHazardsStringIds
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -10569,7 +10584,7 @@ BattleScript_ProtectLikeAtkString:
 
 BattleScript_EffectSpikes::
 	attackcanceler
-	trysetspikes BS_TARGET, BattleScript_FailedFromAtkString
+	trysetspikes BattleScript_FailedFromAtkString
 	attackstring
 	ppreduce
 	attackanimation
@@ -10706,23 +10721,9 @@ BattleScript_TryDestinyKnotInfatuateAttackerRet:
 	return
 
 BattleScript_TryDestinyKnotDisabledTarget:
-	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotDisabledTargetRet
-	destinyknotdisable BS_TARGET, BattleScript_TryDestinyKnotDisabledAttackerRet
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
-	waitanimation
-	printstring STRINGID_DESTINYKNOTACTIVATES
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_TryDestinyKnotDisabledTargetRet:
 	return
 
 BattleScript_TryDestinyKnotDisabledAttacker:
-	jumpifnoholdeffect BS_TARGET, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotDisabledAttackerRet
-	destinyknotdisable BS_ATTACKER, BattleScript_TryDestinyKnotDisabledAttackerRet
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
-	waitanimation
-	printstring STRINGID_DESTINYKNOTACTIVATES
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_TryDestinyKnotDisabledAttackerRet:
 	return
 
 BattleScript_TryDestinyKnotTormentAttacker:
@@ -13479,7 +13480,7 @@ BattleScript_PaintedHazardStealthRockRet:
 BattleScript_PaintedHazardSpikes::
 	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_SHORT
-	trysetspikes BS_TARGET, BattleScript_PaintedHazardSpikesRet
+	trysetspikes BattleScript_PaintedHazardSpikesRet
 	printstring STRINGID_SPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_PaintedHazardSpikesRet:
@@ -16042,8 +16043,6 @@ BattleScript_ItemNoStatLoss::
 
 BattleScript_ItemNoSpecificStatLoss::
 	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUp
-BattleScript_ItemNoSpecificStatLossPrint:
 	printstring STRINGID_ITEMWONTLOWERCERTAINSTAT
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
@@ -17075,7 +17074,7 @@ BattleScript_ResetUserStats::
 	return
 
 BattleScript_DropSpikes::
-	trysetspikes BS_TARGET, BattleScript_SpikyShieldRet
+	trysetspikes BattleScript_SpikyShieldRet
 	printstring STRINGID_SPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -17670,13 +17669,17 @@ BattleScript_WepearBerryEnd::
 	return
 
 BattleScript_SpelonBerryActivatesRet::
+	copybyte sBATTLER, gBattlerAttacker
 	jumpifsafeguard BattleScript_SpelonBerryEnd
-	trysetspikes BS_ATTACKER, BattleScript_SpelonBerryEnd
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	trysetspikes BattleScript_SpelonBerryEnd
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_SPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
+	removeitem BS_ATTACKER
 BattleScript_SpelonBerryEnd::
+	copybyte sBATTLER, gBattlerTarget
+	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte gBattlerAttacker, sBATTLER
 	return
 
 BattleScript_BelueBerryActivatesRet::
@@ -17714,7 +17717,7 @@ BattleScript_RazzBerryActivatesRet::
 	jumpifsafeguard BattleScript_RazzBerryEnd
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
-	printstring STRINGID_PKMNSXINFATUATEDY
+	printstring STRINGID_PKMNSXINFATUATEDYITEMEDITION
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateTarget
 	removeitem BS_SCRIPTING
@@ -17725,7 +17728,7 @@ BattleScript_RizzBerryActivatesRet::
 	jumpifsafeguard BattleScript_RazzBerryEnd
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
-	printstring STRINGID_PKMNSXINFATUATEDY
+	printstring STRINGID_PKMNSXINFATUATEDYITEMEDITION
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateTarget
 	removeitem BS_TARGET

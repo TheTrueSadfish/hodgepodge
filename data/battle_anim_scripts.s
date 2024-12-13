@@ -19229,7 +19229,27 @@ Move_BLAZING_TORQUE::
 	goto Move_BLAZE_KICK
 
 Move_SALT_CURE::
-	goto Move_RAGE_POWDER
+	loadspritegfx ANIM_TAG_SPORE @Powder
+	loadspritegfx ANIM_TAG_HEART_STAMP @Red Colour
+	createvisualtask AnimTask_BlendParticle, 0x5, ANIM_TAG_HEART_STAMP, 0x0, 16, 16, RGB_WHITE
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	loopsewithpan SE_M_POISON_POWDER, SOUND_PAN_TARGET, 0x12, 0xa
+	call SaltCureSprinkle
+	call SaltCureSprinkle
+	call SaltCureSprinkle
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_TARGET, 2, 2, 0, 11, RGB_WHITE
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	end
+SaltCureSprinkle:
+	createsprite gRagePowderRedPowderTemplate, ANIM_TARGET, 0x2, 0x0, 0xffec, 0x55, 0x50, 0x0
+	delay 0xc
+	createsprite gRagePowderRedPowderTemplate, ANIM_TARGET, 0x2, 0x0, 0xfff6, 0xaa, 0x50, 0x0
+	delay 0xc
+	createsprite gRagePowderRedPowderTemplate, ANIM_TARGET, 0x2, 0x0, 0xfff1, 0x0, 0x50, 0x0
+	delay 0xc
+	return
 
 Move_RUINATION::
 	goto Move_LIGHT_OF_RUIN

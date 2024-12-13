@@ -7185,7 +7185,7 @@ const struct Item gItems[] =
 
     [ITEM_YELLOW_SODA] =
     {
-        .name = _("Rizz Berry"),
+        .name = _("Yellow Soda"),
         .price = 20,
         .holdEffect = HOLD_EFFECT_YELLOW_SODA,
         .holdEffectParam = 4,

@@ -11168,9 +11168,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_DURIN_BERRY:
                 if (IsBattlerAlive(battler)
                 && TARGET_TURN_DAMAGED
-                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove))
+                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
+                && gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 2))
                 {
-                    effect = ITEM_EFFECT_OTHER;
+                    effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_DurinBerryAllStatsDown;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
@@ -11179,17 +11180,16 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_RIZZ_BERRY:
                 if (IsBattlerAlive(battler)
-                && TARGET_TURN_DAMAGED
+                && TARGET_TURN_DAMAGED 
+                && gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION
-                && gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+                && (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)))
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_RizzBerryActivatesRet;
-                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    RecordItemEffectBattle(battler, HOLD_EFFECT_RIZZ_BERRY);
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gBattleMons[battler].item);
                 }
                 break;
             case HOLD_EFFECT_SPELON_BERRY:
@@ -11199,10 +11199,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && (gSideTimers[GetBattlerSide(gBattlerAttacker)].spikesAmount < 3))
                 {
                     effect = ITEM_EFFECT_OTHER;
+                    SWAP(gBattlerAttacker, gBattlerTarget, i);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SpelonBerryActivatesRet;
-                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    RecordItemEffectBattle(battler, HOLD_EFFECT_SPELON_BERRY);
                 }
                 break;
             case HOLD_EFFECT_ROWAP_BERRY: // consume and damage attacker if used special move

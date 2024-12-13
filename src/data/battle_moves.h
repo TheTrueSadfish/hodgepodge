@@ -17377,6 +17377,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .thawsUser = TRUE,
         .ballisticMove = TRUE,
         .strikeCount = 2,
+        .argument = MOVE_EFFECT_FIREBALLS,
     },
 
     [MOVE_EMBER_SNOW] =
@@ -17410,6 +17411,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .highCritRatio = TRUE,
         .slicingMove = TRUE,
         .strikeCount = 2,
+        .argument = MOVE_EFFECT_FEATHER_RAZOR,
     },
 
     [MOVE_DRAG_DOWN] =

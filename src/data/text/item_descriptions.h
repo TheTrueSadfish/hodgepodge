@@ -2919,10 +2919,10 @@ static const u8 sWatmelBerryDesc[] = _(
     "explode destructively.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "If the holder is hit,\n"
-    "the attacker will have\n"
-    "all their stats\n"
-    "lowered.");
+    "If the holder is hit\n"
+    "at half HP, all of the\n"
+    "attacker's stats will\n"
+    "be lowered.");
 
 static const u8 sBelueBerryDesc[] = _(
     "If the holder is hit,\n"

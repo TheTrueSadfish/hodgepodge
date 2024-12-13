@@ -1713,9 +1713,9 @@ static const u8 sCovenLightsDescription[] = _(
     "stat is lowered also.");
 
 static const u8 sDaringDeedDescription[] = _(
-    "Greatly boosts the critical-hit\n"
-    "ratios of moves, but increases\n"
-    "the amount of PP they use.");
+    "Summons Lucky Chant and boosts\n"
+    "the critical-hit ratio of moves,\n"
+    "but increases the PP they use.");
 
 static const u8 sFilthmongerDescription[] = _(
     "When hit by a Rock, Ground,\n"

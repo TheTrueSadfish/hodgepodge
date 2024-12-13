@@ -458,8 +458,10 @@
 #define MOVE_EFFECT_FRESH_WHIP          118
 #define MOVE_EFFECT_ATTACK_ORDER        119
 #define MOVE_EFFECT_ATK_SPDEF_UP        120
+#define MOVE_EFFECT_FIREBALLS           121
+#define MOVE_EFFECT_FEATHER_RAZOR       122
 
-#define NUM_MOVE_EFFECTS                121
+#define NUM_MOVE_EFFECTS                123
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

@@ -932,9 +932,8 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetspikes battler:req, failInstr:req
+	.macro trysetspikes failInstr:req
 	.byte 0xb0
-	.byte \battler
 	.4byte \failInstr
 	.endm
 

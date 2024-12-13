@@ -7175,6 +7175,9 @@ static void Cmd_moveend(void)
             && !(gCurrentMove == MOVE_PRESENT && gBattleStruct->presentBasePower == 0)) // Silly edge case
             {
                 gMultiHitCounter--;
+                if (!IsBattlerAlive(gBattlerTarget))
+                    gMultiHitCounter = 0;
+
                 gBattleScripting.multihitString[4]++;
                 if (gMultiHitCounter == 0)
                 {
@@ -7190,14 +7193,14 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_DropSpikes;
                     }
 
-                    if (gCurrentMove == MOVE_FEATHER_RAZOR && !NoAliveMonsForEitherParty())
+                    if (gBattleMoves[gCurrentMove].argument == MOVE_EFFECT_FEATHER_RAZOR && !NoAliveMonsForEitherParty())
                     {
                         gBattlerTarget = gBattlerAttacker;
                         BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_SelfSpeedDown;
                     }
 
-                    if (gCurrentMove == MOVE_FIREBALLS && !NoAliveMonsForEitherParty())
+                    if (gBattleMoves[gCurrentMove].argument == MOVE_EFFECT_FIREBALLS && !NoAliveMonsForEitherParty())
                     {
                         gBattlerTarget = gBattlerAttacker;
                         BattleScriptPushCursor();
@@ -14480,7 +14483,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                     if (battlerHoldEffect == HOLD_EFFECT_CLEAR_AMULET || (battlerHoldEffect == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)))
                     {
                         gBattlescriptCurrInstr = BattleScript_ItemNoStatLoss;
-                        RecordItemEffectBattle(battler, battlerHoldEffect);
+                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gBattleMons[battler].item);
                     }
                     else if (battlerAbility == ABILITY_CLEAR_BODY
                     || (battlerAbility == ABILITY_ICE_LENS && gBattleMons[battler].species == SPECIES_ASTIGMORAY)
@@ -14530,26 +14533,6 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                 || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC)))
 
         {
-            if (battlerHoldEffect == HOLD_EFFECT_SAFETY_GOGGLES && statId == STAT_ACC)
-            {
-                RecordItemEffectBattle(battler, HOLD_EFFECT_SAFETY_GOGGLES);
-            }
-
-            if (battlerHoldEffect == HOLD_EFFECT_MUSCLE_BAND && statId == STAT_ATK)
-            {
-                RecordItemEffectBattle(battler, HOLD_EFFECT_MUSCLE_BAND);
-            }
-
-            if (battlerHoldEffect == HOLD_EFFECT_WISE_GLASSES && statId == STAT_SPATK)
-            {
-                RecordItemEffectBattle(battler, HOLD_EFFECT_WISE_GLASSES);
-            }
-
-            if (battlerHoldEffect == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC)
-            {
-                RecordItemEffectBattle(battler, HOLD_EFFECT_WIDE_LENS);
-            }
-
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
                 if (gSpecialStatuses[battler].statLowered)
@@ -14566,6 +14549,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                     || (battlerHoldEffect == HOLD_EFFECT_WIDE_LENS && statId == STAT_ACC))
                     {
                         gBattlescriptCurrInstr = BattleScript_ItemNoSpecificStatLoss;
+                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gBattleMons[battler].item);
                     }
                     else
                     {
@@ -15511,16 +15495,17 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if (((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE || gCurrentMove != MOVE_LOVELY_POISON)
-        && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
-        {
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else
+        if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_FREE_LOVE 
+        || gCurrentMove == MOVE_LOVELY_POISON
+        || AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
+        && !gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
         }
     }
 }
@@ -16458,14 +16443,12 @@ static void Cmd_cursetarget(void)
 
 static void Cmd_trysetspikes(void)
 {
-    CMD_ARGS(u8 battler, const u8 *failInstr);
+    CMD_ARGS(const u8 *failInstr);
 
-    u8 battler = GetBattlerForBattleScript(cmd->battler);
-    u8 targetSide = GetBattlerSide(battler);
+    u8 targetSide = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
 
     if (gSideTimers[targetSide].spikesAmount == 3)
     {
-        gSpecialStatuses[BATTLE_OPPOSITE(battler)].ppNotAffectedByPressure = TRUE;
         gBattlescriptCurrInstr = cmd->failInstr;
     }
     else

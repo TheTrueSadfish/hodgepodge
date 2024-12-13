@@ -1020,8 +1020,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_CHARIZARD] =
     {
         .baseHP        = 80,
-        .baseAttack    = 75,
-        .baseDefense   = 85,
+        .baseAttack    = 85,
+        .baseDefense   = 75,
         .baseSpeed     = 104,
         .baseSpAttack  = 90,
         .baseSpDefense = 105,
@@ -10802,11 +10802,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_TANGROWTH] =
     {
         .baseHP        = 115,
-        .baseAttack    = 90,
-        .baseDefense   = 70,
+        .baseAttack    = 80,
+        .baseDefense   = 75,
         .baseSpeed     = 110,
         .baseSpAttack  = 80,
-        .baseSpDefense = 70,
+        .baseSpDefense = 75,
         .types = { TYPE_WATER, TYPE_WATER},
         .catchRate = 30,
         .expYield = 187,
