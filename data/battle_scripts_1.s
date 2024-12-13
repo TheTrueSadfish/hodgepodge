@@ -8376,7 +8376,7 @@ BattleScript_RoomServiceLoop_NextBattler:
 
 BattleScript_TimeTurnActivated::	
 	call BattleScript_AbilityPopUp
-	playanimation 0, B_ANIM_TIME_TURN
+	playanimation BS_BATTLER_0, B_ANIM_TIME_TURN
 	printstring STRINGID_PKMNTWISTEDDIMENSIONS
 	waitmessage B_WAIT_TIME_LONG
 	savetarget
@@ -8412,14 +8412,14 @@ BattleScript_EffectMagicRoom:
 
 BattleScript_ReversiActivated::	
 	call BattleScript_AbilityPopUp
-	playanimation 0, B_ANIM_REVERSI
+	playanimation BS_BATTLER_0, B_ANIM_REVERSI
 	printstring STRINGID_THETYPECHARTINVERTED
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_ReversiDeactivated::
 	call BattleScript_AbilityPopUp
-	playanimation 0, B_ANIM_RESTORE_BG
+	playanimation BS_BATTLER_0, B_ANIM_RESTORE_BG
 	printstring STRINGID_INVERSEROOMENDS
 	waitmessage B_WAIT_TIME_LONG
 	end3
@@ -8542,7 +8542,7 @@ BattleScript_GravityLoopEnd:
 
 BattleScript_MindGamesGravityActivated::
 	call BattleScript_AbilityPopUp
-	playanimation 0, B_ANIM_GRAVITY
+	playanimation BS_BATTLER_0, B_ANIM_GRAVITY
 	printstring STRINGID_GRAVITYINTENSIFIED
 	waitmessage B_WAIT_TIME_LONG
 	selectfirstvalidtarget
@@ -11431,14 +11431,14 @@ BattleScript_MoveEffectStockpileWoreOff::
 BattleScript_StockpileDoMoveAnim::
 	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
 	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_NEGATIVE
-	setstatchanger STAT_DEF, 1, TRUE
+	setstatchanger STAT_DEF, 2, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_StockpileTryLowerSpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StockpileTryLowerSpDef
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_StockpileTryLowerSpDef::
 	playstatchangeanimation BS_ATTACKER, BIT_SPDEF, STAT_CHANGE_NEGATIVE
-	setstatchanger STAT_SPDEF, 1, TRUE
+	setstatchanger STAT_SPDEF, 2, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_StockpileEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StockpileEnd
 	printfromtable gStatDownStringIds
@@ -14244,9 +14244,9 @@ BattleScript_AtkDown2End::
 
 BattleScript_AccDown::
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_EFFECT_BATTLER, BIT_ACC, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	playstatchangeanimation BS_TARGET, BIT_ACC, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_ACC, 1, TRUE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDownEnd
+	statbuffchange MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_AtkDownEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_AccDownEnd
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
@@ -15598,10 +15598,9 @@ BattleScript_WhiteSmokeAbilityActivates::
 
 BattleScript_DaringDeedActivates::
 	call BattleScript_AbilityPopUp
-	setluckychant BS_ATTACKER, BattleScript_DaringDeedEnd
 	printstring STRINGID_ABILITYSUMMONEDLUCKYCHANT
-	playanimation BS_ATTACKER, B_ANIM_DARING_DEED	
 	waitmessage B_WAIT_TIME_SHORT
+	playanimation BS_ATTACKER, B_ANIM_DARING_DEED	
 BattleScript_DaringDeedEnd::
 	end3
 
@@ -15688,7 +15687,6 @@ BattleScript_SnowWarningActivatesSnow::
 BattleScript_GustyActivatesTailwind::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	settailwind BattleScript_TailwindEnd
 	printstring STRINGID_TAILWINDBLEW
 	waitstate
 	call BattleScript_TryTailwindAbilitiesLoop

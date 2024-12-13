@@ -1265,12 +1265,12 @@ static const u8 sStockpileDescription[] = _(
     "The move can be used 3 times.");
 
 static const u8 sSpitUpDescription[] = _(
-    "Removes a stack of Stockpile to\n"
+    "Removes 2 stacks of Stockpile to\n"
     "use in an attack. Matches the\n"
     "user's first type.");
 
 static const u8 sSwallowDescription[] = _(
-    "Removes a stack of Stockpile to\n"
+    "Removes 2 stacks of Stockpile to\n"
     "restore the user's HP.");
 
 static const u8 sHeatWaveDescription[] = _(
@@ -2088,14 +2088,14 @@ static const u8 sThunderFangDescription[] = _(
     "paralyze the target.");
 
 static const u8 sIceFangDescription[] = _(
-    "The user bites with\n"
-    "flame-cloaked fangs. This may\n"
-    "also flinch or burn the target.");
-
-static const u8 sFireFangDescription[] = _(
     "The user bites with cold-infused\n"
     "fangs. This may also flinch or\n"
     "frostbite the target.");
+
+static const u8 sFireFangDescription[] = _(
+    "The user bites with\n"
+    "flame-cloaked fangs. This may\n"
+    "also flinch or burn the target.");
 
 static const u8 sShadowSneakDescription[] = _(
     "The user extends its shadow and\n"
@@ -3484,9 +3484,9 @@ static const u8 sOverdriveDescription[] = _(
     "huge echo and strong vibration.");
 
 static const u8 sAppleAcidDescription[] = _(
-    "Lowers the foe's Sp. Def stat.\n"
-    "Also lowers the foe's Def stat\n"
-    "if the user is blooming.");
+    "The user attacks with an acidic\n"
+    "liquid created from tart apples.\n"
+    "This lowers the foe's Sp. Def.");
 
 static const u8 sGravAppleDescription[] = _(
     "Lowers the foe's Sp. Def stat.\n"

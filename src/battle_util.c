@@ -5586,9 +5586,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_GUSTY:
-            if (!gSpecialStatuses[battler].switchInAbilityDone && (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)))
+            if (!gSpecialStatuses[battler].switchInAbilityDone && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TAILWIND)))
             {
+                u8 side = GetBattlerSide(gBattlerAttacker);
+                gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gSideStatuses[side] |= SIDE_STATUS_TAILWIND;
+                gSideTimers[side].tailwindBattlerId = gBattlerAttacker;
+                gSideTimers[side].tailwindTimer = 4;
                 BattleScriptPushCursorAndCallback(BattleScript_GustyActivatesTailwind);
                 effect++;
             }
@@ -5978,10 +5983,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_DARING_DEED:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            if (!gSpecialStatuses[battler].switchInAbilityDone && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT)))
             {
+                u8 side = GetBattlerSide(gBattlerAttacker);
                 gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gSideStatuses[side] |= SIDE_STATUS_LUCKY_CHANT;
+                gSideTimers[side].luckyChantBattlerId = battler;
+                gSideTimers[side].luckyChantTimer = 6;
                 BattleScriptPushCursorAndCallback(BattleScript_DaringDeedActivates);
                 effect++;
             }
@@ -10801,7 +10810,13 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 atkHoldEffectParam *= 2;
 #endif
             if (gBattleMoveDamage != 0 // Need to have done damage
-                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && CanBeBurned(gBattlerTarget) && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_FLAME_BODY, atkHoldEffectParam) && moveType == TYPE_GRASS)
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                && TARGET_TURN_DAMAGED 
+                && !(IS_MOVE_STATUS(gCurrentMove))
+                && CanBeBurned(gBattlerTarget)
+                && gBattleMons[gBattlerTarget].hp 
+                && RandomPercentage(RNG_FLAME_BODY, atkHoldEffectParam) 
+                && moveType == TYPE_GRASS)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 BattleScriptPushCursor();
@@ -12277,7 +12292,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
             basePower *= (4 - gMultiHitCounter);
         break;
     case EFFECT_SPIT_UP:
-        basePower = 100 + (30 * (gDisableStructs[battlerAtk].stockpileCounter - 1));
+        basePower = 100 + (40 * (gDisableStructs[battlerAtk].stockpileCounter - 1));
         break;
     case EFFECT_REVENGE:
     case EFFECT_STALAG_BLAST:

@@ -2204,13 +2204,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (gDisableStructs[battlerAtk].stockpileCounter >= 3)
                 score -= 10;
             break;
-        case EFFECT_SPIT_UP:
         case EFFECT_NANAB_GATTLING:
             if (gDisableStructs[battlerAtk].stockpileCounter <= 1)
                 score -= 10;
             break;
+        case EFFECT_SPIT_UP:
+            if (gDisableStructs[battlerAtk].stockpileCounter < 2)
+                score -= 10;
+            break;
         case EFFECT_SWALLOW:
-            if (gDisableStructs[battlerAtk].stockpileCounter == 0)
+            if (gDisableStructs[battlerAtk].stockpileCounter < 2)
             {
                 score -= 10;
             }
@@ -4268,6 +4271,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_ATTACK_UP:
     case EFFECT_ATTACK_UP_2:
     case EFFECT_ATTACK_UP_USER_ALLY:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4295,6 +4300,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_DEFENSE_UP_2:
     case EFFECT_DEFENSE_UP_3:
     case EFFECT_ACID_ARMOR:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4311,6 +4318,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SPEED_UP:
     case EFFECT_SPEED_UP_2:
     case EFFECT_SPEED_UP_USER_ALLY:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4332,6 +4341,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SPECIAL_ATTACK_UP:
     case EFFECT_SPECIAL_ATTACK_UP_2:
     case EFFECT_SPECIAL_ATTACK_UP_3:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4357,6 +4368,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_SPECIAL_DEFENSE_UP:
     case EFFECT_SPECIAL_DEFENSE_UP_2:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4372,6 +4385,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_ACCURACY_UP:
     case EFFECT_ACCURACY_UP_2:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4385,6 +4400,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_EVASION_UP:
     case EFFECT_EVASION_UP_2:
+        if (gDisableStructs[battlerAtk].purified)
+            score -= 30;
         if (HasMoveEffect(battlerAtk, EFFECT_STORED_POWER))
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
@@ -4708,7 +4725,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
         break;
     case EFFECT_SWALLOW:
-        if (gDisableStructs[battlerAtk].stockpileCounter == 0)
+        if (gDisableStructs[battlerAtk].stockpileCounter < 2)
         {
             break;
         }
@@ -4718,13 +4735,13 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             switch (gDisableStructs[battlerAtk].stockpileCounter)
             {
             case 1:
-                healPercent = 25;
+                healPercent = 40;
                 break;
             case 2:
-                healPercent = 50;
+                healPercent = 60;
                 break;
             case 3:
-                healPercent = 100;
+                healPercent = 80;
                 break;
             default:
                 break;
@@ -5906,9 +5923,12 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
         break;
-    case EFFECT_SPIT_UP:
     case EFFECT_NANAB_GATTLING:
         if (gDisableStructs[battlerAtk].stockpileCounter >= 1)
+            score+= gDisableStructs[battlerAtk].stockpileCounter * 2;
+        break;
+    case EFFECT_SPIT_UP:
+        if (gDisableStructs[battlerAtk].stockpileCounter > 1)
             score+= gDisableStructs[battlerAtk].stockpileCounter * 2;
         break;
     case EFFECT_FEATHER_RAZOR:

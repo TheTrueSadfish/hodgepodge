@@ -1804,8 +1804,8 @@ static const u8 sViscerationDescription[] = _(
 
 static const u8 sPanaceaDescription[] = _(
     "The Pokémon's HP is and status\n"
-    "conditions are healed throughout\n"
-    "a battle.");
+    "conditions are healed\n"
+    "throughout a battle.");
 
 static const u8 sSurpriseDescription[] = _(
     "Sharply lowers opposing\n"

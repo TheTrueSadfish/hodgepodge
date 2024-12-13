@@ -1355,7 +1355,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_STUN_SPORE] =
     {
-        .effect = EFFECT_STUN_SPORE,
+        .effect = EFFECT_PARALYZE,
         .power = 0,
         .type = TYPE_GRASS,
         .accuracy = 75,

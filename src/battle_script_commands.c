@@ -6833,8 +6833,9 @@ static void Cmd_moveend(void)
                 }
                 break;
             case MOVE_EFFECT_STOCKPILE_WORE_OFF:
-                if (gDisableStructs[gBattlerAttacker].stockpileCounter > 0)
+                if (gDisableStructs[gBattlerAttacker].stockpileCounter > 1)
                 {
+                    gDisableStructs[gBattlerAttacker].stockpileCounter--;
                     gDisableStructs[gBattlerAttacker].stockpileCounter--;
                     effect = TRUE;
                     BattleScriptPush(gBattlescriptCurrInstr);
@@ -14238,9 +14239,8 @@ static void Cmd_stockpiletobasedamage(void)
     CMD_ARGS(const u8 *failInstr);
 
     const u8 *failInstr = cmd->failInstr;
-    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 1)
+    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 2)
     {
-        gDisableStructs[gBattlerAttacker].stockpileCounter = 0;
         gBattlescriptCurrInstr = failInstr;
     }
     else
@@ -14269,9 +14269,8 @@ static void Cmd_stockpiletohpheal(void)
 
     const u8 *failInstr = cmd->failInstr;
 
-    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 1)
+    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 2)
     {
-        gDisableStructs[gBattlerAttacker].stockpileCounter = 0;
         gBattlescriptCurrInstr = failInstr;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWALLOW_FAILED;
     }

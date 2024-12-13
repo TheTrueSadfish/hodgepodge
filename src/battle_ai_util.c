@@ -4045,6 +4045,10 @@ void IncreaseStatUpScore(u32 battlerAtk, u32 battlerDef, u32 statId, s32 *score)
     if (AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
         return;
 
+    if (gDisableStructs[battlerAtk].purified)
+        *score -= 20;
+        return;
+
     if (AI_DATA->hpPercents[battlerAtk] < 80 && AI_RandLessThan(128))
         return;
 
