@@ -187,8 +187,8 @@ static const u8 sInnerFocusDescription[] = _(
     "Energy raises Atk and Sp. Atk.");
 
 static const u8 sMagmaArmorDescription[] = _(
-    "Weakens Water-type moves once.\n"
-    "Weakens all moves after.\n"
+    "After being hit by a Water-type\n"
+    "move, weakens all moves after.\n"
     "Prevents Frostbite and Freeze.");
 
 static const u8 sWaterVeilDescription[] = _(

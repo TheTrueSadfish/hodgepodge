@@ -2703,7 +2703,7 @@ static const u8 sTerrainExtenderDesc[] = _(
 
 static const u8 sProtectivePadsDesc[] = _(
     "Reduces recoil damage\n"
-    "takesn from moves and\n"
+    "taken from moves and\n"
     "prevents direct\n"
     "contact with targets.");
 

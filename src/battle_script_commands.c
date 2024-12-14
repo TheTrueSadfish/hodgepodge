@@ -7280,6 +7280,7 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_FLIP_TURN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT
                             || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN
+                            || gBattleMoves[gCurrentMove].effect == EFFECT_MANEUVER
                             || gBattleMoves[gCurrentMove].effect == EFFECT_DRAG_DOWN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_WILD_SHUFFLE
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
@@ -7324,6 +7325,7 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_FLIP_TURN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_GLACIAL_SHIFT
                             || gBattleMoves[gCurrentMove].effect == EFFECT_U_TURN
+                            || gBattleMoves[gCurrentMove].effect == EFFECT_MANEUVER
                             || gBattleMoves[gCurrentMove].effect == EFFECT_DRAG_DOWN
                             || gBattleMoves[gCurrentMove].effect == EFFECT_WILD_SHUFFLE
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
@@ -15496,7 +15498,7 @@ static void Cmd_tryinfatuating(void)
         if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_FREE_LOVE 
         || gCurrentMove == MOVE_LOVELY_POISON
         || AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-        && !gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
+        && (!(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)))
         {
             gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
             gBattlescriptCurrInstr = cmd->nextInstr;
