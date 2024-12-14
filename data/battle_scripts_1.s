@@ -10708,9 +10708,23 @@ BattleScript_TryDestinyKnotInfatuateAttackerRet:
 	return
 
 BattleScript_TryDestinyKnotDisabledTarget:
+	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotDisabledTargetRet
+	destinyknotdisable BS_TARGET, BattleScript_TryDestinyKnotDisabledAttackerRet
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_DESTINYKNOTACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TryDestinyKnotDisabledTargetRet:
 	return
 
 BattleScript_TryDestinyKnotDisabledAttacker:
+	jumpifnoholdeffect BS_TARGET, HOLD_EFFECT_DESTINY_KNOT, BattleScript_TryDestinyKnotDisabledAttackerRet
+	destinyknotdisable BS_ATTACKER, BattleScript_TryDestinyKnotDisabledAttackerRet
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_DESTINYKNOTACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TryDestinyKnotDisabledAttackerRet:
 	return
 
 BattleScript_TryDestinyKnotTormentAttacker:
@@ -15091,6 +15105,16 @@ BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
 
+BattleScript_PalpitationsActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNFELTPRESSUREFROMITSSTATBUFFS
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	tryfaintmon BS_ATTACKER
+	end3
+
 BattleScript_InstabilityActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXDAMAGEDITALITTLE
@@ -15343,13 +15367,13 @@ BattleScript_UnnerveLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_UnnerveLoopIncrement
 	jumpiftargetally BattleScript_UnnerveLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_UnnerveLoopIncrement
-	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_UnnerveLoopIncrement
-	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_UnnerveLoopIncrement
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_UnnervePrevented
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_UnnervePrevented
+	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_UnnervePrevented
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilUnnervePrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicUnnervePrevented
 BattleScript_UnnerveEffect:
 	copybyte sBATTLER, gBattlerAttacker
-	settorment BattleScript_UnnerveLoopIncrement
+	settorment BattleScript_UnnervePreventedNoAbility
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
 BattleScript_UnnerveEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
@@ -15365,6 +15389,14 @@ BattleScript_UnnerveEnd:
 	end3
 
 BattleScript_UnnervePrevented:
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
+BattleScript_UnnervePreventedNoAbility:
+	printstring STRINGID_BUTITFAILED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_HeartstringsLoopIncrement
+
+BattleScript_AromaVeilUnnervePrevented:
 	call BattleScript_AbilityPopUp
 	call BattleScript_AromaVeilProtectsRet
 	goto BattleScript_UnnerveLoopIncrement
@@ -15383,12 +15415,14 @@ BattleScript_HeartstringsLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_HeartstringsLoopIncrement
 	jumpiftargetally BattleScript_HeartstringsLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_HeartstringsLoopIncrement
-	jumpifstatus2 BS_TARGET, STATUS2_INFATUATION, BattleScript_HeartstringsLoopIncrement
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HeartstringsPrevented
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_HeartstringsPrevented
+	jumpifstatus2 BS_TARGET, STATUS2_INFATUATION, BattleScript_HeartstringsPreventedNoAbility
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilHeartstringsPrevented
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicHeartstringsPrevented
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_HeartstringsPrevented
+	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_HeartstringsPrevented
 BattleScript_HeartstringsEffect:
 	copybyte sBATTLER, gBattlerAttacker
-	tryinfatuating BattleScript_HeartstringsLoopIncrement
+	tryinfatuating BattleScript_HeartstringsPrevented
 	printstring STRINGID_PKMNFELLINLOVE
 	status2animation BS_TARGET, STATUS2_INFATUATION
 BattleScript_HeartstringsEffect_WaitString:
@@ -15406,11 +15440,21 @@ BattleScript_HeartstringsEnd:
 
 BattleScript_HeartstringsPrevented:
 	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
+BattleScript_HeartstringsPreventedNoAbility:
+	printstring STRINGID_BUTITFAILED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_HeartstringsLoopIncrement
+
+BattleScript_AromaVeilHeartstringsPrevented:
+	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
 	call BattleScript_AromaVeilProtectsRet
 	goto BattleScript_HeartstringsLoopIncrement
 
 BattleScript_TitanicHeartstringsPrevented:
 	call BattleScript_AbilityPopUp
+	pause B_WAIT_TIME_LONG
 	call BattleScript_TitanicProtectsRet
 	goto BattleScript_HeartstringsLoopIncrement
 

@@ -2366,7 +2366,7 @@ static void Cmd_damagecalc(void)
     }
     else if (gCurrentMove == MOVE_HAUNT_MELODY && gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY)
     {
-        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP / 100) * 30);
+        gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, movePower, gIsCriticalHit, TRUE, TRUE) + ((gBattleMons[gBattlerTarget].maxHP * 30) / 100);
     }
     else if (gCurrentMove == MOVE_PAIN_SPINES && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
     {
@@ -14286,7 +14286,7 @@ static void Cmd_stockpiletohpheal(void)
         }
         else
         {
-            gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP / 100) * (35 + (10 * gDisableStructs[gBattlerAttacker].stockpileCounter));
+            gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP * (35 + (10 * gDisableStructs[gBattlerAttacker].stockpileCounter))) / 100;
 
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;

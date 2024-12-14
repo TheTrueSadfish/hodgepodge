@@ -845,8 +845,9 @@
 #define STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS  843
 #define STRINGID_ABILITYSUMMONEDLUCKYCHANT            844
 #define STRINGID_PKMNSXINFATUATEDYITEMEDITION         845
+#define STRINGID_PKMNFELTPRESSUREFROMITSSTATBUFFS     846
 
-#define BATTLESTRINGS_COUNT                           846
+#define BATTLESTRINGS_COUNT                           847
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

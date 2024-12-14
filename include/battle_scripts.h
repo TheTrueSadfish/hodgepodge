@@ -207,6 +207,7 @@ extern const u8 BattleScript_TraceActivates[];
 extern const u8 BattleScript_TraceActivatesEnd3[];
 extern const u8 BattleScript_RainDishActivates[];
 extern const u8 BattleScript_InstabilityActivates[];
+extern const u8 BattleScript_PalpitationsActivates[];
 extern const u8 BattleScript_AppetiteActivates[];
 extern const u8 BattleScript_SandstreamActivates[];
 extern const u8 BattleScript_ShedSkinActivates[];

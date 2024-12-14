@@ -6239,11 +6239,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case ABILITY_PALPITATIONS:
                 if (IsBattlerAlive(gBattlerAttacker) && CountBattlerStatIncreases(battler, TRUE) > 0)
                 {
+                    gBattleMoveDamage = (gBattleMons[battler].maxHP / 5) * CountBattlerStatIncreases(battler, TRUE);
 
-                    gBattleMoveDamage = (gBattleMons[battler].maxHP / 100) * (20 * CountBattlerStatIncreases(battler, TRUE));
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
-                    BattleScriptExecute(BattleScript_InstabilityActivates);
+                    BattleScriptExecute(BattleScript_PalpitationsActivates);
                     effect++;
                 }
                 break;
@@ -12278,6 +12278,8 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 6 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
     case EFFECT_DIVE:
+        basePower = 120;
+        break;
     case EFFECT_FLY:
     case EFFECT_WHIRLPOOL:
         basePower = 8 * (gBattleMons[battlerAtk].friendship) / 17;
