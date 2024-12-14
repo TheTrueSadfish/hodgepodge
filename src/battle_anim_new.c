@@ -677,35 +677,12 @@ const struct SpriteTemplate gHeartStampSpinningHeartTemplate =
     .callback = AnimSpinningKickOrPunch
 };
 
-//horn leech
-const struct SpriteTemplate gHornLeechHornTemplate =
-{
-    .tileTag = ANIM_TAG_HORN_LEECH,
-    .paletteTag = ANIM_TAG_HORN_LEECH,
-    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimShadowBall
-};
-
 static const union AnimCmd sAnimCmdFlippedX[] = {
 	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
 	ANIMCMD_END,
 };
 static const union AnimCmd *const sAnimCmdTable_FlippedX[] = {
 	sAnimCmdFlippedX,
-};
-
-const struct SpriteTemplate gHornLeechHornOpponentTemplate =
-{
-    .tileTag = ANIM_TAG_HORN_LEECH,
-    .paletteTag = ANIM_TAG_HORN_LEECH,
-    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
-    .anims = sAnimCmdTable_FlippedX,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimShadowBall
 };
 
 //dual chop

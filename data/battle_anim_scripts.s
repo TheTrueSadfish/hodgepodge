@@ -7089,10 +7089,7 @@ Move_HORN_LEECH::
 	loadspritegfx ANIM_TAG_ORBS
 	loadspritegfx ANIM_TAG_BLUE_STAR
 	playsewithpan SE_M_HEADBUTT, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_IsTargetPlayerSide, 0x2
-	jumpargeq 0x7 ANIM_TARGET HornLeechOnPlayer
-	createsprite gHornLeechHornOpponentTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
-HornLeechContinue:
+	createsprite gHornLeechHornTemplate, ANIM_TARGET, 4, 0, 0, 10
 	waitforvisualfinish
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 6, 1
 	createsprite gFlashingHitSplatSpriteTemplate, ANIM_TARGET, 3, 0x0, 0x0, 0x1, 0x1
@@ -7102,9 +7099,6 @@ HornLeechContinue:
 	call HealingEffect
 	waitforvisualfinish
 	end
-HornLeechOnPlayer::
-	createsprite gHornLeechHornTemplate, ANIM_TARGET, 2, 0x0, 0x0, 0x25
-	goto HornLeechContinue
 
 Move_SACRED_SWORD::
 	loadspritegfx ANIM_TAG_CUT @Cut
@@ -27619,9 +27613,9 @@ Move_IRON_JAWS::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	loopsewithpan SE_M_HARDEN, SOUND_PAN_ATTACKER, 28, 2
-	monbg ANIM_DEF_PARTNER
 	createvisualtask AnimTask_MetallicShine, 5, 0, 0, RGB_BLACK
 	waitforvisualfinish
+	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	playsewithpan SE_M_BITE, SOUND_PAN_TARGET
 	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, -32, -32, 1, 819, 819, 10

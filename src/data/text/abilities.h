@@ -508,8 +508,7 @@ static const u8 sForewarnDescription[] = _(
 
 static const u8 sUnawareDescription[] = _(
     "Ignores the opposing Pokémon's\n"
-    "stat changes. Prevents the\n"
-    "Pokémon from panicking.");
+    "stat changes.");
 
 static const u8 sTintedLensDescription[] = _(
     "The Pokémon can use resisted\n"

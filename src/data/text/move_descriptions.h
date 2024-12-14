@@ -3168,9 +3168,9 @@ static const u8 sCoreEnforcerDescription[] = _(
     "the foe's Ability.");
 
 static const u8 sTropKickDescription[] = _(
-    "Lowers the foe's Atk, and Def if\n"
-    "infatuated. If the user is\n"
-    "blooming, raises its Atk.");
+    "The user lands an intense kick\n"
+    "of tropical origins on the foe.\n"
+    "This lowers the foe's Attack.");
 
 static const u8 sInstructDescription[] = _(
     "The user instructs the target to\n"
@@ -3853,8 +3853,8 @@ static const u8 sRevivalBlessingDescription[] = _(
 
 static const u8 sSaltCureDescription[] = _(
     "The user salt cures the foe,\n"
-    "doing damage every turn. Steel\n"
-    "and Water-types take more damage.");
+    "hurting it every turn. Steel and\n"
+    "Water-types take more damage.");
 
 static const u8 sTripleDiveDescription[] = _(
     "The user performs a perfectly\n"
@@ -4519,7 +4519,7 @@ static const u8 sStormChaseDescription[] = _(
     "move always goes first.");
 
 static const u8 sDrakenGuardDescription[] = _(
-    "Protects from attacks and boosts\n"
+    "Protects from moves and boosts\n"
     "the Sp. Atk of the user when an\n"
     "attacker uses a special move.");
 

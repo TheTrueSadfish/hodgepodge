@@ -26641,9 +26641,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_SKULDUGERY] =
     {
         .baseHP        = 77,
-        .baseAttack    = 70,
+        .baseAttack    = 60,
         .baseDefense   = 138,
-        .baseSpeed     = 43,
+        .baseSpeed     = 63,
         .baseSpAttack  = 85,
         .baseSpDefense = 100,
         .types = { TYPE_GROUND, TYPE_STEEL },

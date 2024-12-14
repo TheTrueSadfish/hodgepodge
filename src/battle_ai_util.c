@@ -2039,6 +2039,7 @@ bool32 ShouldLowerAttack(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerDef, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -2058,6 +2059,7 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -2075,6 +2077,7 @@ bool32 ShouldLowerSpeed(u32 battlerAtk, u32 battlerDef, u32 defAbility)
     if (!AI_STRIKES_FIRST(battlerAtk, battlerDef, AI_THINKING_STRUCT->moveConsidered)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -2093,6 +2096,7 @@ bool32 ShouldLowerSpAtk(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerDef, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -2111,6 +2115,7 @@ bool32 ShouldLowerSpDef(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL)
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
@@ -2127,6 +2132,7 @@ bool32 ShouldLowerAccuracy(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 
     if (defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
@@ -2145,6 +2151,7 @@ bool32 ShouldLowerEvasion(u32 battlerAtk, u32 battlerDef, u32 defAbility)
     if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
       && defAbility != ABILITY_CONTRARY
       && defAbility != ABILITY_CLEAR_BODY
+      && !(gDisableStructs[battlerDef].purified)
       && (defAbility != ABILITY_ICE_LENS && gBattleMons[battlerDef].species != SPECIES_ASTIGMORAY)
       && defAbility != ABILITY_FULL_METAL_BODY
       && defAbility != ABILITY_WHITE_SMOKE
