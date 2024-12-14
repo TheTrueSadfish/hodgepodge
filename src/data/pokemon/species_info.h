@@ -2909,12 +2909,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_DEWGONG] =
     {
-        .baseHP        = 85,
+        .baseHP        = 100,
         .baseAttack    = 70,
-        .baseDefense   = 80,
-        .baseSpeed     = 60,
+        .baseDefense   = 90,
+        .baseSpeed     = 70,
         .baseSpAttack  = 80,
-        .baseSpDefense = 100,
+        .baseSpDefense = 105,
         .types = { TYPE_DRAGON, TYPE_DRAGON },
         .catchRate = 190,
         .expYield = 65,
@@ -2924,7 +2924,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_POISON_HEAL, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_STAMINA, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
@@ -26746,7 +26746,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_SHAMBURGER] =
     {
         .baseHP        = 65,
-        .baseAttack    = 129,
+        .baseAttack    = 109,
         .baseDefense   = 132,
         .baseSpeed     = 102,
         .baseSpAttack  = 35,

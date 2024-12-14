@@ -6833,9 +6833,8 @@ static void Cmd_moveend(void)
                 }
                 break;
             case MOVE_EFFECT_STOCKPILE_WORE_OFF:
-                if (gDisableStructs[gBattlerAttacker].stockpileCounter > 1)
+                if (gDisableStructs[gBattlerAttacker].stockpileCounter > 0)
                 {
-                    gDisableStructs[gBattlerAttacker].stockpileCounter--;
                     gDisableStructs[gBattlerAttacker].stockpileCounter--;
                     effect = TRUE;
                     BattleScriptPush(gBattlescriptCurrInstr);
@@ -14239,7 +14238,7 @@ static void Cmd_stockpiletobasedamage(void)
     CMD_ARGS(const u8 *failInstr);
 
     const u8 *failInstr = cmd->failInstr;
-    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 2)
+    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 1)
     {
         gBattlescriptCurrInstr = failInstr;
     }
@@ -14269,7 +14268,7 @@ static void Cmd_stockpiletohpheal(void)
 
     const u8 *failInstr = cmd->failInstr;
 
-    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 2)
+    if (gDisableStructs[gBattlerAttacker].stockpileCounter < 1)
     {
         gBattlescriptCurrInstr = failInstr;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWALLOW_FAILED;
@@ -14285,7 +14284,7 @@ static void Cmd_stockpiletohpheal(void)
         }
         else
         {
-            gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP / 100) * (20 + (20 * gDisableStructs[gBattlerAttacker].stockpileCounter));
+            gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP / 100) * (35 + (10 * gDisableStructs[gBattlerAttacker].stockpileCounter));
 
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;

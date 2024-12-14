@@ -2205,15 +2205,12 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_NANAB_GATTLING:
+        case EFFECT_SPIT_UP:
             if (gDisableStructs[battlerAtk].stockpileCounter <= 1)
                 score -= 10;
             break;
-        case EFFECT_SPIT_UP:
-            if (gDisableStructs[battlerAtk].stockpileCounter < 2)
-                score -= 10;
-            break;
         case EFFECT_SWALLOW:
-            if (gDisableStructs[battlerAtk].stockpileCounter < 2)
+            if (gDisableStructs[battlerAtk].stockpileCounter < 1)
             {
                 score -= 10;
             }
@@ -4725,7 +4722,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
         break;
     case EFFECT_SWALLOW:
-        if (gDisableStructs[battlerAtk].stockpileCounter < 2)
+        if (gDisableStructs[battlerAtk].stockpileCounter < 1)
         {
             break;
         }
@@ -4735,13 +4732,13 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             switch (gDisableStructs[battlerAtk].stockpileCounter)
             {
             case 1:
-                healPercent = 40;
+                healPercent = 45;
                 break;
             case 2:
-                healPercent = 60;
+                healPercent = 55;
                 break;
             case 3:
-                healPercent = 80;
+                healPercent = 65;
                 break;
             default:
                 break;
@@ -5924,11 +5921,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
         break;
     case EFFECT_NANAB_GATTLING:
-        if (gDisableStructs[battlerAtk].stockpileCounter >= 1)
-            score+= gDisableStructs[battlerAtk].stockpileCounter * 2;
-        break;
     case EFFECT_SPIT_UP:
-        if (gDisableStructs[battlerAtk].stockpileCounter > 1)
+        if (gDisableStructs[battlerAtk].stockpileCounter >= 1)
             score+= gDisableStructs[battlerAtk].stockpileCounter * 2;
         break;
     case EFFECT_FEATHER_RAZOR:

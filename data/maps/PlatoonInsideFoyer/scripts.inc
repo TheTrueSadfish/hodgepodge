@@ -317,6 +317,7 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_RING_TARGET
 	giveitem ITEM_RIZZ_BERRY
 	giveitem ITEM_ROCKY_HELMET
+	giveitem ITEM_ROWAP_BERRY
 	giveitem ITEM_SALAC_BERRY
 	giveitem ITEM_SCOPE_LENS
 	giveitem ITEM_SHARP_BEAK
@@ -330,7 +331,6 @@ PlatoonInsideFoyer_EventScript_GiveAllItems::
 	giveitem ITEM_SPELON_BERRY
 	giveitem ITEM_STICKY_BARB
 	giveitem ITEM_TANGA_BERRY
-	giveitem ITEM_TOXIC_ORB
 	giveitem ITEM_WEAKNESS_POLICY
 	giveitem ITEM_WIDE_LENS
 	giveitem ITEM_WISE_GLASSES

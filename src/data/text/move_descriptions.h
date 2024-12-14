@@ -1265,12 +1265,12 @@ static const u8 sStockpileDescription[] = _(
     "The move can be used 3 times.");
 
 static const u8 sSpitUpDescription[] = _(
-    "Removes 2 stacks of Stockpile to\n"
+    "Removes a stack of Stockpile to\n"
     "use in an attack. Matches the\n"
     "user's first type.");
 
 static const u8 sSwallowDescription[] = _(
-    "Removes 2 stacks of Stockpile to\n"
+    "Removes a stack of Stockpile to\n"
     "restore the user's HP.");
 
 static const u8 sHeatWaveDescription[] = _(
@@ -4081,8 +4081,8 @@ static const u8 sSpookDescription[] = _(
 
 static const u8 sChillyAirDescription[] = _(
     "The user blows cold winds\n"
-    "that harshly lower foes'\n"
-    "evasion and Speed stats.");
+    "that lower foes' evasion\n"
+    "and Speed stats.");
 
 static const u8 sHitNRunDescription[] = _(
     "After running over the foe, the\n"
